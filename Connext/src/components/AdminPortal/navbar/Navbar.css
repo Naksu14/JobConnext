@@ -1,5 +1,4 @@
 .NavbarItems {
-    /* background: linear-gradient(90deg, rgb(110, 94, 254) 0%, rgba(73, 63, 252, 1) 100%); */
     background-color: #fff;
     height: 80px;
     display: flex;
@@ -8,8 +7,16 @@
     padding: 0 20px;
     font-size: 1.2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    position: fixed; /* Fix the navbar */
+    top: 0; /* Position it at the top */
+    left: 0;
+    right: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
 }
-
+.grid-container {
+    margin-top: 80px; /* Same height as the navbar */
+}
 /* Logo and Name */
 .navbar-left {
     display: flex;
@@ -69,10 +76,7 @@
     align-items: center;
 }
 .Notification-icon{
-    margin-right: 50px;
-    width: 35px;
-    height: 35px;
-
+    margin-right: 20px;
 }
 .profile-icon {
     width: 50px;
