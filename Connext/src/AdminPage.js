@@ -2,7 +2,7 @@ import React from 'react';
 import './AdminPage.css';
 import Navbar from './components/AdminPortal/navbar/Navbar';
 import Sidebar from './components/AdminPortal/Sidebar/sidebar';
-import Dashboard from './components/AdminPortal/DashBoard/Dashboard';
+import Dashboard from './components/AdminPortal/dashBoard/Dashboard';
 
 function App() {
   return (
