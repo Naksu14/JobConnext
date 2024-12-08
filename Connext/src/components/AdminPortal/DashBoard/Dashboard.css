@@ -9,8 +9,18 @@
     margin-left: 250px; /* Leaves space for the fixed Sidebar */
     background-color: #ffffff; /* Optional: Add background for clarity */
     box-sizing: border-box; /* Ensures padding doesn't affect the size calculation */
-}
 
+    display: flex;
+    justify-content: space-between;
+    scrollbar-width: none;
+}
+.Dashboard-Content {
+    display: flex;
+    width: 100%;
+  }
+  .Dashboard-right-column {
+    margin: 15px 0;  }
+  
 .Dashboard-title{
     color: #161D6F;
     display: flex;
@@ -39,6 +49,9 @@
 }
 .Card:nth-child(2){
     background-color: #E46232;
+}
+.Card:nth-child(3){
+    background-color: #8e32e4;
 }
 .Card-inner{
     display: flex;
@@ -85,3 +98,13 @@
     width: 920px; /* Ensures full width of its parent */
     height: 300px; /* Ensures a fixed height for the chart */
 }
+
+.rd-charts{
+    background-color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: grid;
+    margin-top: 20px;
+    width: 620px; /* Ensures full width of its parent */
+    height: 300px; /* Ensures a fixed height for the chart */
+}
+
