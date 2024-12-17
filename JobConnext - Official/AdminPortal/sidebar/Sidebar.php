@@ -39,39 +39,43 @@ if (isset($_GET['logout'])) {
             <span class="description">Content Moderation <i class="bi bi-caret-down-fill"></i></span>
         </a>
         <div class="sub-menu collapse" id="submenu">
-            <a href="AdminContentModeration.php" class="nav-link">
+            <a href="reviewpost.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-file-earmark-post"></i>
                 </span>
                 <span class="description" id="reviewpost">Review Post</span>
             </a>
-            <a href="AdminContentModeration.php" class="nav-link">
+            <a href="archivedpost.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-file-post"></i>
                 </span>
                 <span class="description" id="archivedpost">Archived Post</span>
             </a>
-            <a hhref="AdminContentModeration.php" class="nav-link">
+            <a href="reportpost.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-file-post-fill"></i>
                 </span>
                 <span class="description" id="reportpost">Reported Post</span>
             </a>
-            <a href="AdminContentModeration.php" class="nav-link">
+            <a href="reportapplicant.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-person-rolodex"></i>
                 </span>
                 <span class="description" id="reportapplicant">Reported Applicant</span>
             </a>
-            <a href="AdminContentModeration.php"class="nav-link">
+            <a href="feedback.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-chat-left-text-fill"></i>
                 </span>
                 <span class="description" id="feedback">Feedback</span>
             </a>
         </div>
 
+<<<<<<< HEAD
         <a href="?logout=true" class="nav-link Logout-button">
+=======
+        <a href="../GuessPortal/Sign_In.php" class="nav-link Logout-button">
+>>>>>>> b816d959df8d0e81506091d1ba3ef88bc064482b
             <span class="icon logicon">
                 <i class="bi bi-door-closed-fill"></i>
             </span>

@@ -14,16 +14,21 @@
 
 <div class="container-fluid vh-100 d-flex align-items-center justify-content-center position-relative">
     <div class="position-absolute bottom-0 end-0 p-2">
+<<<<<<< HEAD
         <h6 class="rounded shadow p-2" style="background-color: #E46232;">
             <a href="LandingPage.html" style="color: white">
                 <i class="bi bi-arrow-left-circle"></i> Go back
             </a>
         </h6>
+=======
+        <h6 class="rounded shadow p-2" style="background-color: #E46232;"><a href="LandingPage.php" style="color: white"><i class="bi bi-arrow-left-circle"></i> Go back</a></h5>
+>>>>>>> b816d959df8d0e81506091d1ba3ef88bc064482b
     </div>
     <div class="container-fluid ps-3 pe-3 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: 38%;">
         <img src="../Assets/image/Logo1.png" width="90px" height="90px" alt="logo">
         <h2 class="poppins-bold m-0">Sign <span style="color: #E46232;">In</span></h2>
 
+<<<<<<< HEAD
         <form action="" method="post" class="d-flex flex-column mt-4 w-75">  
             <label for="usernameOremail" class="poppins-medium">Username or Email</label>
             <input type="text" name="usernameOremail" id="usernameOremail" required>
@@ -44,10 +49,26 @@
             </div>
         </form>
 
+=======
+        <!-- Make this div class into form tag when backend-development start -->
+        <div class="d-flex flex-column mt-4 w-75">  
+            <label for="usernameOremail" class="poppins-medium">Username or Email</label>
+            <input type="text" name="usernameOremail" id="usernameOremail">
+            <label for="usernameOremail" class="poppins-medium">Password</label>
+            <input type="password" name="password" id="password">
+            <p class="poppins-regular"><a href="#" style="color: black;">Forget password?</a></p>
+            <div class="g-recaptcha" data-sitekey="6LdKLJwqAAAAAEYqq4rErAVcCcdBzApCkFzeXpzc"></div>
+            <p id="errorMsg" class="text-danger fs-6" style="display: none;">Invalid username or password. Please try again.</p>
+            <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
+                <button class="button-midblue" onclick="changePage()" style="width: 200px;">Sign In</button>
+            </div>
+        </div>
+>>>>>>> b816d959df8d0e81506091d1ba3ef88bc064482b
         <p class="poppins-regular">Create account? <span><a href="#" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
     </div>
 </div>
 
+<<<<<<< HEAD
 <footer class="blockquote-footer text-white m-0 text-center" style="background-color: #161D6F;">
     <p>&copy; 2024 JobConnext. All rights reserved.</p>
     <p class="m-0">
@@ -83,5 +104,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+=======
+
+<footer class="blockquote-footer text-white m-0 text-center" style="background-color: #161D6F;">
+        <p>&copy; 2024 JobConnext. All rights reserved.</p>
+        <p class=" m-0">
+            <a style="text-decoration: none; color: white;" href="#privacy-policy">Privacy Policy</a> | 
+            <a style="text-decoration: none; color: white;" href="#terms-of-service">Terms of Service</a>
+        </p>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        
+        function changePage() {
+            const username_or_email = document.getElementById("usernameOremail");
+            const password = document.getElementById("password");
+            const errorMsg = document.getElementById("errorMsg");
+
+            if ((username_or_email.value == "worker" && password.value == "worker123") || 
+                (username_or_email.value == "worker123@gmail.com" && password.value == "worker123")) {
+                    window.location.href = "../BlueCollarWorkerPortal/index.html";
+
+            } else if((username_or_email.value == "client" && password.value == "client123") || 
+            (username_or_email.value == "client123@gmail.com" && password.value == "client123")){
+                    window.location.href = "../ClientPortal/index.html";   
+                     
+            }else if((username_or_email.value == "admin" && password.value == "admin123") || 
+            (username_or_email.value == "admin123@gmail.com" && password.value == "admin123")){
+                window.location.href = "../AdminPortal/AdminLandingPage.php";
+            }
+            else {
+                errorMsg.style.display = "block";
+        }
+        }
+
+    </script>
+>>>>>>> b816d959df8d0e81506091d1ba3ef88bc064482b
 </body>
 </html>

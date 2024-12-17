@@ -45,7 +45,7 @@
         <div class="cards">
             <div class="card">
                 <div class="card-icon">
-                    <i class="bi bi-person-fill"></i>
+                    <img src="./imgforadmin/blueCollar.png" alt="">
                 </div>
                 <div class="card-content">
                     <div class="card-name">BLUE COLLAR</div>
@@ -54,7 +54,7 @@
             </div>
             <div class="card">
                 <div class="card-icon">
-                    <i class="bi bi-person-fill"></i>
+                    <img src="./imgforadmin/Client.png" alt="">
                 </div>
                 <div class="card-content">
                     <div class="card-name">CLIENT</div>
@@ -71,6 +71,12 @@
             <div class="chart" id="bar-graph">
                 <h3>Client Project</h3>
                 <canvas id="CCChart"></canvas>
+            </div>
+        </div>
+        <div class=" charts charts2">
+            <div class="chart" id="bar-graph">
+                <h3>New Registered User</h3>
+                <canvas id="newUserChart"></canvas>
             </div>
         </div>
         <div class=" charts charts2">
