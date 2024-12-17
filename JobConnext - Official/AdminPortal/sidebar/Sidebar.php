@@ -12,7 +12,7 @@ session_start();
 if (isset($_GET['logout'])) {
     session_unset();  // Unset all session variables
     session_destroy();  // Destroy the session
-    header('Location: http://localhost/JobConnext%20-%20Official/JobConnext%20-%20Official/GuessPortal/LandingPage.php');  // Redirect to login page after logout
+    header('Location: ../GuessPortal/LandingPage.php');  // Redirect to login page after logout
     exit;
 }
 ?>

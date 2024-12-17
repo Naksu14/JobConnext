@@ -14,78 +14,76 @@
 
 <body>
 
-    <div class="container-fluid vh-100 d-flex align-items-center justify-content-center position-relative">
-        <div class="position-absolute bottom-0 end-0 p-2">
-            <h6 class="rounded shadow p-2" style="background-color: #E46232;">
-                <a href="LandingPage.php" style="color: white">
-                    <i class="bi bi-arrow-left-circle"></i> Go back
-                </a>
-            </h6>
-        </div>
-        <div class="container-fluid ps-3 pe-3 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: 38%;">
-            <img src="../Assets/image/Logo1.png" width="90px" height="90px" alt="logo">
-            <h2 class="poppins-bold m-0">Sign <span style="color: #E46232;">In</span></h2>
+<div class="container-fluid vh-100 d-flex align-items-center justify-content-center position-relative">
+    <div class="position-absolute bottom-0 end-0 p-2">
+        <h6 class="rounded shadow p-2" style="background-color: #E46232;">
+            <a href="LandingPage.html" style="color: white">
+                <i class="bi bi-arrow-left-circle"></i> Go back
+            </a>
+        </h6>
+    </div>
+    <div class="container-fluid ps-3 pe-3 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: 38%;">
+        <img src="../Assets/image/Logo1.png" width="90px" height="90px" alt="logo">
+        <h2 class="poppins-bold m-0">Sign <span style="color: #E46232;">In</span></h2>
 
-            <form action="" method="post" class="d-flex flex-column mt-4 w-75">
-                <label for="usernameOremail" class="poppins-medium">Username or Email</label>
-                <input type="text" name="usernameOremail" id="usernameOremail" required>
+        <form action="" method="post" class="d-flex flex-column mt-4 w-75">  
+            <label for="usernameOremail" class="poppins-medium">Username or Email</label>
+            <input type="text" name="usernameOremail" id="usernameOremail" required>
 
-                <label for="password" class="poppins-medium">Password</label>
-                <input type="password" name="password" id="password" required>
+            <label for="password" class="poppins-medium">Password</label>
+            <input type="password" name="password" id="password" required>
 
-                <p class="poppins-regular"><a href="#" style="color: black;">Forget password?</a></p>
+            <p class="poppins-regular"><a href="#" style="color: black;">Forget password?</a></p>
 
-                <div class="g-recaptcha" data-sitekey="6LdKLJwqAAAAAEYqq4rErAVcCcdBzApCkFzeXpzc"></div>
+            <div class="g-recaptcha" data-sitekey="6LdKLJwqAAAAAEYqq4rErAVcCcdBzApCkFzeXpzc"></div>
 
-                <?php if (isset($errorMsg)): ?>
-                    <p id="errorMsg" class="text-danger fs-6"><?= $errorMsg; ?></p>
-                <?php endif; ?>
+            <?php if (isset($errorMsg)): ?>
+                <p id="errorMsg" class="text-danger fs-6"><?= $errorMsg; ?></p>
+            <?php endif; ?>
 
-                <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
-                    <button type="submit" class="button-midblue" name="signIn_btn" style="width: 200px;">Sign In</button>
-                </div>
-            </form>
+            <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
+                <button type="submit" class="button-midblue" name="signIn_btn" style="width: 200px;">Sign In</button>
+            </div>
+        </form>
 
-            <p class="poppins-regular">Create account? <span><a href="#" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
-        </div>
+        <p class="poppins-regular">Create account? <span><a href="#" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
     </div>
 
-    <footer class="blockquote-footer text-white m-0 text-center" style="background-color: #161D6F;">
-        <p>&copy; 2024 JobConnext. All rights reserved.</p>
-        <p class="m-0">
-            <a style="text-decoration: none; color: white;" href="#privacy-policy">Privacy Policy</a> |
-            <a style="text-decoration: none; color: white;" href="#terms-of-service">Terms of Service</a>
-        </p>
-    </footer>
+<footer class="blockquote-footer text-white m-0 text-center" style="background-color: #161D6F;">
+    <p>&copy; 2024 JobConnext. All rights reserved.</p>
+    <p class="m-0">
+        <a style="text-decoration: none; color: white;" href="#privacy-policy">Privacy Policy</a> | 
+        <a style="text-decoration: none; color: white;" href="#terms-of-service">Terms of Service</a>
+    </p>
+</footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $username_or_email = $_POST['usernameOremail'];
-        $password = $_POST['password'];
+<?php
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $username_or_email = $_POST['usernameOremail'];
+    $password = $_POST['password'];
 
 
-        if (($username_or_email == "worker" && $password == "worker123") ||
-            ($username_or_email == "worker123@gmail.com" && $password == "worker123")
-        ) {
-            header('Location: http://localhost//JobConnext%20-%20Official/JobConnext%20-%20Official/BlueCollarWorkerPortal/index.php');
+    if (($username_or_email == "worker" && $password == "worker123") || 
+        ($username_or_email == "worker123@gmail.com" && $password == "worker123")) {
+            header('Location: ../BlueCollarWorkerPortal/index.php');
             exit;
-        } else if (($username_or_email == "client" && $password == "client123") ||
-            ($username_or_email == "client123@gmail.com" && $password == "client123")
-        ) {
-            header('Location: http://localhost/JobConnext%20-%20Official/JobConnext%20-%20Official/ClientPortal/index.php');
+    } else if (($username_or_email == "client" && $password == "client123") || 
+        ($username_or_email == "client123@gmail.com" && $password == "client123")){
+            header('Location: ../ClientPortal/index.php');
             exit;
-        } else if (($username_or_email == "admin" && $password == "admin123") ||
-            ($username_or_email == "admin123@gmail.com" && $password == "admin123")
-        ) {
-            header('http://localhost:8012/JobConnext/JobConnext%20-%20Official/AdminPortal/AdminLandingPage.php');
+    } else if (($username_or_email == "admin" && $password == "admin123") || 
+    ($username_or_email == "admin123@gmail.com" && $password == "admin123")){
+            header('Location: ../AdminPortal/AdminLandingPage.php');
             exit;
-        } else {
-            $errorMsg = "Invalid username or password. Please try again.";
-        }
     }
-    ?>
+
+    else {
+        $errorMsg = "Invalid username or password. Please try again.";
+    }
+}
+?>
 </body>
 
 </html>
