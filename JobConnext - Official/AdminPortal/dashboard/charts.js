@@ -46,45 +46,180 @@ const ctxFBChart = document.getElementById('FBChart');
       }
     }
   });
-  new Chart(ctxJCChart, {
+  new Chart(newUserChart, {
     type: 'line',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: ['#E46232'],
-        tension: 0.1,
-        borderColor: '#E46232'
-      }]
+        labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Replace with relevant months or data
+        datasets: [
+            {
+                label: 'Clients',
+                data: [12, 19, 3, 5, 2, 3], // Replace with your client data
+                backgroundColor: 'rgba(228, 98, 50, 0.2)', // Light fill color
+                borderColor: '#E46232', // Border color for the line
+                borderWidth: 2,
+                tension: 0.4, // Smooth curve
+                fill: true // Optional: to fill the area under the line
+            },
+            {
+                label: 'Blue-Collar Workers',
+                data: [5, 9, 7, 10, 4, 8], // Replace with your blue-collar worker data
+                backgroundColor: 'rgba(32, 138, 174, 0.2)', // Light fill color
+                borderColor: '#208AAE', // Border color for the line
+                borderWidth: 2,
+                tension: 0.4, // Smooth curve
+                fill: true // Optional: to fill the area under the line
+            }
+        ]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
+        responsive: true, // Adjusts chart size based on container
+        plugins: {
+            legend: {
+                position: 'top', // Legend position
+            },
+            title: {
+                display: true,
+                text: 'New Registered Users: Clients vs Blue-Collar Workers' // Chart title
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true, // Start y-axis from 0
+                title: {
+                    display: true,
+                    text: 'Number of Registrations'
+                }
+            },
+            x: {
+                title: {
+                    display: true,
+                    text: 'Months'
+                }
+            }
         }
-      }
     }
-  });
+});
+
+
+new Chart(ctxJCChart, {
+  type: 'line',
+  data: {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Replace with relevant months
+      datasets: [
+          {
+              label: 'Construction',
+              data: [15, 20, 25, 18, 22, 30], // Replace with actual data
+              borderColor: '#E46232', // Orange
+              backgroundColor: 'rgba(228, 98, 50, 0.2)',
+              borderWidth: 2,
+              tension: 0.4,
+              fill: false
+          },
+          {
+              label: 'IT and Software',
+              data: [10, 15, 8, 12, 18, 25], // Replace with actual data
+              borderColor: '#208AAE', // Blue
+              backgroundColor: 'rgba(32, 138, 174, 0.2)',
+              borderWidth: 2,
+              tension: 0.4,
+              fill: false
+          },
+          {
+              label: 'Healthcare',
+              data: [5, 10, 15, 20, 25, 18], // Replace with actual data
+              borderColor: '#8BC34A', // Green
+              backgroundColor: 'rgba(139, 195, 74, 0.2)',
+              borderWidth: 2,
+              tension: 0.4,
+              fill: false
+          },
+          {
+              label: 'Education',
+              data: [8, 12, 14, 16, 18, 22], // Replace with actual data
+              borderColor: '#FFB300', // Yellow
+              backgroundColor: 'rgba(255, 179, 0, 0.2)',
+              borderWidth: 2,
+              tension: 0.4,
+              fill: false
+          },
+          {
+              label: 'Logistics',
+              data: [7, 14, 12, 17, 16, 20], // Replace with actual data
+              borderColor: '#7E57C2', // Purple
+              backgroundColor: 'rgba(126, 87, 194, 0.2)',
+              borderWidth: 2,
+              tension: 0.4,
+              fill: false
+          }
+      ]
+  },
+  options: {
+      responsive: true,
+      plugins: {
+          legend: {
+              position: 'top', // Legend at the top
+          },
+          title: {
+              display: true,
+              text: 'Most Job Categories Selected Over Time' // Chart Title
+          }
+      },
+      scales: {
+          y: {
+              beginAtZero: true, // Start y-axis at 0
+              title: {
+                  display: true,
+                  text: 'Number of Selections'
+              }
+          },
+          x: {
+              title: {
+                  display: true,
+                  text: 'Months'
+              }
+          }
+      }
+  }
+});
+
 
   new Chart(ctxFBChart, {
     type: 'doughnut',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#8E33FF', '#FF33A1'],
-        borderColor: ['#FF5733', '#33FF57', '#3357FF', '#F3FF33', '#8E33FF', '#FF33A1'],
-        borderWidth: 1
-      }]
+      labels: ['Excellent', 'Good', 'Average', 'Poor', 'Bad'],
+        datasets: [{
+            label: 'Feedback Rating',
+            data: [30, 25, 15, 10, 5], // Example data: Adjust for your use case
+            backgroundColor: [
+                '#28A745', // Excellent - Green
+                '#85C744', // Good - Light Green
+                '#FFC107', // Average - Yellow
+                '#FD7E14', // Poor - Orange
+                '#DC3545'  // Bad - Red
+            ],
+            borderColor: '#FFFFFF', // White border for clarity
+            borderWidth: 2
+        }]
     },
     options: {
+      rotation: -90,
+      circumference: 180,
+      
       cutout: '70%', // Adjust the inner cutout size (percentage of chart radius)
       plugins: {
         legend: {
-          position: 'top' // Adjust legend position if needed
+            position: 'top', // Legend displayed at the top
+            labels: {
+                font: {
+                    size: 14
+                }
+            }
+        },
+        title: {
+            display: true,
+            text: 'Feedback Ratings (Excellent to Bad)'
         }
-      }
     }
+  }
   });
+

@@ -21,37 +21,37 @@
         <div class="sub-menu collapse" id="submenu">
             <a href="reviewpost.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-file-earmark-post"></i>
                 </span>
                 <span class="description" id="reviewpost">Review Post</span>
             </a>
             <a href="archivedpost.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-file-post"></i>
                 </span>
                 <span class="description" id="archivedpost">Archived Post</span>
             </a>
             <a href="reportpost.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-file-post-fill"></i>
                 </span>
                 <span class="description" id="reportpost">Reported Post</span>
             </a>
             <a href="reportapplicant.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-person-rolodex"></i>
                 </span>
                 <span class="description" id="reportapplicant">Reported Applicant</span>
             </a>
             <a href="feedback.php" class="nav-link">
                 <span class="icon">
-                    <i class="bi bi-postcard-fill"></i>
+                    <i class="bi bi-chat-left-text-fill"></i>
                 </span>
                 <span class="description" id="feedback">Feedback</span>
             </a>
         </div>
 
-        <a href="#" class="nav-link Logout-button">
+        <a href="../GuessPortal/Sign_In.php" class="nav-link Logout-button">
             <span class="icon logicon">
                 <i class="bi bi-door-closed-fill"></i>
             </span>
