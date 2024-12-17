@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="../Assets/css/worker_recommended.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col">
+                <div class="container-fluid" id="logo">
+                    <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
+                </div>
+            </div>
+            <div class="col">
+                <div class="container-fluid" id="nav_list">
+                    <ul>
+                        <li>
+                            <a href="client_home.php">Home</a>
+                            <a href="">Profile</a>
+                            <a href="">Message</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container-fluid">
+                    <button id="logout_butt">
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid custom-container" id="main_content">
+        <div class="add_job">
+            <div class="dp_photo">
+                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
+                <input type="text" class="custom-input" placeholder="Post Something..." id="post_something">
+            </div>
+        </div>
+        <div class="worker_details">
+            <div class="worker_detail_header">
+                <div class="job-header">
+                    <div class="profile-info">
+                        <div class="avatar">
+                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                        </div>
+                        <div class="details">
+                            <h3>Maxwell Cruz</h3>
+                            <p>ID:3424675</p>
+                        </div>
+                    </div>
+                    <div class="report-menu">
+                        Report
+                    </div>
+                </div>
+                <div class="skills-worker-details">
+                    <p>Skills:</p>
+                </div>
+                <div class="skills-available-details">
+                    <span class="skill-tag green">Welder</span>
+                    <span class="skill-tag purple">Electrician</span>
+                </div>
+                <div class="container-fluid worker-info">
+                    <h3>
+                        Details
+                    </h3>
+                    <div class="full-details">
+                        <p>
+                        <h5>Full Name</h5>
+                        </p>
+                        <p>
+                            Maxwell Cruz
+                        </p>
+                        <p>
+                        <h5>Bio</h5>
+                        </p>
+                        <p>
+                            Ready to serve you
+                        </p>
+                    </div>
+                    <h3>
+                        Contacts
+                    </h3>
+                    <div class="contacts">
+                        <p>
+                        <h5>Email</h5>
+                        </p>
+                        <p>
+                            Maxwell@gmail.com
+                        </p>
+                        <p id="phone_no">
+                        <h5>Phone no.</h5>
+                        </p>
+                        <p>
+                            +6392314241222
+                        </p>
+                        <div class="email_butt">
+                            <button>
+                                Email
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page_content">
+            <div class="row content-header">
+                <div class="col-3">
+                    <div class="container-fluid content-filter">
+                        <button>
+                            <img src="../Assets/image/filter (1) 1.png" alt="">
+                            <span>
+                                Filter
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-7">
+                    <div class="container-fluid freelance-search">
+                        <input type="text" placeholder="  Search for workers..." id="freelance-search">
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="seek-worker">
+                        <button>
+                            <span>
+                                Seek
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row title-section">
+                <div class="col content-title">
+                    <p>
+                        My Job Offer
+                    </p>
+                </div>
+            </div>
+
+            <div class="row job-card">
+                <div class="col-12">
+                    <div class="card" id="my-offer">
+                        <div class="job-header">
+                            <div class="profile-info">
+                                <div class="avatar">
+                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                </div>
+                                <div class="details">
+                                    <h3>Mr. Fixer</h3>
+                                    <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
+                                </div>
+                            </div>
+                            <div class="job-dates">
+                                <div class="menu">•••</div>
+                                <p>11/8/2024 to 11/13/2024</p>
+                            </div>
+                        </div>
+                        <div class="job-body">
+                            <div class="info">
+                                <p>
+                                    <strong>Location:</strong>
+                                    Makati
+                                </p>
+                                <p>
+                                    <strong>Years of experience:</strong> 0
+                                </p>
+                            </div>
+                            <div class="skills-available">
+                                <p><strong>Skills needed:</strong></p>
+                                <span class="skill-tag green">Welder</span>
+                                <span class="skill-tag purple">Electrician</span>
+                            </div>
+                        </div>
+                        <div class="job-footer">
+                            <p>5 Applied</p>
+                            <p>0 Accepted</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row title-section">
+                <div class="col recommend-workers">
+                    <p>
+                        Recommended workers
+                    </p>
+                </div>
+            </div>
+
+            <div class="container-fluid recommendation">
+                <div class="row recommended-card">
+                    <div class="col-12">
+                        <a href="worker_recommended.php" class="card-link">
+                            <div class="card" id="my-offer">
+                                <div class="job-header">
+                                    <div class="profile-info">
+                                        <div class="avatar">
+                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                                alt="Avatar">
+                                        </div>
+                                        <div class="details">
+                                            <h3>Maxwell Cruz</h3>
+                                            <p>ID:3424675</p>
+                                        </div>
+                                    </div>
+                                    <div class="menu">
+                                        •••
+                                    </div>
+                                </div>
+                                <div class="skills">
+                                    <p><strong>Skills:</strong></p>
+                                    <span class="skill-tag green">Welder</span>
+                                    <span class="skill-tag purple">Electrician</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row recommended-card">
+                    <div class="col-12">
+                        <div class="card" id="my-offer">
+                            <div class="job-header">
+                                <div class="profile-info">
+                                    <div class="avatar">
+                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                    </div>
+                                    <div class="details">
+                                        <h3>Alex Stark </h3>
+                                        <p>ID:3407955</p>
+                                    </div>
+                                </div>
+                                <div class="job-dates">
+                                    <div class="menu">•••</div>
+                                </div>
+                            </div>
+                            <div class="skills">
+                                <p><strong>Skills:</strong></p>
+                                <span class="skill-tag green">Welder</span>
+                                <span class="skill-tag purple">Electrician</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row recommended-card">
+                    <div class="col-12">
+                        <div class="card" id="my-offer">
+                            <div class="job-header">
+                                <div class="profile-info">
+                                    <div class="avatar">
+                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                    </div>
+                                    <div class="details">
+                                        <h3>Joseph Vergara</h3>
+                                        <p>ID:3824155</p>
+                                    </div>
+                                </div>
+                                <div class="job-dates">
+                                    <div class="menu">•••</div>
+                                </div>
+                            </div>
+                            <div class="skills">
+                                <p><strong>Skills:</strong></p>
+                                <span class="skill-tag green">Welder</span>
+                                <span class="skill-tag purple">Electrician</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row title-section">
+                    <div class="col other-offers">
+                        <p>
+                            Other Job Offers
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row other-offer">
+                <div class="col-12">
+                    <div class="card" id="my-offer">
+                        <div class="job-header">
+                            <div class="profile-info">
+                                <div class="avatar">
+                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                </div>
+                                <div class="details">
+                                    <h3>Highway express</h3>
+                                    <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
+                                </div>
+                            </div>
+                            <div class="job-dates">
+                                <div class="menu">•••</div>
+                                <p>11/8/2024 to 11/13/2024</p>
+                            </div>
+                        </div>
+                        <div class="job-body">
+                            <div class="info">
+                                <p>
+                                    <strong>Location:</strong>
+                                    Taguig
+                                </p>
+                                <p>
+                                    <strong>Years of experience:</strong> 2
+                                </p>
+                            </div>
+                            <div class="skills">
+                                <p><strong>Skills needed:</strong></p>
+                                <span class="skill-tag yellow">Truck Driver</span>
+                            </div>
+                        </div>
+                        <div class="job-footer">
+                            <p>5 Applied</p>
+                            <p>0 Accepted</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+</body>
+
+</html>
