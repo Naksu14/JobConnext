@@ -18,6 +18,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
+    <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
 </head>
 
 <body>
@@ -41,9 +42,11 @@
             </div>
             <div class="col">
                 <div class="container-fluid">
+                    <a href="../GuessPortal/LandingPage.php">
                     <button id="logout_butt">
                         Logout
                     </button>
+                    </a>
                 </div>
             </div>
         </div>

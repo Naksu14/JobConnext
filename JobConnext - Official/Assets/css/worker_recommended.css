@@ -62,7 +62,19 @@
 }
 
 #logout_butt:hover{
-    background-color:var(--darkblue) ;
+    background-color:var(--darkblue);    
+    color: #fff;
+}
+
+.custom-container {
+    max-width: 1450px; 
+}
+
+#logout_butt:hover{
+    background-color:var(--darkblue) ;    
+}
+
+#logout_butt a:hover{
     color: white;
 }
 

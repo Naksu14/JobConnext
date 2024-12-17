@@ -57,14 +57,21 @@
     font-size: 18px;
 }
 
+#logout_butt a{
+    text-decoration: none;
+    color: #000000;
+}
+
 .custom-container {
     max-width: 1450px; 
 }
 
 #logout_butt:hover{
-    background-color:var(--darkblue) ;
-    color: white;
+    background-color:var(--darkblue);    
+    color: #fff;
 }
+
+
 
 #input_post img{
     width: 75px;
@@ -417,3 +424,4 @@
 .recommended-card a{
     text-decoration: none;
 }
+
