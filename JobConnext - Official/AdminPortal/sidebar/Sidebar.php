@@ -12,7 +12,7 @@ session_start();
 if (isset($_GET['logout'])) {
     session_unset();  // Unset all session variables
     session_destroy();  // Destroy the session
-    header('Location: http://localhost/JobConnext%20-%20Official/JobConnext%20-%20Official/GuessPortal/LandingPage.html');  // Redirect to login page after logout
+    header('Location: http://localhost/JobConnext%20-%20Official/JobConnext%20-%20Official/GuessPortal/LandingPage.php');  // Redirect to login page after logout
     exit;
 }
 ?>
@@ -71,11 +71,7 @@ if (isset($_GET['logout'])) {
             </a>
         </div>
 
-<<<<<<< HEAD
         <a href="?logout=true" class="nav-link Logout-button">
-=======
-        <a href="../GuessPortal/Sign_In.php" class="nav-link Logout-button">
->>>>>>> b816d959df8d0e81506091d1ba3ef88bc064482b
             <span class="icon logicon">
                 <i class="bi bi-door-closed-fill"></i>
             </span>
