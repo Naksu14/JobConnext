@@ -19,31 +19,31 @@
             <span class="description">Content Moderation <i class="bi bi-caret-down-fill"></i></span>
         </a>
         <div class="sub-menu collapse" id="submenu">
-            <a href="AdminContentModeration.php" class="nav-link">
+            <a href="reviewpost.php" class="nav-link">
                 <span class="icon">
                     <i class="bi bi-postcard-fill"></i>
                 </span>
                 <span class="description" id="reviewpost">Review Post</span>
             </a>
-            <a href="AdminContentModeration.php" class="nav-link">
+            <a href="archivedpost.php" class="nav-link">
                 <span class="icon">
                     <i class="bi bi-postcard-fill"></i>
                 </span>
                 <span class="description" id="archivedpost">Archived Post</span>
             </a>
-            <a hhref="AdminContentModeration.php" class="nav-link">
+            <a href="reportpost.php" class="nav-link">
                 <span class="icon">
                     <i class="bi bi-postcard-fill"></i>
                 </span>
                 <span class="description" id="reportpost">Reported Post</span>
             </a>
-            <a href="AdminContentModeration.php" class="nav-link">
+            <a href="reportapplicant.php" class="nav-link">
                 <span class="icon">
                     <i class="bi bi-postcard-fill"></i>
                 </span>
                 <span class="description" id="reportapplicant">Reported Applicant</span>
             </a>
-            <a href="AdminContentModeration.php"class="nav-link">
+            <a href="feedback.php" class="nav-link">
                 <span class="icon">
                     <i class="bi bi-postcard-fill"></i>
                 </span>
