@@ -1,3 +1,23 @@
+<?php
+// Start the session
+session_start();
+
+// Check if the user is logged in
+// if (!isset($_SESSION['logged_in'])) {
+//     header('Location: SignInPage.php'); // Redirect to login page if not logged in
+//     exit;
+// }
+
+// If logout is requested (via the query string in the URL)
+if (isset($_GET['logout'])) {
+    session_unset();  // Unset all session variables
+    session_destroy();  // Destroy the session
+    header('Location: http://localhost/JobConnext%20-%20Official/JobConnext%20-%20Official/GuessPortal/LandingPage.html');  // Redirect to login page after logout
+    exit;
+}
+?>
+
+
 <div class="sidebar">
     <nav class="nav flex-column">
         <a href="AdminLandingPage.php" class="nav-link">
@@ -51,7 +71,7 @@
             </a>
         </div>
 
-        <a href="#" class="nav-link Logout-button">
+        <a href="?logout=true" class="nav-link Logout-button">
             <span class="icon logicon">
                 <i class="bi bi-door-closed-fill"></i>
             </span>
