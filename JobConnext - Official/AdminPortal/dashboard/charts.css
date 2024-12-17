@@ -1,0 +1,76 @@
+
+.cards{
+    width: 100%;
+    padding: 25px 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+}
+.card{
+    padding: 5px 20px;
+    display: grid;
+    align-items: center;
+    justify-content: space-between;
+    grid-template-columns: repeat(2, 1fr);
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: var(--white);
+}
+
+.card:first-child{
+    background-color: var(--lightblue);
+}
+.card:nth-child(2){
+    background-color: var(--orange);
+}
+
+.card-number{
+    font-size: 40px;
+    font-weight: 500;
+}
+.card-name{
+    font-size: 20px;
+    font-weight: 500;
+}
+.card-icon{
+    font-size: 100px;
+}
+
+.charts{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 20px;
+    width: 100%;
+    padding: 20px;
+    padding-top: 0;
+}
+.chart{
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+}
+.charts2{
+    grid-template-columns: 2fr 1fr;
+}
+.charts3{
+    grid-template-columns: 1fr 2fr;
+}
+.btn {
+    position: fixed; /* Fixed position relative to the viewport */
+    bottom: 20px; /* Distance from the bottom */
+    right: 20px; /* Distance from the right */
+    padding: 20px 40px;
+    font-size: 18px;
+    background-color: var(--darkblue);
+    color: var(--white);
+    border: none;
+    border-radius: 0px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  .btn:hover {
+    background-color: var(--lightblue);
+    color: var(--white);
+  }

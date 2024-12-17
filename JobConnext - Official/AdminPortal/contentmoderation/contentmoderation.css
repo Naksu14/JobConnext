@@ -1,0 +1,206 @@
+.review-content{
+    width: 100%;
+    padding: 25px 20px;
+   
+    
+}
+.review-content-header {
+    display: flex;
+    max-width: 1000px;
+    justify-content: space-between; /* Space between items */
+    gap: 20px; /* Optional: Add spacing between elements */
+}
+
+.review-title {
+    flex: 1; /* Ensure it takes available space */
+    text-align: left;
+    font-size: 18px;
+    color: var(--dwhite);
+    margin-bottom: 10px;
+}
+
+.review-search {
+    flex: 2; /* Ensure it grows more than other items */
+    display: flex;
+    justify-content: start; /* Center search bar horizontally */
+    
+}
+.review-search .input-group{
+    max-width: 500px;
+    gap: 10px;
+}
+.input-group-text {
+    background-color: var(--darkblue);
+    color: var(--white);
+    border-radius: 0px;
+    width: 130px;
+    justify-content: center;
+}
+.review-filter {
+    flex: 1; /* Ensure it takes equal space */
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    margin-bottom: 15px;
+}
+
+/* Buttons Styling */
+.btn-darkblue-user {
+    background-color: var(--white);
+    color: var(--darkblue);
+    border-radius: 0px;
+    width: 200px;
+    border: var(--dwhite) solid 1px;
+}
+
+.btn-darkblue {
+    background-color: var(--darkblue);
+    color: var(--white);
+    border-radius: 0px;
+}
+
+.btn-darkblue:hover {
+    background-color: var(--darkblue);
+}
+
+.post-card {
+    max-width: 1000px;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    padding: 30px 40px;
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-details h4 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.profile-details .freelance-info {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.post-menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.posted-time {
+    font-size: 12px;
+    color: #999;
+}
+
+.btn-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0;
+}
+.job-details{
+    display: flex;
+    gap: 150px;
+}
+.job-details p,
+.qualifications p,
+.responsibilities p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}
+.skill-color{
+    margin: 3px;
+    padding: 5px 15px;
+    color: var(--white);
+
+}
+.skill-color:nth-child(3){
+    background-color: #8b89e9;
+}
+.skill-color:nth-child(4){
+    background-color: #46cfa6;
+}
+
+.responsibilities ul {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--dwhite);
+}
+
+.comments-rating {
+    width: 100%;
+}
+.comment-card{
+    border: #ccc solid 1px;
+    padding: 15px 30px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+}
+.comment-content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
+.comments{
+    margin-left: 50px;
+    color: var(--dwhite);
+}
+
+.violation-section {
+    margin-top: 20px;
+}
+
+.violation-comment {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+.btn-report {
+    background-color: #dc3545;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.report-sign{
+    background-color: #ffc4c4;
+    padding: 8px 10px;
+    color: #dc3545;
+    border-left: #dc3545 solid 3px;
+}

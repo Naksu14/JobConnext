@@ -1,0 +1,30 @@
+:root{
+    --darkblue: #161D6F;
+    --lightblue: #3679FE;
+    --orange: #E46232;
+    --white: #ffffff;
+    --dwhite: #919191;
+}
+body::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+.main-content{
+    margin-top: 80px;
+    height: 100%;
+    margin-left: 250px;
+    padding: 20px;
+    transition: all 0.5s ease;
+    font-family: 'Poppins', sans-serif;
+    color: var(--darkblue);
+}
+
+
+
+
+@media(max-width: 1080px) {
+    .main-content{
+        margin-left: 60px;
+    }
+
+}
+

@@ -1,0 +1,128 @@
+.locate {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensures wrapping for smaller screens */
+    padding: 10px 0;
+    gap: 20px; /* Adds spacing between items */
+}
+
+/* Title Styling */
+.locate-title {
+    flex: 1;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.locate-title a {
+    margin: 0;
+    font-size: 18px;
+    color: var(--dwhite);
+    text-decoration: none;
+}
+
+/* Search Bar Styling */
+.locate-search {
+    flex: 2;
+    text-align: center;
+    order: 2; /* Moves to center position on small screens */
+}
+
+.locate-search .input-group {
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.form-control {
+    border-radius: 0px;
+}
+
+.input-group-text {
+    background-color: var(--darkblue);
+    color: var(--white);
+    border-radius: 0px;
+    width: 130px;
+    justify-content: center;
+}
+
+/* User Controls */
+.locate-user {
+    margin-bottom: 15px;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    order: 3; /* Moves to the bottom on small screens */
+}
+
+/* Buttons Styling */
+.btn-darkblue-user {
+    background-color: var(--white);
+    color: var(--darkblue);
+    border-radius: 0px;
+    width: 200px;
+    border: var(--dwhite) solid 1px;
+}
+
+.btn-darkblue {
+    background-color: var(--darkblue);
+    color: var(--white);
+    border-radius: 0px;
+}
+
+.btn-darkblue:hover {
+    background-color: var(--darkblue);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .locate {
+        flex-direction: column; /* Stack items vertically */
+        align-items: stretch; /* Align items to stretch full width */
+    }
+
+    .locate-search{
+        text-align: center;
+        flex: none; /* Reset flex properties */
+        margin-bottom: 10px;
+    }
+
+    .locate-title a {
+        font-size: 16px;
+    }
+
+    .locate-search .input-group {
+        max-width: 100%; /* Allow full width for smaller screens */
+    }
+
+    .btn-darkblue-user {
+        width: 100%; /* Full width buttons */
+    }
+
+    .btn-darkblue {
+        width: 100%; /* Full width buttons */
+    }
+
+}
+
+
+.table-container{
+    
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px 40px;
+}
+.table-hover thead tr th,
+.table-hover tbody tr td {
+    color: var(--darkblue); /* Dark blue color */
+}
+
+.table-hover tbody tr th {
+    color: var(--orange); /* Dark blue color */
+}
+
+.table-hover tbody tr:hover {
+    background-color: #f1f1f1; /* Optional: Light gray background on hover */
+}

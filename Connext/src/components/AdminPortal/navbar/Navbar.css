@@ -6,7 +6,7 @@
     justify-content: space-between;
     padding: 0 20px;
     font-size: 1.2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(201, 67, 67, 0.1);
     font-family: 'Poppins', sans-serif;
     position: fixed; /* Fix the navbar */
     top: 0; /* Position it at the top */
