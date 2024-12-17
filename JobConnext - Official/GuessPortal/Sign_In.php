@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +10,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../Assets/css/style.css">
 </head>
-
 <body>
 
 <div class="container-fluid vh-100 d-flex align-items-center justify-content-center position-relative">
     <div class="position-absolute bottom-0 end-0 p-2">
         <h6 class="rounded shadow p-2" style="background-color: #E46232;">
-            <a href="LandingPage.html" style="color: white">
+            <a href="LandingPage.php" style="color: white">
                 <i class="bi bi-arrow-left-circle"></i> Go back
             </a>
         </h6>
@@ -48,6 +46,7 @@
 
         <p class="poppins-regular">Create account? <span><a href="#" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
     </div>
+</div>
 
 <footer class="blockquote-footer text-white m-0 text-center" style="background-color: #161D6F;">
     <p>&copy; 2024 JobConnext. All rights reserved.</p>
@@ -85,5 +84,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 </body>
-
 </html>
