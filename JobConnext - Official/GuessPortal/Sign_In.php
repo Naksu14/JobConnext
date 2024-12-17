@@ -66,15 +66,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (($username_or_email == "worker" && $password == "worker123") || 
         ($username_or_email == "worker123@gmail.com" && $password == "worker123")) {
-            header('Location: http://localhost//JobConnext%20-%20Official/JobConnext%20-%20Official/BlueCollarWorkerPortal/index.php');
+            header('Location: ../BlueCollarWorkerPortal/index.php');
             exit;
     } else if (($username_or_email == "client" && $password == "client123") || 
         ($username_or_email == "client123@gmail.com" && $password == "client123")){
-            header('Location: http://localhost/JobConnext%20-%20Official/JobConnext%20-%20Official/ClientPortal/index.php');
+            header('Location: ../ClientPortal/index.php');
             exit;
     } else if (($username_or_email == "admin" && $password == "admin123") || 
     ($username_or_email == "admin123@gmail.com" && $password == "admin123")){
-            header('Location: http://localhost/JobConnext%20-%20Official/JobConnext%20-%20Official/AdminPortal/AdminLandingPage.php');
+            header('Location: ../AdminPortal/AdminLandingPage.php');
             exit;
     }
 
