@@ -7,12 +7,10 @@
     <title>Home Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Assets/css/worker_recommended.css">
+    <link rel="stylesheet" href="../Assets/css/client_rate-worker.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Source+Code+Pro:wght@200..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,14 +25,15 @@
 </head>
 
 <body>
+
     <div class="container-fluid text-center">
         <div class="row">
-            <div class="col">
+            <div class="col-sm-4">
                 <div class="container-fluid" id="logo">
                     <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
                 </div>
             </div>
-            <div class="col">
+            <div class="col-sm-4">
                 <div class="container-fluid" id="nav_list">
                     <ul>
                         <li>
@@ -45,7 +44,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col">
+            <div class="col-sm-4">
                 <div class="container-fluid">
                     <a href="../GuessPortal/LandingPage.php">
                         <button id="logout_butt">
@@ -65,75 +64,214 @@
             </div>
         </div>
 
-        <div class="worker_details">
-            <div class="worker_detail_header">
+        <div class="container worker_details">
+            <div class="container worker_detail_header">
                 <div class="job-header">
                     <div class="profile-info">
                         <div class="avatar">
                             <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                         </div>
                         <div class="details">
-                            <h3>Maxwell Cruz</h3>
-                            <p>ID:3424675</p>
+                            <h3>Mr. Fixer</h3>
+                            <p>11/8/2024 to 11/13/2024</p>
+                            <p>Description</p>
                         </div>
                     </div>
-                    <div class="report-menu">
-                        Report
+
+                    <div class="check-menu">
+                        <img src="../Assets/image/material-symbols_check.png" alt="">
+                    </div>
+                </div>
+                <div class="short-info-container">
+                    <div class="short-info">
+                        <img src="../Assets/image/Location.png" alt="">
+                        <p>Makati</p>
+                    </div>
+                    <div class="short-info">
+                        <img src="../Assets/image/Stack of Money.png" alt="">
+                        <p>Php18,000₱-30,000₱</p>
+                    </div>
+                    <div class="short-info">
+                        <img src="../Assets/image/Applicant.png" alt="">
+                        <p>10 Applicants</p>
+                    </div>
+                    <div class="short-info">
+                        <img src="../Assets/image/ic_outline-email.png" alt="">
+                        <p>example@gmail.com</p>
                     </div>
                 </div>
                 <div class="skills-worker-details">
-                    <p>Skills:</p>
+                    <p>Qualifications and Skills</p>
                 </div>
+
                 <div class="skills-available-details">
                     <span class="skill-tag green">Welder</span>
                     <span class="skill-tag purple">Electrician</span>
                 </div>
-                <div class="container-fluid worker-info">
-                    <h3>
-                        Details
-                    </h3>
-                    <div class="full-details">
-                        <p>
-                        <h5>Full Name</h5>
-                        </p>
-                        <p>
-                            Maxwell Cruz
-                        </p>
-                        <p>
-                        <h5>Bio</h5>
-                        </p>
-                        <p>
-                            Ready to serve you
-                        </p>
+
+                <div class="no-ex">
+                    <p>◦ No year of experience</p>
+                </div>
+                <div class="responsibilities">
+                    <h3>Responsibilities</h3>
+                    <ol>
+                        <li>Core Duties
+                            <ul>
+                                <li>Oversee and manage daily operations, ensuring efficiency and productivity.</li>
+                                <li>Collaborate with cross-functional teams to align and execute projects.</li>
+                                <li>Develop strategies to improve workflows and team outcomes.</li>
+                            </ul>
+                        </li>
+                        <li>Project Management
+                            <ul>
+                                <li>Plan, track, and report on projects, meeting timelines and quality standards.</li>
+                                <li>Communicate updates effectively with stakeholders.</li>
+                            </ul>
+                        </li>
+                        <li>Team & Client Interaction
+                            <ul>
+                                <li>Lead and support team members, fostering a positive work environment.</li>
+                                <li>Build and maintain client relationships, addressing concerns as needed.</li>
+                            </ul>
+                        </li>
+                        <li>Continuous Improvement
+                            <ul>
+                                <li>Identify improvement areas and propose innovative solutions.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="worker_rate">
+                    <div class="card" id="my-offer">
+                        <div class="job-header">
+                            <div class="profile-info">
+                                <div class="avatar">
+                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                        alt="Avatar">
+                                </div>
+                                <div class="details-client">
+                                    <div class="feedback-header">
+                                        <h3>Maxwell Cruz</h3>
+                                        <div class="star-rating">
+                                            <span class="star" data-value="1">★</span>
+                                            <span class="star" data-value="2">★</span>
+                                            <span class="star" data-value="3">★</span>
+                                            <span class="star" data-value="4">★</span>
+                                            <span class="star" data-value="5">★</span>
+                                            <p>5.0</p>
+                                        </div>
+                                        <div class="report-menu">
+                                            Report
+                                        </div>
+                                    </div>
+                                    <div class="skills">
+                                        <p><strong>Skills:</strong></p>
+                                        <span class="skill-tag green">Welder</span>
+                                        <span class="skill-tag purple">Electrician</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="worker-message">
+                            <p>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </p>
+                        </div>
+                        <div class="rate">
+                            <a href="">
+                                Rate worker
+                            </a>
+                        </div>
                     </div>
-                    <h3>
-                        Contacts
-                    </h3>
-                    <div class="contacts">
-                        <p>
-                        <h5>Email</h5>
-                        </p>
-                        <p>
-                            Maxwell@gmail.com
-                        </p>
-                        <p id="phone_no">
-                        <h5>Phone no.</h5>
-                        </p>
-                        <p>
-                            +6392314241222
-                        </p>
-                        <div class="email_butt">
-                            <button>
-                                Email
-                            </button>
+                    <div class="card" id="my-offer">
+                        <div class="job-header">
+                            <div class="profile-info">
+                                <div class="avatar">
+                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                        alt="Avatar">
+                                </div>
+                                <div class="details-client">
+                                    <div class="feedback-header">
+                                        <h3>Maxwell Cruz</h3>
+                                        <div class="star-rating">
+                                            <span class="star" data-value="1">★</span>
+                                            <span class="star" data-value="2">★</span>
+                                            <span class="star" data-value="3">★</span>
+                                            <span class="star" data-value="4">★</span>
+                                            <span class="star" data-value="5">★</span>
+                                            <p>5.0</p>
+                                        </div>
+                                        <div class="report-menu">
+                                            Report
+                                        </div>
+                                    </div>
+                                    <div class="skills">
+                                        <p><strong>Skills:</strong></p>
+                                        <span class="skill-tag green">Welder</span>
+                                        <span class="skill-tag purple">Electrician</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="worker-message">
+                            <p>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </p>
+                        </div>
+                        <div class="rate">
+                            <a href="">
+                                Rate worker
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card" id="my-offer">
+                        <div class="job-header">
+                            <div class="profile-info">
+                                <div class="avatar">
+                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                        alt="Avatar">
+                                </div>
+                                <div class="details-client">
+                                    <div class="feedback-header">
+                                        <h3>Maxwell Cruz</h3>
+                                        <div class="star-rating">
+                                            <span class="star" data-value="1">★</span>
+                                            <span class="star" data-value="2">★</span>
+                                            <span class="star" data-value="3">★</span>
+                                            <span class="star" data-value="4">★</span>
+                                            <span class="star" data-value="5">★</span>
+                                            <p>5.0</p>
+                                        </div>
+                                        <div class="report-menu">
+                                            Report
+                                        </div>
+                                    </div>
+                                    <div class="skills">
+                                        <p><strong>Skills:</strong></p>
+                                        <span class="skill-tag green">Welder</span>
+                                        <span class="skill-tag purple">Electrician</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="worker-message">
+                            <p>
+                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            </p>
+                        </div>
+                        <div class="rate">
+                            <a href="">
+                                Rate worker
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <div class="page_content">
             <div class="row content-header">
-                <div class="col-3">
+                <div class="col-sm-3">
                     <div class="container-fluid content-filter">
                         <button>
                             <img src="../Assets/image/filter (1) 1.png" alt="">
@@ -144,12 +282,12 @@
                     </div>
                 </div>
 
-                <div class="col-7">
+                <div class="col-sm-7">
                     <div class="container-fluid freelance-search">
                         <input type="text" placeholder="  Search for workers..." id="freelance-search">
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-sm-2">
                     <div class="seek-worker">
                         <button>
                             <span>
@@ -169,7 +307,7 @@
             </div>
 
             <div class="row job-card">
-                <div class="col-12">
+                <div class="col-sm-12">
                     <a href="client_rate-workers.php" class="card-link">
                         <div class="card" id="my-offer">
                             <div class="job-header">
@@ -213,7 +351,7 @@
             </div>
 
             <div class="row title-section">
-                <div class="col recommend-workers">
+                <div class="col-sm recommend-workers">
                     <p>
                         Recommended workers
                     </p>
@@ -228,8 +366,7 @@
                                 <div class="job-header">
                                     <div class="profile-info">
                                         <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
-                                                alt="Avatar">
+                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"alt="Avatar">
                                         </div>
                                         <div class="details">
                                             <h3>Maxwell Cruz</h3>
@@ -250,7 +387,7 @@
                     </div>
                 </div>
                 <div class="row recommended-card">
-                    <div class="col-12">
+                    <div class="col-lg-12">
                         <div class="card" id="my-offer">
                             <div class="job-header">
                                 <div class="profile-info">
@@ -355,6 +492,9 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="client-rate.js">
+
     </script>
 </body>
 

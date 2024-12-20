@@ -43,9 +43,9 @@
             <div class="col">
                 <div class="container-fluid">
                     <a href="../GuessPortal/LandingPage.php">
-                    <button id="logout_butt">
-                        Logout
-                    </button>
+                        <button id="logout_butt">
+                            Logout
+                        </button>
                     </a>
                 </div>
             </div>
@@ -65,11 +65,11 @@
                 <img src="../Assets/image/View Detail.png" alt="">
                 <div class="detail_text">
                     <p id="text_gd2">Details</p>
-                    </div>
                 </div>
             </div>
         </div>
-         <div class="page_content">
+    </div>
+    <div class="page_content">
         <div class="row content-header">
             <div class="col-3">
                 <div class="container-fluid content-filter">
@@ -108,46 +108,47 @@
 
         <div class="row job-card">
             <div class="col-12">
-                <div class="card" id="my-offer">
-                    <div class="job-header">
-                        <div class="profile-info">
-                            <div class="avatar">
-                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                <a href="client_rate-workers.php" class="card-link">
+                    <div class="card" id="my-offer">
+                        <div class="job-header">
+                            <div class="profile-info">
+                                <div class="avatar">
+                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                </div>
+                                <div class="details">
+                                    <h3>Mr. Fixer</h3>
+                                    <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
+                                </div>
                             </div>
-                            <div class="details">
-                                <h3>Mr. Fixer</h3>
-                                <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
+                            <div class="job-dates">
+                                <div class="menu">•••</div>
+                                <p>11/8/2024 to 11/13/2024</p>
                             </div>
                         </div>
-                        <div class="job-dates">
-                            <div class="menu">•••</div>
-                            <p>11/8/2024 to 11/13/2024</p>
+                        <div class="job-body">
+                            <div class="info">
+                                <p>
+                                    <strong>Location:</strong>
+                                    Makati
+                                </p>
+                                <p>
+                                    <strong>Years of experience:</strong> 0
+                                </p>
+                            </div>
+                            <div class="skills">
+                                <p><strong>Skills needed:</strong></p>
+                                <span class="skill-tag green">Welder</span>
+                                <span class="skill-tag purple">Electrician</span>
+                            </div>
+                        </div>
+                        <div class="job-footer">
+                            <p>5 Applied</p>
+                            <p>0 Accepted</p>
                         </div>
                     </div>
-                    <div class="job-body">
-                        <div class="info">
-                            <p>
-                                <strong>Location:</strong>
-                                Makati
-                            </p>
-                            <p>
-                                <strong>Years of experience:</strong> 0
-                            </p>
-                        </div>
-                        <div class="skills">
-                            <p><strong>Skills needed:</strong></p>
-                            <span class="skill-tag green">Welder</span>
-                            <span class="skill-tag purple">Electrician</span>
-                        </div>
-                    </div>
-                    <div class="job-footer">
-                        <p>5 Applied</p>
-                        <p>0 Accepted</p>
-                    </div>
-                </div>
             </div>
+            </a>
         </div>
-
         <div class="row title-section">
             <div class="col recommend-workers">
                 <p>
@@ -155,6 +156,7 @@
                 </p>
             </div>
         </div>
+
 
         <div class="container-fluid recommendation">
             <div class="row recommended-card">
@@ -290,7 +292,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>

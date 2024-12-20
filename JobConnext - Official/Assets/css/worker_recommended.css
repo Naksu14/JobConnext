@@ -235,6 +235,11 @@
     margin: 0px 0px 0px 0px;
 }
 
+
+.job-card a{
+    text-decoration: none;
+}
+
 .job-card #my-offer{
     height: 250px;
     max-width: 100%;

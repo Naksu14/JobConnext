@@ -4,7 +4,8 @@
 }
 
 *{
-   
+    padding: 0;
+    margin: 0;
 }
 
 #logo{
@@ -57,11 +58,6 @@
     font-size: 18px;
 }
 
-#logout_butt a{
-    text-decoration: none;
-    color: #000000;
-}
-
 .custom-container {
     max-width: 1450px; 
 }
@@ -71,7 +67,17 @@
     color: #fff;
 }
 
+.custom-container {
+    max-width: 1450px; 
+}
 
+#logout_butt:hover{
+    background-color:var(--darkblue) ;    
+}
+
+#logout_butt a:hover{
+    color: white;
+}
 
 #input_post img{
     width: 75px;
@@ -83,7 +89,7 @@
     display: grid;
     gap: 10px;
     grid-template-columns: 65% 35%;
-    grid-template-rows:60px 70%; 
+    /* grid-template-rows:60px 70%; */
     height: 100vh;
 }
 
@@ -94,10 +100,12 @@
 .worker_details{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 2;
+    padding: 0px !important;
 }
 .page_content{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 2;
+    height:1300px;
 }
 
 .dp_photo img{
@@ -125,17 +133,12 @@
     justify-content: center;
     display: flex;
     padding: 50px ; 
+    
 }
 
-#inside{
-    display: flex;
-    justify-content: center;
-    /* border: 1px solid; */
-    margin-top: 25%;
-}
 
-.icon img{
-    max-width: 100%;
+.icon1 {
+    border: red 1px solid;
 }
 
 .detail_text #text_gd2{
@@ -235,6 +238,7 @@
     margin: 0px 0px 0px 0px;
 }
 
+
 .job-card a{
     text-decoration: none;
 }
@@ -261,6 +265,8 @@
     padding: 20px;
     margin: 20px 0;
     font-size: 14px;
+    max-width: 100%;
+
 }
 
 .job-header {
@@ -272,7 +278,7 @@
 
 .profile-info {
     display: flex;
-    align-items: center;
+    max-width: 100%;
 }
 
 .avatar {
@@ -294,8 +300,17 @@
     margin: 0;
     font-size: 18px;
 }
+.details-client h3 {
+    margin: 0;
+    font-size: 18px;
+}
 
 .details p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+.details-client p {
     margin: 5px 0 0;
     font-size: 14px;
     color: #666;
@@ -311,10 +326,18 @@
     color: #666;
 }
 
-.menu {
-    font-size: 18px;
+.menu{
+    font-size: 16px;
     color: var(--darkblue);
     cursor: pointer;
+}
+
+.check-menu {
+    font-size: 16px;
+    color: #FF8787;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: inter;
 }
 
 
@@ -338,6 +361,14 @@
     margin: 0 0 5px;
     font-weight: bold;
 }
+
+.skills-available {
+    margin-top: 10px;
+    display: flex;
+    white-space: nowrap;
+    gap: 8px; 
+}
+
 
 .skill-tag {
     display: inline-block;
@@ -367,6 +398,7 @@
     border-top: 1px solid #e0e0e0;
     padding-top: 10px;
     white-space: nowrap;
+    flex-wrap: nowrap;
 }
 
 .job-footer p {
@@ -429,3 +461,226 @@
     text-decoration: none;
 }
 
+.worker_detail_header{
+    /* border: 1px solid red; */
+    width: 100%;
+    margin: 30px 20px;
+}
+
+.skills-worker-details{
+    margin: 20px 20px -10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; 
+}
+
+
+.skills-worker-details p{
+    color: black;
+    font-family: inter;
+    font-size: 17px;
+    /* border: 1px solid red; */
+}
+
+.skills-available-details{
+    margin-left: 20px;
+    /* border: 1px solid red; */
+}
+
+.worker-info{
+    /* border: 1px solid red; */
+    /* margin-left: -5px; */
+    margin-top: 10px;
+}
+
+.worker-info h3{
+    font-family:poppins ;
+    color: #595959;
+    font-weight: bold;
+    font-size: 32;
+}
+
+.full-details{
+    color: #595959;
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin:10px 0px 25px;
+}
+
+.full-details p{
+    margin: 0;
+    font-family: inter;
+    font-weight: medium;
+    font-size: 19;
+}
+
+.contacts{
+    color: #595959;
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin:10px 0px;
+}
+
+.contacts p{
+    margin: 0;
+    font-family: inter;
+    font-weight: medium;
+    font-size: 19;
+}
+
+#phone_no{
+    margin: 15px;
+}
+
+.email_butt{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.email_butt button{
+    height: 50px;
+    width: 200px;
+    background-color: var(--darkblue);
+    color: #fff;
+    border: none;
+    flex-wrap: wrap;
+    margin: 0 auto; 
+}
+
+.short-info-container{
+    margin: 10px 10px;
+}
+.short-info{
+    display: flex;
+    flex-direction: row;
+}
+
+.short-info p{
+    padding-left: 20px;
+    color: #5A5A5A;
+}
+.short-info img{
+    width: 25px; 
+    height: 25px;
+}
+
+.no-ex{
+    margin: 10px 20px;
+}
+
+.responsibilities h3{
+    font-size: 17px;
+    font-weight: 500;
+    font-family: inter;
+}
+
+.responsibilities ol{
+    color: #767676;
+    font-family: poppins;
+    font-size: 16px;
+}
+
+.report-menu {
+    font-size: 16px;
+    color: #FF8787;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: inter;
+    /* border: 1px solid; */
+    margin-left: 30px;
+    display: flex;
+}
+
+.feedback-header{
+    display: flex;
+    flex-direction: row;
+    /* border: 1px solid; */
+    width: 100%;
+}
+
+.feedback-header h3{
+    margin-top: 10px;
+}
+
+ .star-rating{
+    margin-left: 10px;
+    display: flex;
+    font-size: 24px; 
+    color: #ccc; 
+    cursor: pointer;
+    max-width: 100%;
+    flex-wrap: nowrap;
+    transition: color 0.2s;
+}
+.star:hover{
+    color: gold;
+}
+
+.star.selected{
+    color: gold;
+}
+
+
+
+.details-client .details-client h3{
+    font-size: 16px;
+}
+
+.details-client{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    /* box-sizing: border-box; */
+    /* border: 1px solid; */
+    /* max-width: 100%; */
+}
+
+.rate{
+    display: flex;
+    justify-content: end;
+}
+
+.rate a{
+    text-decoration: none;
+    color: var(--darkblue);
+    font-family: poppins;
+    font-size: small;
+}
+
+.details-client, .feedback-header {
+    width: 100%;
+    max-width: 100%; 
+    box-sizing: border-box;
+  }
+
+
+
+  @media only screen and (max-width: 982px){
+    .report-menu{
+        font-size: 14px;
+        margin-left: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 912px){
+    .report-menu{
+        font-size: 12px;
+        margin-left: 5px;
+    }
+  }
+  @media only screen and (max-width: 878px){
+    .report-menu{
+        font-size: 10px;
+        margin-left: 5px;
+    }
+  }
