@@ -44,7 +44,7 @@
             </div>
         </form>
 
-        <p class="poppins-regular">Create account? <span><a href="#" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
+        <p class="poppins-regular">Create account? <span><a href="SIgn_Up.php" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
     </div>
 </div>
 

@@ -36,7 +36,7 @@
                 </ul>
             <div class="buttons">
                 <a href="Sign_In.php"><button class="button-midblue">Sign In</button></a>
-                <button class="button-midblue">Sign Up</button>
+                <a href="Sign_Up.php"><button class="button-midblue">Sign Up</button></a>
             </div>
         </div>
       </nav>
