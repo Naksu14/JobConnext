@@ -108,7 +108,7 @@
 
         <div class="row job-card">
             <div class="col-12">
-                <a href="client_rate-workers.php" class="card-link">
+                <a href="../ClientPortal/client-showjob.php" class="card-link">
                     <div class="card" id="my-offer">
                         <div class="job-header">
                             <div class="profile-info">

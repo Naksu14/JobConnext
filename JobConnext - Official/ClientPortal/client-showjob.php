@@ -7,7 +7,7 @@
     <title>Home Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Assets/css/client_rate-worker.css">
+    <link rel="stylesheet" href="../Assets/css/client-showjob.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Source+Code+Pro:wght@200..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
@@ -66,6 +66,12 @@
 
         <div class="container worker_details">
             <div class="container worker_detail_header">
+
+                <div class="modal-settings">
+                    <a href="">
+                        <img src="../Assets/image/Menu Vertical.png" alt="">
+                    </a>
+                </div>
                 <div class="job-header">
                     <div class="profile-info">
                         <div class="avatar">
@@ -78,8 +84,12 @@
                         </div>
                     </div>
 
-                    <div class="check-menu">
-                        <img src="../Assets/image/material-symbols_check.png" alt="">
+                    <div class="active-menu">
+                        <a href="../ClientPortal/client-inactive.php">
+                            <button>
+                                Active
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div class="short-info-container">
@@ -141,131 +151,6 @@
                         </li>
                     </ol>
                 </div>
-                <div class="worker_rate">
-                    <div class="card" id="my-offer">
-                        <div class="job-header">
-                            <div class="profile-info">
-                                <div class="avatar">
-                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
-                                        alt="Avatar">
-                                </div>
-                                <div class="details-client">
-                                    <div class="feedback-header">
-                                        <h3>Maxwell Cruz</h3>
-                                        <div class="star-rating">
-                                            <span class="star" data-value="1">★</span>
-                                            <span class="star" data-value="2">★</span>
-                                            <span class="star" data-value="3">★</span>
-                                            <span class="star" data-value="4">★</span>
-                                            <span class="star" data-value="5">★</span>
-                                            <p>5.0</p>
-                                        </div>
-                                        <div class="report-menu">
-                                            Report
-                                        </div>
-                                    </div>
-                                    <div class="skills">
-                                        <p><strong>Skills:</strong></p>
-                                        <span class="skill-tag green">Welder</span>
-                                        <span class="skill-tag purple">Electrician</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="worker-message">
-                            <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                        </div>
-                        <div class="rate">
-                            <a href="">
-                                Rate worker
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card" id="my-offer">
-                        <div class="job-header">
-                            <div class="profile-info">
-                                <div class="avatar">
-                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
-                                        alt="Avatar">
-                                </div>
-                                <div class="details-client">
-                                    <div class="feedback-header">
-                                        <h3>Maxwell Cruz</h3>
-                                        <div class="star-rating">
-                                            <span class="star" data-value="1">★</span>
-                                            <span class="star" data-value="2">★</span>
-                                            <span class="star" data-value="3">★</span>
-                                            <span class="star" data-value="4">★</span>
-                                            <span class="star" data-value="5">★</span>
-                                            <p>5.0</p>
-                                        </div>
-                                        <div class="report-menu">
-                                            Report
-                                        </div>
-                                    </div>
-                                    <div class="skills">
-                                        <p><strong>Skills:</strong></p>
-                                        <span class="skill-tag green">Welder</span>
-                                        <span class="skill-tag purple">Electrician</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="worker-message">
-                            <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                        </div>
-                        <div class="rate">
-                            <a href="">
-                                Rate worker
-                            </a>
-                        </div>
-                    </div>
-                    <div class="card" id="my-offer">
-                        <div class="job-header">
-                            <div class="profile-info">
-                                <div class="avatar">
-                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
-                                        alt="Avatar">
-                                </div>
-                                <div class="details-client">
-                                    <div class="feedback-header">
-                                        <h3>Maxwell Cruz</h3>
-                                        <div class="star-rating">
-                                            <span class="star" data-value="1">★</span>
-                                            <span class="star" data-value="2">★</span>
-                                            <span class="star" data-value="3">★</span>
-                                            <span class="star" data-value="4">★</span>
-                                            <span class="star" data-value="5">★</span>
-                                            <p>5.0</p>
-                                        </div>
-                                        <div class="report-menu">
-                                            Report
-                                        </div>
-                                    </div>
-                                    <div class="skills">
-                                        <p><strong>Skills:</strong></p>
-                                        <span class="skill-tag green">Welder</span>
-                                        <span class="skill-tag purple">Electrician</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="worker-message">
-                            <p>
-                                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                            </p>
-                        </div>
-                        <div class="rate">
-                            <a href="">
-                                Rate worker
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -308,7 +193,7 @@
 
             <div class="row job-card">
                 <div class="col-sm-12">
-                    <a href="../ClientPortal/client-showjob.php" class="card-link">
+                    <a href="client_rate-workers.php" class="card-link">
                         <div class="card" id="my-offer">
                             <div class="job-header">
                                 <div class="profile-info">
