@@ -1,0 +1,540 @@
+:root{
+    --darkblue : #161D6F; 
+    --darkorange : #E46232;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+#logo{
+    padding: 10px 10px 10px 10px ;
+}
+
+#logo img{
+      width: 205px;
+      height: 107px;  
+}
+
+#nav_list{
+    margin: 30px 0px 30px 0px;
+    padding: 20px 0px 30px 0px;
+    /* border: 1px solid; */
+}
+
+#nav_list ul li{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-evenly;
+    margin: 10px;
+}
+
+#nav_list ul li a{
+    text-decoration: none;
+    font-family: poppins;
+    font-size: 19;
+    font-weight: 700;
+    color: #000000;
+}
+
+#nav_list ul li a:hover{
+    border-bottom: solid 3px;
+    color: var(--darkblue);
+}
+
+#logout_butt{
+    margin: 47px 0px 30px 0px;
+    border: 1px solid #161D6F;
+    width: 184px;
+    height: 50px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 3px;
+    text-decoration: none;
+    color: #000000;
+    font-family: poppins;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.custom-container {
+    max-width: 1450px; 
+}
+
+#logout_butt:hover{
+    background-color:var(--darkblue);    
+    color: #fff;
+}
+
+.custom-container {
+    max-width: 1450px; 
+}
+
+#logout_butt:hover{
+    background-color:var(--darkblue) ;    
+}
+
+#logout_butt a:hover{
+    color: white;
+}
+
+#input_post img{
+    width: 75px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#main_content{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 65% 35%;
+    /* grid-template-rows:60px 70%; */
+    height: 100vh;
+}
+
+.add_job{
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+}
+.worker_details{
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    grid-row: span 2;
+    padding: 0px !important;
+}
+.page_content{
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    grid-row: span 2;
+}
+
+.dp_photo img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.dp_photo{
+    padding: 5px 0px 0px 5px;
+    justify-content: space-evenly;
+    flex-direction: row;
+    display: flex;
+}
+
+.custom-input{
+    width:90%;
+    height: 30px;
+    margin: 10px;
+    border: #6363633f 1px solid;
+    border-radius: 5px;
+}
+
+.worker_details{
+    /* border: 1px solid; */
+    justify-content: center;
+    display: flex;
+    padding: 50px ; 
+}
+
+
+.icon1 {
+    border: red 1px solid;
+}
+
+.detail_text #text_gd2{
+    text-align: center;
+    font-family: poppins;
+    color: #636363;
+}
+
+#post_something{
+    height: 46px;
+    margin:0px;
+}
+
+.content-header{
+    margin: 23px 0px 0px 0px;
+    /* border: 1px solid; */
+}
+
+.page_content{
+    /* border: 1px solid; */
+}
+
+.content-filter{
+    /* border: 1px solid; */
+    display: flex;
+    justify-content: center;
+    margin: 7px;
+}
+
+.content-filter button{
+    width: 99px;
+    height: 34px;
+    background-color: var(--darkblue);
+    color: #fff;
+    border: none;
+    font-family: poppins;
+    text-align: center;
+    white-space: nowrap;
+    
+}
+
+.col-2{
+    /* border: 1px solid; */
+}
+
+.seek-worker{
+    display: flex;
+
+}
+
+.seek-worker button{
+    height: 42px;
+    width: 113px;
+    font-family: poppins;
+    font-size: 19px;
+    color: #fff;
+    border: none;
+    background-color: var(--darkorange);
+    margin: 3px;
+    white-space: nowrap;
+}
+
+.col-7{
+    /* border: 1px solid; */
+}
+
+#freelance-search{
+    width: 100%;
+    height: 46px;
+    margin: 0px 17px;
+    font-family: poppins;
+    color: #5A5A5A;
+    font-size: 19px;
+    border-radius: 3px;
+    border: #949494 1px solid;
+}
+
+.title-section{
+    /* border: 1px solid; */
+    margin: 25px 0px 0px 0px;
+    padding: 0px 35px;
+    /* font-family: montseratt; */
+    font-size: 24px;
+    font-weight: 500;
+}
+
+#content-title{
+    /* border: 1px solid; */
+}
+
+#content-title p{
+    border: 1px solid;
+}
+
+.job-card{
+    /* border: 1px solid; */
+    margin: 0px 0px 0px 0px;
+}
+
+
+.job-card a{
+    text-decoration: none;
+}
+
+.job-card #my-offer{
+    height: 250px;
+    max-width: 100%;
+    /* margin-left:30px ; */
+    margin: 0px 30px;
+}
+
+.job-card #my-offer img{
+    border-radius:50%;
+    width: 80px;
+    height: 80px;
+    margin: 25px 15px 15px;
+    
+}
+
+#my-offer {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    font-size: 14px;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.details h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.details p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.job-dates {
+    text-align: right;
+}
+
+.job-dates p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.menu{
+    font-size: 16px;
+    color: var(--darkblue);
+    cursor: pointer;
+}
+
+.report-menu {
+    font-size: 16px;
+    color: #FF8787;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: inter;
+}
+
+
+.job-body {
+    margin-bottom: 15px;
+}
+
+.info p {
+    margin: 5px 0;
+    color: #6E6E6E;
+}
+
+.skills {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; 
+}
+
+.skills p {
+    margin: 0 0 5px;
+    font-weight: bold;
+}
+
+.skills-available {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; 
+}
+
+
+.skill-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.skill-tag.green {
+    background-color: #D9FFCB;
+    color: #000000;
+}
+
+.skill-tag.purple {
+    background-color: #D8CBFF;
+    color: #000000;
+}
+
+.job-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    white-space: nowrap;
+}
+
+.job-footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+}
+
+.recommended-workers{
+    font-family: mondseratt;
+    font-size: 24px;
+}
+
+.recommended-card{
+    margin: 0px 0px 0px 0px;
+    /* border: 1px solid; */
+}
+.recommended-card #my-offer{
+    height: 100%;
+    max-width: 100%;
+    /* margin-left:30px ; */
+    margin: 0px 30px;
+}
+
+.recommended-card #my-offer img{
+    border-radius:50%;
+}
+
+.skill-tag.yellow{
+    background-color: #F1FFCB;
+    color: #000000;
+}
+
+.recommendation{
+    display: grid;
+    grid-gap: 10px;
+}
+
+.other-offer{
+    margin: 0px 0px 0px 0px;
+}
+
+.other-offer #my-offer{
+    height: 250px;
+    max-width: 100%;
+    /* margin-left:30px ; */
+    margin: 0px 30px 15px;
+}
+
+.job-card #my-offer img{
+    border-radius:50%;
+    width: 80px;
+    height: 80px;
+    margin: 25px 15px 15px;
+    white-space: nowrap;
+}
+
+.recommended-card a{
+    text-decoration: none;
+}
+
+.worker_detail_header{
+    /* border: 1px solid red; */
+    width: 100%;
+    margin: 30px 20px;
+}
+
+.skills-worker-details{
+    margin: 20px 20px -10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px; 
+}
+
+.skills-worker-details p{
+    color: #6E6E6E;
+    font-family: inter;
+    /* border: 1px solid red; */
+}
+
+.skills-available-details{
+    margin-left: 20px;
+    /* border: 1px solid red; */
+}
+
+.worker-info{
+    /* border: 1px solid red; */
+    /* margin-left: -5px; */
+    margin-top: 10px;
+}
+
+.worker-info h3{
+    font-family:poppins ;
+    color: #595959;
+    font-weight: bold;
+    font-size: 32;
+}
+
+.full-details{
+    color: #595959;
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin:10px 0px 25px;
+}
+
+.full-details p{
+    margin: 0;
+    font-family: inter;
+    font-weight: medium;
+    font-size: 19;
+}
+
+.contacts{
+    color: #595959;
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin:10px 0px;
+}
+
+.contacts p{
+    margin: 0;
+    font-family: inter;
+    font-weight: medium;
+    font-size: 19;
+}
+
+#phone_no{
+    margin: 15px;
+}
+
+.email_butt{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    margin-top: 50px;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.email_butt button{
+    height: 50px;
+    width: 200px;
+    background-color: var(--darkblue);
+    color: #fff;
+    border: none;
+    flex-wrap: wrap;
+    margin: 0 auto; 
+}

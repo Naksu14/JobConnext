@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit;
     } else if (($username_or_email == "client" && $password == "client123") || 
         ($username_or_email == "client123@gmail.com" && $password == "client123")){
-            header('Location: ../ClientPortal/index.php');
+            header('Location:../ClientPortal/client_home.php');
             exit;
     } else if (($username_or_email == "admin" && $password == "admin123") || 
     ($username_or_email == "admin123@gmail.com" && $password == "admin123")){
