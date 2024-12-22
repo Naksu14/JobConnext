@@ -15,7 +15,7 @@
 <div class="container-fluid vh-100 d-flex align-items-center justify-content-center position-relative">
     <div class="position-absolute bottom-0 end-0 p-2">
         <h6 class="rounded shadow p-2" style="background-color: #E46232;">
-            <a href="LandingPage.html" style="color: white">
+            <a href="LandingPage.php" style="color: white">
                 <i class="bi bi-arrow-left-circle"></i> Go back
             </a>
         </h6>
@@ -44,7 +44,7 @@
             </div>
         </form>
 
-        <p class="poppins-regular">Create account? <span><a href="#" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
+        <p class="poppins-regular">Create account? <span><a href="SIgn_Up.php" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
     </div>
 </div>
 
