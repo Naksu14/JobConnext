@@ -46,7 +46,20 @@
     width: 130px;
     justify-content: center;
 }
-
+.button-ArchivedUser{
+    text-align: center;
+    align-content: center;
+    background-color: var(--darkblue);
+    color: var(--white);
+    border-radius: 0px;
+    width: 130px;
+    text-decoration: none;
+}
+.dropdown-item-fiter{
+    text-decoration: none;
+    color: #242424;
+    margin: 10px 20px;
+}
 /* User Controls */
 .locate-user {
     margin-bottom: 15px;

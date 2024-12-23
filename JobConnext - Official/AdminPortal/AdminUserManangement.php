@@ -55,10 +55,11 @@
                     <span class="input-group-text" id="basic-addon2">Search</span>
                 </div>
             </div>
+
             <div class="locate-user">
                 <div class="dropdown" id="userDropdownContainer">
                     <a class="btn btn-darkblue-user dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="userDropdown">
-                        Select User
+                        Select Role
                     </a>
                     <ul class="dropdown-menu" id="userDropdownMenu">
                         <li><a class="dropdown-item" href="#" id="blueCollarOption" data-user="bluecollar">Blue Collar</a></li>
@@ -67,15 +68,19 @@
                     </ul>
                 </div>
 
+                <a href="AdminUserManangement.php" class="button-ArchivedUser">
+                    <span>Archived User</span>
+                </a>
+
                 <div class="btn-group" id="filterGroup">
                     <button type="button" class="btn btn-darkblue" id="filterButton">Filter</button>
                     <button type="button" class="btn btn-darkblue dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" id="filterDropdownToggle">
                         <span class="visually-hidden">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" id="filterDropdownMenu">
-                        <li><a class="dropdown-item" href="#" id="sortByName">Sort by Name</a></li>
-                        <li><a class="dropdown-item" href="#" id="sortByDate">Sort by Date</a></li>
-                        <li><a class="dropdown-item" href="#" id="filterByStatus">Filter by Status</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" id="sortByName">Sort by Name</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" id="sortByDate">Sort by Date</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" id="filterByStatus">Filter by Status</a></li>
                     </ul>
                 </div>
             </div>

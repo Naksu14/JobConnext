@@ -60,9 +60,7 @@
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu" id="filterDropdownMenu">
-                            <li><a class="dropdown-item" href="#" id="sortByName">Sort by Name</a></li>
                             <li><a class="dropdown-item" href="#" id="sortByDate">Sort by Date</a></li>
-                            <li><a class="dropdown-item" href="#" id="filterByStatus">Filter by Status</a></li>
                         </ul>
                     </div>
                 </div>

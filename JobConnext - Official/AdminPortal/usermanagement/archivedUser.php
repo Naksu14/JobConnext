@@ -1,3 +1,10 @@
+<style>
+.button-ArchivedUser{
+    background-color: var(--dwhite);
+    
+}
+</style>
+
 <table class="table table-hover">
     <thead>
         <tr>
