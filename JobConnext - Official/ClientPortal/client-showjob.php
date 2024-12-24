@@ -38,7 +38,7 @@
                     <ul>
                         <li>
                             <a href="client_home.php">Home</a>
-                            <a href="">Profile</a>
+                            <a href="../ClientPortal/client_profile.php">Profile</a>
                             <a href="">Message</a>
                         </li>
                     </ul>
