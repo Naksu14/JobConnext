@@ -57,8 +57,8 @@
               <a href="Sign_In.php"><button class="button-midblue">Find a Work</button></a>
             </div>
           </div>
-          <div class="w-55 d-flex justify-content-center">
-            <img src="../Assets/image/JobConnext-HeroPage-img.png" alt="hero-image" width="80%" height="auto">
+          <div class="w-55 d-flex justify-content-center" style="height: 83vh">
+            <img src="../Assets/image/JobConnext-HeroPage-img.png" alt="hero-image" width="auto" height="auto">
           </div>
         </div>
       </section>
@@ -66,8 +66,8 @@
 
       <section class="container-fluid vh-100 d-flex align-items-end justify-content-center" id="HowItworks">
         <div class="container-fluid d-flex flex-row pt-5 ps-5 pe-5">
-          <div class="w-50 d-flex flex-column align-items-center">
-            <img src="../Assets/image/JobConnext-HeroPage-img-sec2.png" alt="hero-image" width="93%" height="auto">
+          <div class="w-50 d-flex justify-content-center" style="height: 83vh">
+            <img src="../Assets/image/JobConnext-HeroPage-img-sec2.png" alt="hero-image" width="auto" height="auto">
           </div>
           <div class="w-50 d-flex flex-column justify-content-center">
             <p>

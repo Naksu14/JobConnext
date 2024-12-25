@@ -48,9 +48,9 @@
 <?php
 
 if (isset($_GET['user']) && $_GET['user'] == "client"){
-    header("location: ../GuessPortal/registration_Forms/Clientform.php");
+    header("location: ../GuessPortal/Clientform_step1.php");
 } else if (isset($_GET['user']) && $_GET['user'] == "worker"){
-    header("location: ../GuessPortal/registration_Forms/Workerform.php");
+    header("location: ../GuessPortal/Worker_step1.php");
 }
 
 ?>

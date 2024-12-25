@@ -20,18 +20,18 @@
             </a>
         </h6>
     </div>
-    <div class="container-fluid ps-3 pe-3 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: 38%;">
+    <div class="container-fluid ps-5 pe-5 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: auto;">
         <img src="../Assets/image/Logo1.png" width="90px" height="90px" alt="logo">
         <h2 class="poppins-bold m-0">Sign <span style="color: #E46232;">In</span></h2>
 
-        <form action="" method="post" class="d-flex flex-column mt-4 w-75">  
+        <form action="" method="post" class="d-flex flex-column mt-4">  
             <label for="usernameOremail" class="poppins-medium">Username or Email</label>
             <input type="text" name="usernameOremail" id="usernameOremail" required>
 
             <label for="password" class="poppins-medium">Password</label>
             <input type="password" name="password" id="password" required>
 
-            <p class="poppins-regular"><a href="#" style="color: black;">Forget password?</a></p>
+            <p class="poppins-regular"><a href="ForgotPassword.php" style="color: black;">Forget password?</a></p>
 
             <div class="g-recaptcha" data-sitekey="6LdKLJwqAAAAAEYqq4rErAVcCcdBzApCkFzeXpzc"></div>
 
