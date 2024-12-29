@@ -78,8 +78,8 @@
             </div>
 
             <div class="container-fluid profile-nav">
-                <a href="" id="active-nav">Overview</a>
-                <a href="" id="">Company Work</a>
+                <a href="client_profile.php" id="active-nav">Overview</a>
+                <a href="profile-company.php" id="">Company Work</a>
             </div>
             <div class="create-header">
                 <img src="../Assets/image/Create.png" alt="">
