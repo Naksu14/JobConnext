@@ -53,7 +53,7 @@
     </div>
     <div class="container-fluid main-content">
         <div class="settings-container">
-            <a href="">
+            <a href="profile-settings.php">
                 <img src="../Assets/image/Settings.png" alt="">
             </a>
         </div>
