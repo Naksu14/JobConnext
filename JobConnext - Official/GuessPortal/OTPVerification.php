@@ -30,7 +30,7 @@
             
 
             <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
-                <a href="OTPVerification.php"><button class="button-midblue" name="send_email_btn" style="width: 200px;">Send</button></a>
+                <a href="ChangePassword.php"><button class="button-midblue" name="send_email_btn" style="width: 200px;">Send</button></a>
             </div>
         </div>
 

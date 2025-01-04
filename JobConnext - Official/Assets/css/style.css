@@ -6,7 +6,7 @@ body::-webkit-scrollbar {
 a{
   text-decoration: none;
 }
-input{
+input, .btn{
   border: 1px solid gray;
   border-radius: 5px;
   padding: 5px;

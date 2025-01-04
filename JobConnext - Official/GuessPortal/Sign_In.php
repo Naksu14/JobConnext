@@ -29,8 +29,13 @@
             <input type="text" name="usernameOremail" id="usernameOremail" required>
 
             <label for="password" class="poppins-medium">Password</label>
-            <input type="password" name="password" id="password" required>
-
+            <div class="input-group d-flex flex-row">
+                <input type="password" name="password" id="password" class="flex-grow-1" required>
+                <button type="button" id="togglePassword" class=" btn btn-outline-secondary">
+                    <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                </button>
+            </div>
+            
             <p class="poppins-regular"><a href="ForgotPassword.php" style="color: black;">Forget password?</a></p>
 
             <div class="g-recaptcha" data-sitekey="6LdKLJwqAAAAAEYqq4rErAVcCcdBzApCkFzeXpzc"></div>
@@ -57,7 +62,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
+<script src="../Assets/js/function.js"></script>
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username_or_email = $_POST['usernameOremail'];

@@ -19,10 +19,20 @@
         <!-- // change this in form -->
         <div class="d-flex flex-column mt-4 w-100">  
             <label for="New_password" class="poppins-medium">New Password</label>
-            <input type="password" name="new_email" id="new_email" required>
+            <div class="input-group d-flex flex-row">
+                <input type="password" name="password" id="password" class="flex-grow-1" required>
+                <button type="button" id="togglePassword" class=" btn btn-outline-secondary">
+                    <i class="bi bi-eye-slash" id="toggleIcon"></i>
+                </button>
+            </div>
 
             <label for="Re-enter_password" class="poppins-medium">Re-enter Password</label>
-            <input type="password" name="re-enter_password" id="re-enter_password" required>
+            <div class="input-group d-flex flex-row">
+            <input type="password" name="reenter_password" id="reenter_password" class="flex-grow-1"required>
+            <button type="button" id="toggleReenterPassword" class="btn btn-outline-secondary">
+                <i class="bi bi-eye-slash" id="toggleReenterPasswordIcon"></i>
+            </button>
+            </div>
 
             <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
                 <a href="Sign_In.php"><button class="button-midblue" name="send_email_btn" style="width: 200px;">Change Password</button></a>
@@ -41,6 +51,7 @@
             <a style="text-decoration: none; color: white;" href="#terms-of-service">Terms of Service</a>
         </p>
     </footer>
+    <script src="../Assets/js/function.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
