@@ -5,37 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="blue-collar.css">
     <link rel="stylesheet" href="new-collar.css">
+    <link rel="stylesheet" href="wait-response-design.css">
+    
     <title>Document</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar w/ text</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-        </ul>
-        <span class="navbar-text">
-          Navbar text with an inline element
-        </span>
-      </div>
-    </div>
-  </nav>
+
 
         <div class="whole-screen">
+          <div class="nav-cont">
+            <div class="container-fluid text-center">
+          <div class="row">
+              <div class="col">
+                  <div class="container-fluid" id="logo">
+                      <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="container-fluid" id="nav_list">
+                      <ul>
+                          <li>
+                              <a href="client_home.php">Home</a>
+                              <a href="../ClientPortal/client_profile.php">Profile</a>
+                              <a href="">Message</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="container-fluid">
+                      <a href="../GuessPortal/LandingPage.php">
+                          <button id="logout_butt">
+                              Logout
+                          </button>
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </nav>
+            </div>
                     <div class="card-left">
                         <div class="card-left-inner-container">
                             <div class="banner-list">
@@ -251,9 +261,108 @@
                 
 
                     <div class="card-right">
-                      <div class="empty-icon-cont">
-                        <div class="empty-icon">
+                      <div class="bookmark-report-cont">
+                        <div class="bookmark-right-card">
+                          <button class="bookmark-button-right-card">
+                            <i class="fa fa-bookmark"></i>
+                          </button>
+                        </div>
 
+                        <div class="report-button">
+                          <h5 style="color: #FF8787; transform: translate(25%, 37%);">report</h5>
+                        </div>
+                      </div>
+
+                      <div class="prof-heading-right-card">
+                        <div class="profilejob-right-card">
+                          
+                        </div>
+
+                        <div class="job-heading-right-card">
+                          <h2>Supra Oracles</h2>
+                        </div>
+                      </div>
+
+                      <div class="date-application">
+                        <h4>11/8/2024 to 11/13/2024</h4>
+                      </div>
+
+                      <div class="description-jobapplication">
+
+                      </div>
+
+                      <div class="location-icon-cont">
+                        <div class="location-icon">
+
+                        </div>
+
+                        <div class="location-job-right">
+                          <h5 style="color: #767676; transform: translate(0%, 50%);">Makati</h5>
+                        </div>
+                      </div>
+                      
+                      <div class="salary-icon-cont">
+                        <div class="salary-icon-right">
+
+                        </div>
+
+                        <div class="salary-job-right">
+                          <h5 style="color: #767676; transform: translate(0%, 55%);">Php25,000-30,000</h5>
+                        </div>
+                      </div>
+
+                      <div class="numberOFapplicants-icon-cont">
+                        <div class="numberOFapplicants-icon">
+
+                        </div>
+
+                        <div class="numberOFapplicants-job">
+                          <h5 style="color: #767676; transform: translate(0%, 100%);">5 Applicants</h5>
+                        </div>
+                      </div>
+
+                      <div class="email-icon-cont">
+                        <div class="email-icon-right-card">
+
+                        </div>
+
+                        <div class="email-job-right-card">
+                          <h5 style="color: #767676; transform: translate(0%, 50%);">rayzen@gmail.com</h5>
+                        </div>
+                      
+                    </div>
+
+                      <div class="req-skills-rightcard">
+                        <h4>Qualifications and Skills</h4>
+                      </div>
+
+                      <div class="skills-cont-right">
+                        <div class="skill1-right">
+                          <p style="transform: translate(26%, 40%);">Welder</p>
+                        </div>
+
+                        <div class="skill2-right">
+                          <p style="transform: translate(17%, 40%);">Electrician</p>
+                        </div>
+                      </div>
+
+                      <div class="responsibilities-rightcard">
+                        <h4>Responsibilities</h4>
+                      </div>
+
+                      <div class="information-about-responsibilities">
+                        <p><span style="font-weight: bold; font-size: 19px;">1. Core Duties</span> <br> -Oversee and manage daily operations, ensuring efficiency and productivity. <br> -Collaborate with cross-functional teams to align and execute projects. <br> -Develop strategies to improve workflows and team outcomes. <br> <br>
+                          <span style="font-weight: bold; font-size: 19px;">2. Project Management</span> <br> -Oversee and manage daily operations, ensuring efficiency and productivity. <br> -Collaborate with cross-functional teams to align and execute projects. <br> -Develop strategies to improve workflows and team outcomes.
+                          <br> <br>
+                          <span style="font-weight: bold; font-size: 19px;">3. Team & Client Interaction</span> <br> -Oversee and manage daily operations, ensuring efficiency and productivity. <br> -Collaborate with cross-functional teams to align and execute projects. <br> -Develop strategies to improve workflows and team outcomes.
+                          <br> <br>
+                          <span style="font-weight: bold; font-size: 19px;">4. Continuous Improvement</span> <br> -Oversee and manage daily operations, ensuring efficiency and productivity. <br> -Collaborate with cross-functional teams to align and execute projects. <br> -Develop strategies to improve workflows and team outcomes.
+                          <br> <br>
+                          <span style="font-weight: bold; font-size: 19px;">5. Project Management</span> <br> -Oversee and manage daily operations, ensuring efficiency and productivity. <br> -Collaborate with cross-functional teams to align and execute projects. <br> -Develop strategies to improve workflows and team outcomes.
+                        </p>
+
+                        <div class="wait-for-response-cont">
+                          <h5 class="wait-response">Waiting for response</h5>
                         </div>
                       </div>
 

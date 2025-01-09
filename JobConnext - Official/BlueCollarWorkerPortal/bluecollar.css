@@ -1,0 +1,387 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 120px 10px 10px;
+    background-color: white;
+    
+  }
+  .logo img {
+    width: 200px;
+    height: 80px;
+    margin-left: 80px;
+  
+  }
+  #Logout{
+    padding: 10px 50px;
+    background-color: transparent;
+    border-radius: 5px;
+
+  }
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  .nav a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+    font-style: arial;
+    padding: 40px;
+  }
+  .center-div {
+    background-color: white;
+    width: 1173px;
+    height: 1300px;
+    display: block;
+    box-shadow: -20px 15px 80px 10px rgba(0, 0, 0, 0.092);
+    display:i;
+    margin: 0 auto;
+
+    box-sizing: border-box;
+  }
+  
+
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: #ccc;
+    display: inline-block;
+    position: relative;
+    margin-left: 150px;
+    margin-top: 70px;
+  }
+  .profile-info{
+    color: aqua;
+    display: inline-block;
+  
+  } 
+.ID{
+float: right;
+margin-top: 90px;
+margin-right: 120px;
+color: grey;
+}
+h1{
+    margin-top: auto;
+    color: black;
+    margin-left: 20px;
+}
+.Freelance{
+    margin-top:20px;
+    color: grey;
+    margin-left: 30px;
+}
+.Address{
+    color: grey;
+    margin-left: 30px;
+    margin-top: 0px;
+    
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    padding: 10px 0;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: gray;
+    font-size: 16px;
+    margin: 0 15px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link.active {
+    color: navy;
+    font-weight: bold;
+}
+
+.nav-link.active::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: navy;
+    margin-top: 5px;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: navy;
+}
+
+.separator {
+    border: none;
+    height: 1px;
+    background-color: lightgray;
+    margin:0px 150px;
+
+    width: 800px;
+}
+p{
+    margin-left:290px;
+   
+}
+.skills {
+    margin: 5px 0 0 270px;
+}
+
+.skill {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    color:grey;
+}
+
+.welder {
+    background-color: #D9FFCB;
+    color: black;
+    margin-right: 20px;
+}
+
+.electrician {
+   
+    background-color: #D8CBFF;
+    color: black;
+    margin-bottom: 30px;
+}
+#I{
+  text-align: justify;
+  margin:0px 200px;
+  width: 700px;
+  line-height: 1.8;
+  letter-spacing: 2px;
+  color: grey;
+
+  
+
+}
+#about{
+  margin-left: 150px;
+  display: inline-block;
+  margin-bottom:10px;
+  color:grey;
+}
+
+#skill{
+  text-align: justify;
+  margin-left: 150px;
+  color:grey;
+}
+ul{
+  text-align: justify;
+  margin-left: 170px;
+  width: 700px;
+  color: gray;
+
+  
+
+}
+.skills-details{
+  text-align: justify;
+  line-height: 1.8;
+  width:700px;
+  letter-spacing: 2px;
+}
+.resume-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: #f1f1f1;
+  border-radius: 5px;
+  margin: 10px 200px;
+  width: 700px;
+}
+
+.resume-icon {
+  width: 50px;
+  height: 50px;
+  background: #d0d0d0;
+  border-radius: 5px;
+}
+
+.resume-info {
+  flex: 1;
+  margin-left: -275px;
+}
+
+.resume-title {
+  font-weight: bold;
+}
+
+.resume-size {
+  font-size: 12px;
+  color: #888;
+}
+
+
+
+h4{
+  Color:grey;
+  margin-left: 200px;
+}
+.vertical-line {
+  width: 1px;
+  height: 20px;
+  background-color: #ccc;
+}
+#Download{
+  float:inline-end;
+  color: grey;
+  text-decoration: none;
+  
+  
+}
+#Update{
+  margin-right: 20px;
+  color: grey;
+  text-decoration: none;
+}
+.button{
+  text-decoration: none;
+  margin-top: 20px;
+
+}
+.dlside{
+  margin-top: 50px;
+  display: inline-block;
+}
+.personal-info{
+text-align: justify;
+    line-height: 1.8;
+    width: 700px;
+    letter-spacing: 2px;
+}
+#PI{
+  margin-bottom: 0px;
+}
+#key-respo{
+  margin-left: 0px;
+}
+#EXO{
+  text-align: justify;
+  margin:0px 200px;
+  width: 700px;
+  line-height: 1.8;
+  letter-spacing: 2px;
+  color: grey;
+}
+.Construction{
+  background-color: white;
+    width: 750px;
+    height: 150px;
+    display: block;
+    box-shadow: -20px 15px 80px 10px rgba(0, 0, 0, 0.092);
+    display:i;
+    margin: 0 auto;
+}
+.Construction-pic{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background:pink;
+    display: inline-block;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 30px;
+    display: inline-block;
+}
+#FL{
+  margin-top:-10px;
+  color: grey;
+  margin-left: 115px;
+  
+}
+#Loc{
+  color: grey;
+  margin-left: 115px;
+  margin-top: -10px;
+  
+}
+#cons{
+
+   margin-top:-80px;
+  margin-left:110px;           
+}
+.salary{
+  margin-top:-57px; 
+  color:grey;
+  
+}
+#Exp{
+  color:grey;
+  margin-top:-10px;
+}
+#complete{
+  Color:green;
+  margin-top:-40px;
+  margin-left:270px;
+}
+.Highway{
+  background-color: white;
+    width: 750px;
+    height: 150px;
+    display: block;
+    box-shadow: -20px 15px 80px 10px rgba(0, 0, 0, 0.092);
+    display:i;
+    margin: 0 auto;
+    margin-top:20px;
+
+}
+.Highway-pic{
+  width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background:lightgray;
+    display: inline-block;
+    position: relative;
+    margin-left: 20px;
+    margin-top: 30px;
+    display: inline-block;
+
+}
+#Hw{
+  margin-top:-80px;
+  margin-left:110px
+
+}
+#Cert{
+  Color:#646464;
+}
+#Accomp{
+  Color:#646464;
+}
+.accomplishments{
+  line-height: 1.8;
+  letter-spacing: 2px;
+  
+}
+.certifications{
+  line-height: 1.8;
+  letter-spacing: 2px;
+}
+#addOn{
+padding: 10px 330px;
+margin-top:110px;
+margin-left:190px;
+color:lightgray;
+
+}

@@ -6,35 +6,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="new-collar.css">
+    <!-- <link rel="stylesheet" href="../Assets/css/client_home.css"> -->
     <title>Document</title>
 </head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar w/ text</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Features</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Pricing</a>
-          </li>
-        </ul>
-        <span class="navbar-text">
-          Navbar text with an inline element
-        </span>
-      </div>
+<>
+
+  
+    
+        <div class="whole-screen">
+          <div class="nav-cont">
+          <div class="container-fluid text-center">
+        <div class="row">
+            <div class="col">
+                <div class="container-fluid" id="logo">
+                    <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
+                </div>
+            </div>
+            <div class="col">
+                <div class="container-fluid" id="nav_list">
+                    <ul>
+                        <li>
+                            <a href="client_home.php">Home</a>
+                            <a href="../ClientPortal/client_profile.php">Profile</a>
+                            <a href="">Message</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="container-fluid">
+                    <a href="../GuessPortal/LandingPage.php">
+                        <button id="logout_butt">
+                            Logout
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
   </nav>
-
-        <div class="whole-screen">
+          </div>
                     <div class="card-left">
                         <div class="card-left-inner-container">
                             <div class="banner-list">
@@ -260,7 +271,7 @@
                         </div>
 
                         <div class="report-button">
-                          <h5 style="color: #FF8787; transform: translate(25%, 37%);">report</h5>
+                          <a href=""><h5 style="color: #FF8787; transform: translate(25%, 37%);">report</h5></a>
                         </div>
                       </div>
 
@@ -352,8 +363,93 @@
                           <span style="font-weight: bold; font-size: 19px;">5. Project Management</span> <br> -Oversee and manage daily operations, ensuring efficiency and productivity. <br> -Collaborate with cross-functional teams to align and execute projects. <br> -Develop strategies to improve workflows and team outcomes.
                         </p>
 
-                        <div class="btn-apply">
-                          <a class="text-button-apply" href="">Apply</a> 
+                        <button class="btn-apply" popovertarget="mypopover">Apply</button>
+                        <div popover="auto" id="mypopover">
+                          <div class="apply-overlay">
+                              <div class="head-overlay-cont">
+                                  <h4>Supra oracles</h4>
+                              </div>
+
+                              <div class="posted-rateANDreviews-cont">
+                                  <div class="day-ago">
+                                     <p>Posted 4d ago</p>
+                                  </div>
+
+                                  <div class="raviews-overlay">
+                                      <p>4.3 40 Reviews</p>
+                                  </div>
+                              </div>
+
+                              <div class="info-job-locICON-LocTEXT">
+                                  <div class="location">
+                                      
+                                  </div>
+
+                                  <div class="locTEXT">
+
+                                  </div>
+                              </div>
+
+
+                              
+                              <div class="info-job-salaryICON-salaryTEXT">
+                                  <div class="salary">
+                                      
+                                  </div>
+
+                                  <div class="salaryTEXT">
+
+                                  </div>
+                              </div>
+
+
+                              <div class="info-job-applicantICON-applicantTEXT">
+                                  <div class="applicant">
+                                      
+                                  </div>
+
+                                  <div class="applicantTEXT">
+
+                                  </div>
+                              </div>
+
+                              <div class="qualif">
+                                
+                              </div>
+
+                              <div class="skills-overlay">
+                                  <div class="welder-overlay">
+                                      
+                                  </div>
+
+                                  <div class="electrician-overlay">
+
+                                  </div>
+
+                                  <div class="plumber-overlay">
+                    
+                                  </div>
+                              </div>
+
+                              <div class="quali-overlay">
+                                  <p>4 yrs Experience</p>
+                              </div>
+
+                              <div class="input-overlay">
+                                <input type="text" id="fname" name="fname">
+                              </div>
+
+                              <div class="two-button">
+                                  <div class="apply-overlay">
+                                    <a href="blue-collar-apply-wait-response.php" class="btn-apply">Apply</a>
+                                  </div>
+
+                                  <div class="apply-overlay">
+
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
                         </div>
                       </div>
 
