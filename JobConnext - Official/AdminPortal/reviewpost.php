@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -126,27 +125,46 @@
                                         <i class="bi bi-three-dots"></i>
                                     </button>
                                 </div>
-                            
+
                             </div>
                             <div class="comments">
                                 <div class="rating">
                                     <span><b>Rate:</b></span>
                                     <button class="btn btn-rate">⭐⭐⭐⭐⭐</button>
                                 </div>
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> 
+                                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             </div>
                         </div>
 
-                        
+
 
                     </div><br>
 
-                    <!-- Violation Section -->
+                    <!-- Violation Section for Admin User -->
                     <div class="violation-section">
                         <p><strong>Report Violation:</strong></p>
-                        <textarea class="violation-comment" rows="2" placeholder="Write a comment..."></textarea>
-                        <button class="btn btn-report">Send Violation</button>
+                        <div class="violation-sign">
+                            <p>If you find any issue, kindly review the suggested violation reasons below. You can either choose one or add more details.</p>
+                        </div>
+                        <!-- <select class="violation-type" aria-label="Select Suggested Violation Type">
+                            <option value="" disabled selected>Select violation type...</option>
+                            <option value="spam">Spam</option>
+                            <option value="harassment">Harassment</option>
+                            <option value="inappropriate_content">Inappropriate Content</option>
+                            <option value="false_information">False Information</option>
+                            <option value="other">Other</option>
+                        </select> -->
+                        <!-- <textarea
+                            class="violation-comment"
+                            rows="4"
+                            placeholder="Add additional comments or details (optional)..."></textarea> -->
+                        <div class="admin-action">
+                            <button class="btn btn-approve">Approve Violation</button>
+                            <button class="btn btn-dismiss">Dismiss Report</button>
+                        </div>
                     </div>
+
+
                 </div>
             </div>
 

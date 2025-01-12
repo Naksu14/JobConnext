@@ -90,6 +90,11 @@
                             </button>
                         </div>
                     </div>
+                    <!-- Reported reason section -->
+                    <div class="reported-reason">
+                        <strong>Reported Reason:</strong>
+                        <span class="reason-text">Inappropriate Content</span>
+                    </div>
                 </div>
                 <div class="post-card">
                     <div class="post-header">
@@ -107,13 +112,18 @@
                             </button>
                         </div>
                     </div>
+                    <!-- Reported reason section -->
+                    <div class="reported-reason">
+                        <strong>Reported Reason:</strong>
+                        <span class="reason-text">Inappropriate Content</span>
+                    </div>
                 </div>
                 <div class="post-card">
                     <div class="post-header">
                         <div class="profile-info">
                             <img src="./imgforadmin/adminprofile.png" alt="Profile Image" class="profile-img">
                             <div class="profile-details">
-                                <h4>Listana lance</h4>
+                                <h4>Listana Lance</h4>
                                 <p class="freelance-info">Freelance</p>
                             </div>
                         </div>
@@ -124,7 +134,14 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- Reported reason section -->
+                    <div class="reported-reason">
+                        <strong>Reported Reason:</strong>
+                        <span class="reason-text">Inappropriate Content</span>
+                    </div>
                 </div>
+
             </div>
 
         </div>
