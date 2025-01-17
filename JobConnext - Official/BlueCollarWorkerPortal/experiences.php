@@ -10,7 +10,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="logo.png" alt="Jobcontext">
+      <img src="JobConnext_Icon.png"o alt="Jobcontext">
     </div>
     <nav class="nav">
       <a href="#">Home</a>
@@ -37,8 +37,8 @@
         <span class="skill electrician">Electrician</span>
     </div>
     <nav class="navbar">
-        <a href="application.php" class="nav-link active">Application</a>
-        <a href="experiences.php" class="nav-link">Experiences</a>
+        <a href="application.php" class="nav-link">Application</a>
+        <a href="experiences.php" class="nav-link active">Experiences</a>
         <a href="certificates.php" class="nav-link">Certificates & Others</a>
     </nav>
     <hr class="separator">
@@ -49,8 +49,8 @@
         <li>Duration: (e.g., Jan 2018 – Present)</li>
         <li>Key Responsibilities:
             <ul id="key-respo">
-                <li>Insert tasks such as installation, repair, maintenance, etc.</li>
-                <li>Include any supervisory roles or team coordination</li>
+                <li>[Insert tasks such as installation, repair, maintenance, etc.]</li>
+                <li>[Include any supervisory roles or team coordination]</li>
             </ul>
         </li>
     </ul>

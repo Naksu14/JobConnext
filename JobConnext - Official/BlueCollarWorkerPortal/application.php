@@ -10,7 +10,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="logo.png" alt="Jobcontext">
+      <img src="JobConnext_Icon.png" alt="Jobcontext">
     </div>
     <nav class="nav">
       <a href="#">Home</a>
@@ -64,9 +64,10 @@
       <p class="resume-size">234kb</p>
     </div>
     <!-- "Download" button first, then the separator, and then "Update" -->
-    <div class="dlside">
+    <div class="dlside" style="margin-bottom:2%;">
       <a href="#" class="button">
         <span id="Download">Download</span>
+        
       </a>
       <div class="vertical-line"></div> <!-- separator comes after Download -->
       <a href="#" class="button">
