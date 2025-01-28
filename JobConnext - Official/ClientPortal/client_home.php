@@ -123,6 +123,10 @@
                     </div>
                 </div>
 
+
+
+            
+
             <div class="row job-card">
                 <div class="col-12">
                     <a href="../ClientPortal/client-showjob.php" class="card-link" style="color: black;">
@@ -165,12 +169,155 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row title-section">
+                <div class="col-sm recommend-workers">
+                    <p>
+                        Recommended workers
+                    </p>
                 </div>
+            </div>
+
+            <div class="container-fluid recommendation">
+                <div class="row recommended-card">
+                    <div class="col-12">
+                        <a href="worker_recommended.php" class="card-link">
+                            <div class="card" id="my-offer">
+                                <div class="job-header">
+                                    <div class="profile-info">
+                                        <div class="avatar">
+                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                        </div>
+                                        <div class="details">
+                                            <h3>Maxwell Cruz</h3>
+                                            <p>ID:3424675</p>
+                                        </div>
+                                    </div>
+                                    <div class="menu">
+                                        •••
+                                    </div>
+                                </div>
+                                <div class="skills">
+                                    <p><strong>Skills:</strong></p>
+                                    <span class="skill-tag green">Welder</span>
+                                    <span class="skill-tag purple">Electrician</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="row recommended-card">
+                    <div class="col-lg-12">
+                        <div class="card" id="my-offer">
+                            <div class="job-header">
+                                <div class="profile-info">
+                                    <div class="avatar">
+                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                    </div>
+                                    <div class="details">
+                                        <h3>Alex Stark </h3>
+                                        <p>ID:3407955</p>
+                                    </div>
+                                </div>
+                                <div class="job-dates">
+                                    <div class="menu">•••</div>
+                                </div>
+                            </div>
+                            <div class="skills">
+                                <p><strong>Skills:</strong></p>
+                                <span class="skill-tag green">Welder</span>
+                                <span class="skill-tag purple">Electrician</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row recommended-card">
+                    <div class="col-12">
+                        <div class="card" id="my-offer">
+                            <div class="job-header">
+                                <div class="profile-info">
+                                    <div class="avatar">
+                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                    </div>
+                                    <div class="details">
+                                        <h3>Joseph Vergara</h3>
+                                        <p>ID:3824155</p>
+                                    </div>
+                                </div>
+                                <div class="job-dates">
+                                    <div class="menu">•••</div>
+                                </div>
+                            </div>
+                            <div class="skills">
+                                <p><strong>Skills:</strong></p>
+                                <span class="skill-tag green">Welder</span>
+                                <span class="skill-tag purple">Electrician</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row title-section">
+                    <div class="col other-offers">
+                        <p>
+                            Other Job Offers
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row other-offer">
+                <div class="col-12">
+                    <div class="card" id="my-offer">
+                        <div class="job-header">
+                            <div class="profile-info">
+                                <div class="avatar">
+                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                </div>
+                                <div class="details">
+                                    <h3>Highway express</h3>
+                                    <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
+                                </div>
+                            </div>
+                            <div class="job-dates">
+                                <div class="menu">•••</div>
+                                <p>11/8/2024 to 11/13/2024</p>
+                            </div>
+                        </div>
+                        <div class="job-body">
+                            <div class="info">
+                                <p>
+                                    <strong>Location:</strong>
+                                    Taguig
+                                </p>
+                                <p>
+                                    <strong>Years of experience:</strong> 2
+                                </p>
+                            </div>
+                            <div class="skills">
+                                <p><strong>Skills needed:</strong></p>
+                                <span class="skill-tag yellow">Truck Driver</span>
+                            </div>
+                        </div>
+                        <div class="job-footer">
+                            <p>5 Applied</p>
+                            <p>0 Accepted</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                </div>
+
                 
 
             </div>
+            
+            
+
         </div>
     </div>
+
+
     <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
