@@ -110,7 +110,7 @@
                 <div class="row title-section">
                     <div class="col content-title">
                         <p>
-                            My Job Offer
+                            Jobs Offered
                         </p>
                     </div>
                 </div>
@@ -320,22 +320,24 @@
                                 <button class="job-option cleaning">Cleaning</button>
                             </div>
                             <div class="others">
-                                <label for="others">Others:</label>
+                                <label for="others" style="margin-top:13px;">Others:</label>
                                 <input type="text" id="others" placeholder="Enter job type">
                                 <button class="add-button">Add</button>
                             </div>
                             <div class="added-jobs">
+                                <span class="added">Added:</span>
                                 <span class="added-job welder">Welder</span>
                                 <span class="added-job electrician">Electrician</span>
                             </div>
                             <div class="salary-range">
                                 <label>Salary Range:</label>
-                                <p>₱18,000 - ₱30,000</p>
+                                <p>₱_____ - ₱_____</p>
                             </div>
                             <div class="file-attachments">
                                 <label>File Attachment/s:</label>
-                                <p>No File Attach</p>
-                                <p>No File Attach</p>
+                                
+                                <p><img src="../Assets/image/material-symbols_image-outline.png" alt="">No File Attach</p>
+                                <p><img src="../Assets/image/mdi_file-outline.png" alt="">No File Attach</p>
                             </div>
                         </div>
                         <div class="job-status">

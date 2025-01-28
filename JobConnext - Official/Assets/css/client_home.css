@@ -541,7 +541,7 @@
   .add-button {
     margin-left: 10px;
     padding: 5px 10px;
-    background: #007bff;
+    background: #161D6F;
     color: white;
     border: none;
     border-radius: 5px;
@@ -549,6 +549,9 @@
   
   .added-jobs {
     margin-top: 10px;
+    display: flex;
+    justify-content: start;
+
   }
   
   .added-job {
@@ -598,12 +601,17 @@
   .edit-button {
     margin-top: 20px;
     padding: 10px 20px;
-    background: #007bff;
+    background: #161D6F;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     display: block;
-    width: 100%;
     text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
   }
