@@ -72,7 +72,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="post-content">
                 <div class="post-card">
                     <div class="post-header">
