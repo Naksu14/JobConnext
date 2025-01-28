@@ -191,6 +191,28 @@
 
 .violation-section {
     margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.violation-sign {
+    background-color: #ffc4c4;
+    padding: 10px;
+    color: #dc3545;
+    border-left: 5px solid #dc3545;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.violation-type {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
 
 .violation-comment {
@@ -210,11 +232,48 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.report-sign{
-    background-color: #ffc4c4;
-    padding: 8px 10px;
-    color: #dc3545;
-    border-left: #dc3545 solid 3px;
+.btn-report:hover {
+    background-color: #b32431;
+}
+
+
+
+.reported-reason {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reported-reason strong {
+    font-weight: bold;
+}
+
+.reason-text {
+    font-style: italic;
+}
+
+.report-sign {
+    background-color: #f8d7da; /* Light red background for warning */
+    color: #721c24; /* Darker red for text to indicate error/warning */
+    padding: 15px;
+    border-left: 5px solid #dc3545; /* Red border on the left to emphasize the warning */
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.report-sign:hover {
+    background-color: #f5c6cb; /* Slightly darker shade when hovered */
 }

@@ -10,7 +10,7 @@
 <body>
   <header>
     <div class="logo">
-      <img src="logo.png" alt="Jobcontext">
+      <img src="JobConnext_Icon.png" alt="Jobcontext">
     </div>
     <nav class="nav">
       <a href="#">Home</a>
@@ -37,15 +37,15 @@
         <span class="skill electrician">Electrician</span>
     </div>
       <nav class="navbar">
-        <a href="application.php" class="nav-link active">Application</a>
+        <a href="application.php" class="nav-link">Application</a>
         <a href="experiences.php" class="nav-link">Experiences</a>
-        <a href="certificates.php" class="nav-link">Certificates & Others</a>
+        <a href="certificates.php" class="nav-link active">Certificates & Others</a>
     </nav>
     <hr class="separator"> 
     
     <section class="certifications">
         <h4 id="Cert">Certifications</h4>
-        <ul>
+        <ul class="C-list">
             <li>Occupational Safety and Health (OSHA) Certification</li>
             <li>First Aid and CPR Certification</li>
             <li>TESDA National Certificate (NC) – (e.g., NC II in Electrical Installation and Maintenance, Plumbing, Welding, etc.)</li>
@@ -56,8 +56,8 @@
     </section>
 
     <section class="accomplishments">
-        <h4 id="Accomp">Accomplishments</h4>
-        <ul>
+        <h4 id="accomp">Accomplishments</h4>
+        <ul class="C-list">
             <li>Successfully completed [specific number] of [projects/installations/orders].</li>
             <li>Reduced [time/costs/downtime] by [specific percentage] through innovative methods.</li>
             <li>Consistently met or exceeded safety standards and quality benchmarks.</li>
