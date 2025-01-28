@@ -55,7 +55,7 @@
     </div>
 
     <div class="container-fluid custom-container" id="main_content">
-        
+
         <div class="add_job">
             <div class="dp_photo">
                 <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
@@ -99,19 +99,157 @@
                         </button>
                     </div>
                 </div>
-            </div>
-
-            <div class="row title-section">
-                <div class="col content-title">
-                    <p>
-                        My Job Offer
-                    </p>
+                <div class="row title-section">
+                    <div class="col content-title">
+                        <p>
+                            My Job Offer
+                        </p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row job-card">
-                <div class="col-12">
-                    <a href="../ClientPortal/client-showjob.php" class="card-link">
+                <div class="row job-card">
+                    <div class="col-12">
+                        <a href="../ClientPortal/client-showjob.php" class="card-link">
+                            <div class="card" id="my-offer">
+                                <div class="job-header">
+                                    <div class="profile-info">
+                                        <div class="avatar">
+                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                        </div>
+                                        <div class="details">
+                                            <h3>Mr. Fixer</h3>
+                                            <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
+                                        </div>
+                                    </div>
+                                    <div class="job-dates">
+                                        <div class="menu">•••</div>
+                                        <p>11/8/2024 to 11/13/2024</p>
+                                    </div>
+                                </div>
+                                <div class="job-body">
+                                    <div class="info">
+                                        <p>
+                                            <strong>Location:</strong>
+                                            Makati
+                                        </p>
+                                        <p>
+                                            <strong>Years of experience:</strong> 0
+                                        </p>
+                                    </div>
+                                    <div class="skills">
+                                        <p><strong>Skills needed:</strong></p>
+                                        <span class="skill-tag green">Welder</span>
+                                        <span class="skill-tag purple">Electrician</span>
+                                    </div>
+                                </div>
+                                <div class="job-footer">
+                                    <p>5 Applied</p>
+                                    <p>0 Accepted</p>
+                                </div>
+                            </div>
+                    </div>
+                    </a>
+                </div>
+                <div class="row title-section">
+                    <div class="col recommend-workers">
+                        <p>
+                            Recommended workers
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="container-fluid recommendation">
+                    <div class="row recommended-card">
+                        <div class="col-12">
+                            <a href="worker_recommended.php" class="card-link">
+                                <div class="card" id="my-offer">
+                                    <div class="job-header">
+                                        <div class="profile-info">
+                                            <div class="avatar">
+                                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                                    alt="Avatar">
+                                            </div>
+                                            <div class="details">
+                                                <h3>Maxwell Cruz</h3>
+                                                <p>ID:3424675</p>
+                                            </div>
+                                        </div>
+                                        <div class="menu">
+                                            •••
+                                        </div>
+                                    </div>
+                                    <div class="skills">
+                                        <p><strong>Skills:</strong></p>
+                                        <span class="skill-tag green">Welder</span>
+                                        <span class="skill-tag purple">Electrician</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row recommended-card">
+                        <div class="col-12">
+                            <div class="card" id="my-offer">
+                                <div class="job-header">
+                                    <div class="profile-info">
+                                        <div class="avatar">
+                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                        </div>
+                                        <div class="details">
+                                            <h3>Alex Stark </h3>
+                                            <p>ID:3407955</p>
+                                        </div>
+                                    </div>
+                                    <div class="job-dates">
+                                        <div class="menu">•••</div>
+                                    </div>
+                                </div>
+                                <div class="skills">
+                                    <p><strong>Skills:</strong></p>
+                                    <span class="skill-tag green">Welder</span>
+                                    <span class="skill-tag purple">Electrician</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row recommended-card">
+                        <div class="col-12">
+                            <div class="card" id="my-offer">
+                                <div class="job-header">
+                                    <div class="profile-info">
+                                        <div class="avatar">
+                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                        </div>
+                                        <div class="details">
+                                            <h3>Joseph Vergara</h3>
+                                            <p>ID:3824155</p>
+                                        </div>
+                                    </div>
+                                    <div class="job-dates">
+                                        <div class="menu">•••</div>
+                                    </div>
+                                </div>
+                                <div class="skills">
+                                    <p><strong>Skills:</strong></p>
+                                    <span class="skill-tag green">Welder</span>
+                                    <span class="skill-tag purple">Electrician</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row title-section">
+                        <div class="col other-offers">
+                            <p>
+                                Other Job Offers
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row other-offer">
+                    <div class="col-12">
                         <div class="card" id="my-offer">
                             <div class="job-header">
                                 <div class="profile-info">
@@ -119,8 +257,8 @@
                                         <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                                     </div>
                                     <div class="details">
-                                        <h3>Mr. Fixer</h3>
-                                        <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
+                                        <h3>Highway express</h3>
+                                        <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
                                     </div>
                                 </div>
                                 <div class="job-dates">
@@ -132,16 +270,15 @@
                                 <div class="info">
                                     <p>
                                         <strong>Location:</strong>
-                                        Makati
+                                        Taguig
                                     </p>
                                     <p>
-                                        <strong>Years of experience:</strong> 0
+                                        <strong>Years of experience:</strong> 2
                                     </p>
                                 </div>
                                 <div class="skills">
                                     <p><strong>Skills needed:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
+                                    <span class="skill-tag yellow">Truck Driver</span>
                                 </div>
                             </div>
                             <div class="job-footer">
@@ -149,154 +286,15 @@
                                 <p>0 Accepted</p>
                             </div>
                         </div>
+                    </div>
                 </div>
-                </a>
+
             </div>
-            <div class="row title-section">
-                <div class="col recommend-workers">
-                    <p>
-                        Recommended workers
-                    </p>
-                </div>
-            </div>
-
-
-            <div class="container-fluid recommendation">
-                <div class="row recommended-card">
-                    <div class="col-12">
-                        <a href="worker_recommended.php" class="card-link">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
-                                                alt="Avatar">
-                                        </div>
-                                        <div class="details">
-                                            <h3>Maxwell Cruz</h3>
-                                            <p>ID:3424675</p>
-                                        </div>
-                                    </div>
-                                    <div class="menu">
-                                        •••
-                                    </div>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="row recommended-card">
-                    <div class="col-12">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Alex Stark </h3>
-                                        <p>ID:3407955</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                </div>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills:</strong></p>
-                                <span class="skill-tag green">Welder</span>
-                                <span class="skill-tag purple">Electrician</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row recommended-card">
-                    <div class="col-12">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Joseph Vergara</h3>
-                                        <p>ID:3824155</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                </div>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills:</strong></p>
-                                <span class="skill-tag green">Welder</span>
-                                <span class="skill-tag purple">Electrician</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row title-section">
-                    <div class="col other-offers">
-                        <p>
-                            Other Job Offers
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row other-offer">
-                <div class="col-12">
-                    <div class="card" id="my-offer">
-                        <div class="job-header">
-                            <div class="profile-info">
-                                <div class="avatar">
-                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                </div>
-                                <div class="details">
-                                    <h3>Highway express</h3>
-                                    <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
-                                </div>
-                            </div>
-                            <div class="job-dates">
-                                <div class="menu">•••</div>
-                                <p>11/8/2024 to 11/13/2024</p>
-                            </div>
-                        </div>
-                        <div class="job-body">
-                            <div class="info">
-                                <p>
-                                    <strong>Location:</strong>
-                                    Taguig
-                                </p>
-                                <p>
-                                    <strong>Years of experience:</strong> 2
-                                </p>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills needed:</strong></p>
-                                <span class="skill-tag yellow">Truck Driver</span>
-                            </div>
-                        </div>
-                        <div class="job-footer">
-                            <p>5 Applied</p>
-                            <p>0 Accepted</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
+    </script>
 </body>
 
 </html>

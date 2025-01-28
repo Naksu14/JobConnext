@@ -161,7 +161,9 @@
                                             <p>5.0</p>
                                         </div>
                                         <div class="report-menu">
-                                            Report
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
+                                                Report
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="skills">
@@ -202,7 +204,9 @@
                                             <p>5.0</p>
                                         </div>
                                         <div class="report-menu">
-                                            Report
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
+                                                Report
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="skills">
@@ -243,7 +247,9 @@
                                             <p>5.0</p>
                                         </div>
                                         <div class="report-menu">
-                                            Report
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
+                                                Report
+                                            </button>
                                         </div>
                                     </div>
                                     <div class="skills">
@@ -268,8 +274,80 @@
                 </div>
             </div>
         </div>
-
-        <div class="page_content">
+        <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reportModalLabel">Report</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Reasons for reporting</h6>
+                        <div class="reason-buttons">
+                            <button id="reasons">Fraud or scam</button>
+                            <button id="reasons">Misinformation</button>
+                            <button id="reasons-l">Threat or Violence</button>
+                            <button id="reasons">Self-harm</button>
+                            <button id="reasons-l">Dangerous or extremist worker</button>
+                            <button id="reasons">Hateful Speech</button>
+                            <button id="reasons">Others</button>
+                        </div>
+                        <div class="message-report">Message Report ⚠️</div>
+                        <textarea class="message-box form-control" placeholder="Describe your issue..."></textarea>
+                        <div class="button-proof">
+                            <button id="upload-proof" data-bs-toggle="modal" data-bs-target="#uploadproof">Upload Proof</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="uploadproof" tabindex="-1" aria-labelledby="uploadproof" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="uploadproof">Upload Proof</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="container-fluid upload-border">
+                        <div class="container upload-container">
+                            <img src="../Assets/image/Vector1.png" alt="">
+                            <span>Drag and Drop a file here or Choose a File</span>
+                        </div>
+                    </div>
+                    <div class="modal-body" id="upload-modal">
+                        <div class="req">
+                            <p>Supported Format: PDF, JPEG,MP4,MP3</p>
+                            <p>Maximum size: 25MB</p>
+                        </div>
+                        <div class="upload-info">
+                            <div class="upload-inf-head">
+                                <img src="../Assets/image/Vector.png" alt="">
+                                <div class="file-info">
+                                    <span>
+                                        Video ng report.mp4
+                                    </span>
+                                    <span style="font-weight: bold; margin-top:0px">
+                                        Size: 15MB
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="progress" role="progressbar" aria-label="Basic example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="margin-top:20px">
+                            <div class="progress-bar w-75"></div>
+                        </div>
+                        <div class="buttons-modal">
+                            <button id="cancel-butt">
+                                Cancel
+                            </button>
+                            <button id="submit-butt">
+                                Submit Report!
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class=" page_content">
             <div class="row content-header">
                 <div class="col-sm-3">
                     <div class="container-fluid content-filter">
@@ -492,8 +570,15 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        document.querySelectorAll(".button").forEach(button => {
+            button.addEventListener("click", function() {
+                document.querySelectorAll(".button").forEach(btn => btn.classList.remove("selected"));
+                this.classList.add("selected");
+            });
+        });
     </script>
     <script src="client-rate.js">
+
     </script>
 </body>
 
