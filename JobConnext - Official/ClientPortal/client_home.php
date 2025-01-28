@@ -59,9 +59,17 @@
         <div class="add_job">
             <div class="dp_photo">
                 <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
-                <input type="text" class="custom-input" placeholder="Post Something..." id="post_something">
+                <input
+                    type="text"
+                    class="custom-input"
+                    placeholder="Post Something..."
+                    id="post_something"
+                    readonly
+                    data-bs-toggle="modal"
+                    data-bs-target="#postModal">
             </div>
         </div>
+
         <div class="worker_details">
             <div class="container" id="inside">
                 <div class=" icon1">
@@ -289,6 +297,81 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
+                    <input type="text" class="input-modal" placeholder="Title...">
+                    <img src="../Assets/image/iconamoon_exit-light.png" alt="">
+                </div>
+                <div class="container description-box">
+                    <textarea class="form-control" id="form-control-1" rows="3"> Description </textarea>
+                </div>
+                <div class="container 1st-layer">
+                    <div class="job-details">
+                        <div class="job-options">
+                            <h3>What kind of job do you offer?</h3>
+                            <div class="job-offer-options">
+                                <button class="job-option construction">Construction</button>
+                                <button class="job-option cleaning">Cleaning</button>
+                            </div>
+                            <div class="others">
+                                <label for="others">Others:</label>
+                                <input type="text" id="others" placeholder="Enter job type">
+                                <button class="add-button">Add</button>
+                            </div>
+                            <div class="added-jobs">
+                                <span class="added-job welder">Welder</span>
+                                <span class="added-job electrician">Electrician</span>
+                            </div>
+                            <div class="salary-range">
+                                <label>Salary Range:</label>
+                                <p>₱18,000 - ₱30,000</p>
+                            </div>
+                            <div class="file-attachments">
+                                <label>File Attachment/s:</label>
+                                <p>No File Attach</p>
+                                <p>No File Attach</p>
+                            </div>
+                        </div>
+                        <div class="job-status">
+                            <h3>Job Status: <span class="active">Active</span></h3>
+                            <label>Location:</label>
+                            <textarea placeholder="Makati"></textarea>
+                            <div class="applicants-needed">
+                                <label>How many applicants do you need?</label>
+                                <input type="number" value="10" min="1">
+                            </div>
+                            <div class="experience">
+                                <label>Year of experience:</label>
+                                <input type="number" value="0" min="0">
+                            </div>
+                            <div class="deadline">
+                                <label>Job offer deadline:</label>
+                                <input type="date" value="2004-11-13">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="edit-button">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <!-- Other Sections -->
+    <div class="worker_details">
+        <div class="container" id="inside">
+            <div class="icon1">
+                <img src="../Assets/image/View Detail.png" alt="">
+                <div class="detail_text">
+                    <p id="text_gd2">Details</p>
+                </div>
             </div>
         </div>
     </div>
