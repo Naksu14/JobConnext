@@ -19,6 +19,14 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
     <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <style>
+  .fullscreen-popup {
+    margin: 0;
+    border-radius: 5;
+    height: 600px;
+  }
+</style>
 </head>
 
 <body>
@@ -115,6 +123,11 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
+            <div class="row job-card">
+                <div class="col-12">
+                    <a href="../ClientPortal/client-showjob.php" class="card-link" style="color: black;">
+=======
                 <div class="row job-card">
                     <div class="col-12">
                         <a href="../ClientPortal/client-showjob.php" class="card-link">
@@ -258,6 +271,7 @@
 
                 <div class="row other-offer">
                     <div class="col-12">
+>>>>>>> 25a143f1f83461dd2b996d94b2b9b34a3541876e
                         <div class="card" id="my-offer">
                             <div class="job-header">
                                 <div class="profile-info">
@@ -289,13 +303,18 @@
                                     <span class="skill-tag yellow">Truck Driver</span>
                                 </div>
                             </div>
+                    </a>
                             <div class="job-footer">
-                                <p>5 Applied</p>
-                                <p>0 Accepted</p>
+                            <button onclick="showAlert()" style="border: none;"><p>5 Applied</p></button>
+                            <p>0 Accepted</p>
                             </div>
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
+                
+=======
+>>>>>>> 25a143f1f83461dd2b996d94b2b9b34a3541876e
 
             </div>
         </div>
@@ -364,6 +383,33 @@
         </div>
     </div>
     </div>
+<<<<<<< HEAD
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+       function showAlert() {
+            Swal.fire({
+                title: "",
+                showConfirmButton: false, // Hides the button
+                width: '1000px',
+                html: `
+                    <div class="d-flex flex-direction-row justify-content-center align-items-start">
+                        <div class="flex-grow-1">
+                            aregfargaerg
+                        </div>
+                        <div class="flex-grow-1">
+                            awefawefaefw
+                        </div>
+                    </div>
+                `,
+                showCloseButton: true,
+                customClass: {
+                    popup: 'fullscreen-popup'
+                } // Ensure there's no trailing comma here
+            });
+        }
+    </script>
+=======
     </div>
 
     <!-- Other Sections -->
@@ -377,6 +423,7 @@
             </div>
         </div>
     </div>
+>>>>>>> 25a143f1f83461dd2b996d94b2b9b34a3541876e
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
