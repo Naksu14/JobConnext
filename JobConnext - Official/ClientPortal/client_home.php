@@ -123,160 +123,15 @@
                     </div>
                 </div>
 
-<<<<<<< HEAD
             <div class="row job-card">
                 <div class="col-12">
                     <a href="../ClientPortal/client-showjob.php" class="card-link" style="color: black;">
-=======
-                <div class="row job-card">
-                    <div class="col-12">
-                        <a href="../ClientPortal/client-showjob.php" class="card-link">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="details">
-                                            <h3>Mr. Fixer</h3>
-                                            <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
-                                        </div>
-                                    </div>
-                                    <div class="job-dates">
-                                        <div class="menu">•••</div>
-                                        <p>11/8/2024 to 11/13/2024</p>
-                                    </div>
-                                </div>
-                                <div class="job-body">
-                                    <div class="info">
-                                        <p>
-                                            <strong>Location:</strong>
-                                            Makati
-                                        </p>
-                                        <p>
-                                            <strong>Years of experience:</strong> 0
-                                        </p>
-                                    </div>
-                                    <div class="skills">
-                                        <p><strong>Skills needed:</strong></p>
-                                        <span class="skill-tag green">Welder</span>
-                                        <span class="skill-tag purple">Electrician</span>
-                                    </div>
-                                </div>
-                                <div class="job-footer">
-                                    <p>5 Applied</p>
-                                    <p>0 Accepted</p>
-                                </div>
-                            </div>
-                    </div>
-                    </a>
-                </div>
-                <div class="row title-section">
-                    <div class="col recommend-workers">
-                        <p>
-                            Recommended workers
-                        </p>
-                    </div>
-                </div>
-
-
-                <div class="container-fluid recommendation">
-                    <div class="row recommended-card">
-                        <div class="col-12">
-                            <a href="worker_recommended.php" class="card-link">
-                                <div class="card" id="my-offer">
-                                    <div class="job-header">
-                                        <div class="profile-info">
-                                            <div class="avatar">
-                                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
-                                                    alt="Avatar">
-                                            </div>
-                                            <div class="details">
-                                                <h3>Maxwell Cruz</h3>
-                                                <p>ID:3424675</p>
-                                            </div>
-                                        </div>
-                                        <div class="menu">
-                                            •••
-                                        </div>
-                                    </div>
-                                    <div class="skills">
-                                        <p><strong>Skills:</strong></p>
-                                        <span class="skill-tag green">Welder</span>
-                                        <span class="skill-tag purple">Electrician</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="row recommended-card">
-                        <div class="col-12">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="details">
-                                            <h3>Alex Stark </h3>
-                                            <p>ID:3407955</p>
-                                        </div>
-                                    </div>
-                                    <div class="job-dates">
-                                        <div class="menu">•••</div>
-                                    </div>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row recommended-card">
-                        <div class="col-12">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="details">
-                                            <h3>Joseph Vergara</h3>
-                                            <p>ID:3824155</p>
-                                        </div>
-                                    </div>
-                                    <div class="job-dates">
-                                        <div class="menu">•••</div>
-                                    </div>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row title-section">
-                        <div class="col other-offers">
-                            <p>
-                                Other Job Offers
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row other-offer">
-                    <div class="col-12">
->>>>>>> 25a143f1f83461dd2b996d94b2b9b34a3541876e
                         <div class="card" id="my-offer">
                             <div class="job-header">
                                 <div class="profile-info">
                                     <div class="avatar">
                                         <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                        
                                     </div>
                                     <div class="details">
                                         <h3>Highway express</h3>
@@ -311,10 +166,7 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
                 
-=======
->>>>>>> 25a143f1f83461dd2b996d94b2b9b34a3541876e
 
             </div>
         </div>
@@ -381,47 +233,41 @@
         </div>
     </div>
     </div>
-<<<<<<< HEAD
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
        function showAlert() {
-            Swal.fire({
-                title: "",
-                showConfirmButton: false, // Hides the button
-                width: '1000px',
-                html: `
-                    <div class="d-flex flex-direction-row justify-content-center align-items-start">
-                        <div class="flex-grow-1">
-                            aregfargaerg
-                        </div>
-                        <div class="flex-grow-1">
-                            awefawefaefw
-                        </div>
+    Swal.fire({
+        width: '1000px',
+        html: `
+            <div class="d-flex flex-row justify-content-center align-items-start" style="height: 600px;">
+                <div class="flex-grow-1">
+                    <div class="d-flex justify-content-start">
+                        <h1 class="me-3">Application status</h1>
+                        <select>
+                            <option>pending</option>
+                            <option>accepted</option>
+                            <option>rejected</option>
+                        </select>
                     </div>
-                `,
-                showCloseButton: true,
-                customClass: {
-                    popup: 'fullscreen-popup'
-                } // Ensure there's no trailing comma here
-            });
-        }
-    </script>
-=======
-    </div>
-
-    <!-- Other Sections -->
-    <div class="worker_details">
-        <div class="container" id="inside">
-            <div class="icon1">
-                <img src="../Assets/image/View Detail.png" alt="">
-                <div class="detail_text">
-                    <p id="text_gd2">Details</p>
+                    <br>
+                    
+                    <p>no application yet</p>
+                </div>
+                <div class="flex-grow-1 d-flex flex-column justify-content-center align-items-center h-100">
+                   <div class="d-flex flex-column">
+                        <img src="../Assets/image/application_default.png" alt="yeet" style="height: 300px; width: 300px;">
+                        <p>click view resume to show the information</p>
+                   </div>
                 </div>
             </div>
-        </div>
-    </div>
->>>>>>> 25a143f1f83461dd2b996d94b2b9b34a3541876e
+        `,
+        showCloseButton: true,
+        showConfirmButton: false, // Hides the button
+    });
+}
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
