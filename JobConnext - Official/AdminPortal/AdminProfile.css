@@ -1,0 +1,80 @@
+.card {
+    max-width: 1000px;
+    border: 1px solid #f3f3f3;
+    border-radius: 3px;
+    padding: 30px 40px;
+    background-color: var(--white);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+}
+
+.card img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-top: 20px;
+    margin-left: 33%;
+    border: 3px solid #e46232;
+    
+}
+
+.card-body {
+    text-align: left;
+}
+.ccenter{
+    text-align: center;
+}
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.list-group-item {
+    border: none;
+    padding: 10px 20px;
+}
+
+.list-group-item strong {
+    color: #E46232;
+}
+
+/* Edit Profile Modal Styles */
+.modal-content {
+    border-radius: 10px;
+}
+
+.modal-header {
+    background-color: #E46232;
+    color: white;
+    border-bottom: 2px solid #ddd;
+}
+
+.modal-title {
+    font-weight: bold;
+}
+
+.form-label {
+    color: #333;
+    font-weight: 600;
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.btn-primary {
+    background-color: #E46232;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: #d35f2c;
+}
