@@ -474,3 +474,136 @@
     fill: #555;
     pointer-events: none;
   }
+
+  .modal-header{
+    /* border: 1px solid; */
+  }
+
+  .modal-header img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .input-modal{
+    width: 100%;
+    height: 45px;
+    margin-left: 10px;
+  }
+
+  .form-control{
+    height: 260px;
+  }
+
+  .job-details {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .job-options,
+  .job-status {
+    flex: 1;
+  }
+  
+  .job-offer-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+ 
+  }
+
+  .job-offer-options h3{
+    font-size: 19px;
+    font-family: inter;
+    font-weight: 500;
+  }
+  
+  .job-option {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .job-option.construction {
+    background: #FFE3CB;
+    color: black;
+    border: none;
+  }
+  
+  .job-option.cleaning {
+    background: #CBE3FF;
+    color: black;
+    border: none;
+  }
+  
+  .add-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .added-jobs {
+    margin-top: 10px;
+  }
+  
+  .added-job {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .added-job.welder {
+    background: #b2d8b6;
+    color: #333;
+  }
+  
+  .added-job.electrician {
+    background: #d3c2ed;
+    color: #333;
+  }
+  
+  .salary-range,
+  .file-attachments {
+    margin-top: 10px;
+  }
+  
+  .job-status .active {
+    color: green;
+    font-weight: bold;
+  }
+  
+  textarea {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  input[type="number"],
+  input[type="date"] {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .edit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
