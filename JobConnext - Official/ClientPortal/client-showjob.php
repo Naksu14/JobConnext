@@ -94,7 +94,7 @@
                 </div>
                 <div class="short-info-container">
                     <div class="short-info">
-                        <img src="../Assets/image/Location.png" alt="">
+                        <img src="../Assets/image/Location.png" alt="" style="border: none;">
                         <p>Makati</p>
                     </div>
                     <div class="short-info">

@@ -349,7 +349,7 @@
                             </div>
                             <div class="salary-range">
                                 <label>Salary Range:</label>
-                                <p>₱_____ - ₱_____</p>
+                                <p>₱_______ - ₱_______</p>
                             </div>
                             <div class="file-attachments">
                                 <label>File Attachment/s:</label>
@@ -364,15 +364,15 @@
                             <textarea placeholder="Makati"></textarea>
                             <div class="applicants-needed">
                                 <label>How many applicants do you need?</label>
-                                <input type="number" value="10" min="1">
+                                <input type="number" value="10" min="1" id="applicant-count">
                             </div>
                             <div class="experience">
                                 <label>Year of experience:</label>
-                                <input type="number" value="0" min="0">
+                                <input type="number" value="0" min="0" id="applicant-count">
                             </div>
                             <div class="deadline">
                                 <label>Job offer deadline:</label>
-                                <input type="date" value="2004-11-13">
+                                <input type="date" value="00/00/0000" id="date">
                             </div>
                         </div>
                     </div>

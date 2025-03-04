@@ -615,3 +615,25 @@
     align-items: center;
     margin-bottom: 30px;
   }
+
+  .applicants-needed {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .applicants-needed #applicant-count{
+    width: 10%;
+    text-align: center;
+  }
+  .experience {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .experience #applicant-count{
+    width: 10%;
+    text-align: center;
+  }
+
