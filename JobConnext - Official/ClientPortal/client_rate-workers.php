@@ -162,7 +162,8 @@
                                             <p>5.0</p>
                                         </div>
                                         <div class="report-menu">
-                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal">
+                                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#reportModal"
+                                                onclick="showAlert()">
                                                 Report
                                             </button>
                                         </div>
@@ -275,11 +276,11 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
+        <!-- <div class="modal fade" id="reportModal" tabindex="-1" aria-labelledby="reportModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="reportModalLabel">Report</h5>
+                        <h5 class="modal-title" id="reportModalLabel" onclick="showAlert()">Report</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -347,7 +348,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class=" page_content">
             <div class="row content-header">
                 <div class="col-sm-3">
@@ -578,6 +579,94 @@
             });
         });
     </script>
+    <script>
+        function showAlert() {
+            Swal.fire({
+                title: 'Report',
+                html: `
+            <h6 style="color:red">Reasons for reporting</h6>
+            <div class="reason-buttons">
+                 <button id="reasons">Fraud or scam</button>
+                            <button id="reasons">Misinformation</button>
+                            <button id="reasons-l">Threat or Violence</button>
+                            <button id="reasons">Self-harm</button>
+                            <button id="reasons-l">Dangerous or extremist worker</button>
+                            <button id="reasons">Hateful Speech</button>
+                            <button id="reasons">Others</button>
+            </div>
+            <div class="message-report">Message Report ⚠️</div>
+            <textarea class="message-box form-control" placeholder="Describe your issue..."></textarea>
+        `,
+                showCancelButton: true,
+                confirmButtonText: 'Next: Upload Proof',
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#161D6F',
+                width: '45%'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    showUploadModal(); // Call the upload modal function
+                }
+            });
+        }
+
+        function showUploadModal() {
+            Swal.fire({
+                title: 'Upload Proof',
+                html: `
+            <div class="container-fluid upload-border">
+                <div class="container upload-container">
+                    <img src="../Assets/image/Vector1.png" alt="">
+                    <span>Drag and Drop a file here or Choose a File</span>
+                </div>
+            </div>
+            <div class="modal-body" id="upload-modal">
+                <div class="req">
+                    <p>Supported Format: PDF, JPEG, MP4, MP3</p>
+                    <p>Maximum size: 25MB</p>
+                </div>
+                <div class="upload-info">
+                    <div class="upload-inf-head">
+                        <img src="../Assets/image/Vector.png" alt="">
+                        <div class="file-info">
+                            <span>Video ng report.mp4</span>
+                            <span style="font-weight: bold; margin-top:0px">Size: 15MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="margin-top:20px">
+                    <div class="progress-bar w-75"></div>
+                </div>
+            </div>
+        `,
+                showCancelButton: true,
+                confirmButtonText: 'Submit Report!',
+                cancelButtonText: 'Cancel',
+                confirmButtonColor: '#161D6F',
+                width: '45%'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    showFinalMessage(); // Call the final message
+                }
+            });
+        }
+
+        function showFinalMessage() {
+            Swal.fire({
+                title: 'Report Submitted!',
+                text: 'Thank you for reporting. We will review your submission.',
+                icon: 'success',
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#161D6F'
+            });
+        }
+
+        // Trigger report modal on button click
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("reportButton").addEventListener("click", showReportModal);
+        });
+    </script>
+
+
     <script src="client-rate.js">
 
     </script>

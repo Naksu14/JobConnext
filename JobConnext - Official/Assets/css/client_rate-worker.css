@@ -676,6 +676,7 @@
     justify-content: left;
     flex-wrap: wrap;
     gap: 10px;
+    margin-top: 30px;
 }
 
 .reason-buttons #reasons{
@@ -732,6 +733,7 @@
 
 .modal-body h6{
     color: red;
+    margin: 30px;
 }
 
 .message-report{
