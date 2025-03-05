@@ -506,11 +506,17 @@
     flex: 1;
   }
   
+  .job-options h3{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+  }
   .job-offer-options {
     display: flex;
     gap: 10px;
     margin-bottom: 10px;
- 
+    margin-left: 0px ;
+    margin-top: 20px;
   }
 
   .job-offer-options h3{
@@ -523,7 +529,9 @@
     padding: 5px 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    cursor: pointer;
+    justify-content: start;
+    display: flex;
+    flex-direction: column;
   }
   
   .job-option.construction {
@@ -548,7 +556,7 @@
   }
   
   .added-jobs {
-    margin-top: 10px;
+    margin-top: 20px;
     display: flex;
     justify-content: start;
 
@@ -575,10 +583,59 @@
   .file-attachments {
     margin-top: 10px;
   }
+
+  .file-attachments {
+    justify-content: left;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+  }
+  .file-attachments {
+    justify-content: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .salary-range{
+    display: flex;
+    flex-direction: column;
+    justify-content:left !important;
+    margin-left: 0px;
+  }
+
+  .salary-range #range{
+    width: 50%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
   
+  .salary-range label{
+    flex-direction: row;
+    display:flex ;
+    justify-content: left;
+  }
+
+  .salary-range p{
+    flex-direction: row;
+    display:flex ;
+    justify-content: left;
+  }
   .job-status .active {
     color: green;
     font-weight: bold;
+  }
+
+  .job-status{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    text-align: left;
+    margin: 20px;
+  }
+
+  .job-status h3{
+
   }
   
   textarea {
@@ -635,5 +692,22 @@
   .experience #applicant-count{
     width: 10%;
     text-align: center;
+  }
+
+  .others{
+    margin-left: 0px;
+    justify-content: left;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+
+  #others{
+    margin-left: 5px;
+    justify-content: left;
+    margin-top: 10px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
   }
 
