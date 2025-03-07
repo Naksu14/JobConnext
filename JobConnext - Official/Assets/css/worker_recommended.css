@@ -156,6 +156,9 @@
 
 .page_content{
     /* border: 1px solid; */
+    max-height: 1000px;
+    overflow-y: auto;
+
 }
 
 .content-filter{

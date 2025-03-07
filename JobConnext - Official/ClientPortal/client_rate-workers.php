@@ -187,7 +187,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="card" id="my-offer">
+                    <!-- <div class="card" id="my-offer">
                         <div class="job-header">
                             <div class="profile-info">
                                 <div class="avatar">
@@ -229,8 +229,8 @@
                                 Rate worker
                             </a>
                         </div>
-                    </div>
-                    <div class="card" id="my-offer">
+                    </div> -->
+                    <!-- <div class="card" id="my-offer">
                         <div class="job-header">
                             <div class="profile-info">
                                 <div class="avatar">
@@ -272,7 +272,7 @@
                                 Rate worker
                             </a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -466,7 +466,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="row recommended-card">
+                <!-- <div class="row recommended-card">
                     <div class="col-lg-12">
                         <div class="card" id="my-offer">
                             <div class="job-header">
@@ -490,8 +490,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row recommended-card">
+                </div> -->
+                <!-- <div class="row recommended-card">
                     <div class="col-12">
                         <div class="card" id="my-offer">
                             <div class="job-header">
@@ -515,7 +515,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="row title-section">
                     <div class="col other-offers">

@@ -21,7 +21,8 @@
 .page_content{
     overflow:scroll;
     overflow-x: hidden;
-    height: 80%;
+    max-height: 1250px;
+
 }
 
 #logo img{
@@ -680,7 +681,7 @@
   }
 
   .applicants-needed #applicant-count{
-    width: 10%;
+    width: 15%;
     text-align: center;
   }
   .experience {
@@ -690,7 +691,7 @@
   }
 
   .experience #applicant-count{
-    width: 10%;
+    width: 15%;
     text-align: center;
   }
 

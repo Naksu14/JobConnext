@@ -105,7 +105,8 @@
 .page_content{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 2;
-    height:1300px;
+    height:1000px;
+    overflow-y: auto;
 }
 
 .dp_photo img{
