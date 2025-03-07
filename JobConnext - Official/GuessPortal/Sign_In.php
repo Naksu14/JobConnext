@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     if (($username_or_email == "worker" && $password == "worker123") || 
         ($username_or_email == "worker123@gmail.com" && $password == "worker123")) {
-            header('Location: ../BlueCollarWorkerPortal/blue-collar-land.php');
+            header('Location: ../BlueCollarWorkerPortal/blue-collar-landing.php');
             exit;
     } else if (($username_or_email == "client" && $password == "client123") || 
         ($username_or_email == "client123@gmail.com" && $password == "client123")){
