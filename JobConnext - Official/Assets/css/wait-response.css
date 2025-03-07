@@ -627,23 +627,13 @@
     text-align: center;
 
 }
-
-.apply-button{
-    padding-bottom: 20px;
-}
-
-.apply button{
-    color: white;
+.apply span{
+    color: var(--darkblue);
     font-family: poppins;
     font-size: 18px;
-    background-color: var(--darkblue);
     font-weight: bold;
-    width: 175px;
-    height: 50px;
-    border: var(--darkblue);
-    
+    padding-bottom: 20px;
 }
-
 .report-menu {
     font-size: 16px;
     color: #FF8787;
