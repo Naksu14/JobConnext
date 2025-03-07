@@ -1,3 +1,7 @@
+<?php
+include "db_con/db_connection.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +101,7 @@
                 </div>
                 <div class="container-fluid ps-5 pe-5 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: 40%; height: auto">
                     
-                    <form action="#" method="post" class="d-flex flex-column mt-4">
+                    <form action="Sign_Up_Process.php" method="post" class="d-flex flex-column mt-4">
 
                         <h3 class="poppins-bold text-center mb-5">Step 1: Login Details</h3>
 
@@ -105,7 +109,7 @@
                         <input type="text" name="username" id="username" required>
 
                         <label for="email" class="poppins-medium">Email</label>
-                        <input type="text" name="Email" id="Email" required>
+                        <input type="text" name="Email" id="Email" required>    
 
                         <label for="password" class="poppins-medium">Password</label>
                         <input type="password" name="password" id="password" required>
@@ -114,26 +118,20 @@
 
                         <p class="poppins-regular">Choose your skills</p>
                             <div class="skills-container">
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Welder" id="Welder">
-                                    <label class="form-check-label" for="Welder">Welder</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Electrician" id="Electrician">
-                                    <label class="form-check-label" for="Electrician">Electrician</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Truck Driver" id="TruckDriver">
-                                    <label class="form-check-label" for="TruckDriver">Truck Driver</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Plumber" id="Plumber">
-                                    <label class="form-check-label" for="Plumber">Plumber</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Others" id="Others">
-                                    <label class="form-check-label" for="Others">Others</label>
-                                </div>
+                                <?php
+                                //     $stmt = $pdo->prepare("SELECT * FROM tbl_skills");
+                                //     $stmt->execute();
+                                //     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                                //     foreach ($result as $row) {
+                                //         echo '
+                                //             <div class="form-check">
+                                //                 <input class="form-check-input skills" type="checkbox" value="' . htmlspecialchars($row['skills']) . '" id="' . htmlspecialchars($row['skills']) . '">
+                                //                 <label class="form-check-label" for="' . htmlspecialchars($row['skills']) . '">' . htmlspecialchars($row['skills']) . '</label>
+                                //             </div>
+                                //         ';
+                                //     }
+                                // ?>
                             </div>
                             <br>
                             <p class="poppins-regular">Your skills:
@@ -176,14 +174,10 @@
                                 });
                             </script>
 
-                        <div class="btn_sub d-flex justify-content-between mt-3 mb-3">
-                            <a href="SIgn_Up.php" style="color:#161D6F"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
-</svg></span>Back</a>
-                            <a href="Worker_step2.php" style="color:#161D6F">Next step<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-</svg></span></a>
-                        </div>
+                    <div class="btn_sub d-flex justify-content-between mt-3 mb-3">
+                        <a href="signup.php" style="color:#161D6F">Back</a>
+                        <button type="submit" class="btn btn-primary">Next Step</button>
+                    </div>
                     </form>
 
                 </div>
@@ -205,3 +199,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
