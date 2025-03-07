@@ -38,7 +38,7 @@
                 <div class="container-fluid" id="nav_list">
                     <ul>
                         <li>
-                            <a href="client_home.php">Home</a>
+                            <a href="../BlueCollarWorkerPortal/blue-collar-landing.php">Home</a>
                             <a href="../ClientPortal/client_profile.php">Profile</a>
                             <a href="../ClientPortal/client-message.php">Message</a>
                         </li>
