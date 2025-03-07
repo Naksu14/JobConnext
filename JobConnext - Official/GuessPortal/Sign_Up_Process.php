@@ -10,7 +10,7 @@ include '../db_con/db_connection.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $username = $_POST["username"] ?? '';
-    $email = $_POST["email"] ?? '';
+    $email = $_POST["Email"] ?? '';
     $password = $_POST["password"] ?? '';
 
     // Validate input (Basic validation)
@@ -23,11 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Prepare SQL statement
     $stmt = $conn->prepare("INSERT INTO tbl_blue_collar_worker (username, email, hash_password) VALUES (?, ?, ?)");
-    
+
     if ($stmt) {
         // Bind parameters
         $stmt->bind_param("sss", $username, $email, $hashed_password);
-        
+
         // Execute the query
         if ($stmt->execute()) {
             // Redirect after successful insert
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             die("Error inserting data: " . $stmt->error);
         }
-        
+
         // Close statement
         $stmt->close();
     } else {
@@ -45,8 +45,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Close connection
-$conn->close(); 
-
-
-?>
-
+$conn->close();
