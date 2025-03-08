@@ -815,6 +815,10 @@
     height: 300px;
 }
 
+#my-offer a{
+    color: #212529;
+}
+
 .upload-border img{
     width: 140px;
     height: 140px;

@@ -643,7 +643,9 @@
     border: var(--darkblue);
     
 }
-
+#my-offer a{
+    color: #212529;
+}
 .report-menu {
     font-size: 16px;
     color: #FF8787;

@@ -57,9 +57,7 @@
     font-weight: bold;
     font-size: 18px;
 }
-#my-offer a{
-    color: #212529;
-}
+
 .custom-container {
     max-width: 1450px; 
 }
@@ -619,7 +617,7 @@
     color: #767676;
     font-family: poppins;
     font-size: 16px;
-    border-bottom: 1px solid;
+    /*  */
     margin-top: 10px;
 }
 
@@ -913,6 +911,25 @@
     background-color: #161D6F;
 }
 
+.accepted-tab{
+    border-bottom: 1px solid #D9D9D9;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+.accepted-tab span{
+    color:#55A64D ;
+    font-size: 17px;
+    font-family: inter;
+    font-weight: normal;
+    padding-bottom: 20px;
+}
+
+#my-offer a{
+    color: #212529;
+}
 
   @media only screen and (max-width: 982px){
     .report-menu{
