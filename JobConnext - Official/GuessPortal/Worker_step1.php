@@ -125,7 +125,7 @@ include "../db_con/db_connection.php"; // Ensure db_connection.php defines $conn
                     <input type="password" name="password" id="password" required>
 
                     <p id="error-message" class="text-danger fs-6">
-                    Password must contain at least 8 characters, 1 uppercase, 1 number, and 1 special character.
+                        Password must contain at least 8 characters, 1 uppercase, 1 number, and 1 special character.
                     </p>
 
                     <p class="poppins-regular">Choose your skills</p>
@@ -149,7 +149,7 @@ include "../db_con/db_connection.php"; // Ensure db_connection.php defines $conn
                     </div>
                     <br>
                     <p class="poppins-regular">Your skills:
-                        <div id="selected-skills-container" class="skills-container"></div>
+                    <div id="selected-skills-container" class="skills-container"></div>
                     </p>
                     <p id="check_message"></p>
 
@@ -182,22 +182,22 @@ include "../db_con/db_connection.php"; // Ensure db_connection.php defines $conn
                         });
 
                         document.getElementById("myForm").addEventListener("submit", function(event) {
-                        let checkboxes = document.querySelectorAll('.form-check-input.skills'); // Select all checkboxes
-                        let checked = Array.from(checkboxes).some(checkbox => checkbox.checked); // Check if at least one is checked
-                        message = document.getElementById("check_message")
-                        if (!checked) {
-                            message.textContent = "Please select at least one skill.";
-                            message.style.color = "red";
-                            event.preventDefault();
-                        }else{
-                            message.textContent = "";
-                        }
+                            let checkboxes = document.querySelectorAll('.form-check-input.skills'); // Select all checkboxes
+                            let checked = Array.from(checkboxes).some(checkbox => checkbox.checked); // Check if at least one is checked
+                            message = document.getElementById("check_message")
+                            if (!checked) {
+                                message.textContent = "Please select at least one skill.";
+                                message.style.color = "red";
+                                event.preventDefault();
+                            } else {
+                                message.textContent = "";
+                            }
 
-                        
-                        
+
+
                         });
 
-                        function checkPassword(){
+                        function checkPassword() {
                             const password = document.getElementById("password").value;
                             const errorMessage = document.getElementById("error-message");
                             const minLength = 8;
@@ -225,22 +225,16 @@ include "../db_con/db_connection.php"; // Ensure db_connection.php defines $conn
                                 event.preventDefault();
                                 return false;
                             }
-                
+
                             errorMessage.textContent = "";
                             return true;
 
                         }
-
                     </script>
 
                     <div class="btn_sub d-flex justify-content-between mt-3 mb-3">
-<<<<<<< HEAD
-                        <a href="signup.php" style="color:#161D6F">Back</a>
-                        <button type="submit" class="btn submit-btn">next step</button>
-=======
                         <a href="SIgn_Up.php" style="color:#161D6F">Back</a>
                         <button type="submit" class="btn btn-primary">Next Step</button>
->>>>>>> 1dd77ebd8478851ebc91e43bb83e2655411aeb50
                     </div>
                 </form>
 
@@ -273,10 +267,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Invalid email format.");
     }
 
-    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)) {
-        die("Password must contain at least 8 characters, 1 uppercase, 1 number, and 1 special character.");
-    }
-    
+
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
@@ -312,4 +303,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
-
