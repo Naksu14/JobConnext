@@ -186,7 +186,7 @@ include "../db_con/db_connection.php";
                     </script>
 
                     <div class="btn_sub d-flex justify-content-between mt-3 mb-3">
-                        <a href="signup.php" style="color:#161D6F">Back</a>
+                        <a href="SIgn_Up.php" style="color:#161D6F">Back</a>
                         <button type="submit" class="btn btn-primary">Next Step</button>
                     </div>
                 </form>

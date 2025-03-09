@@ -3,34 +3,134 @@ session_start();
 ob_start(); // Ensure no output is sent before header redirection
 include '../db_con/db_connection.php';
 
-if (isset($_POST['signIn_btn'])) {
-    $username_or_email = $_POST['usernameOremail'];
-    $password = $_POST['password'];
 
-    // Prepare a query to check both username and email
-    $query = "SELECT * FROM tbl_blue_collar_worker WHERE username =  '$username_or_email' or email =  '$username_or_email'";
-    $result = mysqli_query($conn, $query);
+// if (isset($_POST['signIn_btn'])) {
+//     $username_or_email = $_POST['usernameOremail'];
+//     $password = $_POST['password'];
 
-    if (mysqli_num_rows($result) == 1) {
-        $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+//     // Prepare a query to check both username and email BLUE WORKERRR
+//     $query = "SELECT * FROM tbl_blue_collar_worker WHERE username =  '$username_or_email' or email =  '$username_or_email'";
+//     $result = mysqli_query($conn, $query);
 
-        $hashed_password = $row['hash_password'];
+//     if (mysqli_num_rows($result) == 1) {
+//         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
-        // Verify password
-        if (password_verify($password, $hashed_password)) {
-            $_SESSION['worker_id'] = $row['worker_id'];
-            $_SESSION['username'] = $row['username'];
+//         $hashed_password = $row['hash_password'];
 
-            // Redirect to dashboard
-            header("Location: ../BlueCollarWorkerPortal/blue-collar-land.php");
-            exit();
-        } else {
-            $error = "Invalid credentials!";
+//         // Verify password
+//         if (password_verify($password, $hashed_password)) {
+//             $_SESSION['worker_id'] = $row['worker_id'];
+//             $_SESSION['username'] = $row['username'];
+
+//             // Redirect to dashboard
+//             header("Location: ../BlueCollarWorkerPortal/blue-collar-land.php");
+//             exit();
+//         } else {
+//             $error = "Invalid credentials!";
+//         }
+//     } else {
+//         $error = "User not found!";
+//     }
+
+//     // Prepare a query to check both username and email CLIENTTT
+//     $query = "SELECT * FROM tbl_client WHERE username =  '$username_or_email' or email =  '$username_or_email'";
+//     $result = mysqli_query($conn, $query);
+
+//     if (mysqli_num_rows($result) == 1) {
+//         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+//         $hashed_password = $row['hash_password'];
+
+//         // Verify password
+//         if (password_verify($password, $hashed_password)) {
+//             $_SESSION['client_id'] = $row['client_id'];
+//             $_SESSION['username'] = $row['username'];
+
+//             // Redirect to dashboard
+//             header("Location: ../ClientPortal/client_home.php");
+//             exit();
+//         } else {
+//             $error = "Invalid credentials!";
+//         }
+//     } else {
+//         $error = "User not found!";
+//     }
+
+//     // Prepare a query to check both username and email CLIENTTT
+//     $query = "SELECT * FROM tbl_admin WHERE username =  '$username_or_email' or email =  '$username_or_email'";
+//     $result = mysqli_query($conn, $query);
+
+//     if (mysqli_num_rows($result) == 1) {
+//         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+
+//         $hashed_password = $row['hash_password'];
+
+//         // Verify password
+//         if (password_verify($password, $hashed_password)) {
+//             $_SESSION['Admin_id'] = $row['Admin_id'];
+//             $_SESSION['username'] = $row['username'];
+
+//             // Redirect to dashboard
+//             header("Location: ../AdminPortal/AdminLandingPage.php");
+//             exit();
+//         } else {
+//             $error = "Invalid credentials!";
+//         }
+//     } else {
+//         $error = "User not found!";
+//     }
+// }
+
+
+if (isset($_POST['g-recaptcha-response'])) {
+    $secretkey = '6LemMmUqAAAAAJfzMbn-18T28DEdG1iyV_khXl7p';
+    $ip = $_SERVER['REMOTE_ADDR'];
+    $response = $_POST['g-recaptcha-response'];
+    $url = "https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$response&remoteip=$ip";
+    $fire = file_get_contents($url);
+    $data = json_decode($fire);
+    if ($data->success == true) {
+
+        if (isset($_POST['signIn_btn'])) {
+            $username_or_email = trim($_POST['usernameOremail']);
+            $password = trim($_POST['password']);
+
+            // List of user roles and their respective tables
+            $user_types = [
+                "worker" => ["table" => "tbl_blue_collar_worker", "id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/blue-collar-land.php"],
+                "client" => ["table" => "tbl_client", "id" => "client_id", "redirect" => "../ClientPortal/client_home.php"],
+                "admin" => ["table" => "tbl_admin", "id" => "Admin_id", "redirect" => "../AdminPortal/AdminLandingPage.php"]
+            ];
+
+            foreach ($user_types as $type => $data) {
+                $query = "SELECT * FROM {$data['table']} WHERE username = ? OR email = ?";
+                $stmt = $conn->prepare($query);
+                $stmt->bind_param("ss", $username_or_email, $username_or_email);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result->num_rows === 1) {
+                    $row = $result->fetch_assoc();
+                    if (password_verify($password, $row['hash_password'])) {
+                        $_SESSION[$data['id']] = $row[$data['id']];
+                        $_SESSION['username'] = $row['username'];
+                        header("Location: " . $data['redirect']);
+                        exit();
+                    } else {
+                        $error = "Invalid credentials!";
+                    }
+                }
+                $stmt->close();
+            }
+
+            $error = "User not found!";
         }
     } else {
-        $error = "User not found!";
+        echo '<script>alert("Please Fill ReCaptcha")</script>';
     }
 }
+
+
 
 ?>
 
@@ -82,7 +182,7 @@ if (isset($_POST['signIn_btn'])) {
 
                 <p class="poppins-regular"><a href="ForgotPassword.php" style="color: black;">Forget password?</a></p>
 
-                <div class="g-recaptcha" data-sitekey="6LdKLJwqAAAAAEYqq4rErAVcCcdBzApCkFzeXpzc"></div>
+                <div class="g-recaptcha" data-sitekey="6LemMmUqAAAAAG2OKgk5lSoKL4LLBU8QOO5pKw-K"></div>
 
                 <?php if (isset($errorMsg)): ?>
                     <p id="errorMsg" class="text-danger fs-6"><?= $errorMsg; ?></p>
