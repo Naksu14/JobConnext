@@ -1,3 +1,14 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+ob_start();
+
+include "../db_con/db_connection.php"; // Ensure db_connection.php defines $conn properly
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,47 +108,47 @@
                 </div>
                 <div class="container-fluid ps-5 pe-5 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: 40%; height: auto">
                     
-                    <form action="#" method="post" class="d-flex flex-column mt-4">
+                <form action="Clientform_step1.php" method="post" onsubmit="return checkPassword()" class="d-flex flex-column mt-4" id="myForm" style="width: 100%; height: auto">
 
-                        <h3 class="poppins-bold text-center mb-5">Step 1: Login Details</h3>
+                            <h3 class="poppins-bold text-center mb-5">Step 1: Login Details</h3>
 
-                        <label for="username" class="poppins-medium">Username</label>
-                        <input type="text" name="username" id="username" required>
+                            <label for="username" class="poppins-medium">Username</label>
+                            <input type="text" name="username" id="username" required>
 
-                        <label for="email" class="poppins-medium">Email</label>
-                        <input type="text" name="Email" id="Email" required>
+                            <label for="email" class="poppins-medium">Email</label>
+                            <input type="email" name="email" id="email" required>
 
-                        <label for="password" class="poppins-medium">Password</label>
-                        <input type="password" name="password" id="password" required>
+                            <label for="password" class="poppins-medium">Password</label>
+                            <input type="password" name="password" id="password" required>
 
-                        <p id="password-validation" class="text-danger fs-6">Password must contain at least 8 characters 1 uppercase, 1 number and 1 special character</p></p>
+                            <p id="error-message" class="text-danger fs-6">
+                            Password must contain at least 8 characters, 1 uppercase, 1 number, and 1 special character.
+                            </p>
 
-                        <p class="poppins-regular">Choose your skills</p>
+                            <p class="poppins-regular">Choose your skills</p>
                             <div class="skills-container">
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Welder" id="Welder">
-                                    <label class="form-check-label" for="Welder">Welder</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Electrician" id="Electrician">
-                                    <label class="form-check-label" for="Electrician">Electrician</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Truck Driver" id="TruckDriver">
-                                    <label class="form-check-label" for="TruckDriver">Truck Driver</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Plumber" id="Plumber">
-                                    <label class="form-check-label" for="Plumber">Plumber</label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input skills" type="checkbox" value="Others" id="Others">
-                                    <label class="form-check-label" for="Others">Others</label>
-                                </div>
+                                <?php
+                                $query = "SELECT * FROM tbl_skills";
+                                $result = $conn->query($query);
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $skillName = htmlspecialchars($row['skills']);
+                                        echo '
+                                            <div class="form-check">
+                                                <input class="form-check-input skills" name="skills[]" type="checkbox" value="' . $skillName . '" id="' . $skillName . '">
+                                                <label class="form-check-label" for="' . $skillName . '">' . $skillName . '</label>
+                                            </div>
+                                        ';
+                                    }
+                                }
+                                ?>
                             </div>
                             <br>
                             <p class="poppins-regular">Your skills:
                             <div id="selected-skills-container" class="skills-container"></div></p>
+                            <p id="check_message"></p>
+
 
                             <script>
                                 // Get all skill checkboxes
@@ -174,15 +185,68 @@
                                 skillCheckboxes.forEach(checkbox => {
                                     checkbox.addEventListener('change', updateSelectedSkills);
                                 });
+
+                                skillCheckboxes.forEach(checkbox => {
+                            checkbox.addEventListener('change', updateSelectedSkills);
+                        });
+
+                        document.getElementById("myForm").addEventListener("submit", function(event) {
+                        let checkboxes = document.querySelectorAll('.form-check-input.skills'); // Select all checkboxes
+                        let checked = Array.from(checkboxes).some(checkbox => checkbox.checked); // Check if at least one is checked
+                        message = document.getElementById("check_message")
+                        if (!checked) {
+                            message.textContent = "Please select at least one skill.";
+                            message.style.color = "red";
+                            event.preventDefault();
+                        }else{
+                            message.textContent = "";
+                        }
+
+                        
+                        
+                        });
+
+                        function checkPassword(){
+                            const password = document.getElementById("password").value;
+                            const errorMessage = document.getElementById("error-message");
+                            const minLength = 8;
+                            const uppercaseRegex = /[A-Z]/;
+                            const numberRegex = /[0-9]/;
+                            const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+                            if (password.length < minLength) {
+                                errorMessage.textContent = "Password must be at least 8 characters long.";
+                                event.preventDefault();
+                                return false;
+                            }
+                            if (!uppercaseRegex.test(password)) {
+                                errorMessage.textContent = "Password must contain at least one uppercase letter.";
+                                event.preventDefault();
+                                return false;
+                            }
+                            if (!numberRegex.test(password)) {
+                                errorMessage.textContent = "Password must contain at least one number.";
+                                event.preventDefault();
+                                return false;
+                            }
+                            if (!specialCharRegex.test(password)) {
+                                errorMessage.textContent = "Password must contain at least one special character.";
+                                event.preventDefault();
+                                return false;
+                            }
+                
+                            errorMessage.textContent = "";
+                            return true;
+
+                        }
+
                             </script>
 
                         <div class="btn_sub d-flex justify-content-between mt-3 mb-3">
                             <a href="SIgn_Up.php" style="color:#161D6F"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
 </svg></span>Back</a>
-                            <a href="Clientform_step2.php" style="color:#161D6F">Next step<span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-</svg></span></a>
+                            <button type="submit" class="btn submit-btn">next step</button>
                         </div>
                     </form>
 
@@ -205,3 +269,53 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST["username"] ?? '');
+    $email = filter_var($_POST["email"] ?? '', FILTER_SANITIZE_EMAIL);
+    $password = $_POST["password"] ?? '';
+    $skills = $_POST["skills"] ?? [];
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid email format.");
+    }
+
+    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)) {
+        die("Password must contain at least 8 characters, 1 uppercase, 1 number, and 1 special character.");
+    }
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $stmt = $conn->prepare("INSERT INTO tbl_client (username, email, hash_password) VALUES (?, ?, ?)");
+
+    if ($stmt) {
+        $stmt->bind_param("sss", $username, $email, $hashed_password);
+
+        if ($stmt->execute()) {
+            $client_id = $stmt->insert_id;
+
+            if (!empty($skills)) {
+                $skill_stmt = $conn->prepare("INSERT INTO tbl_client_skills_sets (client_id, skills) VALUES (?, ?)");
+
+                if ($skill_stmt) {
+                    foreach ($skills as $skill) {
+                        $sanitized_skill = htmlspecialchars($skill, ENT_QUOTES, 'UTF-8');
+                        $skill_stmt->bind_param("is", $client_id, $sanitized_skill);
+                        $skill_stmt->execute();
+                    }
+                    $skill_stmt->close();
+                }
+            }
+
+            $_SESSION['client_id'] = $client_id;
+
+            header("Location: Clientform_step2.php");
+            exit();
+        }
+        $stmt->close();
+    }
+}
+
+$conn->close();
+?>

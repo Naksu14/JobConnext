@@ -1,5 +1,9 @@
 <?php
-include "../db_con/db_connection.php";
+session_start();
+ob_start();
+
+include "../db_con/db_connection.php"; // Ensure db_connection.php defines $conn properly
+
 ?>
 
 <!DOCTYPE html>
@@ -10,12 +14,9 @@ include "../db_con/db_connection.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../Assets/css/style.css">
-</head>
-
-<body>
     <style>
         .skills-container {
             display: flex;
@@ -92,10 +93,11 @@ include "../db_con/db_connection.php";
             /* Remove hover effect */
         }
     </style>
+</head>
+
+<body>
 
     <div class="container-fluid pb-5">
-
-
         <div class="d-flex flex-column align-items-center">
             <img src="../Assets/image/Logo1.png" width="90px" height="90px" alt="logo">
             <h2 class="poppins-bold">Sign <span style="color: #E46232;">Up</span></h2>
@@ -107,97 +109,139 @@ include "../db_con/db_connection.php";
                 <img src="../Assets/image/BlueCollarWorkerImg.png" alt="Worker_img" width="600px" height="600px">
                 <p class="poppins-regular text-center">Looking for job</p>
             </div>
+
             <div class="container-fluid ps-5 pe-5 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: 40%; height: auto">
 
-                <form action="Sign_Up_Process.php" method="post" class="d-flex flex-column mt-4">
-
+                <form action="Worker_step1.php" method="post" onsubmit="return checkPassword()" class="d-flex flex-column mt-4" id="myForm" style="width: 100%; height: auto">
                     <h3 class="poppins-bold text-center mb-5">Step 1: Login Details</h3>
 
                     <label for="username" class="poppins-medium">Username</label>
                     <input type="text" name="username" id="username" required>
 
                     <label for="email" class="poppins-medium">Email</label>
-                    <input type="text" name="Email" id="Email" required>
+                    <input type="email" name="email" id="email" required>
 
                     <label for="password" class="poppins-medium">Password</label>
                     <input type="password" name="password" id="password" required>
 
-                    <p id="password-validation" class="text-danger fs-6">Password must contain at least 8 characters 1 uppercase, 1 number and 1 special character</p>
+                    <p id="error-message" class="text-danger fs-6">
+                    Password must contain at least 8 characters, 1 uppercase, 1 number, and 1 special character.
                     </p>
 
                     <p class="poppins-regular">Choose your skills</p>
                     <div class="skills-container">
                         <?php
-                        //     $stmt = $pdo->prepare("SELECT * FROM tbl_skills");
-                        //     $stmt->execute();
-                        //     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                        $query = "SELECT * FROM tbl_skills";
+                        $result = $conn->query($query);
 
-                        //     foreach ($result as $row) {
-                        //         echo '
-                        //             <div class="form-check">
-                        //                 <input class="form-check-input skills" type="checkbox" value="' . htmlspecialchars($row['skills']) . '" id="' . htmlspecialchars($row['skills']) . '">
-                        //                 <label class="form-check-label" for="' . htmlspecialchars($row['skills']) . '">' . htmlspecialchars($row['skills']) . '</label>
-                        //             </div>
-                        //         ';
-                        //     }
-                        // 
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                $skillName = htmlspecialchars($row['skills']);
+                                echo '
+                                    <div class="form-check">
+                                        <input class="form-check-input skills" name="skills[]" type="checkbox" value="' . $skillName . '" id="' . $skillName . '">
+                                        <label class="form-check-label" for="' . $skillName . '">' . $skillName . '</label>
+                                    </div>
+                                ';
+                            }
+                        }
                         ?>
                     </div>
                     <br>
                     <p class="poppins-regular">Your skills:
-                    <div id="selected-skills-container" class="skills-container"></div>
+                        <div id="selected-skills-container" class="skills-container"></div>
                     </p>
+                    <p id="check_message"></p>
 
                     <script>
-                        // Get all skill checkboxes
                         const skillCheckboxes = document.querySelectorAll('.form-check-input.skills');
                         const selectedSkillsContainer = document.getElementById('selected-skills-container');
 
-                        // Function to update the displayed skills
                         function updateSelectedSkills() {
-                            // Clear the container first
                             selectedSkillsContainer.innerHTML = '';
-
-                            // Loop through the checkboxes and display checked skills with styles
                             skillCheckboxes.forEach(checkbox => {
                                 if (checkbox.checked) {
                                     const skillLabel = document.querySelector(`label[for="${checkbox.id}"]`);
                                     const skillDisplay = document.createElement('span');
                                     skillDisplay.textContent = skillLabel.textContent;
-                                    skillDisplay.className = 'displayed-skill'; // Class for displayed skills
-
-                                    // Copy the styles of the checkbox label
+                                    skillDisplay.className = 'displayed-skill';
                                     skillDisplay.style.backgroundColor = window.getComputedStyle(skillLabel).backgroundColor;
                                     skillDisplay.style.color = window.getComputedStyle(skillLabel).color;
-                                    skillDisplay.style.padding = '10px 15px'; // Padding
-                                    skillDisplay.style.borderRadius = '5px'; // Rounded corners
-                                    skillDisplay.style.fontSize = '14px'; // Match font size
-                                    skillDisplay.style.fontWeight = 'bold'; // Bold text
-                                    skillDisplay.style.margin = '2px'; // Add margin between items
+                                    skillDisplay.style.padding = '10px 15px';
+                                    skillDisplay.style.borderRadius = '5px';
+                                    skillDisplay.style.fontSize = '14px';
+                                    skillDisplay.style.fontWeight = 'bold';
+                                    skillDisplay.style.margin = '2px';
                                     selectedSkillsContainer.appendChild(skillDisplay);
                                 }
                             });
                         }
 
-                        // Add event listeners to all skill checkboxes
                         skillCheckboxes.forEach(checkbox => {
                             checkbox.addEventListener('change', updateSelectedSkills);
                         });
+
+                        document.getElementById("myForm").addEventListener("submit", function(event) {
+                        let checkboxes = document.querySelectorAll('.form-check-input.skills'); // Select all checkboxes
+                        let checked = Array.from(checkboxes).some(checkbox => checkbox.checked); // Check if at least one is checked
+                        message = document.getElementById("check_message")
+                        if (!checked) {
+                            message.textContent = "Please select at least one skill.";
+                            message.style.color = "red";
+                            event.preventDefault();
+                        }else{
+                            message.textContent = "";
+                        }
+
+                        
+                        
+                        });
+
+                        function checkPassword(){
+                            const password = document.getElementById("password").value;
+                            const errorMessage = document.getElementById("error-message");
+                            const minLength = 8;
+                            const uppercaseRegex = /[A-Z]/;
+                            const numberRegex = /[0-9]/;
+                            const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+                            if (password.length < minLength) {
+                                errorMessage.textContent = "Password must be at least 8 characters long.";
+                                event.preventDefault();
+                                return false;
+                            }
+                            if (!uppercaseRegex.test(password)) {
+                                errorMessage.textContent = "Password must contain at least one uppercase letter.";
+                                event.preventDefault();
+                                return false;
+                            }
+                            if (!numberRegex.test(password)) {
+                                errorMessage.textContent = "Password must contain at least one number.";
+                                event.preventDefault();
+                                return false;
+                            }
+                            if (!specialCharRegex.test(password)) {
+                                errorMessage.textContent = "Password must contain at least one special character.";
+                                event.preventDefault();
+                                return false;
+                            }
+                
+                            errorMessage.textContent = "";
+                            return true;
+
+                        }
+
                     </script>
 
                     <div class="btn_sub d-flex justify-content-between mt-3 mb-3">
                         <a href="signup.php" style="color:#161D6F">Back</a>
-                        <button type="submit" class="btn btn-primary">Next Step</button>
+                        <button type="submit" class="btn submit-btn">next step</button>
                     </div>
                 </form>
 
             </div>
         </div>
-
     </div>
-
-
-
 
     <footer class="blockquote-footer text-white m-0 text-center" style="background-color: #161D6F;">
         <p>&copy; 2024 JobConnext. All rights reserved.</p>
@@ -207,7 +251,60 @@ include "../db_con/db_connection.php";
         </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST["username"] ?? '');
+    $email = filter_var($_POST["email"] ?? '', FILTER_SANITIZE_EMAIL);
+    $password = $_POST["password"] ?? '';
+    $skills = $_POST["skills"] ?? [];
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid email format.");
+    }
+
+    if (!preg_match('/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/', $password)) {
+        die("Password must contain at least 8 characters, 1 uppercase, 1 number, and 1 special character.");
+    }
+    
+
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    $stmt = $conn->prepare("INSERT INTO tbl_blue_collar_worker (username, email, hash_password) VALUES (?, ?, ?)");
+
+    if ($stmt) {
+        $stmt->bind_param("sss", $username, $email, $hashed_password);
+
+        if ($stmt->execute()) {
+            $worker_id = $stmt->insert_id;
+
+            if (!empty($skills)) {
+                $skill_stmt = $conn->prepare("INSERT INTO tbl_worker_skill_sets (worker_id, skills) VALUES (?, ?)");
+
+                if ($skill_stmt) {
+                    foreach ($skills as $skill) {
+                        $sanitized_skill = htmlspecialchars($skill, ENT_QUOTES, 'UTF-8');
+                        $skill_stmt->bind_param("is", $worker_id, $sanitized_skill);
+                        $skill_stmt->execute();
+                    }
+                    $skill_stmt->close();
+                }
+            }
+
+            $_SESSION['worker_id'] = $worker_id;
+
+            header("Location: Worker_step2.php");
+            exit();
+        }
+        $stmt->close();
+    }
+}
+
+$conn->close();
+?>
+

@@ -1,11 +1,9 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
-$servername = "localhost"; 
+$servername = "127.0.0.1"; 
 $username = "root";       
 $password = "";             
-$dbname = "job_connext";  
+$dbname = "Job_connext";  
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

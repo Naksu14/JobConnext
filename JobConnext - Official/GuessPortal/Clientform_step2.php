@@ -1,3 +1,15 @@
+<?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+
+session_start();
+ob_start();
+
+include "../db_con/db_connection.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,35 +97,35 @@
             <div class="text d-flex flex-row justify-content-center align-items-center">
                 <div class="container-fluid ps-5 pe-5 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: 80%; height: auto">
                     
-                    <form action="#" method="post" class="row g-3 needs-validation" novalidate>
+                    <form action="Clientform_step2.php" enctype="multipart/form-data" method="post" class="row g-3 needs-validation" novalidate>
 
                         <h3 class="poppins-bold text-center mb-5">Step 2: User Profile</h3>
                         <h4 >Personal Information</h4>
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">Firstname</label>
-                            <input type="text" class="form-control" id="validationCustom01"  required>
+                            <input type="text" class="form-control" id="validationCustom01" name="firstname" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">Middlename</label>
-                            <input type="text" class="form-control" id="validationCustom01"  required>
+                            <input type="text" class="form-control" id="validationCustom01" name="middlename" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">Lastname</label>
-                            <input type="text" class="form-control" id="validationCustom01"  required>
+                            <input type="text" class="form-control" id="validationCustom01" name="lastname" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
     <label for="validationCustom01" class="form-label">Phone number</label>
-    <input type="text" class="form-control" id="validationCustom01" placeholder="Phone number" 
-           pattern="^\+63-\d{3}-\d{3}-\d{4}$" maxlength="16" required oninput="formatPhoneNumber(this)">
+    <input type="text" class="form-control" id="validationCustom01"
+           pattern="^\+63-\d{3}-\d{3}-\d{4}$" maxlength="16" name="phone_no" required oninput="formatPhoneNumber(this)">
     <div class="valid-feedback">
         Looks good!
     </div>
@@ -149,9 +161,9 @@
 </script>
 
 
-                        <div class="col-md-7">
+<div class="col-md-7">
                             <label for="validationCustom01" class="form-label">Bio</label>
-                            <input type="text" class="form-control" id="validationCustom01" required>
+                            <input type="text" class="form-control" id="validationCustom01" name="bio" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
@@ -159,74 +171,55 @@
                         <h4 >Address Information</h4>
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">Country</label>
-                            <input type="text" class="form-control" id="validationCustom01"  required>
+                            <input type="text" class="form-control" id="validationCustom01" name="country" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">City</label>
-                            <input type="text" class="form-control" id="validationCustom01"  required>
+                            <input type="text" class="form-control" id="validationCustom01" name="city" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">Region</label>
-                            <input type="text" class="form-control" id="validationCustom01"  required>
+                            <input type="text" class="form-control" id="validationCustom01" name="region" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">Province</label>
-                            <input type="text" class="form-control" id="validationCustom01" required>
+                            <input type="text" class="form-control" id="validationCustom01" name="province" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">Barangay</label>
-                            <input type="text" class="form-control" id="validationCustom01" required>
+                            <input type="text" class="form-control" id="validationCustom01" name="barangay" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
                         </div>
                         <div class="col-md-4">
                             <label for="validationCustom01" class="form-label">Postal Code</label>
-                            <input type="text" class="form-control" id="validationCustom01" required>
+                            <input type="text" class="form-control" id="validationCustom01" name="postal_code" required>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
                         </div>
-                        <h4>Resume</h4>
-                        <p>Attach your resume here</p>
-                        <p class="file-note">PDF file only</p>
-
-                        <div class="resume-upload">
-                            <label for="resume-upload" class="upload-btn">Attach</label>
-                            <input type="file" id="resume-upload" class="form-control-file" accept=".pdf" required>
-                            <p class="file-status" id="file-status">No file attached yet</p>
-                        </div>
+                        
                         <script>
-                            const fileInput = document.getElementById('resume-upload');
-                            const fileStatus = document.getElementById('file-status');
-
-                            fileInput.addEventListener('change', () => {
-                                if (fileInput.files.length > 0) {
-                                    fileStatus.textContent = fileInput.files[0].name; // Display the selected file name
-                                    fileStatus.style.color = "#000"; // Change text color to black
-                                } else {
-                                    fileStatus.textContent = "No file attached yet";
-                                    fileStatus.style.color = "gray";
-                                }
-                            });
+                            
                         </script>
                         <div class="btn_sub d-flex justify-content-between mt-3 mb-3">
                             <a href="Clientform_step1.php" style="color:#000080"><span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8"/>
 </svg></span>Go back to Step 1</a>
-                            <a href="Clientform_step3.php"><button type="button" class="btn submit-btn">Sign Up</button></a>
+                           <button type="submit" class="btn submit-btn">Sign Up</button>
                         </div>
                     </form>
 
@@ -249,3 +242,61 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Debugging: Check if POST data is received
+    if (empty($_POST)) {
+        die("Error: No form data received.");
+    }
+
+    // Required fields validation
+    $required_fields = ['firstname', 'middlename', 'lastname', 'phone_no', 'bio', 'country', 'city', 'region', 'province', 'barangay', 'postal_code'];
+    foreach ($required_fields as $field) {
+        if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
+            die("Error: Missing required field: $field");
+        }
+    }
+
+    $client_id= $_SESSION['client_id'];
+    $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
+    $lastname = $_POST['lastname'];
+    $phone_no = $_POST['phone_no'];
+    $bio = $_POST['bio'];
+    $country = $_POST['country'];
+    $city = $_POST['city'];
+    $region = $_POST['region'];
+    $province = $_POST['province'];
+    $barangay = $_POST['barangay'];
+    $postal_code = $_POST['postal_code'];
+
+    // Insert user profile data using a prepared statement
+    $sql = "INSERT INTO tbl_client_information
+        (client_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        die("Error preparing SQL statement: " . $conn->error);
+    }
+
+    $stmt->bind_param("ssssssssssss", $client_id, $firstname, $middlename, $lastname, $phone_no, $bio, $country, $city, $region, $province, $barangay, $postal_code);
+    
+    if (!$stmt->execute()) {
+        die("Error inserting data into tbl_worker_information: " . $stmt->error);
+    }
+    
+
+    
+
+    // Redirect to the next step upon success
+    ob_end_clean();
+    header("Location: Clientform_step3.php");
+    exit;
+}
+
+$conn->close();
+
+?>
