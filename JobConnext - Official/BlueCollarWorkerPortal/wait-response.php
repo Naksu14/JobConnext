@@ -197,8 +197,8 @@
             <div class="offer-area">
                 <div class="row job-card">
                     <div class="col-sm-12">
-                    <a href="../BlueCollarWorkerPortal/blue-collar-showjob.php">
-                            <div class="card" id="my-offer">
+                        <div class="card" id="my-offer">
+                            <a href="../BlueCollarWorkerPortal/blue-collar-showjob.php">
                                 <div class="job-header">
                                     <div class="profile-info">
                                         <div class="avatar">
@@ -229,21 +229,22 @@
                                         <span class="skill-tag purple">Electrician</span>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
                         </a>
                     </div>
                 </div>
                 <div class="row job-card">
                     <div class="col-sm-12">
-                    <a href="../BlueCollarWorkerPortal/blue-collar-showjob.php">
-                            <div class="card" id="my-offer">
+
+                        <div class="card" id="my-offer">
+                            <a href="../BlueCollarWorkerPortal/accepted-bluecollar.php">
                                 <div class="job-header">
                                     <div class="profile-info">
                                         <div class="avatar">
                                             <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                                         </div>
                                         <div class="details">
-                                            <h3>Supra Oracles</h3>
+                                            <h3>Supra Oracles Accepted</h3>
                                             <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
                                         </div>
                                     </div>
@@ -267,21 +268,21 @@
                                         <span class="skill-tag purple">Electrician</span>
                                     </div>
                                 </div>
-                            </div>
+                        </div>
                         </a>
                     </div>
                 </div>
                 <div class="row job-card">
                     <div class="col-sm-12">
-                    <a href="../BlueCollarWorkerPortal/blue-collar-showjob.php">
-                            <div class="card" id="my-offer">
+                        <div class="card" id="my-offer">
+                            <a href="../BlueCollarWorkerPortal/rejected-bluecollar.php">
                                 <div class="job-header">
                                     <div class="profile-info">
                                         <div class="avatar">
                                             <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                                         </div>
                                         <div class="details">
-                                            <h3>Supra Oracles</h3>
+                                            <h3>Supra Oracles Rejected</h3>
                                             <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
                                         </div>
                                     </div>
@@ -305,8 +306,8 @@
                                         <span class="skill-tag purple">Electrician</span>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

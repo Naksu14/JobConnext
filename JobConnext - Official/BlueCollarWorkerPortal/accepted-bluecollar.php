@@ -7,7 +7,7 @@
     <title>Job-connext - Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Assets/css/blue-colar-landing.css">
+    <link rel="stylesheet" href="../Assets/css/accepted-bluecolar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Source+Code+Pro:wght@200..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
@@ -73,6 +73,94 @@
 
         <div class="container worker_details">
             <div class="container worker_detail_header">
+                <div class="modal-settings">
+                    <div class="report-container">
+                        <img src="../Assets/image/bookmark.png" alt="">
+                        <span data-bs-toggle="modal" data-bs-target="#reportModal"
+                            onclick="showAlert()">
+                            Report
+                        </span>
+                    </div>
+                </div>
+                <div class="job-header">
+                    <div class="profile-info">
+                        <div class="avatar">
+                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                        </div>
+                        <div class="details">
+                            <h3>Supra Oracles</h3>
+                            <p>11/8/2024 to 11/13/2024</p>
+                            <p>Description</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="short-info-container">
+                    <div class="short-info">
+                        <img src="../Assets/image/Location.png" alt="" style="border: none;">
+                        <p>Makati</p>
+                    </div>
+                    <div class="short-info">
+                        <img src="../Assets/image/Stack of Money.png" alt="">
+                        <p>Php18,000₱-30,000₱</p>
+                    </div>
+                    <div class="short-info">
+                        <img src="../Assets/image/Applicant.png" alt="">
+                        <p>10 Applicants</p>
+                    </div>
+                    <div class="short-info">
+                        <img src="../Assets/image/ic_outline-email.png" alt="">
+                        <p>example@gmail.com</p>
+                    </div>
+                </div>
+                <div class="skills-worker-details">
+                    <p>Qualifications and Skills</p>
+                </div>
+
+                <div class="skills-available-details">
+                    <span class="skill-tag green">Welder</span>
+                    <span class="skill-tag purple">Electrician</span>
+                </div>
+
+                <div class="no-ex">
+                    <p>◦ No year of experience</p>
+                </div>
+                <div class="responsibilities">
+                    <h3>Responsibilities</h3>
+                    <ol>
+                        <li>Core Duties
+                            <ul>
+                                <li>Oversee and manage daily operations, ensuring efficiency and productivity.</li>
+                                <li>Collaborate with cross-functional teams to align and execute projects.</li>
+                                <li>Develop strategies to improve workflows and team outcomes.</li>
+                            </ul>
+                        </li>
+                        <li>Project Management
+                            <ul>
+                                <li>Plan, track, and report on projects, meeting timelines and quality standards.</li>
+                                <li>Communicate updates effectively with stakeholders.</li>
+                            </ul>
+                        </li>
+                        <li>Team & Client Interaction
+                            <ul>
+                                <li>Lead and support team members, fostering a positive work environment.</li>
+                                <li>Build and maintain client relationships, addressing concerns as needed.</li>
+                            </ul>
+                        </li>
+                        <li>Continuous Improvement
+                            <ul>
+                                <li>Identify improvement areas and propose innovative solutions.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div class="accepted-tab">
+                    <span>
+                        You are now accepted in this job work
+                    </span>
+                </div>
+                <div class="apply">
+                    <span>Job Ongoing</span>
+                </div>
             </div>
         </div>
         <div class=" page_content">
@@ -114,7 +202,6 @@
             <div class="offer-area">
                 <div class="row job-card">
                     <div class="col-sm-12">
-
                         <div class="card" id="my-offer">
                             <a href="../BlueCollarWorkerPortal/blue-collar-showjob.php">
                                 <div class="job-header">
@@ -150,8 +237,9 @@
                         </div>
                         </a>
                     </div>
+                </div>
+                <div class="row job-card">
                     <div class="col-sm-12">
-
                         <div class="card" id="my-offer">
                             <a href="../BlueCollarWorkerPortal/accepted-bluecollar.php">
                                 <div class="job-header">
@@ -187,6 +275,8 @@
                         </div>
                         </a>
                     </div>
+                </div>
+                <div class="row job-card">
                     <div class="col-sm-12">
                         <div class="card" id="my-offer">
                             <a href="../BlueCollarWorkerPortal/rejected-bluecollar.php">
@@ -222,23 +312,20 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
-                </div>
-
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-                    document.querySelectorAll(".button").forEach(button => {
-                        button.addEventListener("click", function() {
-                            document.querySelectorAll(".button").forEach(btn => btn.classList.remove("selected"));
-                            this.classList.add("selected");
-                        });
-                    });
-                </script>
-                <script>
-                    function showAlert() {
-                        Swal.fire({
-                            title: 'Report',
-                            html: `
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+                            document.querySelectorAll(".button").forEach(button => {
+                                button.addEventListener("click", function() {
+                                    document.querySelectorAll(".button").forEach(btn => btn.classList.remove("selected"));
+                                    this.classList.add("selected");
+                                });
+                            });
+                        </script>
+                        <script>
+                            function showAlert() {
+                                Swal.fire({
+                                    title: 'Report',
+                                    html: `
             <h6 style="color:red">Reasons for reporting</h6>
             <div class="reason-buttons">
                  <button id="reasons">Fraud or scam</button>
@@ -252,22 +339,22 @@
             <div class="message-report">Message Report ⚠️</div>
             <textarea class="message-box form-control" placeholder="Describe your issue..."></textarea>
         `,
-                            showCancelButton: true,
-                            confirmButtonText: 'Next: Upload Proof',
-                            cancelButtonText: 'Cancel',
-                            confirmButtonColor: '#161D6F',
-                            width: '45%'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                showUploadModal(); // Call the upload modal function
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Next: Upload Proof',
+                                    cancelButtonText: 'Cancel',
+                                    confirmButtonColor: '#161D6F',
+                                    width: '45%'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        showUploadModal(); // Call the upload modal function
+                                    }
+                                });
                             }
-                        });
-                    }
 
-                    function showUploadModal() {
-                        Swal.fire({
-                            title: 'Upload Proof',
-                            html: `
+                            function showUploadModal() {
+                                Swal.fire({
+                                    title: 'Upload Proof',
+                                    html: `
             <div class="container-fluid upload-border">
                 <div class="container upload-container">
                     <img src="../Assets/image/Vector1.png" alt="">
@@ -293,38 +380,38 @@
                 </div>
             </div>
         `,
-                            showCancelButton: true,
-                            confirmButtonText: 'Submit Report!',
-                            cancelButtonText: 'Cancel',
-                            confirmButtonColor: '#161D6F',
-                            width: '45%'
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                showFinalMessage(); // Call the final message
+                                    showCancelButton: true,
+                                    confirmButtonText: 'Submit Report!',
+                                    cancelButtonText: 'Cancel',
+                                    confirmButtonColor: '#161D6F',
+                                    width: '45%'
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        showFinalMessage(); // Call the final message
+                                    }
+                                });
                             }
-                        });
-                    }
 
-                    function showFinalMessage() {
-                        Swal.fire({
-                            title: 'Report Submitted!',
-                            text: 'Thank you for reporting. We will review your submission.',
-                            icon: 'success',
-                            confirmButtonText: 'OK',
-                            confirmButtonColor: '#161D6F'
-                        });
-                    }
+                            function showFinalMessage() {
+                                Swal.fire({
+                                    title: 'Report Submitted!',
+                                    text: 'Thank you for reporting. We will review your submission.',
+                                    icon: 'success',
+                                    confirmButtonText: 'OK',
+                                    confirmButtonColor: '#161D6F'
+                                });
+                            }
 
-                    // Trigger report modal on button click
-                    document.addEventListener("DOMContentLoaded", function() {
-                        document.getElementById("reportButton").addEventListener("click", showReportModal);
-                    });
-                </script>
+                            // Trigger report modal on button click
+                            document.addEventListener("DOMContentLoaded", function() {
+                                document.getElementById("reportButton").addEventListener("click", showReportModal);
+                            });
+                        </script>
 
 
-                <script src="client-rate.js">
+                        <script src="client-rate.js">
 
-                </script>
+                        </script>
 </body>
 
 </html>
