@@ -166,7 +166,7 @@ if (isset($_POST['g-recaptcha-response'])) {
             <h2 class="poppins-bold m-0">Sign <span style="color: #E46232;">In</span></h2>
 
             <form action="" method="post" class="d-flex flex-column mt-4">
-                <label for="usernameOremail" class="poppins-medium">Username or Email</label>
+                <label for="usernameOremail" class="poppins-medium ">Username or Email</label>
                 <input type="text" name="usernameOremail" id="usernameOremail" required>
 
                 <label for="password" class="poppins-medium">Password</label>
