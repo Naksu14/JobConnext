@@ -126,7 +126,7 @@ if (isset($_POST['g-recaptcha-response'])) {
             $error = "User not found!";
         }
     } else {
-        echo '<script>alert("Please Fill ReCaptcha")</script>';
+        $error = "Please Fill ReCaptcha!";
     }
 }
 
@@ -134,10 +134,7 @@ if (isset($_POST['g-recaptcha-response'])) {
 
 ?>
 
-<!-- Display errors if any -->
-<?php if (isset($error)) : ?>
-    <p style="color: red;"><?php echo $error; ?></p>
-<?php endif; ?>
+
 
 
 <!DOCTYPE html>
@@ -184,8 +181,8 @@ if (isset($_POST['g-recaptcha-response'])) {
 
                 <div class="g-recaptcha" data-sitekey="6LemMmUqAAAAAG2OKgk5lSoKL4LLBU8QOO5pKw-K"></div>
 
-                <?php if (isset($errorMsg)): ?>
-                    <p id="errorMsg" class="text-danger fs-6"><?= $errorMsg; ?></p>
+                <?php if (isset($error)) : ?>
+                    <p align="center" style="color: red;"><?php echo $error; ?></p>
                 <?php endif; ?>
 
                 <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
