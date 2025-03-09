@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Hash the password for security
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
     // Prepare SQL statement
     $stmt = $conn->prepare("INSERT INTO tbl_blue_collar_worker (username, email, hash_password) VALUES (?, ?, ?)");
