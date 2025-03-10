@@ -98,8 +98,8 @@ if (isset($_POST['g-recaptcha-response'])) {
             // List of user roles and their respective tables
             $user_types = [
                 "worker" => ["table" => "tbl_blue_collar_worker", "id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/blue-collar-land.php"],
-                "client" => ["table" => "tbl_client", "id" => "client_id", "redirect" => "../ClientPortal/client_home.php"]
-                //                ,"admin" => ["table" => "tbl_admin", "id" => "Admin_id", "redirect" => "../AdminPortal/AdminLandingPage.php"]
+                "client" => ["table" => "tbl_client", "id" => "client_id", "redirect" => "../ClientPortal/client_home.php"],
+                "admin" => ["table" => "tbl_admin", "id" => "Admin_id", "redirect" => "../AdminPortal/AdminLandingPage.php"]
             ];
 
             foreach ($user_types as $type => $data) {
