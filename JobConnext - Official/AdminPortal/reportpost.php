@@ -65,7 +65,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="post-content">
                 <div class="post-card">
                     <!-- Upper Section: Profile and Menu -->
@@ -126,18 +126,18 @@
                                         <i class="bi bi-three-dots"></i>
                                     </button>
                                 </div>
-                            
+
                             </div>
                             <div class="comments">
                                 <div class="rating">
                                     <span><b>Rate:</b></span>
                                     <button class="btn btn-rate">⭐⭐⭐⭐⭐</button>
                                 </div>
-                                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> 
+                                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                             </div>
                         </div>
 
-                        
+
 
                     </div><br>
                     <div class="report-sign">
