@@ -34,7 +34,7 @@
                     <ul>
                         <li>
                         <a href="../BlueCollarWorkerPortal/blue-collar-landing.php">Home</a>
-                            <a href="">Profile</a>
+                            <a href="../BlueCollarWorkerPortal/blue-collar-certificates.php">Profile</a>
                             <a href="../ClientPortal/client-message.php">Message</a>
                         </li>
                     </ul>
@@ -94,7 +94,7 @@
 
             <div class="container-fluid profile-nav">
                 <a href="client_profile.php" id="a">Application</a>
-                <a href="">Experiences</a>
+                <a href="../BlueCollarWorkerPortal/overview-profile.php" >Experiences</a>
                 <a href="blue-collar-certificates.php" id="active-nav">Certificate and others</a>
             </div>
 
