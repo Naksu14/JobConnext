@@ -39,7 +39,7 @@
                     <ul>
                         <li>
                             <a href="../BlueCollarWorkerPortal/blue-collar-landing.php">Home</a>
-                            <a href="../ClientPortal/client_profile.php">Profile</a>
+                            <a href="../BlueCollarWorkerPortal/blue-collar-certificates.php">Profile</a>
                             <a href="../ClientPortal/client-message.php">Message</a>
                         </li>
                     </ul>
