@@ -7,7 +7,7 @@
     <title>Job-connext - Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Assets/css/blue-collar-certificates.css">
+    <link rel="stylesheet" href="../Assets/css/application-bluecollar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -20,6 +20,7 @@
         rel="stylesheet">
     <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
 </head>
+
 
 <body>
     <div class="container-fluid text-center">
@@ -34,8 +35,8 @@
                     <ul>
                         <li>
                             <a href="../BlueCollarWorkerPortal/blue-collar-landing.php">Home</a>
-                            <a href="../BlueCollarWorkerPortal/blue-collar-certificates.php">Profile</a>
-                            <a href="../ClientPortal/client-message.php">Message</a>
+                            <a href="../BlueCollarWorkerPortal/overview-profile.php">Profile</a>
+                            <a href="">Message</a>
                         </li>
                     </ul>
                 </div>
@@ -93,9 +94,9 @@
 
 
             <div class="container-fluid profile-nav">
-                <a href="../BlueCollarWorkerPortal/application-bluecollar.php" id="a">Application</a>
+                <a href="../BlueCollarWorkerPortal/application-bluecollar.php" id="active-nav">Application</a>
                 <a href="../BlueCollarWorkerPortal/overview-profile.php">Experiences</a>
-                <a href="blue-collar-certificates.php" id="active-nav">Certificate and others</a>
+                <a href="blue-collar-certificates.php">Certificate and others</a>
             </div>
 
             <div class="create-header">
@@ -104,51 +105,96 @@
                 </div>
             </div>
 
-            <div class="container certifications">
-                <span>Certifications</span>
+            <div class="container about">
+                <span>About</span>
             </div>
             <div class="all-cert">
-                <ol>
-                    <li>
-                        Occupational Safety and Health (OSHA) Certification
-                    </li>
-                    <li>
-                        First Aid and CPR Certification
-                    </li>
-                    <li>
-                        TESDA National Certificate (NC) – (e.g., NC II in Electrical Installation and Maintenance, Plumbing, Welding, etc.)
-                    </li>
-                    <li>
-                        Forklift Operator License
-                    </li>
-                    <li>
-                        Hazardous Materials (HAZMAT) Certification
-                    </li>
-                    <li>
-                        Workplace Hazardous Materials Information System (WHMIS)
-                    </li>
-                </ol>
+                <p>
+                    I am a skilled and hardworking [job title, e.g., Electrician] with [X years] of experience in [specialization, e.g., residential and commercial wiring]. Known for my strong work ethic, attention to detail, and commitment to safety, I take pride in delivering quality results on time. I thrive in hands-on roles and enjoy working as part of a team to tackle challenging projects.
+                </p>
             </div>
-            <div class="container certifications">
-                <span>Accomplishments</span>
+            <div class="container my-skills">
+                <span>Skills</span>
             </div>
             <div class="all-cert">
                 <ul>
                     <li>
-                        Successfully completed [specific number] of [projects/installations/orders].
+                        Technical Skills: technical expertise, such as wiring, welding, machinery maintenance
                     </li>
                     <li>
-                        Reduced [time/costs/downtime] by [specific percentage] through innovative methods.
+                        Tools & Equipment: Proficient in using power tools, forklifts, lathe machines
                     </li>
                     <li>
-                        Consistently met or exceeded safety standards and quality benchmarks.
+                        Soft Skills: teamwork, communication, time management, problem-solving
                     </li>
                 </ul>
             </div>
-            <div class="add-info">
-                <div class="button-add-info">
-                    <button>Add Info</button>
+            <div class="resume">
+                <span>
+                    Resume
+                </span>
+                <div class="resume-details">
+                    <div class="resume-left">
+                        <img src="../Assets/image/resume.png" alt="">
+                        <div class="resume-file">
+                            <span id="file-name">
+                                About me resume.pdf
+                            </span>
+                            <span id="file-size">
+                                234kb
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="resume-right">
+                        <div class="download">
+                            <span>
+                                Download
+                            </span>
+                            <img src="../Assets/image/Downloading Updates.png" alt="">
+                        </div>
+                        <div class="update">
+                            <span>
+                                Update
+                            </span>
+                            <img src="../Assets/image/refresh 1.png" alt="">
+                        </div>
+                    </div>
                 </div>
+            </div>
+            <div class="personal-info">
+                <span>
+                    Personal Information
+                </span>
+                <ul>
+                    <li>
+                        Full Name: [Your Name]
+                    </li>
+                    <li>
+                        Date of Birth: [MM/DD/YYYY]
+                    </li>
+                    <li>
+                        Age: [Your Age]
+                    </li>
+                    <li>
+                        Address: [Street, City, State, Country]
+                    </li>
+                    <li>
+                        Contact Number: [+Country Code XXXXXXXXXX]
+                    </li>
+                    <li>
+                        Email Address: [Your Email Address]
+                    </li>
+                    <li>
+                        Nationality: [Your Nationality]
+                    </li>
+                    <li>
+                        Civil Status: [Single/Married/Divorced/Widowed]
+                    </li>
+                    <li>
+                        Languages Spoken: [List languages, e.g., English, Tagalog, etc.]
+                    </li>
+                </ul>
             </div>
 
 
@@ -156,6 +202,7 @@
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
             </script>
+
 </body>
 
 </html>

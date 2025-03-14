@@ -54,7 +54,7 @@
     </div>
     <div class="container-fluid main-content">
         <div class="settings-container">
-            <a href="profile-settings.php">
+            <a href="../BlueCollarWorkerPortal/profile-settings.php">
                 <img src="../Assets/image/Settings.png" alt="">
             </a>
         </div>
@@ -94,7 +94,7 @@
 
 
             <div class="container-fluid profile-nav">
-                <a href="" id="a">Application</a>
+                <a href="../BlueCollarWorkerPortal/application-bluecollar.php">Application</a>
                 <a href="../BlueCollarWorkerPortal/overview-profile.php" id="active-nav">Experiences</a>
                 <a href="blue-collar-certificates.php">Certificate and others</a>
             </div>
