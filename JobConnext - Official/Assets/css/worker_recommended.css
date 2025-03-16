@@ -156,6 +156,9 @@
 
 .page_content{
     /* border: 1px solid; */
+    max-height: 1000px;
+    overflow-y: auto;
+
 }
 
 .content-filter{
@@ -177,10 +180,6 @@
     
 }
 
-.col-2{
-    /* border: 1px solid; */
-}
-
 .seek-worker{
     display: flex;
 
@@ -198,9 +197,6 @@
     white-space: nowrap;
 }
 
-.col-7{
-    /* border: 1px solid; */
-}
 
 #freelance-search{
     width: 100%;
@@ -222,9 +218,7 @@
     font-weight: 500;
 }
 
-#content-title{
-    /* border: 1px solid; */
-}
+
 
 #content-title p{
     border: 1px solid;

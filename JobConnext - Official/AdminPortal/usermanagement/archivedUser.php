@@ -1,8 +1,8 @@
 <style>
-.button-ArchivedUser{
-    background-color: var(--dwhite);
-    
-}
+    .button-ArchivedUser {
+        background-color: var(--dwhite);
+
+    }
 </style>
 
 <table class="table table-hover">
@@ -27,8 +27,8 @@
             <td>+1234567890</td>
             <td>Archived</td>
             <td>
-                <button class="btn btn-primary btn-sm">Restore</button>
-                <button class="btn btn-danger btn-sm">Delete Permanently</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="restoreItem()">Restore</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="deleteItem()">Delete</button>
             </td>
         </tr>
         <!-- Archived Client User -->
@@ -40,8 +40,8 @@
             <td>+0987654321</td>
             <td>Archived</td>
             <td>
-                <button class="btn btn-primary btn-sm">Restore</button>
-                <button class="btn btn-danger btn-sm">Delete Permanently</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="restoreItem()">Restore</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="deleteItem()">Delete</button>
             </td>
         </tr>
         <!-- Archived Blue Collar User -->
@@ -53,8 +53,8 @@
             <td>+1122334455</td>
             <td>Archived</td>
             <td>
-                <button class="btn btn-primary btn-sm">Restore</button>
-                <button class="btn btn-danger btn-sm">Delete Permanently</button>
+                <button type="button" class="btn btn-primary btn-sm" onclick="restoreItem()">Restore</button>
+                <button type="button" class="btn btn-danger btn-sm" onclick="deleteItem()">Delete</button>
             </td>
         </tr>
     </tbody>
