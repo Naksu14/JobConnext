@@ -1,3 +1,42 @@
+<?php
+include "../db_con/db_connection.php";
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (!isset($_POST['description']) || !isset($_POST['client_id'])) {
+        echo "Missing form data!";
+        exit;
+    }
+
+    $client_id = trim($_POST['client_id']);
+    $description = trim($_POST['description']);
+
+    if (empty($description)) {
+        echo "Description is required.";
+        exit;
+    }
+
+    $stmt = $conn->prepare("INSERT INTO tbl_client_jobpost (client_id, description) VALUES (?, ?)");
+    $stmt->bind_param("is", $client_id, $description);
+
+
+    if ($stmt->execute()) {
+        echo "New job record created successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,6 +69,7 @@
 </head>
 
 <body>
+
     <div class="nav_bar container-fluid text-center">
         <div class="header">
             <div class="row">
@@ -207,57 +247,6 @@
                             </a>
                         </div>
                     </div>
-                    <!-- <div class="row recommended-card">
-                        <div class="col-lg-12">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="details">
-                                            <h3>Alex Stark </h3>
-                                            <p>ID:3407955</p>
-                                        </div>
-                                    </div>
-                                    <div class="job-dates">
-                                        <div class="menu">•••</div>
-                                    </div>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row recommended-card">
-                        <div class="col-12">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="details">
-                                            <h3>Joseph Vergara</h3>
-                                            <p>ID:3824155</p>
-                                        </div>
-                                    </div>
-                                    <div class="job-dates">
-                                        <div class="menu">•••</div>
-                                    </div>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-
                     <div class="row title-section">
                         <div class="col other-offers">
                             <p>
@@ -309,80 +298,9 @@
                 </div>
 
             </div>
-
-
-
         </div>
-
-
-
     </div>
     </div>
-
-
-    <!-- <div class="modal fade" id="postModal" tabindex="-1" aria-labelledby="postModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
-                    <input type="text" class="input-modal" placeholder="Title...">
-                    <img src="../Assets/image/iconamoon_exit-light.png" alt="">
-                </div>
-                <div class="container description-box">
-                    <textarea class="form-control" id="form-control-1" rows="3"> Description </textarea>
-                </div>
-                <div class="container 1st-layer">
-                    <div class="job-details">
-                        <div class="job-options">
-                            <h3>What kind of job do you offer?</h3>
-                            <div class="job-offer-options">
-                                <button class="job-option construction">Construction</button>
-                                <button class="job-option cleaning">Cleaning</button>
-                            </div>
-                            <div class="others">
-                                <label for="others" style="margin-top:13px;">Others:</label>
-                                <input type="text" id="others" placeholder="Enter job type">
-                                <button class="add-button">Add</button>
-                            </div>
-                            <div class="added-jobs">
-                                <span class="added">Added:</span>
-                                <span class="added-job welder">Welder</span>
-                                <span class="added-job electrician">Electrician</span>
-                            </div>
-                            <div class="salary-range">
-                                <label>Salary Range:</label>
-                                <p>₱_______ - ₱_______</p>
-                            </div>
-                            <div class="file-attachments">
-                                <label>File Attachment/s:</label>
-
-                                <p><img src="../Assets/image/material-symbols_image-outline.png" alt="">No File Attach</p>
-                                <p><img src="../Assets/image/mdi_file-outline.png" alt="">No File Attach</p>
-                            </div>
-                        </div>
-                        <div class="job-status">
-                            <h3>Job Status: <span class="active">Active</span></h3>
-                            <label>Location:</label>
-                            <textarea placeholder="Makati"></textarea>
-                            <div class="applicants-needed">
-                                <label>How many applicants do you need?</label>
-                                <input type="number" value="10" min="1" id="applicant-count">
-                            </div>
-                            <div class="experience">
-                                <label>Year of experience:</label>
-                                <input type="number" value="0" min="0" id="applicant-count">
-                            </div>
-                            <div class="deadline">
-                                <label>Job offer deadline:</label>
-                                <input type="date" value="00/00/0000" id="date">
-                            </div>
-                        </div>
-                    </div>
-                    <button class="edit-button">Edit</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -424,12 +342,14 @@
             Swal.fire({
                 title: 'Post a Job',
                 html: `
+                    <form id="job-posting-form" method="POST" action="../ClientPortal/create_jobpost.php">
                      <div class="modal-header">
                     <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
                     <input type="text" class="input-modal" placeholder="Title...">
                 </div>
                 <div class="container description-box">
-                    <textarea class="form-control" id="form-control-1" rows="3"> Description </textarea>
+                    <textarea class="form-control" id="form-control-1" rows="3" placeholder="Enter description"></textarea>
+
                 </div>
                 <div class="container 1st-layer">
                     <div class="job-details">
@@ -482,6 +402,7 @@
             </div>
         </div>
     </div> 
+    </form>
                 `,
                 width: '50%',
                 showCloseButton: true,
@@ -489,7 +410,30 @@
                 confirmButtonText: 'Post',
                 showCancelButton: true,
                 cancelButtonText: 'Cancel',
-                confirmButtonColor: '#161D6F'
+                confirmButtonColor: '#161D6F',
+
+                preConfirm: () => {
+                    let description = document.getElementById("form-control-1").value.trim();
+
+                    if (!description) {
+                        Swal.showValidationMessage("Description is required!");
+                        return false;
+                    }
+
+                    let clientId = 2001; 
+
+                    return fetch('client_home.php', { 
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/x-www-form-urlencoded'
+                            },
+                            body: `description=${encodeURIComponent(description)}&client_id=${clientId}`
+                        })
+                        .then(response => response.text()) // Parse response as tex
+                        .catch(error => {
+                            Swal.showValidationMessage("Request failed: " + error);
+                        });
+                }
             });
         });
     </script>
