@@ -10,21 +10,21 @@
     <link rel="stylesheet" href="../Assets/css/style.css">
 </head>
 <body>
-    
+
 <div class="container-fluid vh-100 d-flex align-items-center justify-content-center position-relative">
     <div class="container-fluid ps-5 pe-5 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: auto;">
         <img src="../Assets/image/Logo1.png" width="90px" height="90px" alt="logo">
         <h2 class="poppins-bold m-0">Forgot <span style="color: #E46232;">Password</span></h2>
 
         <!-- // change this in form -->
-        <div class="d-flex flex-column mt-4">  
+        <form action="email_verification.php" method="post" class="d-flex flex-column mt-4">  
             <label for="email" class="poppins-medium">Email</label>
             <input type="text" name="email" id="email" required>
 
             <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
-                <a href="OTPVerification.php"><button class="button-midblue" name="send_email_btn" style="width: 200px;">Send</button></a>
+                <button class="button-midblue" name="send_email_btn" style="width: 200px;" type="submit">Send</button>
             </div>
-        </div>
+        </form>
 
         <p class="poppins-regular">Remember your password? <span><a href="SIgn_In.php" style="text-decoration: none; color: #161D6F;">Sign In</a></span></p>
     </div>

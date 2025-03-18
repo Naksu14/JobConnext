@@ -97,7 +97,7 @@ if (isset($_POST['g-recaptcha-response'])) {
 
             // List of user roles and their respective tables
             $user_types = [
-                "worker" => ["table" => "tbl_blue_collar_worker", "id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/blue-collar-land.php"],
+                "worker" => ["table" => "tbl_blue_collar_worker", "id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/rejected-bluecollar.php"],
                 "client" => ["table" => "tbl_client", "id" => "client_id", "redirect" => "../ClientPortal/client_home.php"],
                 "admin" => ["table" => "tbl_admin", "id" => "Admin_id", "redirect" => "../AdminPortal/AdminLandingPage.php"]
             ];
@@ -190,7 +190,7 @@ if (isset($_POST['g-recaptcha-response'])) {
                 </div>
             </form>
 
-            <p class="poppins-regular">Create account? <span><a href="SIgn_Up.php" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
+            <p class="poppins-regular">Create account? <span><a href="Sign_Up.php" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
         </div>
     </div>
 
