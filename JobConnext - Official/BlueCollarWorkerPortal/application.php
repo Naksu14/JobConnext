@@ -15,7 +15,7 @@
     <nav class="nav">
       <a href="#">Home</a>
       <a href="#">Profile</a>
-      <a href="#">Messages</a>
+      <a href="blue-collar-worker-message.php">Messages</a>
     </nav>
     <button value="logout-btn" id="Logout">Log out</button>
   </header>
@@ -37,9 +37,9 @@
         <span class="skill electrician">Electrician</span>
     </div>
     <nav class="navbar">
-        <a href="application.php" class="nav-link active">Application</a>
-        <a href="experiences.php" class="nav-link">Experiences</a>
-        <a href="certificates.php" class="nav-link">Certificates & Others</a>
+        <a href="application.html" class="nav-link active">Application</a>
+        <a href="experiences.html" class="nav-link">Experiences</a>
+        <a href="certificates.html" class="nav-link">Certificates & Others</a>
     </nav>
     <hr class="separator">
      

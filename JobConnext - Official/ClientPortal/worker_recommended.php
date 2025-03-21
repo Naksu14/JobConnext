@@ -27,335 +27,62 @@
 </head>
 
 <body>
-    <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col">
-                <div class="container-fluid" id="logo">
-                    <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
-                </div>
-            </div>
-            <div class="col">
-                <div class="container-fluid" id="nav_list">
-                    <ul>
-                        <li>
-                            <a href="client_home.php">Home</a>
-                            <a href="../ClientPortal/client_profile.php">Profile</a>
-                            <a href="../ClientPortal/client-message.php">Message</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col">
-                <div class="container-fluid">
-                    <a href="../GuessPortal/LandingPage.php">
-                        <button id="logout_butt">
-                            Logout
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+                <?php 
+                    $job_offeredQRY = "SELECT * FROM tbl_client_jobpost";
+                    $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
+                        while ($row = mysqli_fetch_assoc($job_offeredEXE)){
 
-    <div class="container-fluid custom-container" id="main_content">
-        <div class="add_job">
-            <div class="dp_photo">
-                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
-                <input type="text" class="custom-input" placeholder="Post Something..." id="post_something">
-            </div>
-        </div>
+                        $client_id = $row['client_id'];
+                        $job_salary = $row['salary']; 
+                        $num_applicants = $row['applicants'];
+                        $yr_Exp = $row['year_exp'];
+                        $job_loc = $row['location'];
+                        $date_posted = $row['date_posted'];
+                        $job_offer = $row['job_offer'];
 
-        <div class="worker_details">
-            <div class="worker_detail_header">
-                <div class="job-header">
-                    <div class="profile-info">
-                        <div class="avatar">
-                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                        </div>
-                        <div class="details">
-                            <h3>Maxwell Cruz</h3>
-                            <p>ID:3424675</p>
-                        </div>
-                    </div>
-                    <div class="report-menu">
-                        Report
-                    </div>
-                </div>
-                <div class="skills-worker-details">
-                    <p>Skills:</p>
-                </div>
-                <div class="skills-available-details">
-                    <span class="skill-tag green">Welder</span>
-                    <span class="skill-tag purple">Electrician</span>
-                </div>
-                <div class="container-fluid worker-info">
-                    <h3>
-                        Details
-                    </h3>
-                    <div class="full-details">
-                        <p>
-                        <h5>Full Name</h5>
-                        </p>
-                        <p>
-                            Maxwell Cruz
-                        </p>
-                        <p>
-                        <h5>Bio</h5>
-                        </p>
-                        <p>
-                            Ready to serve you
-                        </p>
-                    </div>
-                    <h3>
-                        Contacts
-                    </h3>
-                    <div class="contacts">
-                        <p>
-                        <h5>Email</h5>
-                        </p>
-                        <p>
-                            Maxwell@gmail.com
-                        </p>
-                        <p id="phone_no">
-                        <h5>Phone no.</h5>
-                        </p>
-                        <p>
-                            +6392314241222
-                        </p>
-                        <div class="email_butt">
-                            <button>
-                                Email
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="page_content">
-            <div class="row content-header">
-                <div class="col-3">
-                    <div class="container-fluid content-filter">
-                        <button>
-                            <img src="../Assets/image/filter (1) 1.png" alt="">
-                            <span>
-                                Filter
-                            </span>
-                        </button>
-                    </div>
-                </div>
+                        
+                        $job_offered_clientname = "SELECT * FROM tbl_client_information WHERE client_id = 2001";
+                        $job_ex_offered_name = mysqli_query($conn, $job_offered_clientname);
+                        $getjobdata_offered = mysqli_fetch_assoc($job_ex_offered_name);
 
-                <div class="col-7">
-                    <div class="container-fluid freelance-search">
-                        <input type="text" placeholder="  Search for workers..." id="freelance-search">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="seek-worker">
-                        <button>
-                            <span>
-                                Seek
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+                        $clientoffered_Fname = $getjobdata_offered['firstname'];
+                        $clientoffered_Mname = $getjobdata_offered['middlename'];
+                        $clientoffered_Sname = $getjobdata_offered['lastname'];     
+                        $company_name = $getjobdata_offered['company_name'];
 
-            <div class="row title-section">
-                <div class="col content-title">
-                    <p>
-                        My Job Offer
-                    </p>
-                </div>
-            </div>
+                        $job_offered_companyname_QRY = "SELECT * FROM tbl_client_information";
+                        $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
+                        $job_offered_companyGET = mysqli_fetch_assoc($job_offered_companyEXE);
 
-            <div class="row job-card">
-                <div class="col-12">
-                    <a href="../ClientPortal/client-showjob.php" class="card-link">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Mr. Fixer</h3>
-                                        <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                    <p>11/8/2024 to 11/13/2024</p>
-                                </div>
-                            </div>
-                            <div class="job-body">
-                                <div class="info">
-                                    <p>
-                                        <strong>Location:</strong>
-                                        Makati
-                                    </p>
-                                    <p>
-                                        <strong>Years of experience:</strong> 0
-                                    </p>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills needed:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                            <div class="job-footer">
-                                <p>5 Applied</p>
-                                <p>0 Accepted</p>
-                            </div>
-                        </div>
-                </div>
-                </a>
-            </div>
-
-            <div class="row title-section">
-                <div class="col recommend-workers">
-                    <p>
-                        Recommended workers
-                    </p>
-                </div>
-            </div>
-
-            <div class="container-fluid recommendation">
-                <div class="row recommended-card">
-                    <div class="col-12">
-                        <a href="worker_recommended.php" class="card-link">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
-                                                alt="Avatar">
-                                        </div>
+                        $company_name = $job_offered_companyGET['company_name'];  
+                ?>                                                                                  
+                                               
                                         <div class="details">
-                                            <h3>Maxwell Cruz</h3>
-                                            <p>ID:3424675</p>
+                                            <h3><?php echo $company_name?></h3>
+                                            <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
                                         </div>
                                     </div>
-                                    <div class="menu">
-                                        •••
+                                    <div class="job-dates">
+                                        <div class="menu">•••</div>
+                                        <p>11/8/2024 to 11/13/2024</p>
                                     </div>
                                 </div>
-                                <div class="skills">
-                                    <p><strong>Skills:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <!-- <div class="row recommended-card">
-                    <div class="col-12">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                <div class="job-body">
+                                    <div class="info">
+                                        <p>
+                                            <strong>Location:</strong>
+                                            Taguig
+                                        </p>
+                                        <p>
+                                            <strong>Years of experience:</strong> 2
+                                        </p>
                                     </div>
-                                    <div class="details">
-                                        <h3>Alex Stark </h3>
-                                        <p>ID:3407955</p>
+                                    <div class="skills">
+                                        <p><strong>Skills needed:</strong></p>
+                                        <span class="skill-tag yellow">Truck Driver</span>
                                     </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                </div>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills:</strong></p>
-                                <span class="skill-tag green">Welder</span>
-                                <span class="skill-tag purple">Electrician</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row recommended-card">
-                    <div class="col-12">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Joseph Vergara</h3>
-                                        <p>ID:3824155</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                </div>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills:</strong></p>
-                                <span class="skill-tag green">Welder</span>
-                                <span class="skill-tag purple">Electrician</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
-                <div class="row title-section">
-                    <div class="col other-offers">
-                        <p>
-                            Other Job Offers
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row other-offer">
-                <div class="col-12">
-                    <div class="card" id="my-offer">
-                        <div class="job-header">
-                            <div class="profile-info">
-                                <div class="avatar">
-                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                </div>
-                                <div class="details">
-                                    <h3>Highway express</h3>
-                                    <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
-                                </div>
-                            </div>
-                            <div class="job-dates">
-                                <div class="menu">•••</div>
-                                <p>11/8/2024 to 11/13/2024</p>
-                            </div>
-                        </div>
-                        <div class="job-body">
-                            <div class="info">
-                                <p>
-                                    <strong>Location:</strong>
-                                    Taguig
-                                </p>
-                                <p>
-                                    <strong>Years of experience:</strong> 2
-                                </p>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills needed:</strong></p>
-                                <span class="skill-tag yellow">Truck Driver</span>
-                            </div>
-                        </div>
-                        <div class="job-footer">
-                            <p>5 Applied</p>
-                            <p>0 Accepted</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+                                </div><br>
+                                <?php } ?>
 </body>
 
 </html>

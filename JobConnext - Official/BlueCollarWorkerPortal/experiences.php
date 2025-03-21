@@ -37,9 +37,9 @@
         <span class="skill electrician">Electrician</span>
     </div>
     <nav class="navbar">
-        <a href="application.php" class="nav-link">Application</a>
-        <a href="experiences.php" class="nav-link active">Experiences</a>
-        <a href="certificates.php" class="nav-link">Certificates & Others</a>
+        <a href="application.html" class="nav-link">Application</a>
+        <a href="experiences.html" class="nav-link active">Experiences</a>
+        <a href="certificates.html" class="nav-link">Certificates & Others</a>
     </nav>
     <hr class="separator">
     <h4>Experience Overview</h4>

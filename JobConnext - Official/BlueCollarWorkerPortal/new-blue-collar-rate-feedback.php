@@ -265,13 +265,11 @@
                     <div class="card-right">
                       <div class="bookmark-report-cont">
                         <div class="bookmark-right-card">
-                          <button class="bookmark-button-right-card">
-                            <i class="fa fa-bookmark"></i>
-                          </button>
+
                         </div>
 
                         <div class="report-button">
-                          <a href=""><h5 style="color: #FF8787; transform: translate(25%, 37%);">report</h5></a>
+                          <input type="submit" value="Report" class="report-button"><h5 style="color: #FF8787; transform: translate(25%, 37%);"></h5></input>
                         </div>
                       </div>
 

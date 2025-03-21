@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
-
+ 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -177,8 +177,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                             <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
 
                                         </div>
+
+                                        <?php 
+                                            $job_offeredQRY = "SELECT * FROM tbl_client_jobpost";
+                                            $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
+                                                while ($row = mysqli_fetch_assoc($job_offeredEXE)){
+
+                                                $client_id = $row['client_id'];
+                                                $job_salary = $row['salary']; 
+                                                $num_applicants = $row['applicants'];
+                                                $yr_Exp = $row['year_exp'];
+                                                $job_loc = $row['location'];
+                                                $date_posted = $row['date_posted'];
+                                                $job_offer = $row['job_offer'];
+
+                                                
+                                                $job_offered_clientname = "SELECT * FROM tbl_client_information WHERE client_id = $client_id";
+                                                $job_ex_offered_name = mysqli_query($conn, $job_offered_clientname);
+                                                $getjobdata_offered = mysqli_fetch_assoc($job_ex_offered_name);
+
+                                                $clientoffered_Fname = $getjobdata_offered['firstname'];
+                                                $clientoffered_Mname = $getjobdata_offered['middlename'];
+                                                $clientoffered_Sname = $getjobdata_offered['lastname'];     
+                                                $company_name = $getjobdata_offered['company_name'];
+
+                                                $job_offered_companyname_QRY = "SELECT * FROM tbl_client_information";
+                                                $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
+                                                $job_offered_companyGET = mysqli_fetch_assoc($job_offered_companyEXE);
+
+                                                $company_name = $job_offered_companyGET['company_name'];  
+                                        ?>                                                                                  
+                                               
+                                        <?php 
+                                            
+                                        ?>
                                         <div class="details">
-                                            <h3>Highway express</h3>
+                                            <h3><?php echo $company_name?></h3>
                                             <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
                                         </div>
                                     </div>
@@ -201,7 +235,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <p><strong>Skills needed:</strong></p>
                                         <span class="skill-tag yellow">Truck Driver</span>
                                     </div>
-                                </div>
+                                </div><br>
+                                <?php } ?>
                         </a>
                         <div class="job-footer">
                             <button onclick="showAlert()" style="border: none;">
@@ -219,6 +254,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
 
+               <?php $recommended_clientHOMEqry = "SELECT w.* FROM tbl_worker_information w JOIN tbl_worker_skill_sets s ON w.worker_id = s.worker_id WHERE s.skills = 'Welder'";
+                    $recommended_clientHOMEexe= mysqli_query($conn, $recommended_clientHOMEqry);
+                        while($recommended_clientGET = mysqli_fetch_assoc(result: $recommended_clientHOMEexe)){
+                            $bluecollFnameHOME = $recommended_clientGET['firstname'];
+                            $bluecollMnameHOME = $recommended_clientGET['middlename'];
+                            $bluecollLnameHOME = $recommended_clientGET['lastname'];  
+                            $bluecoll_workerHOME = $recommended_clientGET['worker_id'];
+                            
+                    $recommended_companynameHOME = "SELECT * FROM tbl_client_information";
+                    $recommended_companynameEXE = mysqli_query($conn, $recommended_companynameHOME);
+                    $recommended_companynameGET = mysqli_fetch_assoc($recommended_companynameEXE);
+                            $bluecoll_companynameHOME = $recommended_companynameGET['company_name'];
+                
+                ?>
+
                 <div class="container-fluid recommendation">
                     <div class="row recommended-card">
                         <div class="col-12">
@@ -230,8 +280,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                                 <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                                             </div>
                                             <div class="details">
-                                                <h3>Maxwell Cruz</h3>
-                                                <p>ID:3424675</p>
+                                                <h3><?php echo $bluecollLnameHOME.", ". $bluecollFnameHOME ?></h3>
+                                                <p><?php echo "ID: ". $bluecoll_workerHOME ?></p>
                                             </div>
                                         </div>
                                         <div class="menu">
@@ -246,7 +296,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                             </a>
                         </div>
-                    </div>
+                </div>
+                <?php } ?>
                     <div class="row title-section">
                         <div class="col other-offers">
                             <p>
@@ -255,6 +306,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                 </div>
+
+
+
 
                 <div class="row other-offer">
                     <div class="col-12">
@@ -265,7 +319,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                                     </div>
                                     <div class="details">
-                                        <h3>Highway express</h3>
+                                        <h3></h3>
                                         <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
                                     </div>
                                 </div>
@@ -296,7 +350,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -386,7 +439,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <textarea placeholder="Makati"></textarea>
                             <div class="applicants-needed">
                                 <label>How many applicants do you need?</label>
-                                <input type="number" value="10" min="1" id="applicant-count">
+                                <input type="number" value="1" min="1" id="applicant-count">
                             </div>
                             <div class="experience">
                                 <label>Year of experience:</label>

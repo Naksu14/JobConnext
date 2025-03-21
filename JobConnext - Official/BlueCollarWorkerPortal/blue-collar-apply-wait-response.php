@@ -6,46 +6,46 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="new-collar.css">
-    <!-- <link rel="stylesheet" href="../Assets/css/client_home.css"> -->
+    <link rel="stylesheet" href="wait-response-design.css">
+    
     <title>Document</title>
 </head>
-<>
+<body>
 
-  
-    
+
         <div class="whole-screen">
           <div class="nav-cont">
-          <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col">
-                <div class="container-fluid" id="logo">
-                    <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
-                </div>
-            </div>
-            <div class="col">
-                <div class="container-fluid" id="nav_list">
-                    <ul>
-                        <li>
-                            <a href="client_home.php">Home</a>
-                            <a href="../ClientPortal/client_profile.php">Profile</a>
-                            <a href="">Message</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col">
-                <div class="container-fluid">
-                    <a href="../GuessPortal/LandingPage.php">
-                        <button id="logout_butt">
-                            Logout
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-  </nav>
+            <div class="container-fluid text-center">
+          <div class="row">
+              <div class="col">
+                  <div class="container-fluid" id="logo">
+                      <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="container-fluid" id="nav_list">
+                      <ul>
+                          <li>
+                              <a href="client_home.php">Home</a>
+                              <a href="application.php">Profile</a>
+                              <a href="blue-collar-worker-message.">Message</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col">
+                  <div class="container-fluid">
+                      <a href="../GuessPortal/LandingPage.php">
+                          <button id="logout_butt">
+                              Logout
+                          </button>
+                      </a>
+                  </div>
+              </div>
           </div>
+      </div>
+    </nav>
+            </div>
                     <div class="card-left">
                         <div class="card-left-inner-container">
                             <div class="banner-list">
@@ -66,7 +66,9 @@
                                         <div class="job-profile">
 
                                         </div>
-                                        <div class="cont-heading-job"><h3>Supra Oracles</h3></div>
+                                        <div class="cont-heading-job">
+                                          <h3>Supra Oracles</h3>
+                                        </div>
                                         <div class="bookmark-button">
                                             <button class="bookmark-button-card">
                                               <i class="fa fa-bookmark"></i>
@@ -115,7 +117,7 @@
 
                                     </div>
                                     <div class="cont-heading-job">
-                                      <h3>HandsOn Jobs Network</h3>
+                                      <h3>Supra Oracles</h3>
                                     </div>
                                     <div class="bookmark-button">
                                         <button class="bookmark-button-card">
@@ -162,7 +164,7 @@
 
                                     </div>
                                     <div class="cont-heading-job">
-                                      <h3>JobCraft International</h3>
+                                      <h3>Supra Oracles</h3>
                                     </div>
                                     <div class="bookmark-button">
                                         <button class="bookmark-button-card">
@@ -209,18 +211,14 @@
 
                                     </div>
                                     <div class="cont-heading-job">
-                                      <h3>WorkForceHub</h3>
+                                      <h3>Supra Oracles</h3>
                                     </div>
                                     <div class="bookmark-button">
                                         <button class="bookmark-button-card">
                                           <i class="fa fa-bookmark"></i>
                                         </button>
                                     </div>
-
-                                    
                                 </div>
-
-                                
                                 <div class="info-type-salary">
                                   <h5>Freelance - Php25,000-30,000 - 5 Applicants</h5>
                                 </div>
@@ -265,15 +263,13 @@
                     <div class="card-right">
                       <div class="bookmark-report-cont">
                         <div class="bookmark-right-card">
-                          <button class="bookmark-button-right-card">
-                            <i class="fa fa-bookmark"></i>
-                          </button>
+
                         </div>
 
                         <div class="report-button">
-                          <a href=""><h5 style="color: #FF8787; transform: translate(25%, 37%);">report</h5></a>
+                          <input type="submit" value="Report" class="report-button"><h5 style="color: #FF8787; transform: translate(25%, 37%);"></h5></input>
                         </div>
-                      </div>
+                      </div>  
 
                       <div class="prof-heading-right-card">
                         <div class="profilejob-right-card">
@@ -363,153 +359,71 @@
                           <span style="font-weight: bold; font-size: 19px;">5. Project Management</span> <br> -Oversee and manage daily operations, ensuring efficiency and productivity. <br> -Collaborate with cross-functional teams to align and execute projects. <br> -Develop strategies to improve workflows and team outcomes.
                         </p>
 
-                        <button class="btn-apply" popovertarget="mypopover">Apply</button>
-                        <div popover="auto" id="mypopover">
-                          <div class="apply-overlay">
-                              <div class="head-overlay-cont">
-                                  <h4>Supra oracles</h4>
-                              </div>
-
-                              <div class="posted-rateANDreviews-cont">
-                                  <div class="day-ago">
-                                     <p>Posted 4d ago</p>
-                                  </div>
-
-                                  <div class="raviews-overlay">
-                                      <p>4.3 40 Reviews</p>
-                                  </div>
-                              </div>
-
-                              <div class="info-job-locICON-LocTEXT">
-                                  <div class="location">
-                                      
-                                  </div>
-
-                                  <div class="locTEXT">
-                                      <p>Makati</p>
-                                  </div>
-                              </div>
-
-
-                              
-                              <div class="info-job-salaryICON-salaryTEXT">
-                                  <div class="salary">
-                                      
-                                  </div>
-
-                                  <div class="salaryTEXT">
-                                      <p>Php25,000-30,000</p>
-                                  </div>
-                              </div>
-
-
-                              <div class="info-job-applicantICON-applicantTEXT">
-                                  <div class="applicant">
-                                      
-                                  </div>
-
-                                  <div class="applicantTEXT">
-                                      <p>5 Applicants</p>
-                                  </div>
-                              </div>
-
-                              <div class="qualif">
-                                <h4>Qualifications and Skills</h4>
-                              </div>
-
-                              <div class="skills-overlay">
-                                  <div class="welder-overlay">
-                                      <p style="margin-left: 27%; margin-top: 9%;">Welder</p>
-                                  </div>
-
-                                  <div class="electrician-overlay">
-                                    <p style="margin-left: 22%; margin-top: 9%;">Electrician</p>
-                                  </div>
-
-                                  <div class="plumber-overlay">
-                                    <p style="margin-left: 25%; margin-top: 9%;">Plumber</p>
-                                  </div>
-                              </div>
-
-                              <div class="quali-overlay">
-                                  <p>4 yrs Experience</p>
-                              </div>
-
-                              <div class="input-overlay">
-                                <input style="width: 400px; height:200px;" type="text" id="fname" name="fname">
-                              </div>
-
-                              <div class="two-button">
-                                  <div class="apply-overlay">
-                                    <a href="blue-collar-apply-wait-response.html" class="btn-apply">Apply</a>
-                                  </div>
-
-                                  <div class="apply-overlay">
-
-                                  </div>
-                              </div>
-                          </div>
-                        </div>
+                        <div class="wait-for-response-cont">
+                          <h5 class="wait-response">Waiting for response</h5>
                         </div>
                       </div>
 
                     </div>
+        </div>
+    
 
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-                      $(function() {
-                  //var bookmarkOn = '<i class="fa fa-bookmark"></i>'
-                  //var bookmarkOff = '<i class="fa fa-bookmark-o"></i>'
-                
-                  $('.pp-bookmark-btn')
-                    //.html( $('.pp-bookmark-btn').data('state') ? bookmarkOn : bookmarkOff )
-                    //.html( $('.pp-bookmark-btn').hasClass( "active" ) ? bookmarkOn : bookmarkOff )
-                    .click(function() {
-                      var btn = $(this);
-                
-                      var context = $(this).data("context");
-                      var contextAction = $(this).data("context-action");
-                      var contextId = $(this).data("context-id");
-                      // $('#log').html(context + " " + contextAction + " " + contextId )
-                
-                      // if( btn.data('state') ) {
-                      //    btn.data('state', false);
-                      if (btn.hasClass("active")) {
-                        btn.removeClass("active")
-                          // $getJSON
-                          //btn.html(bookmarkOff);
-                      } else {
-                        // btn.data('state', true);
-                        btn.addClass("active");
-                        //btn.html(bookmarkOn);
-                      };
-                    });
-                
-                  /*
-                    updateBookmarks(action, context, context-action, context-id) {
-                    
-                    }
-                    */
-                  //     $('form').html('asfafaf');
-                  //     var btn = $('form').attr('action');
-                  //     var jqxhr = $.ajax({
-                  //         url: '/echo/html/',
-                  //         dataType: 'json',
-                  //         data:{ id: $('form input').val() }
-                  //     })
-                  //     .success(function(data) {
-                  //         alert("success"+data);
-                  //     })
-                  //     .error(function(err) {
-                  //         alert("error"+err);
-                  //     })
-                  //     .complete(function(stuff) {
-                  //         alert("complete"+stuff);
-                  //     });
-                  //
-                  //     e.preventDefault();
-                
-                });
-                    </script>
-                    
-                  </body>
-                </html>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+      $(function() {
+  //var bookmarkOn = '<i class="fa fa-bookmark"></i>'
+  //var bookmarkOff = '<i class="fa fa-bookmark-o"></i>'
+
+  $('.pp-bookmark-btn')
+    //.html( $('.pp-bookmark-btn').data('state') ? bookmarkOn : bookmarkOff )
+    //.html( $('.pp-bookmark-btn').hasClass( "active" ) ? bookmarkOn : bookmarkOff )
+    .click(function() {
+      var btn = $(this);
+
+      var context = $(this).data("context");
+      var contextAction = $(this).data("context-action");
+      var contextId = $(this).data("context-id");
+      // $('#log').html(context + " " + contextAction + " " + contextId )
+
+      // if( btn.data('state') ) {
+      //    btn.data('state', false);
+      if (btn.hasClass("active")) {
+        btn.removeClass("active")
+          // $getJSON
+          //btn.html(bookmarkOff);
+      } else {
+        // btn.data('state', true);
+        btn.addClass("active");
+        //btn.html(bookmarkOn);
+      };
+    });
+
+  /*
+    updateBookmarks(action, context, context-action, context-id) {
+    
+    }
+    */
+  //     $('form').html('asfafaf');
+  //     var btn = $('form').attr('action');
+  //     var jqxhr = $.ajax({
+  //         url: '/echo/html/',
+  //         dataType: 'json',
+  //         data:{ id: $('form input').val() }
+  //     })
+  //     .success(function(data) {
+  //         alert("success"+data);
+  //     })
+  //     .error(function(err) {
+  //         alert("error"+err);
+  //     })
+  //     .complete(function(stuff) {
+  //         alert("complete"+stuff);
+  //     });
+  //
+  //     e.preventDefault();
+
+});
+    </script>
+    
+  </body>
+</html>

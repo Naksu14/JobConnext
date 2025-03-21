@@ -25,6 +25,14 @@
 </head>
 
 <body>
+        <?php 
+            $servername = "localhost";
+            $username = "root"; // Change if needed
+            $password = "";
+            $database = "job_connext"; // Change if different
+            
+            $conn = new mysqli($servername, $username, $password, $database);
+        ?>
 
     <div class="container-fluid text-center">
         <div class="row">
@@ -192,33 +200,62 @@
                 </div>
             </div>
 
+
+            <?php
+            
+            $job_offerqry = "SELECT * FROM tbl_client_jobpost";
+            $jobEXoffer = mysqli_query($conn, $job_offerqry);
+                while ($jobGetdata = mysqli_fetch_assoc($jobEXoffer)){
+
+                $client_id = $jobGetdata['client_id'];
+                $job_salary = $jobGetdata['salary']; 
+                $num_applicants = $jobGetdata['applicants'];
+                $yr_Exp = $jobGetdata['year_exp'];
+                $job_loc = $jobGetdata['location'];
+                $date_posted = $jobGetdata['date_posted'];
+                $job_offer = $jobGetdata['job_offer'];
+
+                $job_offer_clientname = "SELECT * FROM tbl_client_information WHERE client_id = '$client_id'";
+                $job_ex_offer_name = mysqli_query($conn, $job_offer_clientname);
+                $getjobdata = mysqli_fetch_assoc($job_ex_offer_name);
+
+                $clientFname = $getjobdata['firstname'];
+                $clientMname = $getjobdata['middlename'];
+                $clientSname = $getjobdata['lastname'];     
+            
+            ?>
             <div class="row job-card">
                 <div class="col-sm-12">
                     <a href="" class="card-link">
                         <div class="card" id="my-offer">
                             <div class="job-header">
                                 <div class="profile-info">
+
+                                
+                                   
+                            
+
                                     <div class="avatar">
                                         <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                                     </div>
                                     <div class="details">
-                                        <h3>Mr. Fixer</h3>
-                                        <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
+                                        <h3><?php echo $job_offer?></h3>
+                                        <p><?php echo $job_salary. "₱"." "."•"." ". $num_applicants." "."Applicants" ?></p>
                                     </div>
                                 </div>
                                 <div class="job-dates">
                                     <div class="menu">•••</div>
-                                    <p>11/8/2024 to 11/13/2024</p>
+                                    <p><?php echo $date_posted ?></p>
                                 </div>
                             </div>
                             <div class="job-body">
                                 <div class="info">
                                     <p>
                                         <strong>Location:</strong>
-                                        Makati
+                                        <?php echo $job_loc ?>
                                     </p>
                                     <p>
-                                        <strong>Years of experience:</strong> 0
+                                        <strong><?php echo "Years of experience: ". $yr_Exp ?></strong> 
                                     </p>
                                 </div>
                                 <div class="skills">
@@ -234,7 +271,9 @@
                         </div>
                 </div>
                 </a>
+                <br>
             </div>
+            <?php }?>
 
             <div class="row title-section">
                 <div class="col-sm recommend-workers">
@@ -243,7 +282,18 @@
                     </p>
                 </div>
             </div>
+                    
 
+            <?php 
+                $reco_qry = "SELECT w.* FROM tbl_worker_information w JOIN tbl_worker_skill_sets s ON w.worker_id = s.worker_id WHERE s.skills = 'Welder';";
+                $reco_qryex = mysqli_query($conn, $reco_qry);
+                    while($get_skill = mysqli_fetch_assoc($reco_qryex)){
+                        
+                    $bluecollFname = $get_skill['firstname'];
+                    $bluecollMname = $get_skill['middlename'];
+                    $bluecollLname = $get_skill['lastname'];  
+                    $bluecoll_workerID = $get_skill['worker_id'];  
+            ?>       
             <div class="container-fluid recommendation">
                 <div class="row recommended-card">
                     <div class="col-12">
@@ -255,8 +305,8 @@
                                             <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                                         </div>
                                         <div class="details">
-                                            <h3>Maxwell Cruz</h3>
-                                            <p>ID:3424675</p>
+                                            <h3><?php echo $bluecollLname. $bluecollFname. $bluecollMname?></h3>
+                                            <p><?php echo "ID: ".$bluecoll_workerID ?></p>
                                         </div>
                                     </div>
                                     <div class="menu">
@@ -272,56 +322,9 @@
                         </a>
                     </div>
                 </div>
-                <div class="row recommended-card">
-                    <div class="col-lg-12">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Alex Stark </h3>
-                                        <p>ID:3407955</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                </div>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills:</strong></p>
-                                <span class="skill-tag green">Welder</span>
-                                <span class="skill-tag purple">Electrician</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row recommended-card">
-                    <div class="col-12">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Joseph Vergara</h3>
-                                        <p>ID:3824155</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                </div>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills:</strong></p>
-                                <span class="skill-tag green">Welder</span>
-                                <span class="skill-tag purple">Electrician</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?php } ?>
+
+
 
                 <div class="row title-section">
                     <div class="col other-offers">
@@ -332,6 +335,23 @@
                 </div>
             </div>
 
+
+            <?php 
+                $recomend_job_offersQRY = "SELECT tbl_client_information.*, tbl_client_jobpost.* FROM tbl_client_information JOIN tbl_client_jobpost ON tbl_client_information.client_id = tbl_client_jobpost.client_id";
+                $recomend_job_offersEX = mysqli_query($conn, $recomend_job_offersQRY);
+                $recommend_jobGET = mysqli_fetch_assoc($recomend_job_offersEX);
+                    $clientFnameRECOMMEND = $recommend_jobGET['firstname'];
+                    $clientMnameRECOMMEND = $recommend_jobGET['middlename'];
+                    $clientLnameRECOMMEND = $recommend_jobGET['lastname'];
+                    $client_id = $recommend_jobGET['client_id'];
+                    $job_salary = $recommend_jobGET['salary']; 
+                    $num_applicants = $recommend_jobGET['applicants'];
+                    $yr_Exp = $recommend_jobGET['year_exp'];
+                    $job_loc = $recommend_jobGET['location'];
+                    $date_posted = $recommend_jobGET['date_posted'];
+                    $job_offer_recommend = $recommend_jobGET['job_offer'];
+            
+            ?>
             <div class="row other-offer">
                 <div class="col-12">
                     <div class="card" id="my-offer">
@@ -341,7 +361,7 @@
                                     <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                                 </div>
                                 <div class="details">
-                                    <h3>Highway express</h3>
+                                    <h3><?php echo $job_offer_recommend?></h3>
                                     <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
                                 </div>
                             </div>
