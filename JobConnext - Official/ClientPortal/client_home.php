@@ -14,14 +14,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $client_id = trim($_POST['client_id']);
     $description = trim($_POST['description']);
+    $job_offer = trim($_POST['job_offer']);
+    $location = trim($_POST['location']); 
+    $applicants = trim($_POST['applicants']); 
+    $year_exp = trim($_POST['year_exp']); 
+    $deadline = trim($_POST['deadline']);
+    $salary_start = trim($_POST['salary_start']);
+    $salary_end = trim($_POST['salary_end']);
+    $job_title = trim($_POST['job_title']);
+
+
+
+
 
     if (empty($description)) {
         echo "Description is required.";
         exit;
     }
 
-    $stmt = $conn->prepare("INSERT INTO tbl_client_jobpost (client_id, description) VALUES (?, ?)");
-    $stmt->bind_param("is", $client_id, $description);
+    $stmt = $conn->prepare("INSERT INTO tbl_client_jobpost (client_id, description, job_offer, location, applicants, year_exp, deadline, salary_start, salary_end, job_title) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    $stmt->bind_param("isssiisiis", $client_id, $description, $job_offer, $location, $applicants, $year_exp , $deadline, $salary_start, $salary_end, $job_title);
 
 
     if ($stmt->execute()) {
@@ -29,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error: " . $stmt->error;
     }
+
 
     $stmt->close();
     $conn->close();
@@ -46,9 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">    
+     <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">    
     <link rel="stylesheet" href="../Assets/css/client_home.css">
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
