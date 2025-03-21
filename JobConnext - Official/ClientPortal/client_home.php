@@ -13,6 +13,7 @@
 
      <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">    
     <link rel="stylesheet" href="../Assets/css/client_home.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link

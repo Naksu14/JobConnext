@@ -74,45 +74,7 @@
     border: none;
   }
   
-  .job-option.cleaning {
-    background: #CBE3FF;
-    color: black;
-    border: none;
-  }
-  
-  .add-button {
-    margin-left: 10px;
-    padding: 5px 10px;
-    background: #161D6F;
-    color: white;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  .added-jobs {
-    margin-top: 20px;
-    display: flex;
-    justify-content: start;
-
-  }
-  
-  .added-job {
-    display: inline-block;
-    margin-right: 5px;
-    padding: 5px 10px;
-    border-radius: 5px;
-  }
-  
-  .added-job.welder {
-    background: #b2d8b6;
-    color: #333;
-  }
-  
-  .added-job.electrician {
-    background: #d3c2ed;
-    color: #333;
-  }
-  
+ 
   .salary-range,
   .file-attachments {
     margin-top: 20px;
@@ -166,7 +128,6 @@
     justify-content: left;
     flex-direction: column;
     text-align: left;
-    margin: 20px;
   }
 
   
