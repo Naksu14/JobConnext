@@ -7,7 +7,10 @@
     <title>Job-connext - Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <link rel="stylesheet" href="../Assets/css/client-showjob.css">
+    <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Source+Code+Pro:wght@200..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
@@ -22,7 +25,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
     <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
-  
+
 </head>
 
 <body>
@@ -272,57 +275,6 @@
                         </a>
                     </div>
                 </div>
-                <!-- <div class="row recommended-card">
-                    <div class="col-lg-12">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Alex Stark </h3>
-                                        <p>ID:3407955</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                </div>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills:</strong></p>
-                                <span class="skill-tag green">Welder</span>
-                                <span class="skill-tag purple">Electrician</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row recommended-card">
-                    <div class="col-12">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Joseph Vergara</h3>
-                                        <p>ID:3824155</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                </div>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills:</strong></p>
-                                <span class="skill-tag green">Welder</span>
-                                <span class="skill-tag purple">Electrician</span>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
                 <div class="row title-section">
                     <div class="col other-offers">
                         <p>
@@ -381,6 +333,9 @@
     </script>
     <script src="client-rate.js">
     </script>
+    <?php
+    include "../ClientPortal/ModalFolder/post_job_modal.php";
+    ?>
 </body>
 
 </html>

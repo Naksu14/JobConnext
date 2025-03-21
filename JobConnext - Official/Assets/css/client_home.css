@@ -7,9 +7,6 @@
    overflow: hidden;
 }
 
-#logo{
-    padding: 10px 10px 10px 10px ;
-}
 
 
 
@@ -18,17 +15,9 @@
     top: 0;
 } */
 
-.page_content{
-    overflow:auto;
-    overflow-x: hidden;
-    max-height: 1250px;
 
-}
 
-#logo img{
-      width: 205px;
-      height: 107px;  
-}
+
 
 #nav_list{
     margin: 30px 0px 30px 0px;
@@ -650,9 +639,6 @@
     margin: 20px;
   }
 
-  .job-status h3{
-
-  }
   
   textarea {
     width: 100%;

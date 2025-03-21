@@ -20,7 +20,7 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../ClientPortal/ModalFolder/post_job_modal.css">
+    <link rel="sylesheet" href="../ClientPortal/ModalFolder/modal_post.css"> 
 </head>
 
 <body>

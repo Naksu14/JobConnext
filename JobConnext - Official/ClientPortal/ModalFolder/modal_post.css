@@ -1,0 +1,242 @@
+:root{
+    --darkblue : #161D6F; 
+    --darkorange : #E46232;
+}
+
+
+  .modal-header img{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .input-modal{
+    width: 100%;
+    height: 45px;
+    margin-left: 10px;
+  }
+
+  .form-control{
+    height: 260px;
+  }
+
+  .job-details {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+  }
+  
+  .job-options,
+  .job-status {
+    flex: 1;
+  }
+  
+  .job-options h3{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+  }
+  .job-offer-options {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px ;
+    margin-top: 10px;
+    flex-direction: column;
+    justify-content: left;
+  }
+
+  .job-offer-options label{
+    justify-content: left;
+    align-items: left;
+    text-align: left;
+    display: flex;
+  }
+
+  .job-offer-options h3{
+    font-size: 19px;
+    font-family: inter;
+    font-weight: 500;
+  }
+  
+  .job-option {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    justify-content: start;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .job-option.construction {
+    background: #FFE3CB;
+    color: black;
+    border: none;
+  }
+  
+  .job-option.cleaning {
+    background: #CBE3FF;
+    color: black;
+    border: none;
+  }
+  
+  .add-button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background: #161D6F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .added-jobs {
+    margin-top: 20px;
+    display: flex;
+    justify-content: start;
+
+  }
+  
+  .added-job {
+    display: inline-block;
+    margin-right: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+  }
+  
+  .added-job.welder {
+    background: #b2d8b6;
+    color: #333;
+  }
+  
+  .added-job.electrician {
+    background: #d3c2ed;
+    color: #333;
+  }
+  
+  .salary-range,
+  .file-attachments {
+    margin-top: 20px;
+  }
+
+  .file-attachments {
+    justify-content: left;
+    text-align: left;
+    display: flex;
+    flex-direction: row;
+  }
+  .file-attachments {
+    justify-content: left;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .salary-range{
+    display: flex;
+    flex-direction: column;
+    justify-content:left !important;
+    margin-left: 0px;
+  }
+
+  .salary-range #range{
+    width: 50%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  }
+  
+  .salary-range label{
+    flex-direction: row;
+    display:flex ;
+    justify-content: left;
+  }
+
+  .salary-range p{
+    flex-direction: row;
+    display:flex ;
+    justify-content: left;
+  }
+  .job-status .active {
+    color: green;
+    font-weight: bold;
+  }
+
+  .job-status{
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    text-align: left;
+    margin: 20px;
+  }
+
+  
+  textarea {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  input[type="number"],
+  input[type="date"] {
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  .edit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #161D6F;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .applicants-needed {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .applicants-needed #applicant-count{
+    width: 15%;
+    text-align: center;
+  }
+  .experience {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .experience #applicant-count{
+    width: 15%;
+    text-align: center;
+  }
+
+  .others{
+    margin-left: 0px;
+    justify-content: left;
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+  }
+
+  #job-title{
+    margin-left: 3px;
+    justify-content: left;
+    margin-top: 0px;
+    height:40px;
+  }
+
