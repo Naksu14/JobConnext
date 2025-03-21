@@ -1,3 +1,5 @@
+<?php include "../ClientPortal/recordFolder/recordPost.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
