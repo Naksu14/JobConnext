@@ -1,7 +1,3 @@
-<?php
-// job_post_modal.php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +16,7 @@
     </style>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="../ClientPortal/ModalFolder/post_job_modal.css">
+    <link rel="sylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
 </head>
 
 <body>
@@ -66,7 +62,7 @@
                     <form id="job-posting-form" method="POST" action="../ClientPortal/create_jobpost.php">
                      <div class="modal-header">
                     <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
-                    <input type="text" class="input-modal" placeholder="Title...">
+                    <input type="text" class="input-modal" placeholder="Title..." id="post_title">
                 </div>
                 <div class="container description-box">
                     <textarea class="form-control" id="form-control-1" rows="3" placeholder="Enter description"></textarea>
@@ -83,9 +79,9 @@
                             <div class="salary-range">
                                 <label>Salary Range:</label>
                                 <input type="number" 
-                                 min="300" placeholder="Range Start" id="range">
+                                 min="300" placeholder="Range Start" id="range_start">
                                 <label>-</label>
-                                <input type="number" min="300" placeholder="Range End" id="range">
+                                <input type="number" min="300" placeholder="Range End" id="range_end">
                             </div>
                             <div class="file-attachments">
                                 <label>File Attachment/s:</label>
@@ -97,18 +93,18 @@
                         <div class="job-status">
                             <h3>Job Status: <span class="active">Active</span></h3>
                             <label>Location:</label>
-                            <textarea placeholder="Enter Location"></textarea>
+                            <textarea placeholder="Enter Location" id="location" name="location"></textarea>
                             <div class="applicants-needed">
                                 <label>How many applicants do you need?</label>
-                                <input type="number" value="0" min="1" id="applicant-count">
+                                <input type="number"  min="1" id="applicant_count" name="applicant_count">
                             </div>
                             <div class="experience">
                                 <label>Year of experience:</label>
-                                <input type="number" value="0" min="0" id="applicant-count">
+                                <input type="number" value="" min="0" id="year_experience">
                             </div>
                             <div class="deadline">
                                 <label>Job offer deadline:</label>
-                                <input type="date" value="00/00/0000" id="date">
+                                <input type="date" id="date" name="deadline">
                             </div>
                         </div>
                     </div>
@@ -125,32 +121,68 @@
                 showCancelButton: true,
                 cancelButtonText: 'Cancel',
                 confirmButtonColor: '#161D6F',
-
                 preConfirm: () => {
                     let description = document.getElementById("form-control-1").value.trim();
-
-                    if (!description) {
-                        Swal.showValidationMessage("Description is required!");
-                        return false;
-                    }
+                    let job_offer = document.getElementById("post_title").value.trim();
+                    let location = document.getElementById("location").value.trim();
+                    let applicants = document.getElementById("applicant_count").value.trim();
+                    let year_exp = document.getElementById("year_experience").value.trim();
+                    let deadline = document.getElementById("date").value;
+                    let job_title= document.getElementById("job-title").value;
+                    let salary_start = parseFloat(document.getElementById("range_start").value);
+                    let salary_end = parseFloat(document.getElementById("range_end").value);
 
                     let clientId = 2001;
 
-                    return fetch('client_home.php', {
+                    if (!description || !job_offer || !location || !applicants || !year_exp || !deadline || !salary_start || !salary_end || !job_title) {
+                        Swal.showValidationMessage("You need to fill up all the informations!");
+                        return false;
+                    }
+
+                    if (isNaN(salary_start) || isNaN(salary_end)) {
+                        Swal.showValidationMessage("Salary values must be numbers!");
+                        return false;
+                    }
+
+                    if (salary_start <= 0) {
+                        Swal.showValidationMessage("Invalid Salary Input");
+                        return false;
+                    }
+
+                    if (salary_end < salary_start) {
+                        Swal.showValidationMessage("Invalid Range");
+                        return false;
+                    }
+
+                    return fetch('../ClientPortal/client_home.php', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/x-www-form-urlencoded'
                             },
-                            body: `description=${encodeURIComponent(description)}&client_id=${clientId}`
+                            body: `description=${encodeURIComponent(description)}&client_id=${clientId}&job_offer=${encodeURIComponent(job_offer)}&location=${encodeURIComponent(location)}&applicants=${encodeURIComponent(applicants)}&year_exp=${encodeURIComponent(year_exp)}&deadline=${encodeURIComponent(deadline)}&salary_start=${encodeURIComponent(salary_start)}&salary_end=${encodeURIComponent(salary_end)}&job_title=${encodeURIComponent(job_title)}`
                         })
-                        .then(response => response.text()) // Parse response as tex
+                        .then(response => response.text())
+                        .then(data => {
+                            Swal.fire({
+                                title: "Posted Successfully!",
+                                text: "Your job post has been published.",
+                                icon: "success",
+                                confirmButtonColor: "#161D6F",
+                            });
+                        })
                         .catch(error => {
-                            Swal.showValidationMessage("Request failed: " + error);
+                            Swal.fire({
+                                title: "Error!",
+                                text: "Something went wrong. Please try again.",
+                                icon: "error",
+                                confirmButtonColor: "#d33"
+                            });
                         });
                 }
             });
         });
     </script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
