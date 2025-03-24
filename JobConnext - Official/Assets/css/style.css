@@ -190,5 +190,12 @@ input:focus, textarea:focus, select:focus, button:focus {
   height: 500px;
 }
 
+button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+
 
 

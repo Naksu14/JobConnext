@@ -95,6 +95,7 @@ if (isset($_POST['change_password'])) {
     }
 
     // Redirect after successful update
+    session_destroy();
     header("Location: Sign_In.php");
     exit();
 }

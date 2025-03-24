@@ -5,6 +5,13 @@ session_start();
 ob_start();
 
 include "../db_con/db_connection.php";
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require '../vendor/autoload.php';
+
+
 ?>
 
 <!DOCTYPE html>
@@ -28,20 +35,25 @@ include "../db_con/db_connection.php";
         <form action="" method="post" class="d-flex flex-column mt-4">  
             <label for="otp" class="poppins-medium">Enter OTP</label>
             <div class="input_numbers d-flex flex-row align-items-center justify-content-center">
-                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num1" maxlength="1" required>
-                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num2" maxlength="1" required>
-                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num3" maxlength="1" required>
-                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num4" maxlength="1" required>
-                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num5" maxlength="1" required>
-                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num6" maxlength="1" required>
+                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num1" maxlength="1">
+                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num2" maxlength="1">
+                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num3" maxlength="1">
+                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num4" maxlength="1">
+                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num5" maxlength="1">
+                <input style="width: 50px; height: 50px; margin: 10px;" type="text" name="input_num6" maxlength="1">
             </div>
 
             <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
                 <button type="submit" class="button-midblue" name="send_email_btn" style="width: 200px;">Verify</button>
             </div>
+            <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
+                <button type="submit" class="button-midblue" name="resend_email" id="reset_btn" style="width: 200px;" disabled>Resend Email</button>
+            </div>
         </form>
+        <div id="timer">60</div>
 
-        <a href="#"><p class="poppins-regular">Resend OTP</p></a>
+
+
         <div class="btn_sub d-flex justify-content-between mt-3 mb-3">
             <a href="ForgotPassword.php" style="color:#161D6F">
                 <span><i class="bi bi-arrow-left"></i></span> Back
@@ -59,6 +71,26 @@ include "../db_con/db_connection.php";
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    function startTimer() {
+      let timeLeft = 60;
+      const timerDisplay = document.getElementById('timer');
+      const reset_btn = document.getElementById('reset_btn');
+
+      const countdown = setInterval(() => {
+        timeLeft--;
+        timerDisplay.textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+          clearInterval(countdown);
+          timerDisplay.textContent = '0';
+          reset_btn.disabled = false;
+        }
+      }, 1000);
+    }
+
+    window.onload = startTimer;
+  </script>
 
 </body>
 </html>
@@ -105,5 +137,84 @@ if (isset($_POST['send_email_btn'])) {
     // Verify for both workers and clients
     verifyOTP($conn, "tbl_blue_collar_worker", "worker_id", $worker_id, $otp_number_value);
     verifyOTP($conn, "tbl_client", "client_id", $client_id, $otp_number_value);
-}
+}else if (isset($_POST['resend_email'])){
+
+    $email = $_SESSION['email'] ?? null;
+
+    if (!$email) {
+        die('Email not found. Please try again.');
+    }
+
+    
+
+    function generateOTP($length = 6) {
+        return str_pad(random_int(0, pow(10, $length) - 1), $length, '0', STR_PAD_LEFT);
+    }
+
+    function updateOTP($conn, $table, $email, $otp) {
+        $stmt = $conn->prepare("UPDATE $table SET status = 0, otp_verification = ? WHERE email = ?");
+        if ($stmt) {
+            $stmt->bind_param("ss", $otp, $email);
+            $stmt->execute();
+            $stmt->close();
+        } else {
+            error_log("Error updating OTP: " . $conn->error);
+        }
+    }
+
+    function checkUserAndUpdateOTP($conn, $email, $otp) {
+        $tables = [
+            'tbl_blue_collar_worker' => 'worker_id',
+            'tbl_client' => 'client_id'
+        ];
+
+        foreach ($tables as $table => $id_column) {
+            $stmt = $conn->prepare("SELECT $id_column FROM $table WHERE email = ?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $_SESSION[$id_column] = $row[$id_column];
+                updateOTP($conn, $table, $email, $otp);
+            }
+            $stmt->close();
+        }
+    }
+
+    $otp_value = generateOTP();
+    checkUserAndUpdateOTP($conn, $email, $otp_value);
+    $conn->close();
+
+    function sendOTP($email, $otp_value) {
+        try {
+            $mail = new PHPMailer(true);
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'jobconnext2025@gmail.com';
+            $mail->Password = 'wgfgpzwjaldnfmhe';
+            $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+            $mail->Port = 587;
+
+            $mail->setFrom('jobconnext2025@gmail.com', 'JobConnext');
+            $mail->addAddress($email);
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Job Connext OTP Verification';
+            $mail->Body = "<h1>Hello!</h1><p>Your OTP is: <strong>$otp_value</strong></p>";
+
+            $mail->send();
+            header("Location: OTPVerification.php");
+            exit();
+        } catch (Exception $e) {
+            error_log("Email could not be sent. Error: " . $mail->ErrorInfo);
+            echo "Failed to send OTP. Please try again.";
+        }
+    }
+
+    sendOTP($email, $otp_value);
+    }
+
 ?>

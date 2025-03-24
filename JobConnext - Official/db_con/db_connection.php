@@ -3,7 +3,7 @@
 $servername = "127.0.0.1"; 
 $username = "root";       
 $password = "";             
-$dbname = "Job_connext";  
+$dbname = "job_connext";  
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
