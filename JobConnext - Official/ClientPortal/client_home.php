@@ -1,44 +1,6 @@
 <?php include "../ClientPortal/recordFolder/recordPost.php" ?>
 
 
-<?php
-include "../db_con/db_connection.php";
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-session_start();
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (!isset($_POST['description']) || !isset($_POST['client_id'])) {
-        echo "Missing form data!";
-        exit;
-    }
-
-    $client_id = trim($_POST['client_id']);
-    $description = trim($_POST['description']);
-
-    if (empty($description)) {
-        echo "Description is required.";
-        exit;
-    }
-
-    $stmt = $conn->prepare("INSERT INTO tbl_client_jobpost (client_id, description) VALUES (?, ?)");
-    $stmt->bind_param("is", $client_id, $description);
-
-
-    if ($stmt->execute()) {
-        echo "New job record created successfully!";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-
-    $stmt->close();
-    $conn->close();
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 

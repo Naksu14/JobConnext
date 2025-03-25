@@ -56,10 +56,11 @@
 
     <script>
         document.getElementById('post_something').addEventListener('click', () => {
+            let clientId = <?php echo $_SESSION['client_id']; ?>;
             Swal.fire({
                 title: 'Post a Job',
                 html: `
-                    <form id="job-posting-form" method="POST" action="../ClientPortal/create_jobpost.php">
+                    <form id="job-posting-form" method="POST" action="../ClientPortal/create_jobpost.php" enctype="multipart/form-data">
                      <div class="modal-header">
                     <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
                     <input type="text" class="input-modal" placeholder="Title..." id="post_title">
@@ -83,12 +84,21 @@
                                 <label>-</label>
                                 <input type="number" min="300" placeholder="Range End" id="range_end">
                             </div>
-                            <div class="file-attachments">
-                                <label>File Attachment/s:</label>
 
-                                <p><img src="../Assets/image/material-symbols_image-outline.png" alt="">No File Attach</p>
-                                <p><img src="../Assets/image/mdi_file-outline.png" alt="">No File Attach</p>
-                            </div>
+                            <div class="file-attachments">
+<label>File Attachment/s:</label>
+
+<div class="file-upload-container">
+<label for="file-upload" class="file-upload-label">
+<img src="../Assets/image/mdi_file-outline.png">
+Upload Files
+</label>
+<input type="file" id="file-upload" name="file_upload[]" multiple hidden>
+
+</div>
+<span id="file-name-display" class="file-name-display">No file selected</span>
+</div>
+
                         </div>
                         <div class="job-status">
                             <h3>Job Status: <span class="active">Active</span></h3>
@@ -121,21 +131,42 @@
                 showCancelButton: true,
                 cancelButtonText: 'Cancel',
                 confirmButtonColor: '#161D6F',
+                didOpen: () => {
+                    // Attach event listener for file input inside the modal
+                    document.getElementById("file-upload").addEventListener("change", function() {
+                        let fileNames = Array.from(this.files).map(file => file.name).join(",  ");
+                        document.getElementById("file-name-display").textContent = fileNames || "No file selected";
+
+                        let previewContainer = document.getElementById("file-preview-container");
+                        previewContainer.innerHTML = "";
+
+                        Array.from(this.files).forEach(file => {
+                            if (file.type.startsWith("image/")) {
+                                let img = document.createElement("img");
+                                img.classList.add("file-preview");
+                                img.src = URL.createObjectURL(file);
+                                previewContainer.appendChild(img);
+                            }
+                        });
+                    });
+                },
                 preConfirm: () => {
+                    let formData = new FormData();
+
+                    let fileInput = document.getElementById("file-upload");
                     let description = document.getElementById("form-control-1").value.trim();
                     let job_offer = document.getElementById("post_title").value.trim();
                     let location = document.getElementById("location").value.trim();
                     let applicants = document.getElementById("applicant_count").value.trim();
                     let year_exp = document.getElementById("year_experience").value.trim();
                     let deadline = document.getElementById("date").value;
-                    let job_title= document.getElementById("job-title").value;
-                    let salary_start = parseFloat(document.getElementById("range_start").value);
-                    let salary_end = parseFloat(document.getElementById("range_end").value);
-
-                    let clientId = 2001;
+                    let job_title = document.getElementById("job-title").value;
+                    let salary_start = document.getElementById("range_start").value;
+                    let salary_end = document.getElementById("range_end").value;
+                    let clientId = <?php echo $_SESSION['client_id']; ?>;
 
                     if (!description || !job_offer || !location || !applicants || !year_exp || !deadline || !salary_start || !salary_end || !job_title) {
-                        Swal.showValidationMessage("You need to fill up all the informations!");
+                        Swal.showValidationMessage("You need to fill up all the information!");
                         return false;
                     }
 
@@ -154,12 +185,27 @@
                         return false;
                     }
 
+                    formData.append("description", description);
+                    formData.append("client_id", clientId);
+                    formData.append("job_offer", job_offer);
+                    formData.append("location", location);
+                    formData.append("applicants", applicants);
+                    formData.append("year_exp", year_exp);
+                    formData.append("deadline", deadline);
+                    formData.append("salary_start", salary_start);
+                    formData.append("salary_end", salary_end);
+                    formData.append("job_title", job_title);
+
+                    if (fileInput.files.length > 0) {
+                        for (let i = 0; i < fileInput.files.length; i++) {
+                            formData.append("file_upload[]", fileInput.files[i]); 
+                        }
+                    }
+
+
                     return fetch('../ClientPortal/client_home.php', {
                             method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded'
-                            },
-                            body: `description=${encodeURIComponent(description)}&client_id=${clientId}&job_offer=${encodeURIComponent(job_offer)}&location=${encodeURIComponent(location)}&applicants=${encodeURIComponent(applicants)}&year_exp=${encodeURIComponent(year_exp)}&deadline=${encodeURIComponent(deadline)}&salary_start=${encodeURIComponent(salary_start)}&salary_end=${encodeURIComponent(salary_end)}&job_title=${encodeURIComponent(job_title)}`
+                            body: formData
                         })
                         .then(response => response.text())
                         .then(data => {
