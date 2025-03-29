@@ -1,3 +1,14 @@
+
+<?php 
+    $servername = "localhost";
+    $username = "root"; // Change if needed
+    $password = "";
+    $database = "job_connext"; // Change if different
+    
+    $conn = new mysqli($servername, $username, $password, $database);
+?>
+
+
 <?php 
                 $job_offeredQRY = "SELECT * FROM tbl_client_jobpost";
                 $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
@@ -35,9 +46,7 @@
                                 echo "Active";
                             }
                         }
-
-            ?>                                                                                  
-                    
+            ?>                                                                                                      
             <?php 
                 
             ?>

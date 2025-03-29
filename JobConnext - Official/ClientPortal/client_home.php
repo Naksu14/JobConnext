@@ -1,6 +1,5 @@
 <?php include "../ClientPortal/recordFolder/recordPost.php" ?>
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -131,8 +130,8 @@
                                             <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
 
                                         </div>
-
-                            <?php echo include 'job_offered.php' ?>
+                            <!-- JOB OFFERED CARD -->          
+                            <?php echo include '../ClientPortal/template/tmplt_job_offered.php' ?>
                         </a>
                         <div class="job-footer">
                             <button onclick="showAlert()" style="border: none;">
@@ -142,57 +141,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="row title-section">
+                <div class="row title-section"> 
                     <div class="col-sm recommend-workers">
                         <p>
                             Recommended workers
                         </p>
                     </div>
                 </div>
-
-               <?php $recommended_clientHOMEqry = "SELECT w.* FROM tbl_worker_information w JOIN tbl_worker_skill_sets s ON w.worker_id = s.worker_id WHERE s.skills = 'Welder'";
-                    $recommended_clientHOMEexe= mysqli_query($conn, $recommended_clientHOMEqry);
-                        while($recommended_clientGET = mysqli_fetch_assoc(result: $recommended_clientHOMEexe)){
-                            $bluecollFnameHOME = $recommended_clientGET['firstname'];
-                            $bluecollMnameHOME = $recommended_clientGET['middlename'];
-                            $bluecollLnameHOME = $recommended_clientGET['lastname'];  
-                            $bluecoll_workerHOME = $recommended_clientGET['worker_id'];
-                            
-                    $recommended_companynameHOME = "SELECT * FROM tbl_client_information";
-                    $recommended_companynameEXE = mysqli_query($conn, $recommended_companynameHOME);
-                    $recommended_companynameGET = mysqli_fetch_assoc($recommended_companynameEXE);
-                            $bluecoll_companynameHOME = $recommended_companynameGET['company_name'];
-                ?>
-
-                <div class="container-fluid recommendation">
-                    <div class="row recommended-card">
-                        <div class="col-12">
-                            <a href="worker_recommended.php" class="card-link">
-                                <div class="card" id="my-offer">
-                                    <div class="job-header">
-                                        <div class="profile-info">
-                                            <div class="avatar">
-                                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                            </div>
-                                            <div class="details">
-                                                <h3><?php echo $bluecollLnameHOME.", ". $bluecollFnameHOME ?></h3>
-                                                <p><?php echo "ID: ". $bluecoll_workerHOME ?></p>
-                                            </div>
-                                        </div>
-                                        <div class="menu">
-                                            •••
-                                        </div>
-                                    </div>
-                                    <div class="skills">
-                                        <p><strong>Skills:</strong></p>
-                                        <span class="skill-tag green">Welder</span>
-                                        <span class="skill-tag purple">Electrician</span>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                </div>
-                <?php } ?>
+                 <!-- R OFFERED CARD -->  
+                 <?php echo include_once '../ClientPortal/template/tmplt_recommended_worker.php' ?>
                     <div class="row title-section">
                         <div class="col other-offers">
                             <p>
