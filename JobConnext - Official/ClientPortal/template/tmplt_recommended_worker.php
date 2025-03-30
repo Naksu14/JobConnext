@@ -7,7 +7,7 @@
     
     $conn = new mysqli($servername, $username, $password, $database);
 ?>    
-    
+
     
     <?php 
         $recommended_clientHOMEqry = "SELECT w.* FROM tbl_worker_information w JOIN tbl_worker_skill_sets s ON w.worker_id = s.worker_id WHERE s.skills = 'Welder'";
@@ -23,25 +23,9 @@
         $recommended_companynameEXE = mysqli_query($conn, $recommended_companynameHOME);
         $recommended_companynameGET = mysqli_fetch_assoc($recommended_companynameEXE);
                 $bluecoll_companynameHOME = $recommended_companynameGET['company_name'];
-        
-        $bluecol_skillQRY = "SELECT * FROM tbl_worker_skill_sets";
-        $bluecol_skillEXE = mysqli_query($conn, $bluecol_skillQRY );
-        $bluecol_skillGET = mysqli_fetch_assoc($bluecol_skillEXE);
-                $bluecoll_skill = $bluecol_skillGET['skills'];
 
-        if (!function_exists('collar_skill')){
-            function collar_skill($bluecoll_skill){
-                if($bluecoll_skill == 'welder'){
-                    echo include '../ClientPortal/skills/welder.php';
-                }elseif($bluecoll_skill == 'plumber'){
-                    echo include '../ClientPortal/skills/plumber.php';
-                }elseif($bluecoll_skill == 'truck driver'){
-                    echo include '../ClientPortal/skills/truck_driver.php';
-                }else{
-                    echo include '../ClientPortal/skills/electrician.php';
-                }
-            }  
-        }        
+        //chip function(separate file)
+        include '../ClientPortal/template/tmplt_chip.php'     
     ?>
 
     <div class="container-fluid recommendation">
@@ -65,7 +49,7 @@
                         </div>
                         <div class="skills">
                             <p><strong>Skills:</strong></p>
-                            <span class="skill-tag"><?php echo collar_skill($bluecoll_skill); ?></span>
+                            <span class="skill-tag"><?php echo collar_skill($bluecoll_skill) ?></span>
                         </div>
                     </div>
                 </a>

@@ -8,48 +8,46 @@
     $conn = new mysqli($servername, $username, $password, $database);
 ?>
 
-
 <?php 
-                $job_offeredQRY = "SELECT * FROM tbl_client_jobpost";
-                $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
-                    while ($row = mysqli_fetch_assoc($job_offeredEXE)){
+    $job_offeredQRY = "SELECT * FROM tbl_client_jobpost";
+    $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
+        while ($row = mysqli_fetch_assoc($job_offeredEXE)){
 
-                    $client_id = $row['client_id'];
-                    $job_salary = $row['salary']; 
-                    $num_applicants = $row['applicants'];
-                    $yr_Exp = $row['year_exp'];
-                    $job_loc = $row['location'];
-                    $date_posted = $row['date_posted'];
-                    $job_offer = $row['job_offer'];
-                    $job_status = $row['job_status'];
+        $client_id = $row['client_id'];
+        $job_salary = $row['salary']; 
+        $num_applicants = $row['applicants'];
+        $yr_Exp = $row['year_exp'];
+        $job_loc = $row['location'];
+        $date_posted = $row['date_posted'];
+        $job_offer = $row['job_offer'];
+        $job_status = $row['job_status'];
 
-                    
-                    $job_offered_clientname = "SELECT * FROM tbl_client_information WHERE client_id = $client_id";
-                    $job_ex_offered_name = mysqli_query($conn, $job_offered_clientname);
-                    $getjobdata_offered = mysqli_fetch_assoc($job_ex_offered_name);
+        
+        $job_offered_clientname = "SELECT * FROM tbl_client_information WHERE client_id = $client_id";
+        $job_ex_offered_name = mysqli_query($conn, $job_offered_clientname);
+        $getjobdata_offered = mysqli_fetch_assoc($job_ex_offered_name);
 
-                    $clientoffered_Fname = $getjobdata_offered['firstname'];
-                    $clientoffered_Mname = $getjobdata_offered['middlename'];
-                    $clientoffered_Sname = $getjobdata_offered['lastname'];     
-                    $company_name = $getjobdata_offered['company_name'];
+        $clientoffered_Fname = $getjobdata_offered['firstname'];
+        $clientoffered_Mname = $getjobdata_offered['middlename'];
+        $clientoffered_Sname = $getjobdata_offered['lastname'];     
+        $company_name = $getjobdata_offered['company_name'];
 
-                    $job_offered_companyname_QRY = "SELECT * FROM tbl_client_information";
-                    $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
-                    $job_offered_companyGET = mysqli_fetch_assoc($job_offered_companyEXE);
+        $job_offered_companyname_QRY = "SELECT * FROM tbl_client_information";
+        $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
+        $job_offered_companyGET = mysqli_fetch_assoc($job_offered_companyEXE);
 
-                    $company_name = $job_offered_companyGET['company_name'];  
+        $company_name = $job_offered_companyGET['company_name'];  
 
-                        function jobstatus($job_status){
-                            if ($job_status == null){
-                                echo "Inactive";
-                            }else{
-                                echo "Active";
-                            }
-                        }
-            ?>                                                                                                      
-            <?php 
-                
-            ?>
+            function jobstatus($job_status){
+                if ($job_status == null){
+                    echo "Inactive";
+                }else{
+                    echo "Active";
+                }
+            }
+            include '..\ClientPortal\template\tmplt_chip.php'
+?>                                                                                                      
+
             <div class="details">
                 <h3><?php echo $company_name?></h3>
                 <p><?php echo " "."•"." "."Php". $job_salary. " "."•"." ". $num_applicants." "."Applicants". jobstatus($job_status) ?></p>
@@ -72,7 +70,7 @@
         </div>
         <div class="skills">
             <p><strong>Skills needed:</strong></p>
-            <span class="skill-tag yellow">Truck Driver</span>
+            <span class="skill-tag"><?php echo collar_skill() ?></span>
         </div>
     </div><br>
 <?php } ?>
