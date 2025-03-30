@@ -16,21 +16,21 @@
 </head>
 <body>
     <style>
-        .skill-tag {
+        .skill-tag4 {
     display: inline-block;
-    padding: 5px 20px;
+    padding: 4px 15px;
     margin-right: 5px;
     margin-bottom: 5px;
-    font-size: 12px;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: 500;
     border-radius: 2px;
     color: black;
-    white-space: nowrap;
+    background-color: #D9FFCB;
 
 }
     </style>
 
-    <span class="skill-tag green">Welder</span>
+    <span class="skill-tag4">Welder</span>
 </body>
 </html>
 

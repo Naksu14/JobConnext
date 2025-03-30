@@ -45,7 +45,7 @@
                     echo "Active";
                 }
             }
-            include '..\ClientPortal\template\tmplt_chip.php'
+            include '..\ClientPortal\template\tmplt_chipClient_NEEDS.php'//tmplt_chipCOLLAR_SKILLS.php 
 ?>                                                                                                      
 
             <div class="details">
@@ -70,7 +70,7 @@
         </div>
         <div class="skills">
             <p><strong>Skills needed:</strong></p>
-            <span class="skill-tag"><?php echo collar_skill() ?></span>
+            <span class="skill-tag"><?php echo jobpostFunction_for_collar_skill() ?></span>
         </div>
     </div><br>
 <?php } ?>

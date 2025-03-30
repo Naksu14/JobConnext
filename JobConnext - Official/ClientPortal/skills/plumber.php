@@ -16,7 +16,7 @@
 </head>
 <body>
     <style>
-        .skill-tag {
+        .skill-tag2 {
     display: inline-block;
     padding: 5px 20px;
     margin-right: 5px;
@@ -26,11 +26,12 @@
     border-radius: 2px;
     color: black;
     white-space: nowrap;
+    background-color: #FFCBCB;
 
 }
     </style>
 
-    <span class="skill-tag green">Plumber</span>
+    <span class="skill-tag2">Plumber</span>
 </body>
 </html>
 

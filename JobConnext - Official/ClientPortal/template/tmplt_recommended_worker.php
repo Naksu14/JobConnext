@@ -24,8 +24,8 @@
         $recommended_companynameGET = mysqli_fetch_assoc($recommended_companynameEXE);
                 $bluecoll_companynameHOME = $recommended_companynameGET['company_name'];
 
-        //chip function(separate file)
-        include '../ClientPortal/template/tmplt_chip.php'     
+        //chip function Recommended Worker(separate file)
+        include '../ClientPortal/template/tmplt_chipCOLLAR_SKILLS.php'     
     ?>
 
     <div class="container-fluid recommendation">
@@ -49,7 +49,7 @@
                         </div>
                         <div class="skills">
                             <p><strong>Skills:</strong></p>
-                            <span class="skill-tag"><?php echo collar_skill($bluecoll_skill) ?></span>
+                            <span class="skill-tag"><?php echo collar_skill() ?></span>
                         </div>
                     </div>
                 </a>
