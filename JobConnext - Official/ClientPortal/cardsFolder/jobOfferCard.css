@@ -1,0 +1,153 @@
+
+.job-card{
+    /* border: 1px solid; */
+    margin: 0px 0px 0px 0px;
+    
+}
+
+.job-card a{
+    text-decoration: none;
+}
+
+.job-card #my-offer{
+    height: 250px;
+    max-width: 100%;
+    /* margin-left:30px ; */
+    margin: 0px 30px;
+}
+
+.job-card #my-offer img{
+    border-radius:50%;
+    width: 80px;
+    height: 80px;
+    margin: 25px 15px 15px;
+    
+}
+
+#my-offer a{
+    color: #000000;
+}
+#my-offer {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    font-size: 14px;
+    max-width: 100%;
+
+}
+
+
+.details h3 {
+    margin: 0;
+    font-size: 18px;
+}
+.details-client h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.details p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+.details-client p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.job-dates {
+    text-align: right;
+}
+
+.job-dates p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.menu{
+    font-size: 16px;
+    color: var(--darkblue);
+    cursor: pointer;
+}
+
+.check-menu {
+    font-size: 16px;
+    color: #FF8787;
+    cursor: pointer;
+    font-weight: 500;
+    font-family: inter;
+}
+
+
+.job-body {
+    margin-bottom: 15px;
+}
+
+.info p {
+    margin: 5px 0;
+    color: #6E6E6E;
+}
+
+.skills {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px; 
+}
+
+.skills p {
+    margin: 0 0 5px;
+    font-weight: bold;
+}
+
+.skills-available {
+    margin-top: 10px;
+    display: flex;
+    white-space: nowrap;
+    gap: 8px; 
+}
+
+
+.skill-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.skill-tag.green {
+    background-color: #D9FFCB;
+    color: #000000;
+}
+
+.skill-tag.purple {
+    background-color: #D8CBFF;
+    color: #000000;
+}
+
+.job-footer {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+}
+
+.job-footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+    white-space: nowrap;
+}
+
