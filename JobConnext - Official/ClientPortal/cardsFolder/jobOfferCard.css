@@ -260,7 +260,7 @@
 
 .job-card a {
     text-decoration: none !important;
-    color: inherit; /* Ensures it doesn't turn blue */
+    color: inherit;  /* ok*/
 }
 
 
