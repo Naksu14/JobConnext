@@ -45,7 +45,7 @@
                     echo "Active";
                 }
             }
-            include '..\ClientPortal\template\tmplt_chipClient_NEEDS.php'//tmplt_chipCOLLAR_SKILLS.php 
+            include '..\ClientPortal\template\tmplt_chipClient_NEEDSarray.php'//tmplt_chipCOLLAR_SKILLS.php 
 ?>                                                                                                      
 
             <div class="details">
