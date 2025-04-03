@@ -11,6 +11,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../Assets/css/client-showjob.css">
+    <link rel="stylesheet" href="../Assets/css/nav.css">
     <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,37 +32,8 @@
 </head>
 
 <body>
-
-    <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="container-fluid" id="logo">
-                    <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="container-fluid" id="nav_list">
-                    <ul>
-                        <li>
-                            <a href="client_home.php">Home</a>
-                            <a href="../ClientPortal/client_profile.php">Profile</a>
-                            <a href="../ClientPortal/client-message.php">Message</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="container-fluid">
-                    <a href="../GuessPortal/LandingPage.php">
-                        <button id="logout_butt">
-                            Logout
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    <?php include "../ClientPortal/cardsFolder/Nav.php";?>
+    
     <div class="container-fluid custom-container" id="main_content">
         <div class="add_job">
             <div class="dp_photo">
@@ -197,6 +169,7 @@
                 </div>
             </div>
                 <?php include "../ClientPortal/cardsFolder/jobOfferCard.php"?>
+                
             <div class="row title-section">
                 <div class="col-sm recommend-workers">
                     <p>
@@ -205,34 +178,8 @@
                 </div>
             </div>
 
-            <div class="container-fluid recommendation">
-                <div class="row recommended-card">
-                    <div class="col-12">
-                        <a href="worker_recommended.php" class="card-link">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="details">
-                                            <h3>Maxwell Cruz</h3>
-                                            <p>ID:3424675</p>
-                                        </div>
-                                    </div>
-                                    <div class="menu">
-                                        •••
-                                    </div>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <?php include "../ClientPortal/cardsFolder/jobOfferCard.php"?>
+
                 <div class="row title-section">
                     <div class="col other-offers">
                         <p>
@@ -240,49 +187,10 @@
                         </p>
                     </div>
                 </div>
-            </div>
+    <!-- hahahha mali -->
+            <?php include "../ClientPortal/cardsFolder/jobOfferCard.php"?>
 
-            <div class="row other-offer">
-                <div class="col-12">
-                    <div class="card" id="my-offer">
-                        <div class="job-header">
-                            <div class="profile-info">
-                                <div class="avatar">
-                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                </div>
-                                <div class="details">
-                                    <h3>Highway express</h3>
-                                    <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
-                                </div>
-                            </div>
-                            <div class="job-dates">
-                                <div class="menu">•••</div>
-                                <p>11/8/2024 to 11/13/2024</p>
-                            </div>
-                        </div>
-                        <div class="job-body">
-                            <div class="info">
-                                <p>
-                                    <strong>Location:</strong>
-                                    Taguig
-                                </p>
-                                <p>
-                                    <strong>Years of experience:</strong> 2
-                                </p>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills needed:</strong></p>
-                                <span class="skill-tag yellow">Truck Driver</span>
-                            </div>
-                        </div>
-                        <div class="job-footer">
-                            <p>5 Applied</p>
-                            <p>0 Accepted</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-
         </div>
     </div>
     </div>

@@ -2,7 +2,9 @@
     --darkblue : #161D6F; 
     --darkorange : #E46232;
 }
-
+body::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
 *{
     padding: 0;
     margin: 0;
@@ -101,11 +103,11 @@
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 2;
     padding: 0px !important;
+    max-height: 1000px;
 }
 .page_content{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 2;
-    height:1000px;
     overflow-y: auto;
 }
 
@@ -158,8 +160,8 @@
     /* border: 1px solid; */
 }
 
-.page_content{
-    /* border: 1px solid; */
+.page_content::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
 }
 
 .content-filter{
@@ -561,6 +563,7 @@
 
 .short-info-container{
     margin: 10px 10px;
+
 }
 .short-info{
     display: flex;

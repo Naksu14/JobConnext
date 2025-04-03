@@ -1,0 +1,13 @@
+.fixed-navv{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999; /* Keeps the navbar on top of other elements */
+        background-color: #fff; /* Optional, set background color for visibility */
+        
+}
+
+#main_content{
+    margin-top: 180px;
+}
