@@ -25,6 +25,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     $job_title = $row['job_title'];
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +58,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 </head>
 
 <body>
-    <div class="row job-card">
+    <div class="row job-card" style="text-decoration: none !important;">
         <div class="col-sm-12">
 
             <div class="card" id="my-offer">
