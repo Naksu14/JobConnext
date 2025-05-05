@@ -25,7 +25,13 @@
     
 
 }
-
+.fixed-navv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
 #logo img{
       width: 205px;
       height: 107px;  

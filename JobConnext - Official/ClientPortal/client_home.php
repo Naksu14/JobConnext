@@ -10,9 +10,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-     <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">    
+    <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
     <link rel="stylesheet" href="../Assets/css/client_home.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -120,42 +120,32 @@
                         </p>
                     </div>
                 </div>
+
                 <div class="row job-card">
                     <div class="col-12">
-                        <a href="../ClientPortal/client-showjob.php" class="card-link" style="color: black;">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
 
-                                        </div>
-                            <!-- JOB OFFERED CARD -->          
-                            <?php echo include '../ClientPortal/template/tmplt_job_offered.php' ?>
-                        </a>
-                        <div class="job-footer">
-                            <button onclick="showAlert()" style="border: none;">
-                                <p>5 Applied</p>
-                            </button>
-                            <p>0 Accepted</p>
-                        </div>
+                        <!-- JOB OFFERED CARD -->
+                        <?php echo include '../ClientPortal/template/tmplt_job_offered.php' ?>
+
                     </div>
                 </div>
-                <div class="row title-section"> 
+
+                <div class="row title-section">
                     <div class="col-sm recommend-workers">
                         <p>
                             Recommended workers
                         </p>
                     </div>
                 </div>
-                 <!-- R OFFERED CARD -->  
-                 <?php echo include_once '../ClientPortal/template/tmplt_recommended_worker.php' ?>
-                    <div class="row title-section">
-                        <div class="col other-offers">
-                            <p>
-                                Other Job Offers
-                            </p>
-                        </div>
+
+                <!-- R OFFERED CARD -->
+                <?php echo include_once '../ClientPortal/template/tmplt_recommended_worker.php' ?>
+
+                <div class="row title-section">
+                    <div class="col other-offers">
+                        <p>
+                            Other Job Offers
+                        </p>
                     </div>
                 </div>
 
@@ -197,7 +187,7 @@
                             </div>
                             <div class="job-footer">
                                 <p>5 Applied</p>
-                                <p>0 Accepted</p>   
+                                <p>0 Accepted</p>
                             </div>
                         </div>
                     </div>
@@ -207,9 +197,9 @@
     </div>
     </div>
     </div>
-        <?php
-            include "../ClientPortal/ModalFolder/post_job_modal.php";
-        ?>
+    <?php
+    include "../ClientPortal/ModalFolder/post_job_modal.php";
+    ?>
 </body>
 
 </html>
