@@ -26,67 +26,9 @@
 
 }
 
-#logo img{
-      width: 205px;
-      height: 107px;
-}
-
-.links, .logout-btn{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#nav_list > ul{
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-
-#nav_list > ul > li > a{
-    text-decoration: none;
-    font-family: poppins;
-    font-size: 19;
-    font-weight: 700;
-    color: #000000;
-}
-
-#nav_list > ul > li > a:hover{
-    border-bottom: solid 3px;
-    color: var(--darkblue);
-}
-
-#logout_butt{
-    border: 1px solid #161D6F;
-    width: 184px;
-    height: 50px;
-    text-align: center;
-    background-color: #fff;
-    border-radius: 3px;
-    text-decoration: none;
-    color: #000000;
-    font-family: poppins;
-    font-weight: bold;
-    font-size: 18px;
-}
-
-#logout_butt a{
-    text-decoration: none;
-    color: #000000;
-}
 
 .custom-container {
     max-width: 1450px; 
-}
-
-#logout_butt:hover{
-    background-color:var(--darkblue);    
-    color: #fff;
 }
 
 

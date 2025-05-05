@@ -1,4 +1,12 @@
-<?php include "../ClientPortal/recordFolder/recordPost.php" ?>
+<?php
+    include '../db_con/db_connection.php';
+    // include "../ClientPortal/recordFolder/recordPost.php";
+
+    session_start();
+
+    echo $_SESSION[$data['id']] ?? "no data";
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +20,7 @@
 
     <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
     <link rel="stylesheet" href="../Assets/css/client_home.css">
+    <link rel="stylesheet" href="../Assets/css/style.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

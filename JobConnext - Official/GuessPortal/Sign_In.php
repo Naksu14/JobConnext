@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 ob_start(); // Ensure no output is sent before header redirection
 include '../db_con/db_connection.php';
 
@@ -113,9 +113,8 @@ if (isset($_POST['g-recaptcha-response'])) {
                     $row = $result->fetch_assoc();
                     if (password_verify($password, $row['hash_password'])) {
                         $_SESSION[$data['id']] = $row[$data['id']];
-                        $_SESSION['username'] = $row['username'];
+                        echo $_SESSION[$data['id']];
                         header("Location: " . $data['redirect']);
-                        exit();
                     } else {
                         $error = "Invalid credentials!";
                     }

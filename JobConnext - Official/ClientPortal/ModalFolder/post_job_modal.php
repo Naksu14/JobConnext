@@ -101,7 +101,7 @@
 
                         </div>
                         <div class="job-status">
-                            <h3>Job Status: <span class="active">Active</span></h3>
+                            <h5>Job Status: <span class="active">Active</span></h5>
                             <label>Location:</label>
                             <textarea placeholder="Enter Location" id="location" name="location"></textarea>
                             <div class="applicants-needed">
