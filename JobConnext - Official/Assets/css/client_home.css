@@ -27,24 +27,27 @@
 
 #logo img{
       width: 205px;
-      height: 107px;  
+      height: 107px;
 }
 
-#nav_list{
-    margin: 30px 0px 30px 0px;
-    padding: 20px 0px 30px 0px;
-    
-    /* border: 1px solid; */
-}
-
-#nav_list ul li{
+.links, .logout-btn{
     display: flex;
-    flex-direction:row;
-    justify-content: space-evenly;
-    margin: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#nav_list ul li a{
+#nav_list > ul{
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#nav_list > ul > li > a{
     text-decoration: none;
     font-family: poppins;
     font-size: 19;
@@ -52,13 +55,12 @@
     color: #000000;
 }
 
-#nav_list ul li a:hover{
+#nav_list > ul > li > a:hover{
     border-bottom: solid 3px;
     color: var(--darkblue);
 }
 
 #logout_butt{
-    margin: 47px 0px 30px 0px;
     border: 1px solid #161D6F;
     width: 184px;
     height: 50px;
@@ -71,6 +73,7 @@
     font-weight: bold;
     font-size: 18px;
 }
+
 #logout_butt a{
     text-decoration: none;
     color: #000000;

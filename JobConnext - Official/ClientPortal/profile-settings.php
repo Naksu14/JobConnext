@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../Assets/css/profile-settings.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="../Assets/css/client_home.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
@@ -22,35 +23,7 @@
 </head>
 
 <body>
-    <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col">
-                <div class="container-fluid" id="logo">
-                    <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
-                </div>
-            </div>
-            <div class="col">
-                <div class="container-fluid" id="nav_list">
-                    <ul>
-                        <li>
-                            <a href="client_home.php">Home</a>
-                            <a href="../ClientPortal/client_profile.php">Profile</a>
-                            <a href="../ClientPortal/client-message.php">Message</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col">
-                <div class="container-fluid">
-                    <a href="../GuessPortal/LandingPage.php">
-                        <button id="logout_butt">
-                            Logout
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+<?php include "../ClientPortal/components/navbar.php"?>
     <div class="container-fluid main-content">
         <div class="container-fluid full-content">
             <div class="container-fluid header-1">
