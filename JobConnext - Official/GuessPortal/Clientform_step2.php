@@ -226,15 +226,8 @@ include "../db_con/db_connection.php";
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <label for="validationCustom01" class="form-label">Social Media Link</label>
-                        <input type="text" class="form-control" id="validationCustom01" name="socmed" required>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="validationCustom01" class="form-label">Email Address</label>
-                        <input type="text" class="form-control" id="validationCustom01" name="company_email" required>
+                        <label for="validationCustom01" class="form-label">Company Address</label>
+                        <input type="text" class="form-control" id="validationCustom01" name="company_Address" required>
                         <div class="valid-feedback">
                             Looks good!
                         </div>
@@ -281,7 +274,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Required fields validation
-    $required_fields = ['firstname', 'middlename', 'lastname', 'phone_no', 'bio', 'country', 'city', 'region', 'province', 'barangay', 'postal_code', 'company_name', 'socmed', 'company_email'];
+    $required_fields = ['firstname', 'middlename', 'lastname', 'phone_no', 'bio', 'country', 'city', 'region', 'province', 'barangay', 'postal_code', 'company_name', 'company_Address'];
     foreach ($required_fields as $field) {
         if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
             die("Error: Missing required field: $field");
@@ -301,28 +294,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $barangay = $_POST['barangay'];
     $postal_code = $_POST['postal_code'];
     $company_name = $_POST['company_name'];
-    $socmed = $_POST['socmed'];
-    $company_email = $_POST['company_email'];
+    $company_Address = $_POST['company_Address'];
 
     // Insert user profile data using a prepared statement
-    $sql = "INSERT INTO tbl_client_information
-        (client_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode, company_name, socmed, company_email) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql1 = "INSERT INTO tbl_client_information 
+    (client_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postal_code)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt1 = $conn->prepare($sql1);
+    $stmt1->bind_param("ssssssssssss", $client_id, $firstname, $middlename, $lastname, $phone_no, $bio, $country, $city, $region, $province, $barangay, $postal_code);
 
-    $stmt = $conn->prepare($sql);
-    if (!$stmt) {
-        die("Error preparing SQL statement: " . $conn->error);
+    if (!$stmt1->execute()) {
+        die("Error inserting into tbl_client_information: " . $stmt1->error);
     }
 
-    $stmt->bind_param("sssssssssssssss", $client_id, $firstname, $middlename, $lastname, $phone_no, $bio, $country, $city, $region, $province, $barangay, $postal_code, $company_name, $socmed, $company_email);
-
-    if (!$stmt->execute()) {
-        die("Error inserting data into tbl_worker_information: " . $stmt->error);
+    $sql2 = "INSERT INTO tbl_company_info (client_id, company_name, company_address) VALUES (?, ?, ?)";
+    $stmt2 = $conn->prepare($sql2);
+    $stmt2->bind_param("sss", $client_id, $company_name, $company_Address);
+    
+    if (!$stmt2->execute()) {
+        die("Error inserting into tbl_company_info: " . $stmt2->error);
     }
-
-
-
-
+    
     // Redirect to the next step upon success
     ob_end_clean();
     header("Location: Clientform_step3.php");
