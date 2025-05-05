@@ -108,7 +108,7 @@
                     </div>
                 </div>
 
-                <!-- R OFFERED CARD -->
+
                 <?php include '../ClientPortal/template/tmplt_recommended_worker.php'; ?>
 
                 <div class="row title-section">
