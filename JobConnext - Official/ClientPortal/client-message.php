@@ -22,12 +22,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-
-    <?php include "../ClientPortal/components/navbar.php"?>
-=======
     <?php include "../ClientPortal/cardsFolder/Nav.php";?>
->>>>>>> ca9c24f3227e8f64fefbc8128bc15ebafdf07dd8
 
     <div class="d-flex flex-row justify-content-center" style="height: 100vh; width:auto;">
         <div class="container" style="width: 40%;">
