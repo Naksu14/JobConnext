@@ -86,18 +86,18 @@
                             </div>
 
                             <div class="file-attachments">
-<label>File Attachment/s:</label>
+                                    <label>File Attachment/s:</label>
 
-<div class="file-upload-container">
-<label for="file-upload" class="file-upload-label">
-<img src="../Assets/image/mdi_file-outline.png">
-Upload Files
-</label>
-<input type="file" id="file-upload" name="file_upload[]" multiple hidden>
+                                    <div class="file-upload-container">
+                                    <label for="file-upload" class="file-upload-label">
+                                    <img src="../Assets/image/mdi_file-outline.png">
+                                    Upload Files
+                                    </label>
+                                    <input type="file" id="file-upload" name="file_upload[]" accept=".pdf, image/*" multiple hidden >
 
-</div>
-<span id="file-name-display" class="file-name-display">No file selected</span>
-</div>
+                                    </div>
+                                    <span id="file-name-display" class="file-name-display">No file selected</span>
+                                    </div>
 
                         </div>
                         <div class="job-status">

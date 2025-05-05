@@ -23,7 +23,12 @@
 </head>
 
 <body>
+<<<<<<< HEAD
     <?php include "../ClientPortal/components/navbar.php"?>
+=======
+<?php include "../ClientPortal/cardsFolder/Nav.php";?>
+
+>>>>>>> ca9c24f3227e8f64fefbc8128bc15ebafdf07dd8
     <div class="container-fluid main-content">
         <div class="settings-container">
             <a href="profile-settings.php">

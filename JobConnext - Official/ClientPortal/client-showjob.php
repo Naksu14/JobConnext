@@ -11,6 +11,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../Assets/css/client-showjob.css">
+    <link rel="stylesheet" href="../Assets/css/nav.css">
     <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,9 +33,14 @@
 </head>
 
 <body>
+<<<<<<< HEAD
 
 <?php include "../ClientPortal/components/navbar.php"?>
 
+=======
+    <?php include "../ClientPortal/cardsFolder/Nav.php";?>
+    
+>>>>>>> ca9c24f3227e8f64fefbc8128bc15ebafdf07dd8
     <div class="container-fluid custom-container" id="main_content">
         <div class="add_job">
             <div class="dp_photo">
@@ -169,51 +175,8 @@
                     </p>
                 </div>
             </div>
-
-            <div class="row job-card">
-                <div class="col-sm-12">
-                    <a href="client_rate-workers.php" class="card-link">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Mr. Fixer</h3>
-                                        <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                    <p>11/8/2024 to 11/13/2024</p>
-                                </div>
-                            </div>
-                            <div class="job-body">
-                                <div class="info">
-                                    <p>
-                                        <strong>Location:</strong>
-                                        Makati
-                                    </p>
-                                    <p>
-                                        <strong>Years of experience:</strong> 0
-                                    </p>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills needed:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                            <div class="job-footer">
-                                <p>5 Applied</p>
-                                <p>0 Accepted</p>
-                            </div>
-                        </div>
-                </div>
-                </a>
-            </div>
-
+                <?php include "../ClientPortal/cardsFolder/jobOfferCard.php"?>
+                
             <div class="row title-section">
                 <div class="col-sm recommend-workers">
                     <p>
@@ -222,34 +185,8 @@
                 </div>
             </div>
 
-            <div class="container-fluid recommendation">
-                <div class="row recommended-card">
-                    <div class="col-12">
-                        <a href="worker_recommended.php" class="card-link">
-                            <div class="card" id="my-offer">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                        </div>
-                                        <div class="details">
-                                            <h3>Maxwell Cruz</h3>
-                                            <p>ID:3424675</p>
-                                        </div>
-                                    </div>
-                                    <div class="menu">
-                                        •••
-                                    </div>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills:</strong></p>
-                                    <span class="skill-tag green">Welder</span>
-                                    <span class="skill-tag purple">Electrician</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+            <?php include "../ClientPortal/cardsFolder/jobOfferCard.php"?>
+
                 <div class="row title-section">
                     <div class="col other-offers">
                         <p>
@@ -257,49 +194,10 @@
                         </p>
                     </div>
                 </div>
-            </div>
+    <!-- hahahha mali -->
+            <?php include "../ClientPortal/cardsFolder/jobOfferCard.php"?>
 
-            <div class="row other-offer">
-                <div class="col-12">
-                    <div class="card" id="my-offer">
-                        <div class="job-header">
-                            <div class="profile-info">
-                                <div class="avatar">
-                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                </div>
-                                <div class="details">
-                                    <h3>Highway express</h3>
-                                    <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
-                                </div>
-                            </div>
-                            <div class="job-dates">
-                                <div class="menu">•••</div>
-                                <p>11/8/2024 to 11/13/2024</p>
-                            </div>
-                        </div>
-                        <div class="job-body">
-                            <div class="info">
-                                <p>
-                                    <strong>Location:</strong>
-                                    Taguig
-                                </p>
-                                <p>
-                                    <strong>Years of experience:</strong> 2
-                                </p>
-                            </div>
-                            <div class="skills">
-                                <p><strong>Skills needed:</strong></p>
-                                <span class="skill-tag yellow">Truck Driver</span>
-                            </div>
-                        </div>
-                        <div class="job-footer">
-                            <p>5 Applied</p>
-                            <p>0 Accepted</p>
-                        </div>
-                    </div>
-                </div>
             </div>
-
         </div>
     </div>
     </div>
