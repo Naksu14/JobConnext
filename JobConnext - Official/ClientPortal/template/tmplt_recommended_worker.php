@@ -50,7 +50,7 @@ while ($row = mysqli_fetch_assoc(result: $recommended_clientHOMEexe)) {
                             <p><strong>Skills:</strong></p>
                             <span class="skill-tag"><?php echo collar_skill(); ?></span>
                         </div>
-                    </div>
+                    </div>-
                 </a>
             </div>
         </div>

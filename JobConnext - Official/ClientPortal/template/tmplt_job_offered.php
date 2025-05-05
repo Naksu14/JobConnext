@@ -23,21 +23,32 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     $job_offer = $row['job_offer'];
     $job_status = $row['job_status'];
 
-
-    $job_offered_clientname = "SELECT * FROM tbl_client_information WHERE client_id = $client_id";
-    $job_ex_offered_name = mysqli_query($conn, $job_offered_clientname);
-    $getjobdata_offered = mysqli_fetch_assoc($job_ex_offered_name);
-
-    $clientoffered_Fname = $getjobdata_offered['firstname'];
-    $clientoffered_Mname = $getjobdata_offered['middlename'];
-    $clientoffered_Sname = $getjobdata_offered['lastname'];
-    $company_name = $getjobdata_offered['firstname'];
-
-    $job_offered_companyname_QRY = "SELECT * FROM tbl_client_information";
+    $job_offered_companyname_QRY = "SELECT * FROM tbl_company_info WHERE client_id = $client_id";
     $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
-    $job_offered_companyGET = mysqli_fetch_assoc($job_offered_companyEXE);
 
-    $company_name = $job_offered_companyGET['firstname'];
+    $company_name = ''; // default fallback
+
+    while ($company_row = mysqli_fetch_assoc($job_offered_companyEXE)) {
+        $company_name = $company_row['company_name'];
+    }
+
+    $colors = ['#D8CBFF', '#FFD8CB', '#CBFFD8', '#CBCDFF', '#FFCBE5', '#E0CBFF']; // Add more if needed
+
+    // Fetch skills for current client
+    $skill_qry = "SELECT * FROM tbl_client_skills_sets WHERE client_id = $client_id";
+    $skill_exe = mysqli_query($conn, $skill_qry);
+
+    $i = 0;
+    $skill_tags = '';
+    while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
+        $skill_name = $skill_row['skills'];
+        $color = $colors[$i % count($colors)];
+        $skill_tags .= "<span class='skill-tag1' style='background-color: $color;'>{$skill_name}</span> ";
+        $i++;
+    }
+
+
+
 
     if ($job_status == null) {
         $status =  "Inactive";
@@ -45,7 +56,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         $status = "Active";
     }
 
-    include '../ClientPortal/template/tmplt_chipClient_NEEDSarray.php'; //tmplt_chipCOLLAR_SKILLS.php 
+    // include '../ClientPortal/template/tmplt_chipClient_NEEDSarray.php'; //tmplt_chipCOLLAR_SKILLS.php 
 
 ?>
     <a href="" class="card-link" style="color: black; text-decoration:none;">
@@ -77,7 +88,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                 </div>
                 <div class="skills">
                     <p><strong>Skills needed:</strong></p>
-                    <span class="skill-tag"><?php echo jobpostFunction_for_collar_skill(); ?></span>
+                    <span class="skill-tag"><?php echo $skill_tags; ?></span>
                 </div>
             </div>
             <div class="job-footer">
