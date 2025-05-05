@@ -125,7 +125,7 @@
                     <div class="col-12">
 
                         <!-- JOB OFFERED CARD -->
-                        <?php echo include '../ClientPortal/template/tmplt_job_offered.php' ?>
+                        <?php  include '../ClientPortal/template/tmplt_job_offered.php'; ?>
 
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                 </div>
 
                 <!-- R OFFERED CARD -->
-                <?php echo include_once '../ClientPortal/template/tmplt_recommended_worker.php' ?>
+                <?php include '../ClientPortal/template/tmplt_recommended_worker.php'; ?>
 
                 <div class="row title-section">
                     <div class="col other-offers">
@@ -195,8 +195,8 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
+    <!-- </div>
+    </div> -->
     <?php
     include "../ClientPortal/ModalFolder/post_job_modal.php";
     ?>

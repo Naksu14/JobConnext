@@ -19,25 +19,25 @@
             function jobpostFunction_for_collar_skill() {
                 global $job_postFOR_bluecoll_skill;
         
-               
                 $skills = [
-                    ['welder', '../ClientPortal/skills/welder.php'],
-                    ['plumber', '../ClientPortal/skills/plumber.php'],
-                    ['truck driver', '../ClientPortal/skills/truck_driver.php'],
-                    ['electrician', '../ClientPortal/skills/electrician.php'] // Default case
+                    'welder' => '../ClientPortal/skills/welder.php',
+                    'plumber' => '../ClientPortal/skills/plumber.php',
+                    'truck driver' => '../ClientPortal/skills/truck_driver.php',
+                    'electrician' => '../ClientPortal/skills/electrician.php'
                 ];
         
-
+                // Make sure the skill is an array
                 if (!is_array($job_postFOR_bluecoll_skill)) {
-                    $job_postFOR_bluecoll_skill = [$job_postFOR_bluecoll_skill]; // Convert to array if it's a single skill
+                    $job_postFOR_bluecoll_skill = [$job_postFOR_bluecoll_skill];
                 }
         
-
-                foreach ($skills as $skill) {
-                    if (in_array($skill[0], $job_postFOR_bluecoll_skill)) {                // Include files for all matching skills
-                        echo include $skill[1];
+                foreach ($job_postFOR_bluecoll_skill as $skill_name) {
+                    $skill_name = strtolower(trim($skill_name)); // Normalize
+                    if (isset($skills[$skill_name])) {
+                        include $skills[$skill_name];
                     }
                 }
             }
         }
+        
         ?>
