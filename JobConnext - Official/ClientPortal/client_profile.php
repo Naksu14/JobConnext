@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <?php include "../ClientPortal/components/navbar.php"?>
+<?php include "../ClientPortal/components/navbar.php"?>       
     <div class="container-fluid main-content">
         <div class="settings-container">
             <a href="profile-settings.php">
