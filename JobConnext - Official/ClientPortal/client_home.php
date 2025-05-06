@@ -1,7 +1,8 @@
 <?php
     session_start();
     include '../db_con/db_connection.php';
-    include "../ClientPortal/recordFolder/recordPost.php";
+    include '../ClientPortal/recordFolder/recordPost.php';
+    include '../ClientPortal/ModalFolder/post_job_modal.php';
 ?>
 
 
@@ -15,10 +16,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
-    <link rel="stylesheet" href="../Assets/css/client_home.css">
-    <link rel="stylesheet" href="../Assets/css/style.css">
 
+        <!-- External Css -->
+    <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
+    <link rel="stylesheet" href="../Assets/css/Client Css/client_home.css">
+    <link rel="stylesheet" href="../Assets/css/style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link

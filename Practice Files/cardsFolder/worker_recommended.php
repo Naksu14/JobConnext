@@ -15,7 +15,7 @@
                         $job_offer = $row['job_offer'];
 
                         
-                        $job_offered_clientname = "SELECT * FROM tbl_client_information WHERE client_id = 2001";
+                        $job_offered_clientname = "SELECT * FROM tbl_client_information";
                         $job_ex_offered_name = mysqli_query($conn, $job_offered_clientname);
                         $getjobdata_offered = mysqli_fetch_assoc($job_ex_offered_name);
 
