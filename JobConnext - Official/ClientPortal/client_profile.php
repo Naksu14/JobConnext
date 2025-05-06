@@ -37,7 +37,8 @@
                     <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
                     <div class="name-title">
                         <span>
-                            Company Org.
+                        <?php  include '../ClientPortal/template/tmplt_clientProfile.php'; ?>
+
                         </span>
                         <h6>
                             Construction
@@ -53,7 +54,33 @@
 
             <div class="container-fluid profile-nav">
                 <a href="client_profile.php" id="active-nav">Overview</a>
-                <a href="profile-company.php" id="">Company Work</a>
+                <?php
+                    if (session_status() === PHP_SESSION_NONE) {
+                        session_start();
+                    }
+                    include "../db_con/db_connection.php";
+
+                   
+                    if (isset($_SESSION['client_id'])) {
+                        $clientId = $_SESSION['client_id'];
+                        $query = "SELECT company_name FROM tbl_company_info WHERE client_id = ? ";
+                        $stmt = $conn->prepare($query);
+                        $stmt->bind_param("i", $clientId);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($result && $result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            $companyName = $row['company_name'];
+                        } else {
+                            $companyName = "Company Work";
+                        }
+                        $stmt->close();
+                    } else {
+                        $companyName = "Guest";
+                    }
+                ?>
+                        <a href="profile-company.php" id=""><?php echo $companyName; ?></a>
             </div>
             <div class="create-header">
                 <img src="../Assets/image/Create.png" alt="">
@@ -65,11 +92,38 @@
                         About Us
                     </span>
                 </div>
-                <div class="about-us-content">
-                    <p>
-                        We are a trusted construction company committed to delivering high-quality projects with precision and professionalism. With 4 years of experience, we specialize in commercial and industrial construction, renovations, and infrastructure development. Our dedicated team of experts ensures every project is completed on time, within budget, and to the highest standards of safety and excellence. At Company Org, we build not just structures, but lasting relationships with our clients.
-                    </p>
-                </div>
+                <?php
+
+                // about us
+
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start(); 
+                }
+                include "../db_con/db_connection.php";
+
+                
+                if (isset($_SESSION['client_id'])) {
+                    $clientId = $_SESSION['client_id'];
+                    $query = "SELECT company_aboutUs FROM tbl_company_info WHERE client_id = ?";
+                    $stmt = $conn->prepare($query);
+                    $stmt->bind_param("i", $clientId);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+
+                    if ($result && $result->num_rows > 0) {
+                        $row = $result->fetch_assoc();
+                        $clientAboutUs = $row['company_aboutUs'];
+                    } else {
+                        $clientAboutUs = "About Us information is not available at the moment.";
+                    }
+                    $stmt->close();
+                } else {
+                    $clientAboutUs = "You are not logged in.";
+                }
+                ?>
+                <p>
+                    <?php echo $clientAboutUs; ?>
+                </p>
             </div>
             <div class="address">
                 <div class="address-header">
@@ -80,7 +134,39 @@
                 <div class="address-content">
                     <h6 id="header-address">
                         <img src="../Assets/image/Location.png" alt="">
-                        <p>Address Region City</p>
+                        <p>                   
+                <?php
+
+                    // address
+
+                    if (session_status() === PHP_SESSION_NONE) {
+                        session_start(); 
+                    }
+                    include "../db_con/db_connection.php";
+
+                   
+                    if (isset($_SESSION['client_id'])) {
+                        $clientId = $_SESSION['client_id'];
+                        $query = "SELECT company_Address FROM tbl_company_info WHERE client_id = ? ";
+                        $stmt = $conn->prepare($query);
+                        $stmt->bind_param("i", $clientId);
+                        $stmt->execute();
+                        $result = $stmt->get_result();
+
+                        if ($result && $result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            $clientAddress = $row['company_Address'];
+                        } else {
+                            $clientAddress = "About Us information is not available at the moment.";
+                        }
+                        $stmt->close();
+                    } else {
+                        $clientAddress = "You are not logged in.";
+                    }
+                ?>
+                <p>
+                    <?php echo $clientAddress; ?>
+                </p></p>
                     </h6>
                 </div>
                 <div class="address-img">
@@ -98,13 +184,113 @@
                 <div class="contact-content">
                     <ul>
                         <li>Phone no.:
-                            <span> +63 913-523-8455</span>
+                            <span> 
+                    <?php
+
+                        // phone number
+
+                        if (session_status() === PHP_SESSION_NONE) {
+                            session_start(); 
+                        }
+                        include "../db_con/db_connection.php";
+
+                      
+                        if (isset($_SESSION['client_id'])) {
+                            $clientId = $_SESSION['client_id'];
+                            $query = "SELECT phone_no FROM tbl_client_information WHERE client_id = ? ";
+                            $stmt = $conn->prepare($query);
+                            $stmt->bind_param("i", $clientId);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+
+                            if ($result && $result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $clientPhoneNumber = $row['phone_no'];
+                            } else {
+                                $clientPhoneNumber = "About Us information is not available at the moment.";
+                            }
+                            $stmt->close();
+                        } else {
+                            $clientPhoneNumber = "You are not logged in.";
+                        }
+                    ?>
+                <p>
+                    <?php echo $clientPhoneNumber; ?>
+                </p>
+                    </span>
                         </li>
                         <li>Email Address:
-                            <span>Company@gmail.com</span>
+                            <span>
+                                
+                    <?php
+
+                        // email address
+                        
+                        if (session_status() === PHP_SESSION_NONE) {
+                            session_start(); 
+                        }
+                        include "../db_con/db_connection.php";
+
+                      
+                        if (isset($_SESSION['client_id'])) {
+                            $clientId = $_SESSION['client_id'];
+                            $query = "SELECT email FROM tbl_client WHERE client_id = ?";
+                            $stmt = $conn->prepare($query);
+                            $stmt->bind_param("i", $clientId);
+                            $stmt->execute();
+                            $result = $stmt->get_result();
+
+                            if ($result && $result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                $clientEmail = $row['email'];
+                            } else {
+                                $clientEmail = "About Us information is not available at the moment.";
+                            }
+                            $stmt->close();
+                        } else {
+                            $clientEmail = "You are not logged in.";
+                        }
+                    ?>
+                        <p>
+                            <?php echo $clientEmail; ?>
+                        </p>
+                            </span>
                         </li>
                         <li>Social Media Links:
-                            <span>Company@yahoo.com</span>
+                            <span>
+                        <?php
+
+                            // email address
+
+                            if (session_status() === PHP_SESSION_NONE) {
+                                session_start(); 
+                            }
+                            include "../db_con/db_connection.php";
+
+
+                            if (isset($_SESSION['client_id'])) {
+                                $clientId = $_SESSION['client_id'];
+                                $query = "SELECT email FROM tbl_client WHERE client_id = ? ";
+                                $stmt = $conn->prepare($query);
+                                $stmt->bind_param("i", $clientId);
+                                $stmt->execute();
+                                $result = $stmt->get_result();
+
+                                if ($result && $result->num_rows > 0) {
+                                    $row = $result->fetch_assoc();
+                                    $clientEmail = $row['email'];
+                                } else {
+                                    $clientEmail = "About Us information is not available at the moment.";
+                                }
+                                $stmt->close();
+                            } else {
+                                $clientEmail = "You are not logged in.";
+                            }
+                        ?>
+                            <p>
+                                <?php echo $clientEmail; ?>
+                            </p>
+                            </span>
                         </li>
                     </ul>
                 </div>
