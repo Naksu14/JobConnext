@@ -3,8 +3,15 @@ include "../db_con/db_connection.php";
 
 session_start();
 
-?>
 
+if (isset($_GET['user']) && $_GET['user'] == "client") {
+    header("location: ../GuessPortal/Clientform_step1.php");
+} else if (isset($_GET['user']) && $_GET['user'] == "worker") {
+    header("location: ../GuessPortal/Worker_step1.php");
+    $_SESSION['worker'] = 'worker';
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -56,13 +63,3 @@ session_start();
 
 </html>
 
-<?php
-
-if (isset($_GET['user']) && $_GET['user'] == "client") {
-    header("location: ../GuessPortal/Clientform_step1.php");
-} else if (isset($_GET['user']) && $_GET['user'] == "worker") {
-    header("location: ../GuessPortal/Worker_step1.php");
-    $_SESSION['worker'] = 'worker';
-}
-
-?>
