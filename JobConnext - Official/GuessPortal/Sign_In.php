@@ -1,85 +1,8 @@
 <?php
-
-ob_start(); // Ensure no output is sent before header redirection
+session_start();
+ob_start();
 include '../db_con/db_connection.php';
 
-
-// if (isset($_POST['signIn_btn'])) {
-//     $username_or_email = $_POST['usernameOremail'];
-//     $password = $_POST['password'];
-
-//     // Prepare a query to check both username and email BLUE WORKERRR
-//     $query = "SELECT * FROM tbl_blue_collar_worker WHERE username =  '$username_or_email' or email =  '$username_or_email'";
-//     $result = mysqli_query($conn, $query);
-
-//     if (mysqli_num_rows($result) == 1) {
-//         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-//         $hashed_password = $row['hash_password'];
-
-//         // Verify password
-//         if (password_verify($password, $hashed_password)) {
-//             $_SESSION['worker_id'] = $row['worker_id'];
-//             $_SESSION['username'] = $row['username'];
-
-//             // Redirect to dashboard
-//             header("Location: ../BlueCollarWorkerPortal/blue-collar-land.php");
-//             exit();
-//         } else {
-//             $error = "Invalid credentials!";
-//         }
-//     } else {
-//         $error = "User not found!";
-//     }
-
-//     // Prepare a query to check both username and email CLIENTTT
-//     $query = "SELECT * FROM tbl_client WHERE username =  '$username_or_email' or email =  '$username_or_email'";
-//     $result = mysqli_query($conn, $query);
-
-//     if (mysqli_num_rows($result) == 1) {
-//         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-//         $hashed_password = $row['hash_password'];
-
-//         // Verify password
-//         if (password_verify($password, $hashed_password)) {
-//             $_SESSION['client_id'] = $row['client_id'];
-//             $_SESSION['username'] = $row['username'];
-
-//             // Redirect to dashboard
-//             header("Location: ../ClientPortal/client_home.php");
-//             exit();
-//         } else {
-//             $error = "Invalid credentials!";
-//         }
-//     } else {
-//         $error = "User not found!";
-//     }
-
-//     // Prepare a query to check both username and email CLIENTTT
-//     $query = "SELECT * FROM tbl_admin WHERE username =  '$username_or_email' or email =  '$username_or_email'";
-//     $result = mysqli_query($conn, $query);
-
-//     if (mysqli_num_rows($result) == 1) {
-//         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-
-//         $hashed_password = $row['hash_password'];
-
-//         // Verify password
-//         if (password_verify($password, $hashed_password)) {
-//             $_SESSION['Admin_id'] = $row['Admin_id'];
-//             $_SESSION['username'] = $row['username'];
-
-//             // Redirect to dashboard
-//             header("Location: ../AdminPortal/AdminLandingPage.php");
-//             exit();
-//         } else {
-//             $error = "Invalid credentials!";
-//         }
-//     } else {
-//         $error = "User not found!";
-//     }
-// }
 
 
 if (isset($_POST['g-recaptcha-response'])) {
@@ -95,15 +18,17 @@ if (isset($_POST['g-recaptcha-response'])) {
             $username_or_email = trim($_POST['usernameOremail']);
             $password = trim($_POST['password']);
 
-            // List of user roles and their respective tables
-            $user_types = [
-                "worker" => ["table" => "tbl_blue_collar_worker", "id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/rejected-bluecollar.php"],
-                "client" => ["table" => "tbl_client", "id" => "client_id", "redirect" => "../ClientPortal/client_home.php"],
-                "admin" => ["table" => "tbl_admin", "id" => "Admin_id", "redirect" => "../AdminPortal/AdminLandingPage.php"]
+            // Mapping tables to user ID column names and redirect URLs
+            $table_map = [
+                "tbl_blue_collar_worker" => ["id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/rejected-bluecollar.php"],
+                "tbl_client"             => ["id" => "client_id", "redirect" => "../ClientPortal/client_home.php"],
+                "tbl_admin"              => ["id" => "Admin_id", "redirect" => "../AdminPortal/AdminLandingPage.php"]
             ];
 
-            foreach ($user_types as $type => $data) {
-                $query = "SELECT * FROM {$data['table']} WHERE username = ? OR email = ?";
+            $found_user = false;
+
+            foreach ($table_map as $table => $info) {
+                $query = "SELECT * FROM {$table} WHERE username = ? OR email = ?";
                 $stmt = $conn->prepare($query);
                 $stmt->bind_param("ss", $username_or_email, $username_or_email);
                 $stmt->execute();
@@ -112,22 +37,28 @@ if (isset($_POST['g-recaptcha-response'])) {
                 if ($result->num_rows === 1) {
                     $row = $result->fetch_assoc();
                     if (password_verify($password, $row['hash_password'])) {
-                        $_SESSION[$data['id']] = $row[$data['id']];
-                        header("Location: " . $data['redirect']);
+                        $_SESSION[$info['id']] = $row[$info['id']];
+                        header("Location: " . $info['redirect']);
+                        exit();
                     } else {
                         $error = "Invalid credentials!";
+                        $found_user = true;
+                        break;
                     }
                 }
+
                 $stmt->close();
             }
 
-            $error = "User not found!";
+            if (!$found_user) {
+                $error = "User not found!";
+            }
+
         }
     } else {
         $error = "Please Fill ReCaptcha!";
     }
 }
-
 
 
 ?>
