@@ -1,10 +1,10 @@
 <?php
-    include '../db_con/db_connection.php';
-    // include "../ClientPortal/recordFolder/recordPost.php";
+    // include '../db_con/db_connection.php';
+    // // include "../ClientPortal/recordFolder/recordPost.php";
 
-    session_start();
+    // session_start();
 
-    echo $_SESSION[$data['id']] ?? "no data";
+    // echo $_SESSION[$data['id']] ?? "no data";
 
 ?>
 

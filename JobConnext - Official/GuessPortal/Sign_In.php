@@ -113,7 +113,6 @@ if (isset($_POST['g-recaptcha-response'])) {
                     $row = $result->fetch_assoc();
                     if (password_verify($password, $row['hash_password'])) {
                         $_SESSION[$data['id']] = $row[$data['id']];
-                        echo $_SESSION[$data['id']];
                         header("Location: " . $data['redirect']);
                     } else {
                         $error = "Invalid credentials!";
