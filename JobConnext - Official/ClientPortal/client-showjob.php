@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    include '../db_con/db_connection.php';
+?>
+
+
 <?php include "../ClientPortal/recordFolder/recordPost.php" ?>
 
 <!DOCTYPE html>
