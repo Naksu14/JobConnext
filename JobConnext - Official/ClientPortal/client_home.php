@@ -17,7 +17,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
 
-        <!-- External Css -->
+    <!-- External Css -->
     <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
     <link rel="stylesheet" href="../Assets/css/Client Css/client_home.css">
     <link rel="stylesheet" href="../Assets/css/style.css">
@@ -36,11 +36,10 @@
 </head>
 
 <body>
-
-<?php include "../ClientPortal/components/navbar.php"?>
+    <!-- For Navigation bar include -->
+    <?php include "../ClientPortal/components/navbar.php"?>
 
     <div class="container-fluid custom-container" id="main_content">
-
         <div class="add_job">
             <div class="dp_photo">
                 <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
@@ -56,15 +55,101 @@
         </div>
 
         <div class="worker_details">
-            <div class="container" id="inside">
-                <div class=" icon1">
+            <div class="container">
+                <!-- Default view -->
+                <div class="default-view" id="default_view">
                     <img src="../Assets/image/View Detail.png" alt="">
                     <div class="detail_text">
                         <p id="text_gd2">Details</p>
                     </div>
                 </div>
+                <!-- Selected job detail view -->
+                <div class="job-detail-view" id="job_detail_view" style="display: none;">
+                    <div class="job-header">
+                        <div class="profile-info">
+                            <div class="avatar">
+                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                            </div>
+                            <div class="details">
+                                <h3 id="company_name_display">Company Name</h3>
+                                <p id="date_range_display">Date Range</p>
+                                <p id="description_display">Job Description</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="short-info-container">
+                        <div class="short-info"><img src="../Assets/image/Location.png" alt=""><p id="location_display">Location</p></div>
+                        <div class="short-info"><img src="../Assets/image/Stack of Money.png" alt=""><p id="salary_display">Salary</p></div>
+                        <div class="short-info"><img src="../Assets/image/Applicant.png" alt=""><p id="applicants_display">Applicants</p></div>
+                        <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt=""><p id="email_display">Email</p></div>
+                    </div>
+
+                    <div class="skills-worker-details"><p>Qualifications and Skills</p></div>
+                    <div class="skills-available-details" id="skills_display"></div>
+
+                    <div class="no-ex"><p id="yoe_display">Year of experience</p></div>
+
+                    <div class="responsibilities">
+                        <h3>Responsibilities</h3>
+                        <ol>
+                            <li>Core Duties
+                                <ul>
+                                    <li>Oversee and manage daily operations, ensuring efficiency and productivity.</li>
+                                    <li>Collaborate with cross-functional teams to align and execute projects.</li>
+                                    <li>Develop strategies to improve workflows and team outcomes.</li>
+                                </ul>
+                            </li>
+                            <li>Project Management
+                                <ul>
+                                    <li>Plan, track, and report on projects, meeting timelines and quality standards.</li>
+                                    <li>Communicate updates effectively with stakeholders.</li>
+                                </ul>
+                            </li>
+                            <li>Team & Client Interaction
+                                <ul>
+                                    <li>Lead and support team members, fostering a positive work environment.</li>
+                                    <li>Build and maintain client relationships, addressing concerns as needed.</li>
+                                </ul>
+                            </li>
+                            <li>Continuous Improvement
+                                <ul>
+                                    <li>Identify improvement areas and propose innovative solutions.</li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                 <!-- worker view -->
+                <div class="worker-view" id="worker_view" style="display: none;">
+                    <div class="job-header">
+                        <div class="profile-info">
+                            <div class="avatar">
+                                <img id="worker_avatar" src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                            </div>
+                            <div class="details">
+                                <h3 id="worker_name_display">Worker Name</h3>
+                                <p id="worker_id_display">Worker ID</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="short-info-container">
+                        <div class="short-info"><img src="../Assets/image/Location.png" alt=""><p id="worker_location_display">Location</p></div>
+                        <div class="short-info"><img src="../Assets/image/Stack of Money.png" alt=""><p id="worker_salary_display">Expected Salary</p></div>
+                        <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt=""><p id="worker_email_display">Email</p></div>
+                    </div>
+
+                    <div class="skills-worker-details"><p>Skills</p></div>
+                    <div class="skills-available-details" id="worker_skills_display"></div>
+
+                    <div class="no-ex"><p id="worker_yoe_display">Year of experience</p></div>
+                </div>
+
+
             </div>
         </div>
+
         <div class="page_content">
             <div class=" row content-header" style="position: sticky; top: 0; z-index: 1; background-color:white; padding: 20px;">
                 <div class="col-3">
@@ -102,7 +187,6 @@
 
                 <div class="row job-card">
                     <div class="col-12">
-
                         <!-- JOB OFFERED CARD -->
                         <?php  include '../ClientPortal/template/tmplt_job_offered.php'; ?>
 
@@ -133,52 +217,66 @@
 
                 <div class="row other-offer">
                     <div class="col-12">
-                        <div class="card" id="my-offer">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3></h3>
-                                        <p>Php7,000₱-8,000₱• 5 Applicants • Active</p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <div class="menu">•••</div>
-                                    <p>11/8/2024 to 11/13/2024</p>
-                                </div>
-                            </div>
-                            <div class="job-body">
-                                <div class="info">
-                                    <p>
-                                        <strong>Location:</strong>
-                                        Taguig
-                                    </p>
-                                    <p>
-                                        <strong>Years of experience:</strong> 2
-                                    </p>
-                                </div>
-                                <div class="skills">
-                                    <p><strong>Skills needed:</strong></p>
-                                    <span class="skill-tag yellow">Truck Driver</span>
-                                </div>
-                            </div>
-                            <div class="job-footer">
-                                <p>5 Applied</p>
-                                <p>0 Accepted</p>
-                            </div>
-                        </div>
+                        <!-- other JOB OFFERED CARD -->
+                        <?php  include '../ClientPortal/template/tmplt_other_job_offered.php'; ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- </div>
-    </div> -->
+
     <?php
     include "../ClientPortal/ModalFolder/post_job_modal.php";
     ?>
+
+<script>
+document.querySelectorAll('.card-link').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        const type = this.dataset.type;
+
+        // Hide all views first
+        document.getElementById('default_view').style.display = 'none';
+        document.getElementById('job_detail_view').style.display = 'none';
+        document.getElementById('worker_view').style.display = 'none';
+
+        if (type === 'worker') {
+            // Show worker view only
+            document.getElementById('worker_view').style.display = 'block';
+
+            // Fill worker view data
+            document.getElementById('worker_name_display').textContent = this.dataset.companyname;
+            document.getElementById('worker_id_display').textContent = this.dataset.workerid || 'N/A';
+            document.getElementById('worker_location_display').textContent = this.dataset.location;
+            document.getElementById('worker_salary_display').textContent = this.dataset.salary;
+            document.getElementById('worker_email_display').textContent = this.dataset.email;
+            document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
+            document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
+        } else if (type === 'job') {
+            // Show job detail view only
+            document.getElementById('job_detail_view').style.display = 'block';
+
+            // Fill job view data
+            document.getElementById('company_name_display').textContent = this.dataset.companyname;
+            document.getElementById('date_range_display').textContent = this.dataset.dates;
+            document.getElementById('description_display').textContent = this.dataset.description;
+            document.getElementById('location_display').textContent = this.dataset.location;
+            document.getElementById('salary_display').textContent = this.dataset.salary;
+            document.getElementById('applicants_display').textContent = this.dataset.applicants;
+            document.getElementById('email_display').textContent = this.dataset.email;
+            document.getElementById('skills_display').innerHTML = this.dataset.skills;
+            document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';
+        }
+    });
+});
+
+
+</script>
+
+
+
+
 </body>
 
 </html>

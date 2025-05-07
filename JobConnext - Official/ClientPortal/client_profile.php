@@ -1,9 +1,6 @@
 <?php
-    session_start();
     include '../db_con/db_connection.php';
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,33 +57,7 @@
 
             <div class="container-fluid profile-nav">
                 <a href="client_profile.php" id="active-nav">Overview</a>
-                <?php
-                    if (session_status() === PHP_SESSION_NONE) {
-                        session_start();
-                    }
-                    include "../db_con/db_connection.php";
-
-                   
-                    if (isset($_SESSION['client_id'])) {
-                        $clientId = $_SESSION['client_id'];
-                        $query = "SELECT company_name FROM tbl_company_info WHERE client_id = ? ";
-                        $stmt = $conn->prepare($query);
-                        $stmt->bind_param("i", $clientId);
-                        $stmt->execute();
-                        $result = $stmt->get_result();
-
-                        if ($result && $result->num_rows > 0) {
-                            $row = $result->fetch_assoc();
-                            $companyName = $row['company_name'];
-                        } else {
-                            $companyName = "Company Work";
-                        }
-                        $stmt->close();
-                    } else {
-                        $companyName = "Guest";
-                    }
-                ?>
-                        <a href="profile-company.php" id=""><?php echo $companyName; ?></a>
+                <a href="profile-company.php" id="">Company Work</a>
             </div>
             <div class="create-header">
                 <img src="../Assets/image/Create.png" alt="">
@@ -99,14 +70,6 @@
                     </span>
                 </div>
                 <?php
-
-                // about us
-
-                if (session_status() === PHP_SESSION_NONE) {
-                    session_start(); 
-                }
-                include "../db_con/db_connection.php";
-
                 
                 if (isset($_SESSION['client_id'])) {
                     $clientId = $_SESSION['client_id'];
@@ -144,12 +107,6 @@
                 <?php
 
                     // address
-
-                    if (session_status() === PHP_SESSION_NONE) {
-                        session_start(); 
-                    }
-                    include "../db_con/db_connection.php";
-
                    
                     if (isset($_SESSION['client_id'])) {
                         $clientId = $_SESSION['client_id'];
@@ -195,11 +152,6 @@
 
                         // phone number
 
-                        if (session_status() === PHP_SESSION_NONE) {
-                            session_start(); 
-                        }
-                        include "../db_con/db_connection.php";
-
                       
                         if (isset($_SESSION['client_id'])) {
                             $clientId = $_SESSION['client_id'];
@@ -231,11 +183,6 @@
                     <?php
 
                         // email address
-                        
-                        if (session_status() === PHP_SESSION_NONE) {
-                            session_start(); 
-                        }
-                        include "../db_con/db_connection.php";
 
                       
                         if (isset($_SESSION['client_id'])) {
@@ -267,11 +214,6 @@
                         <?php
 
                             // email address
-
-                            if (session_status() === PHP_SESSION_NONE) {
-                                session_start(); 
-                            }
-                            include "../db_con/db_connection.php";
 
 
                             if (isset($_SESSION['client_id'])) {
