@@ -1,14 +1,8 @@
-<?php
-$servername = "localhost";
-$username = "root"; // Change if needed
-$password = "";
-$database = "job_connext"; // Change if different
-
-$conn = new mysqli($servername, $username, $password, $database);
-?>
-
 
 <?php
+
+include "../db_con/db_connection.php";
+
 $recommended_clientHOMEqry = "SELECT w.* FROM tbl_worker_information w JOIN tbl_worker_skill_sets s ON w.worker_id = s.worker_id WHERE s.skills = 'Welder'";
 $recommended_clientHOMEexe = mysqli_query($conn, $recommended_clientHOMEqry);
 while ($row = mysqli_fetch_assoc(result: $recommended_clientHOMEexe)) {

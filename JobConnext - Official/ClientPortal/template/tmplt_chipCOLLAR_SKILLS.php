@@ -1,13 +1,7 @@
-    
+
 <?php 
-    $servername = "localhost";
-    $username = "root"; // Change if needed
-    $password = "";
-    $database = "job_connext"; // Change if different
-    
-    $conn = new mysqli($servername, $username, $password, $database);
-?>  
-<?php 
+
+include "../db_con/db_connection.php";
   
   $bluecol_skillQRY = "SELECT * FROM tbl_worker_skill_sets";
   $bluecol_skillEXE = mysqli_query($conn, $bluecol_skillQRY );

@@ -1,13 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root"; // Change if needed
-$password = "";
-$database = "job_connext"; // Change if different
 
-$conn = new mysqli($servername, $username, $password, $database);
-?>
+include "../db_con/db_connection.php";
 
-<?php
 $job_offeredQRY = "SELECT * FROM tbl_client_jobpost";
 $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
 while ($row = mysqli_fetch_assoc($job_offeredEXE)) {

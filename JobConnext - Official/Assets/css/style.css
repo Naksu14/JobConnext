@@ -10,7 +10,6 @@ input, .btn{
   border: 1px solid gray;
   border-radius: 5px;
   padding: 5px;
-  margin-bottom: 20px;
 }
 input:focus, textarea:focus, select:focus, button:focus {
   outline: none;
@@ -255,5 +254,28 @@ color: #000000;
   color: #fff;
 }
 
+
+input{
+  border-color: #ced4da !important;
+}
+
+textarea, input, select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+  border-color: #ced4da !important; /* Optional: set to default border */
+}
+
+
+.h-50px { height: 50px !important; }
+
+.h-100px { height: 100px !important; }
+
+.h-150px { height: 150px !important; }
+
+.h-200px { height: 200px !important; }
+
+p, input, button{
+  margin: 0px;
+}
 
 
