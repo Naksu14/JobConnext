@@ -3,23 +3,30 @@
     --darkorange : #E46232;
 }
 
+<<<<<<< HEAD
+=======
+*{
+   /* overflow: visible; */
+}
+body{
+    overflow-y:hidden;
+}
+>>>>>>> 5afce11c7cfb9e1fe050b09f27301bf7ee03ac05
 #logo{
     padding: 10px 10px 10px 10px ;
 }
 
 
-
-/* .nav_bar{
+.nav_bar{
     position: sticky;
     top: 0;
-} */
+}
 
 .page_content{
     overflow-y:scroll;
     overflow-x: hidden;
     max-height: 1250px;
     
-
 }
 
 
@@ -48,7 +55,26 @@
     grid-row: span 2;
     position: sticky;
     top: 0;
+    overflow-y: hidden;
+    overflow-y: scroll;
 }
+.short-info-container{
+    margin: 10px 10px;
+}
+.short-info{
+    display: flex;
+    flex-direction: row;
+}
+
+.short-info p{
+    padding-left: 20px;
+    color: #5A5A5A;
+}
+.short-info img{
+    width: 25px; 
+    height: 25px;
+}
+
 .page_content{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 1;
@@ -86,6 +112,15 @@
     justify-content: center;
     /* border: 1px solid; */
     margin-top: 25%;
+}
+.default-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Or set a specific height like 400px */
+    text-align: center;
+    padding: 20px;
 }
 
 .icon img{
