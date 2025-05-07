@@ -1,12 +1,4 @@
 <?php
-<<<<<<< HEAD
-
-include "../db_con/db_connection.php";
-
-$job_offeredQRY = "SELECT * FROM tbl_client_jobpost";
-$job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
-while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
-=======
     include '../db_con/db_connection.php';
 
     if (isset($_SESSION['client_id'])) {
@@ -15,7 +7,6 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         $job_offeredQRY = "SELECT * FROM tbl_client_jobpost WHERE client_id = $clientId";
         $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
         while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
->>>>>>> 5afce11c7cfb9e1fe050b09f27301bf7ee03ac05
 
             $client_id = $row['client_id'];
             $job_salary_start = $row['salary_start'];
