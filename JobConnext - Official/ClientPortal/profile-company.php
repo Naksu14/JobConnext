@@ -11,9 +11,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job-connext - Profile</title>
+    <script>
+        window.sessionData = {
+            user_id: <?php echo json_encode($user_id); ?>
+        };
+    </script>
+    <script src="../Assets/js/fetchData.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
     <link rel="stylesheet" href="../Assets/css/Client Css/profile-company.css">
+    <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -91,10 +100,15 @@
                 <span>Job Offer</span>
             </div>
             <div class="add_job">
-                <div class="dp_photo">
-                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
-                    <input type="text" class="custom-input" placeholder="Post Something..." id="post_something">
-                </div>
+                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
+                <input
+                    type="text"
+                    class="custom-input"
+                    placeholder="Post Something..."
+                    id="postJob"
+                    readonly
+                    data-bs-toggle="modal"
+                    data-bs-target="#postModal">
             </div>
 
 
@@ -156,8 +170,11 @@
                     </div>
                 </div>
             </div>
-
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+            <br><br><br><br><br>
+            <?php
+                include "../ClientPortal/ModalFolder/post_job_modal.php";
+            ?>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
             </script>
 </body>

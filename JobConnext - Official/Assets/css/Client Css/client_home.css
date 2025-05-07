@@ -3,15 +3,9 @@
     --darkorange : #E46232;
 }
 
-<<<<<<< HEAD
-=======
-*{
-   /* overflow: visible; */
-}
 body{
     overflow-y:hidden;
 }
->>>>>>> 5afce11c7cfb9e1fe050b09f27301bf7ee03ac05
 #logo{
     padding: 10px 10px 10px 10px ;
 }
@@ -25,8 +19,13 @@ body{
 .page_content{
     overflow-y:scroll;
     overflow-x: hidden;
-    max-height: 1250px;
+    height: 100%;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    grid-row: span 1;
     
+}
+.page_content::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari */
 }
 
 
@@ -47,16 +46,20 @@ body{
     gap: 10px;
     grid-template-columns: 65% 35%;
     grid-template-rows:60px 70%; 
-    height: 100vh;
+    height: 100%;
 }
 
 .worker_details{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 2;
+    max-height: 900px;
     position: sticky;
     top: 0;
     overflow-y: hidden;
     overflow-y: scroll;
+}
+.worker_details::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari */
 }
 .short-info-container{
     margin: 10px 10px;
@@ -75,11 +78,6 @@ body{
     height: 25px;
 }
 
-.page_content{
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    grid-row: span 1;
-}
-
 .add_job > img{
     width: 40px;
     height: 40px;
@@ -90,6 +88,8 @@ body{
     justify-content: space-evenly;
     flex-direction: row;
     display: flex;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .custom-input{
@@ -140,10 +140,6 @@ body{
 
 .content-header{
     margin: 23px 0px 0px 0px;
-    /* border: 1px solid; */
-}
-
-.page_content{
     /* border: 1px solid; */
 }
 

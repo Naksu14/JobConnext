@@ -3,13 +3,8 @@
     --darkorange : #E46232;
 }
 
-
-
-
-#input_post img{
-    width: 75px;
-    height: 50px;
-    border-radius: 50%;
+body{
+    overflow-y: hidden;
 }
 
 
@@ -138,9 +133,13 @@
 
 .full-content{
     max-width: 75%;
-    height: 1152px;
+    height: 900px;
+    overflow-y: hidden;
+    overflow-y: scroll;
 }
-
+.full-content::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari */
+}
 .about-us{
     margin-top: 10px;
 }
@@ -203,13 +202,26 @@
 }
 
 
-#input_post img{
-    width: 75px;
-    height: 50px;
+.add_job > img{
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 .add_job{
-    margin-top: 20px;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    display: flex;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-input{
+    width:90%;
+    height: 30px;
+    margin: 10px;
+    /* border: #6363633f 1px solid; */
+    border-radius: 5px;
 }
 .dp_photo img{
     width: 50px;
