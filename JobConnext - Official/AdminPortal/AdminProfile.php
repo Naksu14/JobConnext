@@ -17,10 +17,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
     <!-- STYLESHEET -->
-    <link rel="stylesheet" href="AdminProfile.css" />
+    <link rel="stylesheet" href="adminStyleComponents/AdminProfile.css" />
     <link rel="stylesheet" href="navigationbar/Nav.css" />
     <link rel="stylesheet" href="sidebar/Sidebar.css" />
-    <link rel="stylesheet" href="AdminLandingPage.css" />
+    <link rel="stylesheet" href="adminStyleComponents/AdminLandingPage.css" />
 
     <!--icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">

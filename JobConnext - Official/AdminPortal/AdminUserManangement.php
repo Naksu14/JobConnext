@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="usermanagement/UserManagement.css" />
     <link rel="stylesheet" href="navigationbar/Nav.css" />
     <link rel="stylesheet" href="sidebar/Sidebar.css" />
-    <link rel="stylesheet" href="AdminLandingPage.css" />
+    <link rel="stylesheet" href="adminStyleComponents/AdminLandingPage.css" />
 
     <!--icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
