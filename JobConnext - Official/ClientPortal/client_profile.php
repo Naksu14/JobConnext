@@ -2,6 +2,8 @@
 session_start();
 include '../db_con/db_connection.php';
 
+
+
 $companyName = "Guest";
 $clientAboutUs = "You are not logged in.";
 $clientAddress = $clientPhoneNumber = $clientEmail = "N/A";

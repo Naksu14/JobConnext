@@ -278,4 +278,18 @@ p, input, button{
   margin: 0px;
 }
 
+#applicant_count, #year_experience{
+  width: 15%;
+  text-align: center;
+}
+
+
+.swal2-input {
+  display: block;
+  width: 100%;
+  padding: 0px;
+  font-size: 12px;
+  margin: 0px;
+  box-sizing: border-box;
+}
 

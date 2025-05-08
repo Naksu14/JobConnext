@@ -3,15 +3,12 @@
     --darkorange : #E46232;
 }
 
-<<<<<<< HEAD
-=======
 *{
    /* overflow: visible; */
 }
 body{
     overflow-y:hidden;
 }
->>>>>>> 5afce11c7cfb9e1fe050b09f27301bf7ee03ac05
 #logo{
     padding: 10px 10px 10px 10px ;
 }
