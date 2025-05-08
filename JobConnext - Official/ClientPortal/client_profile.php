@@ -118,7 +118,7 @@ if (isset($_SESSION['client_id'])) {
                     <iframe
                         id="map-frame"
                         width="100%" height="250"
-                        style="border:0; border-radius: 10px;"
+                        style="border:0; border-radius: 0px;"
                         loading="lazy" allowfullscreen
                         referrerpolicy="no-referrer-when-downgrade"
                         src="https://maps.google.com/maps?q=<?php echo urlencode($clientAddress); ?>&output=embed">
@@ -146,6 +146,7 @@ if (isset($_SESSION['client_id'])) {
                     </li>
                 </ul>
                 <button id="save-btn" class="btn btn-primary btn-md d-none mt-4" style="padding: 5px 20px 5px 20px;"><b>Save</b></button>
+                <br><br><br><br><br>
             </div>
         </div>
 

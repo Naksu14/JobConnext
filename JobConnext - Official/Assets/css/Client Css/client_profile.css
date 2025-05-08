@@ -4,7 +4,9 @@
 }
 
 
-
+body{
+    overflow-y: hidden;
+}
 
 
 
@@ -133,7 +135,12 @@
 
 .full-content{
     max-width: 75%;
-    height: 1152px;
+    height: 900px;
+    overflow-y: hidden;
+    overflow-y: scroll;
+}
+.full-content::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari */
 }
 
 .about-us{

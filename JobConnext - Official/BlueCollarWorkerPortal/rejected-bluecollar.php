@@ -313,164 +313,165 @@
                             </a>
                         </div>
                     </div>
-                        <div class="suggestion-card">
-                            <span>
-                                Related Job Suggestions
-                            </span>
-                        </div>
-
-
-                        <div id="carouselExample" class="carousel slide">
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <div class="row job-card">
-                                        <div class="col-sm-12">
-
-                                            <div class="card" id="my-offer">
-                                                <a href="../BlueCollarWorkerPortal/accepted-bluecollar.php">
-                                                    <div class="job-header">
-                                                        <div class="profile-info">
-                                                            <div class="avatar">
-                                                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                                            </div>
-                                                            <div class="details">
-                                                                <h3>Supra Oracles 1</h3>
-                                                                <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="job-dates">
-                                                            <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
-                                                        </div>
-                                                    </div>
-                                                    <div class="job-body">
-                                                        <div class="info">
-                                                            <p>
-                                                                <strong>Location:</strong>
-                                                                Makati
-                                                            </p>
-                                                            <p>
-                                                                <strong>Years of experience:</strong> 0
-                                                            </p>
-                                                        </div>
-                                                        <div class="skills">
-                                                            <p><strong>Skills needed:</strong></p>
-                                                            <span class="skill-tag green">Welder</span>
-                                                            <span class="skill-tag purple">Electrician</span>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row job-card">
-                                        <div class="col-sm-12">
-
-                                            <div class="card" id="my-offer">
-                                                <a href="../BlueCollarWorkerPortal/accepted-bluecollar.php">
-                                                    <div class="job-header">
-                                                        <div class="profile-info">
-                                                            <div class="avatar">
-                                                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                                            </div>
-                                                            <div class="details">
-                                                                <h3>Supra Oracles 2</h3>
-                                                                <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="job-dates">
-                                                            <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
-                                                        </div>
-                                                    </div>
-                                                    <div class="job-body">
-                                                        <div class="info">
-                                                            <p>
-                                                                <strong>Location:</strong>
-                                                                Makati
-                                                            </p>
-                                                            <p>
-                                                                <strong>Years of experience:</strong> 0
-                                                            </p>
-                                                        </div>
-                                                        <div class="skills">
-                                                            <p><strong>Skills needed:</strong></p>
-                                                            <span class="skill-tag green">Welder</span>
-                                                            <span class="skill-tag purple">Electrician</span>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item">
-                                    <div class="row job-card">
-                                        <div class="col-sm-12">
-
-                                            <div class="card" id="my-offer">
-                                                <a href="../BlueCollarWorkerPortal/accepted-bluecollar.php">
-                                                    <div class="job-header">
-                                                        <div class="profile-info">
-                                                            <div class="avatar">
-                                                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                                            </div>
-                                                            <div class="details">
-                                                                <h3>Supra Oracles 3</h3>
-                                                                <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="job-dates">
-                                                            <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
-                                                        </div>
-                                                    </div>
-                                                    <div class="job-body">
-                                                        <div class="info">
-                                                            <p>
-                                                                <strong>Location:</strong>
-                                                                Makati
-                                                            </p>
-                                                            <p>
-                                                                <strong>Years of experience:</strong> 0
-                                                            </p>
-                                                        </div>
-                                                        <div class="skills">
-                                                            <p><strong>Skills needed:</strong></p>
-                                                            <span class="skill-tag green">Welder</span>
-                                                            <span class="skill-tag purple">Electrician</span>
-                                                        </div>
-                                                    </div>
-                                            </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-mover">
-                                <button type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                </button>
-                                <button type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                </button>
-                            </div>
-                        </div>
+                    <div class="suggestion-card">
+                        <span>
+                            Related Job Suggestions
+                        </span>
                     </div>
 
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-                        document.querySelectorAll(".button").forEach(button => {
-                            button.addEventListener("click", function() {
-                                document.querySelectorAll(".button").forEach(btn => btn.classList.remove("selected"));
-                                this.classList.add("selected");
-                            });
+
+                    <div id="carouselExample" class="carousel slide">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="row job-card">
+                                    <div class="col-sm-12">
+
+                                        <div class="card" id="my-offer">
+                                            <a href="../BlueCollarWorkerPortal/accepted-bluecollar.php">
+                                                <div class="job-header">
+                                                    <div class="profile-info">
+                                                        <div class="avatar">
+                                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                                        </div>
+                                                        <div class="details">
+                                                            <h3>Supra Oracles 1</h3>
+                                                            <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="job-dates">
+                                                        <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
+                                                    </div>
+                                                </div>
+                                                <div class="job-body">
+                                                    <div class="info">
+                                                        <p>
+                                                            <strong>Location:</strong>
+                                                            Makati
+                                                        </p>
+                                                        <p>
+                                                            <strong>Years of experience:</strong> 0
+                                                        </p>
+                                                    </div>
+                                                    <div class="skills">
+                                                        <p><strong>Skills needed:</strong></p>
+                                                        <span class="skill-tag green">Welder</span>
+                                                        <span class="skill-tag purple">Electrician</span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row job-card">
+                                    <div class="col-sm-12">
+
+                                        <div class="card" id="my-offer">
+                                            <a href="../BlueCollarWorkerPortal/accepted-bluecollar.php">
+                                                <div class="job-header">
+                                                    <div class="profile-info">
+                                                        <div class="avatar">
+                                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                                        </div>
+                                                        <div class="details">
+                                                            <h3>Supra Oracles 2</h3>
+                                                            <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="job-dates">
+                                                        <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
+                                                    </div>
+                                                </div>
+                                                <div class="job-body">
+                                                    <div class="info">
+                                                        <p>
+                                                            <strong>Location:</strong>
+                                                            Makati
+                                                        </p>
+                                                        <p>
+                                                            <strong>Years of experience:</strong> 0
+                                                        </p>
+                                                    </div>
+                                                    <div class="skills">
+                                                        <p><strong>Skills needed:</strong></p>
+                                                        <span class="skill-tag green">Welder</span>
+                                                        <span class="skill-tag purple">Electrician</span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row job-card">
+                                    <div class="col-sm-12">
+
+                                        <div class="card" id="my-offer">
+                                            <a href="../BlueCollarWorkerPortal/accepted-bluecollar.php">
+                                                <div class="job-header">
+                                                    <div class="profile-info">
+                                                        <div class="avatar">
+                                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                                        </div>
+                                                        <div class="details">
+                                                            <h3>Supra Oracles 3</h3>
+                                                            <p>Php18,000₱–30,000₱ • 10 Applicants • Active</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="job-dates">
+                                                        <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
+                                                    </div>
+                                                </div>
+                                                <div class="job-body">
+                                                    <div class="info">
+                                                        <p>
+                                                            <strong>Location:</strong>
+                                                            Makati
+                                                        </p>
+                                                        <p>
+                                                            <strong>Years of experience:</strong> 0
+                                                        </p>
+                                                    </div>
+                                                    <div class="skills">
+                                                        <p><strong>Skills needed:</strong></p>
+                                                        <span class="skill-tag green">Welder</span>
+                                                        <span class="skill-tag purple">Electrician</span>
+                                                    </div>
+                                                </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-mover">
+                            <button type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            </button>
+                            <button type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <br><br><br><br><br><br><br>
+
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+                    document.querySelectorAll(".button").forEach(button => {
+                        button.addEventListener("click", function() {
+                            document.querySelectorAll(".button").forEach(btn => btn.classList.remove("selected"));
+                            this.classList.add("selected");
                         });
-                    </script>
-                    <script>
-                        function showAlert() {
-                            Swal.fire({
-                                title: 'Report',
-                                html: `
+                    });
+                </script>
+                <script>
+                    function showAlert() {
+                        Swal.fire({
+                            title: 'Report',
+                            html: `
             <h6 style="color:red">Reasons for reporting</h6>
             <div class="reason-buttons">
                  <button id="reasons">Fraud or scam</button>
@@ -484,22 +485,22 @@
             <div class="message-report">Message Report ⚠️</div>
             <textarea class="message-box form-control" placeholder="Describe your issue..."></textarea>
         `,
-                                showCancelButton: true,
-                                confirmButtonText: 'Next: Upload Proof',
-                                cancelButtonText: 'Cancel',
-                                confirmButtonColor: '#161D6F',
-                                width: '45%'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    showUploadModal(); // Call the upload modal function
-                                }
-                            });
-                        }
+                            showCancelButton: true,
+                            confirmButtonText: 'Next: Upload Proof',
+                            cancelButtonText: 'Cancel',
+                            confirmButtonColor: '#161D6F',
+                            width: '45%'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                showUploadModal(); // Call the upload modal function
+                            }
+                        });
+                    }
 
-                        function showUploadModal() {
-                            Swal.fire({
-                                title: 'Upload Proof',
-                                html: `
+                    function showUploadModal() {
+                        Swal.fire({
+                            title: 'Upload Proof',
+                            html: `
             <div class="container-fluid upload-border">
                 <div class="container upload-container">
                     <img src="../Assets/image/Vector1.png" alt="">
@@ -525,33 +526,33 @@
                 </div>
             </div>
         `,
-                                showCancelButton: true,
-                                confirmButtonText: 'Submit Report!',
-                                cancelButtonText: 'Cancel',
-                                confirmButtonColor: '#161D6F',
-                                width: '45%'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    showFinalMessage(); // Call the final message
-                                }
-                            });
-                        }
-
-                        function showFinalMessage() {
-                            Swal.fire({
-                                title: 'Report Submitted!',
-                                text: 'Thank you for reporting. We will review your submission.',
-                                icon: 'success',
-                                confirmButtonText: 'OK',
-                                confirmButtonColor: '#161D6F'
-                            });
-                        }
-
-                        // Trigger report modal on button click
-                        document.addEventListener("DOMContentLoaded", function() {
-                            document.getElementById("reportButton").addEventListener("click", showReportModal);
+                            showCancelButton: true,
+                            confirmButtonText: 'Submit Report!',
+                            cancelButtonText: 'Cancel',
+                            confirmButtonColor: '#161D6F',
+                            width: '45%'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                showFinalMessage(); // Call the final message
+                            }
                         });
-                    </script>
+                    }
+
+                    function showFinalMessage() {
+                        Swal.fire({
+                            title: 'Report Submitted!',
+                            text: 'Thank you for reporting. We will review your submission.',
+                            icon: 'success',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#161D6F'
+                        });
+                    }
+
+                    // Trigger report modal on button click
+                    document.addEventListener("DOMContentLoaded", function() {
+                        document.getElementById("reportButton").addEventListener("click", showReportModal);
+                    });
+                </script>
 
 </body>
 
