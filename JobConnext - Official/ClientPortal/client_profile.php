@@ -78,7 +78,7 @@ if (isset($_SESSION['client_id'])) {
         </div>
         <div class="container-fluid profile-content">
             <div class="client-photo">
-                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Client Photo">
+                <img src="scriptsfordb/client_image.php?client_id=<?php echo $clientId; ?>" alt="Client Image">
                 <div class="name-title">
                     <span>
                         <?php echo htmlspecialchars($companyName); ?>

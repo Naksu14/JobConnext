@@ -1,9 +1,9 @@
 <?php
-    session_start();
-    include '../db_con/db_connection.php';
-    include '../ClientPortal/recordFolder/recordPost.php';
-    // include '../ClientPortal/ModalFolder/post_job_modal.php';
-    $user_id = $_SESSION['client_id'];
+session_start();
+include '../db_con/db_connection.php';
+include '../ClientPortal/recordFolder/recordPost.php';
+// include '../ClientPortal/ModalFolder/post_job_modal.php';
+$user_id = $_SESSION['client_id'];
 ?>
 
 
@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
     <link rel="stylesheet" href="../Assets/css/Client Css/client_home.css">
     <link rel="stylesheet" href="../Assets/css/style.css">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -51,11 +51,11 @@
 
 <body>
     <!-- For Navigation bar include -->
-    <?php include "../ClientPortal/components/navbar.php"?>
+    <?php include "../ClientPortal/components/navbar.php" ?>
 
     <div class="container-fluid custom-container" id="main_content">
         <div class="add_job">
-            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
+            <img src="scriptsfordb/client_image.php?client_id=<?php echo $user_id; ?>" alt="Client Image">
             <input
                 type="text"
                 class="custom-input"
@@ -79,8 +79,8 @@
                 <div class="job-detail-view" id="job_detail_view" style="display: none;">
                     <div class="job-header">
                         <div class="profile-info">
-                            <div class="avatar">
-                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                            <div class="avatar-display">
+                                <img src="scriptsfordb/client_image.php?client_id=<?php echo $user_id; ?>" alt="Client Image">
                             </div>
                             <div class="details">
                                 <h3 id="company_name_display">Company Name</h3>
@@ -91,16 +91,28 @@
                     </div>
 
                     <div class="short-info-container">
-                        <div class="short-info"><img src="../Assets/image/Location.png" alt=""><p id="location_display">Location</p></div>
-                        <div class="short-info"><img src="../Assets/image/Stack of Money.png" alt=""><p id="salary_display">Salary</p></div>
-                        <div class="short-info"><img src="../Assets/image/Applicant.png" alt=""><p id="applicants_display">Applicants</p></div>
-                        <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt=""><p id="email_display">Email</p></div>
+                        <div class="short-info"><img src="../Assets/image/Location.png" alt="">
+                            <p id="location_display">Location</p>
+                        </div>
+                        <div class="short-info"><img src="../Assets/image/Stack of Money.png" alt="">
+                            <p id="salary_display">Salary</p>
+                        </div>
+                        <div class="short-info"><img src="../Assets/image/Applicant.png" alt="">
+                            <p id="applicants_display">Applicants</p>
+                        </div>
+                        <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt="">
+                            <p id="email_display">Email</p>
+                        </div>
                     </div>
 
-                    <div class="skills-worker-details"><p>Qualifications and Skills</p></div>
+                    <div class="skills-worker-details">
+                        <p>Qualifications and Skills</p>
+                    </div>
                     <div class="skills-available-details" id="skills_display"></div>
 
-                    <div class="no-ex"><p id="yoe_display">Year of experience</p></div>
+                    <div class="no-ex">
+                        <p id="yoe_display">Year of experience</p>
+                    </div>
 
                     <div class="responsibilities">
                         <h3>Responsibilities</h3>
@@ -132,7 +144,7 @@
                         </ol>
                     </div>
                 </div>
-                 <!-- worker view -->
+                <!-- worker view -->
                 <div class="worker-view" id="worker_view" style="display: none;">
                     <div class="job-header">
                         <div class="profile-info">
@@ -147,15 +159,25 @@
                     </div>
 
                     <div class="short-info-container">
-                        <div class="short-info"><img src="../Assets/image/Location.png" alt=""><p id="worker_location_display">Location</p></div>
-                        <div class="short-info"><img src="../Assets/image/Stack of Money.png" alt=""><p id="worker_salary_display">Expected Salary</p></div>
-                        <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt=""><p id="worker_email_display">Email</p></div>
+                        <div class="short-info"><img src="../Assets/image/Location.png" alt="">
+                            <p id="worker_location_display">Location</p>
+                        </div>
+                        <div class="short-info"><img src="../Assets/image/Stack of Money.png" alt="">
+                            <p id="worker_salary_display">Expected Salary</p>
+                        </div>
+                        <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt="">
+                            <p id="worker_email_display">Email</p>
+                        </div>
                     </div>
 
-                    <div class="skills-worker-details"><p>Skills</p></div>
+                    <div class="skills-worker-details">
+                        <p>Skills</p>
+                    </div>
                     <div class="skills-available-details" id="worker_skills_display"></div>
 
-                    <div class="no-ex"><p id="worker_yoe_display">Year of experience</p></div>
+                    <div class="no-ex">
+                        <p id="worker_yoe_display">Year of experience</p>
+                    </div>
                 </div>
 
 
@@ -200,7 +222,7 @@
                 <div class="row job-card">
                     <div class="col-12">
                         <!-- JOB OFFERED CARD -->
-                        <?php  include '../ClientPortal/template/tmplt_job_offered.php'; ?>
+                        <?php include '../ClientPortal/template/tmplt_job_offered.php'; ?>
 
                     </div>
                 </div>
@@ -230,7 +252,7 @@
                 <div class="row other-offer">
                     <div class="col-12">
                         <!-- other JOB OFFERED CARD -->
-                        <?php  include '../ClientPortal/template/tmplt_other_job_offered.php'; ?>
+                        <?php include '../ClientPortal/template/tmplt_other_job_offered.php'; ?>
                     </div>
                 </div>
             </div>
@@ -244,50 +266,48 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
 
-<script>
-document.querySelectorAll('.card-link').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
+    <script>
+        document.querySelectorAll('.card-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
 
-        const type = this.dataset.type;
+                const type = this.dataset.type;
 
-        // Hide all views first
-        document.getElementById('default_view').style.display = 'none';
-        document.getElementById('job_detail_view').style.display = 'none';
-        document.getElementById('worker_view').style.display = 'none';
+                // Hide all views first
+                document.getElementById('default_view').style.display = 'none';
+                document.getElementById('job_detail_view').style.display = 'none';
+                document.getElementById('worker_view').style.display = 'none';
 
-        if (type === 'worker') {
-            // Show worker view only
-            document.getElementById('worker_view').style.display = 'block';
+                if (type === 'worker') {
+                    // Show worker view only
+                    document.getElementById('worker_view').style.display = 'block';
 
-            // Fill worker view data
-            document.getElementById('worker_name_display').textContent = this.dataset.companyname;
-            document.getElementById('worker_id_display').textContent = this.dataset.workerid || 'N/A';
-            document.getElementById('worker_location_display').textContent = this.dataset.location;
-            document.getElementById('worker_salary_display').textContent = this.dataset.salary;
-            document.getElementById('worker_email_display').textContent = this.dataset.email;
-            document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
-            document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
-        } else if (type === 'job') {
-            // Show job detail view only
-            document.getElementById('job_detail_view').style.display = 'block';
+                    // Fill worker view data
+                    document.getElementById('worker_name_display').textContent = this.dataset.companyname;
+                    document.getElementById('worker_id_display').textContent = this.dataset.workerid || 'N/A';
+                    document.getElementById('worker_location_display').textContent = this.dataset.location;
+                    document.getElementById('worker_salary_display').textContent = this.dataset.salary;
+                    document.getElementById('worker_email_display').textContent = this.dataset.email;
+                    document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
+                    document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
+                } else if (type === 'job') {
+                    // Show job detail view only
+                    document.getElementById('job_detail_view').style.display = 'block';
 
-            // Fill job view data
-            document.getElementById('company_name_display').textContent = this.dataset.companyname;
-            document.getElementById('date_range_display').textContent = this.dataset.dates;
-            document.getElementById('description_display').textContent = this.dataset.description;
-            document.getElementById('location_display').textContent = this.dataset.location;
-            document.getElementById('salary_display').textContent = this.dataset.salary;
-            document.getElementById('applicants_display').textContent = this.dataset.applicants;
-            document.getElementById('email_display').textContent = this.dataset.email;
-            document.getElementById('skills_display').innerHTML = this.dataset.skills;
-            document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';
-        }
-    });
-});
-
-
-</script>
+                    // Fill job view data
+                    document.getElementById('company_name_display').textContent = this.dataset.companyname;
+                    document.getElementById('date_range_display').textContent = this.dataset.dates;
+                    document.getElementById('description_display').textContent = this.dataset.description;
+                    document.getElementById('location_display').textContent = this.dataset.location;
+                    document.getElementById('salary_display').textContent = this.dataset.salary;
+                    document.getElementById('applicants_display').textContent = this.dataset.applicants;
+                    document.getElementById('email_display').textContent = this.dataset.email;
+                    document.getElementById('skills_display').innerHTML = this.dataset.skills;
+                    document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';
+                }
+            });
+        });
+    </script>
 
 
 

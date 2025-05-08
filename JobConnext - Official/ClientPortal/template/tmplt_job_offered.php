@@ -67,7 +67,7 @@ if (isset($_SESSION['client_id'])) {
                     <div class="job-header">
                         <div class="profile-info">
                             <div class="avatar">
-                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                <img src="./scriptsfordb/client_image.php?client_id=<?php echo $client_id; ?>" alt="Client Image">
                             </div>
                             <div class="details">
                                 <h3><?php echo $company_name ?></h3>
