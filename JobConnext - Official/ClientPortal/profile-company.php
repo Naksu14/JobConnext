@@ -19,6 +19,16 @@ if (isset($_SESSION['client_id'])) {
     } else {
         $companyName = "Error fetching company";
     }
+
+    // Phone number from tbl_client_information
+    $query = "SELECT COUNT(*) as JobList FROM tbl_client_jobpost WHERE client_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $clientId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $Count_JobList = $row['JobList'];
+    }
 }
 ?>
 
@@ -94,7 +104,7 @@ if (isset($_SESSION['client_id'])) {
                     <div class="card card-header">
                         <div class="card-body">
                             <span id="card-title">
-                                Job List <span id="card-count">5</span>
+                                Job List <span id="card-count"><?php echo $Count_JobList; ?></span>
                             </span>
                         </div>
                     </div>
