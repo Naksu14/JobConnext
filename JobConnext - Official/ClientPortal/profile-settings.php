@@ -2,16 +2,15 @@
 session_start();
 include '../db_con/db_connection.php';
 
-
+// Check if the user is logged in and has a client ID in the session
 if (!isset($_SESSION['client_id'])) {
-
     header("Location: ../login.php"); 
     exit();
 }
 
 $client_id = $_SESSION['client_id'];
 
-// Fetch client information
+// Fetch client information (for name display)
 $sql_info = "SELECT firstname, middlename, lastname FROM tbl_client_information WHERE client_id = ?";
 $stmt_info = $conn->prepare($sql_info);
 $stmt_info->bind_param("i", $client_id);
@@ -20,7 +19,7 @@ $result_info = $stmt_info->get_result();
 $client_info = $result_info->fetch_assoc();
 $stmt_info->close();
 
-// Fetch client email
+// Fetch client email (for email display)
 $sql_email = "SELECT email FROM tbl_client WHERE client_id = ?";
 $stmt_email = $conn->prepare($sql_email);
 $stmt_email->bind_param("i", $client_id);
@@ -29,8 +28,8 @@ $result_email = $stmt_email->get_result();
 $client_email = $result_email->fetch_assoc();
 $stmt_email->close();
 
-// Handle form submission for updating information
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save_profile'])) {
+// Handle profile update form submission (for name and email)
+if (isset($_POST['save_profile'])) {
     $new_firstname = $_POST['firstname'];
     $new_middlename = $_POST['middlename'];
     $new_lastname = $_POST['lastname'];
@@ -40,13 +39,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save_profile'])) {
     $sql_update_info = "UPDATE tbl_client_information SET firstname = ?, middlename = ?, lastname = ? WHERE client_id = ?";
     $stmt_update_info = $conn->prepare($sql_update_info);
     $stmt_update_info->bind_param("sssi", $new_firstname, $new_middlename, $new_lastname, $client_id);
-
     if ($stmt_update_info->execute()) {
         // Update tbl_client email
         $sql_update_email = "UPDATE tbl_client SET email = ? WHERE client_id = ?";
         $stmt_update_email = $conn->prepare($sql_update_email);
         $stmt_update_email->bind_param("si", $new_email, $client_id);
-
         if ($stmt_update_email->execute()) {
             echo '<div class="alert alert-success" role="alert">Profile updated successfully!</div>';
             // Refresh the page to show updated data
@@ -59,6 +56,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['save_profile'])) {
         echo '<div class="alert alert-danger" role="alert">Error updating profile information: ' . $stmt_update_info->error . '</div>';
     }
     $stmt_update_info->close();
+}
+
+// Handle password update form submission
+if (isset($_POST['change_password'])) {
+    $current_password = $_POST['current_password'];
+    $new_password = $_POST['new_password'];
+
+    // Fetch the current hashed password from the database
+    $sql_get_password = "SELECT hash_password FROM tbl_client WHERE client_id = ?";
+    $stmt_get_password = $conn->prepare($sql_get_password);
+    $stmt_get_password->bind_param("i", $client_id);
+    $stmt_get_password->execute();
+    $result_password = $stmt_get_password->get_result();
+    $row_password = $result_password->fetch_assoc();
+    $stmt_get_password->close();
+
+    if ($row_password && password_verify($current_password, $row_password['hash_password'])) {
+        // Hash the new password
+        $hashed_new_password = password_hash($new_password, PASSWORD_DEFAULT);
+
+        // Update the password in the database
+        $sql_update_password = "UPDATE tbl_client SET hash_password = ? WHERE client_id = ?";
+        $stmt_update_password = $conn->prepare($sql_update_password);
+        $stmt_update_password->bind_param("si", $hashed_new_password, $client_id);
+
+        if ($stmt_update_password->execute()) {
+            echo '<div class="alert alert-success" role="alert">Password updated successfully!</div>';
+            echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+            echo '<script>
+            Swal.fire({
+                title: "Password Changed!",
+                text: "Do you want to stay logged in?",
+                icon: "success",
+                showCancelButton: true,
+                confirmButtonText: "Stay Logged In",
+                cancelButtonText: "Logout",
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    return "";
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    window.location.href = "../GuessPortal/Sign_In.php";
+                }
+                });
+                </script>';
+
+        } else {
+            echo '<div class="alert alert-danger" role="alert">Error updating password: ' . $stmt_update_password->error . '</div>';
+        }
+        $stmt_update_password->close();
+    } else {
+        echo '<div class="alert alert-danger" role="alert">Incorrect current password.</div>';
+    }
 }
 
 $conn->close();
@@ -119,7 +168,6 @@ $conn->close();
                             <span>jpg,png and jpeg with size 196 x 196 px 15mb only</span>
                         </div>
                     </div>
-
                 </div>
             </div>
             <form method="POST" action="">
@@ -132,7 +180,6 @@ $conn->close();
                             <input class="form-control" type="text" name="firstname" placeholder="" aria-label="default input example"
                                 value="<?php echo isset($client_info['firstname']) ? htmlspecialchars($client_info['firstname']) : ''; ?>">
                         </div>
-
                         <div class="col">Last Name
                             <input class="form-control" type="text" name="lastname" placeholder="" aria-label="default input example"
                                 value="<?php echo isset($client_info['lastname']) ? htmlspecialchars($client_info['lastname']) : ''; ?>">
@@ -158,43 +205,49 @@ $conn->close();
                             </div>
                             <div class="col">
                                 <div class="button-email">
-                                    </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section-3">
-                        <span>Password</span>
-                    </div>
-                    <div class="c-email">
-                        <span>
-                            Change Password
-                        </span>
-                        <div class="container-fluid pass-reg">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="currentPassword" class="form-label">Current Password</label>
-                                    <input type="password" class="form-control" id="currentPassword" name="current_password">
-                                </div>
-                                <div class="col">
-                                    <label for="newPassword" class="form-label">New Password</label>
-                                    <input type="password" class="form-control" id="newPassword" name="new_password">
+                                    <button type="submit" name="save_profile" class="btn btn-primary">Save Changes</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="content-footer">
-                        <div class="save-butt">
-                            <button type="submit" name="save_profile">
-                                Save
-                            </button>
+                </div>
+            </form>
+
+            <form method="POST" action="">
+                <div class="section-3">
+                    <span>Password</span>
+                </div>
+                <div class="c-email">
+                    <span>
+                        Change Password
+                    </span>
+                    <div class="container-fluid pass-reg">
+                        <div class="row">
+                            <div class="col">
+                                <label for="currentPassword" class="form-label">Current Password</label>
+                                <input type="password" class="form-control" id="currentPassword" name="current_password" required>
+                            </div>
+                            <div class="col">
+                                <label for="newPassword" class="form-label">New Password</label>
+                                <input type="password" class="form-control" id="newPassword" name="new_password" required>
+                            </div>
                         </div>
                     </div>
-                    <br><br><br><br><br>
+                </div>
+                <div class="content-footer">
+                    <div class="save-butt">
+                        <button type="submit" name="change_password" class="btn btn-primary">
+                            save
+                        </button>
+                    </div>
+                </div>
+                <br><br><br><br><br>
             </form>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
             </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
