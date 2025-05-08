@@ -19,7 +19,6 @@ body{
     display: flex;
     justify-content: right;
 }
-
 .settings-container img{
     margin: 30px;
 }
@@ -133,7 +132,7 @@ body{
 
 .full-content{
     max-width: 75%;
-    height: 900px;
+    height: 850px;
     overflow-y: hidden;
     overflow-y: scroll;
 }
@@ -378,7 +377,10 @@ body{
     background-color: #D8CBFF;
     color: #000000;
 }
-
+.skill-tag.yellow{
+    background-color: #F1FFCB;
+    color: #000000;
+}
 .job-footer {
     display: flex;
     justify-content: space-between;

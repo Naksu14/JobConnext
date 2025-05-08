@@ -135,7 +135,7 @@ body{
 
 .full-content{
     max-width: 75%;
-    height: 900px;
+    height: 850px;
     overflow-y: hidden;
     overflow-y: scroll;
 }

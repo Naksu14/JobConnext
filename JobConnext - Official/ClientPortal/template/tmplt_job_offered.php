@@ -45,8 +45,10 @@ if (isset($_SESSION['client_id'])) {
 
             if ($job_status == null) {
                 $status =  "Inactive";
+                $statuscolor = 'red';
             } else {
                 $status = "Active";
+                $statuscolor = 'green';
             }
 ?>
             <a href="#" class="card-link"
@@ -69,7 +71,7 @@ if (isset($_SESSION['client_id'])) {
                             </div>
                             <div class="details">
                                 <h3><?php echo $company_name ?></h3>
-                                <p><?php echo " " . "•" . " " . "Php: " . $job_salary_start . " - " . $job_salary_end . " " . "•" . " " . $num_applicants . " " . "Applicants " . " • " . $status ?></p>
+                                <p><?php echo " " . "•" . " " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $status ?></span></p>
                             </div>
                         </div>
                         <div class="job-dates">

@@ -40,12 +40,12 @@
 <body>
 <?php include "../ClientPortal/components/navbar.php"?>
     <div class="container-fluid main-content">
-        <div class="settings-container">
-            <a href="profile-settings.php">
-                <img src="../Assets/image/Settings.png" alt="">
-            </a>
-        </div>
         <div class="container-fluid full-content">
+            <div class="settings-container">
+                <a href="profile-settings.php">
+                    <img src="../Assets/image/Settings.png" alt="">
+                </a>
+            </div>
             <div class="container-fluid profile-content">
                 <div class="client-photo">
                     <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">

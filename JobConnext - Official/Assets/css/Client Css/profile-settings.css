@@ -22,15 +22,6 @@ body{
     max-height: 100%;
 }
 
-.settings-container{
-    display: flex;
-    justify-content: right;
-}
-
-.settings-container img{
-    margin: 30px;
-}
-
 .profile-content{
     display: flex;
     justify-content:space-between;
@@ -133,7 +124,7 @@ body{
 
 .full-content{
     max-width: 75%;
-    height: 1000px;
+    height: 850px;
     overflow-y: hidden;
     overflow-y: scroll;
 }

@@ -44,8 +44,11 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
         if ($job_status == null) {
             $status =  "Inactive";
+            $statuscolor = 'red';
+            
         } else {
             $status = "Active";
+            $statuscolor = 'green';
         }
 
 
@@ -63,43 +66,43 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             data-yoe="<?php echo $yr_Exp ?>">
 
             <div class="card" id="my-offer">
-                <div class="job-header">
-                    <div class="profile-info">
-                        <div class="avatar">
-                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                    <div class="job-header">
+                        <div class="profile-info">
+                            <div class="avatar">
+                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                            </div>
+                            <div class="details">
+                                <h3><?php echo $company_name ?></h3>
+                                <p><?php echo " " . "•" . " " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants ." " . " • <span style='color:".$statuscolor." ;'>" . $status ?></span></p> 
+                            </div>
                         </div>
-                        <div class="details">
-                            <h3><?php echo $company_name ?></h3>
-                            <p><?php echo " " . "•" . " " . "Php: " . $job_salary_start . " - " . $job_salary_end . " " . "•" . " " . $num_applicants . " " . "Applicants " . " • " . $status ?></p>
+                        <div class="job-dates">
+                            <div class="menu">•••</div>
+                            <p><?php echo $date_posted . " - " . $date_deadline ?></p>
                         </div>
                     </div>
-                    <div class="job-dates">
-                        <div class="menu">•••</div>
-                        <p><?php echo $date_posted . " - " . $date_deadline ?></p>
+                    <div class="job-body">
+                        <div class="info">
+                            <p>
+                                <strong>Location:</strong>
+                                <?php echo $job_loc ?>
+                            </p>
+                            <p>
+                                <strong>Years of experience: </strong> <?php echo $yr_Exp ?>
+                            </p>
+                        </div>
+                        <div class="skills">
+                            <p><strong>Skills needed:</strong></p>
+                            <span class="skill-tag"><?php echo $skill_tags; ?></span>
+                        </div>
+                    </div>
+                    <div class="job-footer">
+                        <button onclick="showAlert()" style="border: none;">
+                            <p>5 Applied</p>
+                        </button>
+                        <p>0 Accepted</p>
                     </div>
                 </div>
-                <div class="job-body">
-                    <div class="info">
-                        <p>
-                            <strong>Location:</strong>
-                            <?php echo $job_loc ?>
-                        </p>
-                        <p>
-                            <strong>Years of experience: </strong> <?php echo $yr_Exp ?>
-                        </p>
-                    </div>
-                    <div class="skills">
-                        <p><strong>Skills needed:</strong></p>
-                        <span class="skill-tag"><?php echo $skill_tags; ?></span>
-                    </div>
-                </div>
-                <div class="job-footer">
-                    <button onclick="showAlert()" style="border: none;">
-                        <p>5 Applied</p>
-                    </button>
-                    <p>0 Accepted</p>
-                </div>
-            </div>
         </a>
         <br>
 

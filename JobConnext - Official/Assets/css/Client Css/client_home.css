@@ -22,7 +22,7 @@ body{
 .page_content{
     overflow-y:scroll;
     overflow-x: hidden;
-    height: 900px;
+    height: 750px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 1;
     
@@ -56,9 +56,13 @@ body{
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 2;
     position: sticky;
+    height: 750px;
     top: 0;
     overflow-y: hidden;
     overflow-y: scroll;
+    justify-content: center;
+    display: flex;
+    padding: 50px ; 
 }
 .worker_details::-webkit-scrollbar {
     display: none;             /* Chrome, Safari */
@@ -102,12 +106,7 @@ body{
     border-radius: 5px;
 }
 
-.worker_details{
-    /* border: 1px solid; */
-    justify-content: center;
-    display: flex;
-    padding: 50px ; 
-}
+
 
 #inside{
     display: flex;
@@ -323,27 +322,7 @@ body{
     font-weight: bold;
 }
 
-.skill-tag {
-    display: inline-block;
-    padding: 5px 10px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 5px;
-    color: #fff;
-    white-space: nowrap;
-}
 
-.skill-tag.green {
-    background-color: #D9FFCB;
-    color: #000000;
-}
-
-.skill-tag.purple {
-    background-color: #D8CBFF;
-    color: #000000;
-}
 
 .job-footer {
     display: flex;
@@ -380,10 +359,6 @@ body{
     border-radius:50%;
 }
 
-.skill-tag.yellow{
-    background-color: #F1FFCB;
-    color: #000000;
-}
 
 .recommendation{
     display: grid;
