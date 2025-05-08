@@ -4,12 +4,8 @@ include '../db_con/db_connection.php';
 
 // Check if the user is logged in and has a client ID in the session
 if (!isset($_SESSION['client_id'])) {
-<<<<<<< HEAD
-    header("Location: ../login.php"); 
-=======
 
     header("Location: ../login.php");
->>>>>>> e1465f85103676f44b77e7f1f79e6659d52431e3
     exit();
 }
 
@@ -106,7 +102,6 @@ if (isset($_POST['change_password'])) {
                 }
                 });
                 </script>';
-
         } else {
             echo '<div class="alert alert-danger" role="alert">Error updating password: ' . $stmt_update_password->error . '</div>';
         }
@@ -203,19 +198,6 @@ $conn->close();
                     </div>
                 </div>
                 <div class="header-right">
-<<<<<<< HEAD
-                    <div class="button-upload">
-                        <button>
-                            Upload New Picture
-                        </button>
-                        <button>
-                            Delete
-                        </button>
-                        <div class="statement-down">
-                            <span>jpg,png and jpeg with size 196 x 196 px 15mb only</span>
-                        </div>
-                    </div>
-=======
                     <form action="../ClientPortal/scriptsfordb/ClientUploadImage.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="client_id" value="<?php echo $client_id ?>">
 
@@ -231,7 +213,6 @@ $conn->close();
                             </div>
                         </div>
                     </form>
->>>>>>> e1465f85103676f44b77e7f1f79e6659d52431e3
                 </div>
 
             </div>
@@ -270,30 +251,7 @@ $conn->close();
                             </div>
                             <div class="col">
                                 <div class="button-email">
-<<<<<<< HEAD
                                     <button type="submit" name="save_profile" class="btn btn-primary">Save Changes</button>
-=======
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section-3">
-                        <span>Password</span>
-                    </div>
-                    <div class="c-email">
-                        <span>
-                            Change Password
-                        </span>
-                        <div class="container-fluid pass-reg">
-                            <div class="row">
-                                <div class="col">
-                                    <label for="currentPassword" class="form-label">Current Password</label>
-                                    <input type="password" class="form-control" id="currentPassword" name="current_password">
-                                </div>
-                                <div class="col">
-                                    <label for="newPassword" class="form-label">New Password</label>
-                                    <input type="password" class="form-control" id="newPassword" name="new_password">
->>>>>>> e1465f85103676f44b77e7f1f79e6659d52431e3
                                 </div>
                             </div>
                         </div>
@@ -334,15 +292,8 @@ $conn->close();
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-<<<<<<< HEAD
-            </script>
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-=======
         </script>
-
-
-
->>>>>>> e1465f85103676f44b77e7f1f79e6659d52431e3
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
