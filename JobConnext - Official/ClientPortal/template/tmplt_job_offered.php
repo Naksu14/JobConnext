@@ -45,8 +45,10 @@ if (isset($_SESSION['client_id'])) {
 
             if ($job_status == null) {
                 $status =  "Inactive";
+                $statuscolor = 'red';
             } else {
                 $status = "Active";
+                $statuscolor = 'green';
             }
 ?>
             <a href="#" class="card-link"
@@ -54,6 +56,7 @@ if (isset($_SESSION['client_id'])) {
                 data-clientid="<?php echo $client_id ?>"
                 data-companyname="<?php echo htmlspecialchars($company_name) ?>"
                 data-location="<?php echo htmlspecialchars($job_loc) ?>"
+                data-applied="<?php echo htmlspecialchars('5 Applied') ?>"
                 data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
                 data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
                 data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
@@ -65,11 +68,11 @@ if (isset($_SESSION['client_id'])) {
                     <div class="job-header">
                         <div class="profile-info">
                             <div class="avatar">
-                                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                <img src="./scriptsfordb/client_image.php?client_id=<?php echo $client_id; ?>" alt="Client Image">
                             </div>
                             <div class="details">
                                 <h3><?php echo $company_name ?></h3>
-                                <p><?php echo " " . "•" . " " . "Php: " . $job_salary_start . " - " . $job_salary_end . " " . "•" . " " . $num_applicants . " " . "Applicants " . " • " . $status ?></p>
+                                <p><?php echo " " . "•" . " " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $status ?></span></p>
                             </div>
                         </div>
                         <div class="job-dates">
@@ -93,8 +96,8 @@ if (isset($_SESSION['client_id'])) {
                         </div>
                     </div>
                     <div class="job-footer">
-                        <button onclick="showAlert()" style="border: none;">
-                            <p>5 Applied</p>
+                        <button class="applied" onclick="showAlert()">
+                            5 Applied
                         </button>
                         <p>0 Accepted</p>
                     </div>

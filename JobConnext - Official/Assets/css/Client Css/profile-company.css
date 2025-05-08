@@ -19,7 +19,6 @@ body{
     display: flex;
     justify-content: right;
 }
-
 .settings-container img{
     margin: 30px;
 }
@@ -37,7 +36,26 @@ body{
     display: flex;
     flex-direction: row;
 }
-
+.applied {
+    background-color: var(--darkblue);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .applied:hover {
+    background-color: #455da0;
+  }
+  
+  .applied p {
+    margin: 0;
+    font-weight: bold;
+  }
+  
 .client-photo img{
     border-radius: 50%;
     width: 100px;
@@ -133,7 +151,7 @@ body{
 
 .full-content{
     max-width: 75%;
-    height: 900px;
+    height: 850px;
     overflow-y: hidden;
     overflow-y: scroll;
 }
@@ -378,7 +396,20 @@ body{
     background-color: #D8CBFF;
     color: #000000;
 }
-
+.skill-tag.yellow{
+    background-color: #F1FFCB;
+    color: #000000;
+}
+.skill-tag1 {
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    color: #1f1f1f;
+  }
+  
 .job-footer {
     display: flex;
     justify-content: space-between;
