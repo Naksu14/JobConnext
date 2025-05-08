@@ -7,7 +7,7 @@ $job_offeredQRY = "SELECT * FROM tbl_client_jobpost WHERE client_id != $clientId
 $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
 while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
-    $client_id = $row['client_id'];
+    $other_client_id = $row['client_id'];
     $job_salary_start = $row['salary_start'];
     $job_salary_end = $row['salary_end'];
     $num_applicants = $row['applicants'];
@@ -19,7 +19,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     $job_offer = $row['job_offer'];
     $job_status = $row['job_status'];
 
-    $job_offered_companyname_QRY = "SELECT * FROM tbl_company_info WHERE client_id = $client_id";
+    $job_offered_companyname_QRY = "SELECT * FROM tbl_company_info WHERE client_id = $other_client_id";
     $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
 
     $company_name = ''; // default fallback
@@ -31,7 +31,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     $colors = ['#D8CBFF', '#FFD8CB', '#CBFFD8', '#CBCDFF', '#FFCBE5', '#E0CBFF']; // Add more if needed
 
     // Fetch skills for current client
-    $skill_qry = "SELECT * FROM tbl_client_skills_sets WHERE client_id = $client_id";
+    $skill_qry = "SELECT * FROM tbl_client_skills_sets WHERE client_id = $other_client_id";
     $skill_exe = mysqli_query($conn, $skill_qry);
 
     $i = 0;
@@ -45,7 +45,6 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         if ($job_status == null) {
             $status =  "Inactive";
             $statuscolor = 'red';
-            
         } else {
             $status = "Active";
             $statuscolor = 'green';
@@ -54,55 +53,56 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
 ?>
         <a href="#" class="card-link"
-            data-type="job"
-            data-clientid="<?php echo $client_id ?>"
+            data-type="other-job"
+            data-clientid="<?php echo $other_client_id ?>"
             data-companyname="<?php echo htmlspecialchars($company_name) ?>"
             data-location="<?php echo htmlspecialchars($job_loc) ?>"
             data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
+            data-applied="<?php echo htmlspecialchars('5 Applied') ?>"
             data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
             data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
             data-description="<?php echo htmlspecialchars($job_description) ?>"
             data-skills="<?php echo htmlspecialchars($skill_tags) ?>"
             data-yoe="<?php echo $yr_Exp ?>">
 
+
             <div class="card" id="my-offer">
-                    <div class="job-header">
-                        <div class="profile-info">
-                            <div class="avatar">
-                                <img src="./scriptsfordb/client_image.php?client_id=<?php echo $client_id; ?>" alt="Client Image">
-                            </div>
-                            <div class="details">
-                                <h3><?php echo $company_name ?></h3>
-                                <p><?php echo " " . "•" . " " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants ." " . " • <span style='color:".$statuscolor." ;'>" . $status ?></span></p> 
-                            </div>
+                <div class="job-header">
+                    <div class="profile-info">
+                        <div class="avatar">
+                            <img src="./scriptsfordb/client_image.php?client_id=<?php echo $other_client_id; ?>" alt="Client Image">
                         </div>
-                        <div class="job-dates">
-                            <div class="menu">•••</div>
-                            <p><?php echo $date_posted . " - " . $date_deadline ?></p>
+                        <div class="details">
+                            <h3><?php echo $company_name ?></h3>
+                            <p><?php echo " " . "•" . " " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $status ?></span></p>
                         </div>
                     </div>
-                    <div class="job-body">
-                        <div class="info">
-                            <p>
-                                <strong>Location:</strong>
-                                <?php echo $job_loc ?>
-                            </p>
-                            <p>
-                                <strong>Years of experience: </strong> <?php echo $yr_Exp ?>
-                            </p>
-                        </div>
-                        <div class="skills">
-                            <p><strong>Skills needed:</strong></p>
-                            <span class="skill-tag"><?php echo $skill_tags; ?></span>
-                        </div>
-                    </div>
-                    <div class="job-footer">
-                        <button onclick="showAlert()" style="border: none;">
-                            <p>5 Applied</p>
-                        </button>
-                        <p>0 Accepted</p>
+                    <div class="job-dates">
+                        <div class="menu">•••</div>
+                        <p><?php echo $date_posted . " - " . $date_deadline ?></p>
                     </div>
                 </div>
+                <div class="job-body">
+                    <div class="info">
+                        <p>
+                            <strong>Location:</strong>
+                            <?php echo $job_loc ?>
+                        </p>
+                        <p>
+                            <strong>Years of experience: </strong> <?php echo $yr_Exp ?>
+                        </p>
+                    </div>
+                    <div class="skills">
+                        <p><strong>Skills needed:</strong></p>
+                        <span class="skill-tag"><?php echo $skill_tags; ?></span>
+                    </div>
+                </div>
+                <div class="job-footer">
+                    <button class="applied">
+                        5 Applicant
+                    </button>
+                </div>
+            </div>
         </a>
         <br>
 

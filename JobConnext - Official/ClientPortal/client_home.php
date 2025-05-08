@@ -80,7 +80,8 @@ $user_id = $_SESSION['client_id'];
                     <div class="job-header">
                         <div class="profile-info">
                             <div class="avatar-display">
-                                <img src="scriptsfordb/client_image.php?client_id=<?php echo $user_id; ?>" alt="Client Image">
+                                <img id="client_image" src="" alt="Client Image">
+                                <span id="clientid"></span>
                             </div>
                             <div class="details">
                                 <h3 id="company_name_display">Company Name</h3>
@@ -98,7 +99,7 @@ $user_id = $_SESSION['client_id'];
                             <p id="salary_display">Salary</p>
                         </div>
                         <div class="short-info"><img src="../Assets/image/Applicant.png" alt="">
-                            <p id="applicants_display">Applicants</p>
+                            <p id="applicants_display" onclick="showAlert()">Applicants</p>
                         </div>
                         <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt="">
                             <p id="email_display">Email</p>
@@ -143,6 +144,12 @@ $user_id = $_SESSION['client_id'];
                             </li>
                         </ol>
                     </div>
+                    <div class="job-done" id="job_done_button" style="display: none;">
+                        <button>
+                            Job Offer Done
+                        </button>
+                    </div>
+
                 </div>
                 <!-- worker view -->
                 <div class="worker-view" id="worker_view" style="display: none;">
@@ -272,11 +279,20 @@ $user_id = $_SESSION['client_id'];
                 e.preventDefault();
 
                 const type = this.dataset.type;
+                const clientId = this.dataset.clientid;
+
+                // Update some text
+                document.getElementById('clientid').textContent = clientId;
+
+                // Update image src
+                document.getElementById('client_image').src = `scriptsfordb/client_image.php?client_id=${encodeURIComponent(clientId)}`;
 
                 // Hide all views first
                 document.getElementById('default_view').style.display = 'none';
                 document.getElementById('job_detail_view').style.display = 'none';
                 document.getElementById('worker_view').style.display = 'none';
+
+
 
                 if (type === 'worker') {
                     // Show worker view only
@@ -290,9 +306,16 @@ $user_id = $_SESSION['client_id'];
                     document.getElementById('worker_email_display').textContent = this.dataset.email;
                     document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
                     document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
-                } else if (type === 'job') {
+                } else if (type === 'job' || type === 'other-job') {
                     // Show job detail view only
                     document.getElementById('job_detail_view').style.display = 'block';
+
+                    if (type === 'job') {
+                        // Show "Job Offer Done" button
+                        document.getElementById('job_done_button').style.display = 'block';
+                    } else {
+                        document.getElementById('job_done_button').style.display = 'none';
+                    }
 
                     // Fill job view data
                     document.getElementById('company_name_display').textContent = this.dataset.companyname;
@@ -300,7 +323,7 @@ $user_id = $_SESSION['client_id'];
                     document.getElementById('description_display').textContent = this.dataset.description;
                     document.getElementById('location_display').textContent = this.dataset.location;
                     document.getElementById('salary_display').textContent = this.dataset.salary;
-                    document.getElementById('applicants_display').textContent = this.dataset.applicants;
+                    document.getElementById('applicants_display').textContent = this.dataset.applied;
                     document.getElementById('email_display').textContent = this.dataset.email;
                     document.getElementById('skills_display').innerHTML = this.dataset.skills;
                     document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';

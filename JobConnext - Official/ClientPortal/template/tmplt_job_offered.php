@@ -56,6 +56,7 @@ if (isset($_SESSION['client_id'])) {
                 data-clientid="<?php echo $client_id ?>"
                 data-companyname="<?php echo htmlspecialchars($company_name) ?>"
                 data-location="<?php echo htmlspecialchars($job_loc) ?>"
+                data-applied="<?php echo htmlspecialchars('5 Applied') ?>"
                 data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
                 data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
                 data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
@@ -95,8 +96,8 @@ if (isset($_SESSION['client_id'])) {
                         </div>
                     </div>
                     <div class="job-footer">
-                        <button onclick="showAlert()" style="border: none;">
-                            <p>5 Applied</p>
+                        <button class="applied" onclick="showAlert()">
+                            5 Applied
                         </button>
                         <p>0 Accepted</p>
                     </div>
