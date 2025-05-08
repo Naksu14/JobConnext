@@ -244,14 +244,16 @@
     font-size: 24px;
     font-weight: 500;
 }
-.job-dates{
-    width:30px;
-    height: 30px;
-    justify-content: center;
-    text-align: center;
-    background-color: #161D6F;
-    display: flex;
-}
+.job-dates {
+    text-align: right;
+  }
+  
+  .job-dates p {
+    margin: 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
 
 #content-title{
     /* border: 1px solid; */
@@ -266,46 +268,30 @@
     margin: 0px 0px 10px 0px;
 }
 
-
-.job-card a{
-    text-decoration: none;
-}
-
-.job-card #my-offer{
-    height: 215px;
-    max-width: 100%;
-    /* margin-left:30px ; */
-    margin: 0px 30px;
-    margin-bottom: 10px;
-}
-
-
-
-.job-card #my-offer img{
-    border-radius:50%;
-    width: 80px;
-    height: 80px;
-    margin: 25px 15px 15px;
-    
-}
-
-#my-offer {
+.job-card {
+    margin: 0;
+  }
+  
+  .job-card #my-offer,
+  .other-offer #my-offer {
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 20px 0;
-    font-size: 14px;
+    margin: 10px 0;
+    height: 250px;
     max-width: 100%;
-
-}
-
-.job-header {
+    margin-left: 30px;
+    font-size: 14px;
+  }
+  
+  .job-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 15px;
-}
+    margin-bottom: 10px;
+  }
+  
 
 .profile-info {
     display: flex;
@@ -357,12 +343,11 @@
     color: #666;
 }
 
-.menu{
-    font-size: 16px;
+.menu {
+    font-size: 18px;
     color: var(--darkblue);
     cursor: pointer;
-}
-
+  }
 .check-menu {
     font-size: 16px;
     color: #FF8787;
@@ -385,38 +370,24 @@
     margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
-    gap: 8px; 
-}
-
-.skills p {
+    gap: 8px;
+  }
+  
+  .skills p {
     margin: 0 0 5px;
     font-weight: bold;
-}
-
-.skills-available {
-    margin-top: 10px;
-    display: flex;
-    white-space: nowrap;
-    gap: 8px; 
-}
-
-
-.skill-tag {
-    display: inline-block;
+    color: #6E6E6E;
+  }
+  
+  .skill-tag1 {
     padding: 5px 10px;
     margin-right: 5px;
     margin-bottom: 5px;
     font-size: 12px;
     font-weight: bold;
-    border-radius: 5px;
-    color: #fff;
-    white-space: nowrap;
-}
-
-.skill-tag.green {
-    background-color: #D9FFCB;
-    color: #000000;
-}
+    border-radius: 4px;
+    color: #1f1f1f;
+  }
 
 .skill-tag.purple {
     background-color: #D8CBFF;
@@ -448,11 +419,12 @@
     margin: 0px 0px 0px 0px;
     /* border: 1px solid; */
 }
-.recommended-card #my-offer{
-    height: 100%;
-    max-width: 100%;
-    /* margin-left:30px ; */
-    margin: 0px 30px;
+.recommended-card,
+.recommended-card #my-offer {
+  margin: 0;
+  height: 100%;
+  max-width: 100%;
+  padding: 20px;
 }
 
 .recommended-card #my-offer img{
@@ -489,7 +461,7 @@
 }
 
 .recommended-card a{
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .worker_detail_header{
@@ -816,8 +788,8 @@
     height: 300px;
 }
 
-#my-offer a{
-    color: #212529;
+.card-link {
+    text-decoration: none;
 }
 
 .upload-border img{
@@ -898,4 +870,24 @@
         font-size: 10px;
         margin-left: 5px;
     }
+  }
+  
+  .applied {
+    background-color: var(--darkblue);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .applied:hover {
+    background-color: #455da0;
+  }
+  
+  .applied p {
+    margin: 0;
+    font-weight: bold;
   }
