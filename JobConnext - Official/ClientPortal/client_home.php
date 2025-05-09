@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../db_con/db_connection.php';
-include '../ClientPortal/recordFolder/recordPost.php';
+
 
 $user_id = $_SESSION['client_id'];
 ?>
@@ -194,38 +194,24 @@ $user_id = $_SESSION['client_id'];
 
         <div class="page_content">
             <div class=" row content-header" style="position: sticky; top: 0; z-index: 1; background-color:white; padding: 20px;">
-                <div class="col-3">
-                    <div class="container-fluid content-filter">
-                        <button>
-                            <img src="../Assets/image/filter (1) 1.png" alt="">
-                            <span>
-                                Filter
-                            </span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="col-7">
-                    <div class="container-fluid freelance-search">
-                        <input type="text" placeholder="  Search for workers..." id="freelance-search">
-                    </div>
-                </div>
-                <div class="col-2">
-                    <div class="seek-worker">
-                        <button>
-                            <span>
-                                Seek
-                            </span>
-                        </button>
-                    </div>
-                </div>
-                <div class="row title-section">
+                <div class="col-3  title-section">
                     <div class="col content-title">
                         <p>
                             Jobs Offered
                         </p>
                     </div>
                 </div>
+
+                <div class="col-9 d-flex justify-content-end">
+                    <div class="container-fluid content-filter">
+                        <button>
+                            <img src="../Assets/image/filter (1) 1.png" alt="">
+                            <span>Filter</span>
+                        </button>
+                    </div>
+                </div>
+
+
 
                 <div class="row job-card">
                     <div class="col-12">
@@ -311,6 +297,7 @@ $user_id = $_SESSION['client_id'];
                     document.getElementById('worker_email_display').textContent = this.dataset.email;
                     document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
                     document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
+
                 } else if (type === 'job' || type === 'other-job') {
                     // Show job detail view only
                     document.getElementById('job_detail_view').style.display = 'block';

@@ -145,7 +145,7 @@
   
   .content-filter {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     margin: 7px;
   }
   
