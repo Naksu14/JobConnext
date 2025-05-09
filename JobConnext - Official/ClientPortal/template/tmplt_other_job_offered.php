@@ -8,6 +8,7 @@ $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
 while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
     $other_client_id = $row['client_id'];
+    $job_post_id = $row['job_post_id'];
     $job_salary_start = $row['salary_start'];
     $job_salary_end = $row['salary_end'];
     $num_applicants = $row['applicants'];
@@ -55,6 +56,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         <a href="#" class="card-link"
             data-type="other-job"
             data-clientid="<?php echo $other_client_id ?>"
+            data-jobid="<?php echo $job_post_id ?>"
             data-companyname="<?php echo htmlspecialchars($company_name) ?>"
             data-location="<?php echo htmlspecialchars($job_loc) ?>"
             data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
