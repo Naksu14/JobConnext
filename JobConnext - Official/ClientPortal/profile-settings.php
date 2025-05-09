@@ -46,9 +46,25 @@ if (isset($_POST['save_profile'])) {
         $stmt_update_email = $conn->prepare($sql_update_email);
         $stmt_update_email->bind_param("si", $new_email, $client_id);
         if ($stmt_update_email->execute()) {
-            echo '<div class="alert alert-success" role="alert">Profile updated successfully!</div>';
-            // Refresh the page to show updated data
-            header("Refresh:0");
+            echo '<script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    Swal.fire({
+                        toast: true,
+                        position: "top-end",
+                        icon: "success",
+                        title: "Success!",
+                        text: "Email updated successfully.",
+                        timer: 2000,
+                        timerProgressBar: true,
+                        showConfirmButton: false,
+                        customClass: {
+                            popup: "custom-toast-size"
+                        }
+                    })
+                });
+            </script>';
+
+            header("Refresh:1");
         } else {
             echo '<div class="alert alert-danger" role="alert">Error updating email: ' . $stmt_update_email->error . '</div>';
         }
@@ -231,15 +247,15 @@ $conn->close();
                     <div class="row">
                         <div class="col">First Name
                             <input class="form-control" type="text" name="firstname" placeholder="" aria-label="default input example"
-                                value="<?php echo isset($client_info['firstname']) ? htmlspecialchars($client_info['firstname']) : ''; ?>" disabled>
+                                value="<?php echo isset($client_info['firstname']) ? htmlspecialchars($client_info['firstname']) : ''; ?>">
                         </div>
                         <div class="col">Last Name
                             <input class="form-control" type="text" name="lastname" placeholder="" aria-label="default input example"
-                                value="<?php echo isset($client_info['lastname']) ? htmlspecialchars($client_info['lastname']) : ''; ?>" disabled>
+                                value="<?php echo isset($client_info['lastname']) ? htmlspecialchars($client_info['lastname']) : ''; ?>">
                         </div>
                         <div class="col">Middle Name
                             <input class="form-control" type="text" name="middlename" placeholder="" aria-label="default input example"
-                                value="<?php echo isset($client_info['middlename']) ? htmlspecialchars($client_info['middlename']) : ''; ?>" disabled>
+                                value="<?php echo isset($client_info['middlename']) ? htmlspecialchars($client_info['middlename']) : ''; ?>">
                         </div>
                     </div>
                 </div>

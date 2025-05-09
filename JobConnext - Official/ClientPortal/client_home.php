@@ -89,6 +89,7 @@ $user_id = $_SESSION['client_id'];
                             </div>
 
                         </div>
+                        <button id="view-attach-file"></button>
                     </div>
 
                     <div class="short-info-container">
@@ -105,6 +106,8 @@ $user_id = $_SESSION['client_id'];
                             <p id="email_display">Email</p>
                         </div>
                     </div>
+
+                    <button id="yourTargetButton">Submit</button>
 
                     <div class="skills-worker-details">
                         <p>Qualifications and Skills</p>
@@ -276,6 +279,14 @@ $user_id = $_SESSION['client_id'];
 
                 const type = this.dataset.type;
                 const clientId = this.dataset.clientid;
+                const jobid = this.dataset.jobid;
+
+                const targetButton = document.querySelector('#yourTargetButton');
+                if (targetButton) {
+                    targetButton.dataset.clientid = clientId;
+                    targetButton.dataset.jobid = jobid; // use a separate attribute
+                }
+
 
 
                 // Update some text
@@ -341,6 +352,36 @@ $user_id = $_SESSION['client_id'];
                 }
 
             });
+        });
+
+
+        document.querySelector('#yourTargetButton').addEventListener('click', function() {
+            const clientId = this.dataset.clientid;
+            const jobId = this.dataset.jobid;
+
+            console.log('Sending request with:', clientId, jobId);
+
+            fetch(`scriptsfordb/get_file.php?client_id=${clientId}&job_id=${jobId}`)
+                .then(response => {
+                    console.log('HTTP status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response data:', data);
+
+                    if (data.success && data.filepath) {
+                        window.open(data.filepath, '_blank');
+                    } else {
+                        alert(data.message || 'File not found.');
+                    }
+                })
+                .catch(err => {
+                    console.error('Fetch error:', err);
+                    alert('An error occurred while fetching the file.');
+                });
         });
     </script>
     <script src="../Assets/js/dropDown.js"></script>
