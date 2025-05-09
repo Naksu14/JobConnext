@@ -243,26 +243,33 @@ $user_id = $_SESSION['client_id'];
                     </div>
                 </div>
 
+                <div class="row job-card">
+                    <div class="col-12">
+                        <!-- Recommended_worker -->
+                        <?php include '../ClientPortal/template/tmplt_recommended_worker.php'; ?>
+                    </div>
+                </div>
 
-                <?php include '../ClientPortal/template/tmplt_recommended_worker.php'; ?>
 
                 <div class="row title-section">
-                    <div class="col other-offers">
+                    <div class="other-offer">
                         <p>
                             Other Job Offers
                         </p>
                     </div>
                 </div>
 
-
-
-
-                <div class="row other-offer">
+                <div class="row job-card">
                     <div class="col-12">
-                        <!-- other JOB OFFERED CARD -->
+                        <!-- Recommended_worker -->
                         <?php include '../ClientPortal/template/tmplt_other_job_offered.php'; ?>
                     </div>
                 </div>
+
+                <div id="noResultsMessage">
+                    No results found.
+                </div>
+
             </div>
         </div>
     </div>
@@ -384,7 +391,7 @@ $user_id = $_SESSION['client_id'];
                 });
         });
     </script>
-    <script src="../Assets/js/dropDown.js"></script>
+    <script src="../Assets/js/filter.js"></script>
 
 
 
