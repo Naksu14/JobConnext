@@ -9,7 +9,6 @@ if (isset($_SESSION['client_id'])) {
     while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
         $client_id = $row['client_id'];
-        $job_post_id = $row['job_post_id'];
         $job_salary_start = $row['salary_start'];
         $job_salary_end = $row['salary_end'];
         $num_applicants = $row['applicants'];
@@ -53,7 +52,6 @@ if (isset($_SESSION['client_id'])) {
             <a href="#" class="card-link"
                 data-type="job"
                 data-clientid="<?php echo $client_id ?>"
-                data-jobid="<?php echo $job_post_id ?>"
                 data-companyname="<?php echo htmlspecialchars($company_name) ?>"
                 data-location="<?php echo htmlspecialchars($job_loc) ?>"
                 data-job-status="<?php echo htmlspecialchars($job_status) ?>"
