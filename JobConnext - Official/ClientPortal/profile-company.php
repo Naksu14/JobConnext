@@ -58,6 +58,7 @@ if (isset($_SESSION['client_id'])) {
         rel="stylesheet">
     <link rel="stylesheet" href="../Assets/css/style.css">
     <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
+
 </head>
 
 <body>
@@ -196,6 +197,8 @@ if (isset($_SESSION['client_id'])) {
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
             </script>
+             <script src="../Assets/js/function.js"></script>
+
 </body>
 
 </html>
