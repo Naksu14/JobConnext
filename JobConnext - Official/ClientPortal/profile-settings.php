@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 session_start();
 include '../db_con/db_connection.php';
 
@@ -114,6 +116,7 @@ if (isset($_POST['change_password'])) {
 $conn->close();
 ?>
 <?php if (isset($_GET['success'])): ?>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const action = "<?php echo $_GET['success']; ?>";
@@ -299,6 +302,7 @@ $conn->close();
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="../Assets/js/function.js"></script>
 </body>
 
