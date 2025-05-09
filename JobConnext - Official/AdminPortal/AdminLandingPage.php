@@ -1,3 +1,65 @@
+<?php
+session_start();
+include '../db_con/db_connection.php';
+
+$query = "SELECT COUNT(*) as BlueCollarWorkerUser FROM tbl_blue_collar_worker";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($row = $result->fetch_assoc()) {
+    $Count_BlueCollarWorkerUser = $row['BlueCollarWorkerUser'];
+}
+
+$query = "SELECT COUNT(*) as clientUser FROM tbl_client";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($row = $result->fetch_assoc()) {
+    $Count_clientUser = $row['clientUser'];
+}
+
+
+
+// Clients per month
+$clientData = [];
+$months = [];
+
+$query = "
+    SELECT DATE_FORMAT(Client_created_at, '%M') AS month, COUNT(*) AS count
+    FROM tbl_client
+    WHERE YEAR(Client_created_at) = YEAR(CURDATE())
+    GROUP BY MONTH(Client_created_at)
+    ORDER BY MONTH(Client_created_at)
+";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $months[] = $row['month']; // e.g. January, February
+    $clientData[] = (int)$row['count'];
+}
+
+// Blue-Collar Workers per month
+$workerData = [];
+
+$query = "
+    SELECT DATE_FORMAT(Worker_created_at, '%M') AS month, COUNT(*) AS count
+    FROM tbl_blue_collar_worker
+    WHERE YEAR(Worker_created_at) = YEAR(CURDATE())
+    GROUP BY MONTH(Worker_created_at)
+    ORDER BY MONTH(Worker_created_at)
+";
+$stmt = $conn->prepare($query);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $workerData[] = (int)$row['count'];
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +111,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-name">BLUE COLLAR</div>
-                    <div class="card-number">543</div>
+                    <div class="card-number"> <?php echo $Count_BlueCollarWorkerUser; ?></div>
                 </div>
             </div>
             <div class="card">
@@ -58,7 +120,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-name">CLIENT</div>
-                    <div class="card-number">123</div>
+                    <div class="card-number"><?php echo $Count_clientUser; ?></div>
                 </div>
             </div>
         </div>
@@ -97,6 +159,58 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="dashboard/charts.js"></script>
+<script>
+    const months = <?php echo json_encode($months); ?>;
+    const clientData = <?php echo json_encode($clientData); ?>;
+    const workerData = <?php echo json_encode($workerData); ?>;
+
+    new Chart(newUserChart, {
+        type: 'line',
+        data: {
+            labels: months,
+            datasets: [
+                {
+                    label: 'Clients',
+                    data: clientData,
+                    backgroundColor: 'rgba(228, 98, 50, 0.2)',
+                    borderColor: '#E46232',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                },
+                {
+                    label: 'Blue-Collar Workers',
+                    data: workerData,
+                    backgroundColor: 'rgba(32, 138, 174, 0.2)',
+                    borderColor: '#208AAE',
+                    borderWidth: 2,
+                    tension: 0.4,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'top' },
+                title: {
+                    display: true,
+                    text: 'New Registered Users: Clients and Blue-Collar Workers'
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: { display: true, text: 'Number of Registrations' }
+                },
+                x: {
+                    title: { display: true, text: 'Months' }
+                }
+            }
+        }
+    });
+</script>
+
 </body>
 
 </html>

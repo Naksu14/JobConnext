@@ -46,60 +46,7 @@ const ctxFBChart = document.getElementById('FBChart');
       }
     }
   });
-  new Chart(newUserChart, {
-    type: 'line',
-    data: {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June'], // Replace with relevant months or data
-        datasets: [
-            {
-                label: 'Clients',
-                data: [12, 19, 3, 5, 2, 3], // Replace with your client data
-                backgroundColor: 'rgba(228, 98, 50, 0.2)', // Light fill color
-                borderColor: '#E46232', // Border color for the line
-                borderWidth: 2,
-                tension: 0.4, // Smooth curve
-                fill: true // Optional: to fill the area under the line
-            },
-            {
-                label: 'Blue-Collar Workers',
-                data: [5, 9, 7, 10, 4, 8], // Replace with your blue-collar worker data
-                backgroundColor: 'rgba(32, 138, 174, 0.2)', // Light fill color
-                borderColor: '#208AAE', // Border color for the line
-                borderWidth: 2,
-                tension: 0.4, // Smooth curve
-                fill: true // Optional: to fill the area under the line
-            }
-        ]
-    },
-    options: {
-        responsive: true, // Adjusts chart size based on container
-        plugins: {
-            legend: {
-                position: 'top', // Legend position
-            },
-            title: {
-                display: true,
-                text: 'New Registered Users: Clients vs Blue-Collar Workers' // Chart title
-            }
-        },
-        scales: {
-            y: {
-                beginAtZero: true, // Start y-axis from 0
-                title: {
-                    display: true,
-                    text: 'Number of Registrations'
-                }
-            },
-            x: {
-                title: {
-                    display: true,
-                    text: 'Months'
-                }
-            }
-        }
-    }
-});
-
+  
 
 new Chart(ctxJCChart, {
   type: 'line',

@@ -15,7 +15,7 @@ header('Content-Type: application/json');
 session_start();
 
 // Convert all errors/warnings into JSON
-set_error_handler(function($severity, $message, $file, $line) {
+set_error_handler(function ($severity, $message, $file, $line) {
     http_response_code(500);
     echo json_encode([
         'success' => false,
@@ -24,7 +24,7 @@ set_error_handler(function($severity, $message, $file, $line) {
     exit;
 });
 
-set_exception_handler(function($e) {
+set_exception_handler(function ($e) {
     http_response_code(500);
     echo json_encode([
         'success' => false,
@@ -43,7 +43,7 @@ $user_id = $_SESSION['client_id'];
 // ✅ Get POST data
 $companyName    = $_POST['companyName'] ?? '';
 $description    = $_POST['description'] ?? '';
-$jobSelect      = ($_POST['jobSelect'] == 'others') ? $_POST['otherJob'] : $_POST['jobSelect'] ;
+$jobSelect      = ($_POST['jobSelect'] == 'others') ? $_POST['otherJob'] : $_POST['jobSelect'];
 $salaryStart    = $_POST['salaryRange_start'] ?? '';
 $salaryEnd      = $_POST['salaryRange_end'] ?? '';
 $location       = $_POST['location'] ?? '';
@@ -51,6 +51,7 @@ $applicantCount = $_POST['applicant_count'] ?? '';
 $yearExperience = $_POST['year_experience'] ?? '';
 $date           = $_POST['date'] ?? '';
 $filename       = null;
+$job_status = 'Active';
 
 // ✅ Handle file upload (MIME + extension check)
 if (isset($_FILES['fileUpload']) && $_FILES['fileUpload']['error'] === UPLOAD_ERR_OK) {
@@ -104,13 +105,14 @@ $sql = "INSERT INTO tbl_client_jobpost (
     salary_start,
     salary_end,
     `picture/pdf`,
+    job_status,
     description,
     location,
     applicants,
     year_exp,
     deadline
 ) 
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 if (!$stmt) {
@@ -119,13 +121,14 @@ if (!$stmt) {
 }
 
 $stmt->bind_param(
-    'issddssssss',
+    'issddsssssss',
     $user_id,
     $companyName,
     $jobSelect,
     $salaryStart,
     $salaryEnd,
     $filename,
+    $job_status,
     $description,
     $location,
     $applicantCount,
@@ -158,7 +161,3 @@ echo json_encode([
     ]
 ]);
 exit;
-?>
-
-
-

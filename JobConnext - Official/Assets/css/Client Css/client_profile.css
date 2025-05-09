@@ -135,7 +135,7 @@ body{
 
 .full-content{
     max-width: 75%;
-    height: 900px;
+    height: 850px;
     overflow-y: hidden;
     overflow-y: scroll;
 }
@@ -234,3 +234,10 @@ body{
     color: #646464;
     padding: 10px;
 }
+
+.swal2-popup.colored-toast {
+    font-size: 14px;
+    padding: 10px 20px;
+    width: 300px; /* Adjust width if needed */
+}
+

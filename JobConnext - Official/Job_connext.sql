@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2025 at 02:13 AM
+-- Generation Time: May 08, 2025 at 06:18 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -123,7 +123,7 @@ INSERT INTO `tbl_client` (`client_id`, `username`, `email`, `hash_password`, `st
 (8, 'egray', 'egray@example.com', 'z9y8x7w6v5u4', 'pending', 112233),
 (9, 'rking', 'rking@example.com', 'm1n2b3v4c5x6', 'active', 445566),
 (10, 'dlee', 'dlee@example.com', 'p0o9i8u7y6t5', 'inactive', 778899),
-(11, 'Meko_Neko010', 'akirakarasu010@gmail.com', '$2y$10$GimVai.qjk.lQ8PMHB.80e8ZZpy6EfHqoAYDbROZcEGAWjFkW/CRG', '0', 278318),
+(11, 'Meko_Neko010', 'akirakarasu@gmail.com', '$2y$10$GimVai.qjk.lQ8PMHB.80e8ZZpy6EfHqoAYDbROZcEGAWjFkW/CRG', '0', 278318),
 (12, 'jdoe', 'jdoe@example.com', 'a1b2c3d4e5f6', 'active', 123456),
 (13, 'raven', 'example0123@gmail.com', '$2y$10$56AxQjfMBZRygURiXqR23en7XSKjSBQzyEn0VUXlXDEUHNyfPDz7C', '1', NULL);
 
@@ -166,10 +166,7 @@ INSERT INTO `tbl_client_information` (`id`, `client_id`, `firstname`, `middlenam
 (9, 9, 'Rachel', 'Mae', 'King', 0x72616368656c5f6b696e672e6a7067, '09701234567', 'Student and junior developer.', 'Philippines', 'San Fernando', 'Region III', 'Pampanga', 'Dolores', '2000'),
 (10, 10, 'Daniel', 'Scott', 'Lee', 0x64616e69656c5f6c65652e6a7067, '09801234567', 'System analyst and coder.', 'Philippines', 'Legazpi City', 'Region V', 'Albay', 'Rawis', '4500'),
 (11, 11, 'lanceivanlistana15@g', 'reyes', 'listana', NULL, '+63-967-805-5024', 'dfasdfas', 'Philippines', 'IMUS CITY', 'CAVITE', 'dasf', 'dsfs', '4103'),
-(12, 12, 'lanceivanlistana15@g', 'reyes', 'listana', NULL, '+63-967-805-5024', 'dfasdfas', 'Philippines', 'IMUS CITY', 'CAVITE', 'dasf', 'dsfs', '4103'),
-(13, 13, 'lanceivanlistana15@g', 'reyes', 'listana', NULL, '+63-967-805-5024', 'dfasdfas', 'Philippines', 'IMUS CITY', 'CAVITE', 'dasf', 'dsfs', '4103'),
-(14, 14, 'lanceivanlistana15@g', 'reyes', 'listana', NULL, '+63-967-805-5024', 'dfasdfas', 'Philippines', 'IMUS CITY', 'CAVITE', 'dasf', 'dsfs', '4103'),
-(15, 15, 'lanceivanlistana15@g', 'reyes', 'listana', NULL, '+63-967-805-5024', 'dfasdfas', 'Philippines', 'IMUS CITY', 'CAVITE', 'dasf', 'dsfs', '4103');
+(12, 12, 'lanceivanlistana15@g', 'reyes', 'listana', NULL, '+63-967-805-5024', 'dfasdfas', 'Philippines', 'IMUS CITY', 'CAVITE', 'dasf', 'dsfs', '4103');
 
 -- --------------------------------------------------------
 
@@ -184,7 +181,8 @@ CREATE TABLE `tbl_client_jobpost` (
   `job_offer` varchar(50) NOT NULL,
   `salary_start` int(25) NOT NULL,
   `salary_end` int(25) NOT NULL,
-  `picture/pdf` blob NOT NULL,
+  `picture/pdf` varchar(255) NOT NULL,
+  `filePath` varchar(255) NOT NULL DEFAULT 'uploads/',
   `job_status` int(11) NOT NULL,
   `description` varchar(255) NOT NULL,
   `location` varchar(55) NOT NULL,
@@ -198,27 +196,28 @@ CREATE TABLE `tbl_client_jobpost` (
 -- Dumping data for table `tbl_client_jobpost`
 --
 
-INSERT INTO `tbl_client_jobpost` (`client_id`, `job_title`, `job_post_id`, `job_offer`, `salary_start`, `salary_end`, `picture/pdf`, `job_status`, `description`, `location`, `applicants`, `year_exp`, `start_posted`, `deadline`) VALUES
-(11, 'Electrician', 92, 'Full-time', 18000, 25000, 0x656c65637472696369616e5f6a6f622e706466, 0, 'Licensed electrician needed for wiring and maintenance tasks.', 'Quezon City, Metro Manila', 0, 2, '2025-05-06', '2025-06-15'),
-(12, 'Plumber', 93, 'Full-time', 17000, 24000, 0x706c756d6265725f6a6f622e706466, 0, 'Skilled plumber required for pipe installation and repairs.', 'Manila, Metro Manila', 0, 1, '2025-05-06', '2025-06-18'),
-(13, 'Welder', 94, 'Contract', 19000, 26000, 0x77656c6465725f6a6f622e706466, 0, 'Welder with MIG/TIG skills needed for fabrication tasks.', 'Cebu City, Cebu', 0, 2, '2025-05-06', '2025-06-20'),
-(4, 'Delivery Driver', 95, 'Full-time', 16000, 22000, 0x6472697665725f6a6f622e706466, 0, 'Responsible driver with license required for delivery routes.', 'Davao City, Davao del Sur', 0, 1, '2025-05-06', '2025-06-22'),
-(5, 'Construction Worker', 96, 'Full-time', 15000, 20000, 0x636f6e737472756374696f6e5f776f726b65722e706466, 0, 'Laborers needed for various on-site construction projects.', 'Baguio City, Benguet', 0, 0, '2025-05-06', '2025-06-25'),
-(6, 'Mechanic', 97, 'Full-time', 18000, 25000, 0x6d656368616e69635f6a6f622e706466, 0, 'Auto mechanic for vehicle diagnostics and repairs.', 'Iloilo City, Iloilo', 0, 2, '2025-05-06', '2025-06-28'),
-(7, 'Warehouse Helper', 98, 'Full-time', 14000, 18000, 0x77617265686f7573655f68656c7065722e706466, 0, 'Assist in warehouse loading/unloading and inventory.', 'Bacoor, Cavite', 0, 0, '2025-05-06', '2025-06-12'),
-(8, 'House Painter', 99, 'Contract', 16000, 21000, 0x7061696e7465725f6a6f622e706466, 0, 'Experienced painter needed for residential jobs.', 'Dasmariñas, Cavite', 0, 1, '2025-05-06', '2025-06-30'),
-(9, 'Security Guard', 100, 'Full-time', 15000, 20000, 0x73656375726974795f6a6f622e706466, 0, 'Licensed security guard needed for night shift.', 'San Fernando, Pampanga', 0, 1, '2025-05-06', '2025-06-20'),
-(10, 'Janitor', 101, 'Full-time', 13000, 17000, 0x6a616e69746f725f6a6f622e706466, 0, 'Clean and maintain office and public spaces.', 'Legazpi City, Albay', 0, 0, '2025-05-06', '2025-06-10'),
-(1, 'Electrician', 102, 'Full-time', 18000, 25000, 0x656c65637472696369616e5f6a6f622e706466, 0, 'Licensed electrician needed for wiring and maintenance tasks.', 'Quezon City, Metro Manila', 0, 2, '2025-05-06', '2025-06-15'),
-(2, 'Plumber', 103, 'Full-time', 17000, 24000, 0x706c756d6265725f6a6f622e706466, 0, 'Skilled plumber required for pipe installation and repairs.', 'Manila, Metro Manila', 0, 1, '2025-05-06', '2025-06-18'),
-(3, 'Welder', 104, 'Contract', 19000, 26000, 0x77656c6465725f6a6f622e706466, 0, 'Welder with MIG/TIG skills needed for fabrication tasks.', 'Cebu City, Cebu', 0, 2, '2025-05-06', '2025-06-20'),
-(4, 'Delivery Driver', 105, 'Full-time', 16000, 22000, 0x6472697665725f6a6f622e706466, 0, 'Responsible driver with license required for delivery routes.', 'Davao City, Davao del Sur', 0, 1, '2025-05-06', '2025-06-22'),
-(5, 'Construction Worker', 106, 'Full-time', 15000, 20000, 0x636f6e737472756374696f6e5f776f726b65722e706466, 0, 'Laborers needed for various on-site construction projects.', 'Baguio City, Benguet', 0, 0, '2025-05-06', '2025-06-25'),
-(6, 'Mechanic', 107, 'Full-time', 18000, 25000, 0x6d656368616e69635f6a6f622e706466, 0, 'Auto mechanic for vehicle diagnostics and repairs.', 'Iloilo City, Iloilo', 0, 2, '2025-05-06', '2025-06-28'),
-(7, 'Warehouse Helper', 108, 'Full-time', 14000, 18000, 0x77617265686f7573655f68656c7065722e706466, 0, 'Assist in warehouse loading/unloading and inventory.', 'Bacoor, Cavite', 0, 0, '2025-05-06', '2025-06-12'),
-(8, 'House Painter', 109, 'Contract', 16000, 21000, 0x7061696e7465725f6a6f622e706466, 0, 'Experienced painter needed for residential jobs.', 'Dasmariñas, Cavite', 0, 1, '2025-05-06', '2025-06-30'),
-(9, 'Security Guard', 110, 'Full-time', 15000, 20000, 0x73656375726974795f6a6f622e706466, 0, 'Licensed security guard needed for night shift.', 'San Fernando, Pampanga', 0, 1, '2025-05-06', '2025-06-20'),
-(10, 'Janitor', 111, 'Full-time', 13000, 17000, 0x6a616e69746f725f6a6f622e706466, 0, 'Clean and maintain office and public spaces.', 'Legazpi City, Albay', 0, 0, '2025-05-06', '2025-06-10');
+INSERT INTO `tbl_client_jobpost` (`client_id`, `job_title`, `job_post_id`, `job_offer`, `salary_start`, `salary_end`, `picture/pdf`, `filePath`, `job_status`, `description`, `location`, `applicants`, `year_exp`, `start_posted`, `deadline`) VALUES
+(11, 'Electrician', 92, 'Full-time', 18000, 25000, 'electrician_job.pdf', 'uploads/', 0, 'Licensed electrician needed for wiring and maintenance tasks.', 'Quezon City, Metro Manila', 0, 2, '2025-05-06', '2025-06-15'),
+(12, 'Plumber', 93, 'Full-time', 17000, 24000, 'plumber_job.pdf', 'uploads/', 0, 'Skilled plumber required for pipe installation and repairs.', 'Manila, Metro Manila', 0, 1, '2025-05-06', '2025-06-18'),
+(13, 'Welder', 94, 'Contract', 19000, 26000, 'welder_job.pdf', 'uploads/', 0, 'Welder with MIG/TIG skills needed for fabrication tasks.', 'Cebu City, Cebu', 0, 2, '2025-05-06', '2025-06-20'),
+(4, 'Delivery Driver', 95, 'Full-time', 16000, 22000, 'driver_job.pdf', 'uploads/', 0, 'Responsible driver with license required for delivery routes.', 'Davao City, Davao del Sur', 0, 1, '2025-05-06', '2025-06-22'),
+(5, 'Construction Worker', 96, 'Full-time', 15000, 20000, 'construction_worker.pdf', 'uploads/', 0, 'Laborers needed for various on-site construction projects.', 'Baguio City, Benguet', 0, 0, '2025-05-06', '2025-06-25'),
+(6, 'Mechanic', 97, 'Full-time', 18000, 25000, 'mechanic_job.pdf', 'uploads/', 0, 'Auto mechanic for vehicle diagnostics and repairs.', 'Iloilo City, Iloilo', 0, 2, '2025-05-06', '2025-06-28'),
+(7, 'Warehouse Helper', 98, 'Full-time', 14000, 18000, 'warehouse_helper.pdf', 'uploads/', 0, 'Assist in warehouse loading/unloading and inventory.', 'Bacoor, Cavite', 0, 0, '2025-05-06', '2025-06-12'),
+(8, 'House Painter', 99, 'Contract', 16000, 21000, 'painter_job.pdf', 'uploads/', 0, 'Experienced painter needed for residential jobs.', 'Dasmariñas, Cavite', 0, 1, '2025-05-06', '2025-06-30'),
+(9, 'Security Guard', 100, 'Full-time', 15000, 20000, 'security_job.pdf', 'uploads/', 0, 'Licensed security guard needed for night shift.', 'San Fernando, Pampanga', 0, 1, '2025-05-06', '2025-06-20'),
+(10, 'Janitor', 101, 'Full-time', 13000, 17000, 'janitor_job.pdf', 'uploads/', 0, 'Clean and maintain office and public spaces.', 'Legazpi City, Albay', 0, 0, '2025-05-06', '2025-06-10'),
+(1, 'Electrician', 102, 'Full-time', 18000, 25000, 'electrician_job.pdf', 'uploads/', 0, 'Licensed electrician needed for wiring and maintenance tasks.', 'Quezon City, Metro Manila', 0, 2, '2025-05-06', '2025-06-15'),
+(2, 'Plumber', 103, 'Full-time', 17000, 24000, 'plumber_job.pdf', 'uploads/', 0, 'Skilled plumber required for pipe installation and repairs.', 'Manila, Metro Manila', 0, 1, '2025-05-06', '2025-06-18'),
+(3, 'Welder', 104, 'Contract', 19000, 26000, 'welder_job.pdf', 'uploads/', 0, 'Welder with MIG/TIG skills needed for fabrication tasks.', 'Cebu City, Cebu', 0, 2, '2025-05-06', '2025-06-20'),
+(4, 'Delivery Driver', 105, 'Full-time', 16000, 22000, 'driver_job.pdf', 'uploads/', 0, 'Responsible driver with license required for delivery routes.', 'Davao City, Davao del Sur', 0, 1, '2025-05-06', '2025-06-22'),
+(5, 'Construction Worker', 106, 'Full-time', 15000, 20000, 'construction_worker.pdf', 'uploads/', 0, 'Laborers needed for various on-site construction projects.', 'Baguio City, Benguet', 0, 0, '2025-05-06', '2025-06-25'),
+(6, 'Mechanic', 107, 'Full-time', 18000, 25000, 'mechanic_job.pdf', 'uploads/', 0, 'Auto mechanic for vehicle diagnostics and repairs.', 'Iloilo City, Iloilo', 0, 2, '2025-05-06', '2025-06-28'),
+(7, 'Warehouse Helper', 108, 'Full-time', 14000, 18000, 'warehouse_helper.pdf', 'uploads/', 0, 'Assist in warehouse loading/unloading and inventory.', 'Bacoor, Cavite', 0, 0, '2025-05-06', '2025-06-12'),
+(8, 'House Painter', 109, 'Contract', 16000, 21000, 'painter_job.pdf', 'uploads/', 0, 'Experienced painter needed for residential jobs.', 'Dasmariñas, Cavite', 0, 1, '2025-05-06', '2025-06-30'),
+(9, 'Security Guard', 110, 'Full-time', 15000, 20000, 'security_job.pdf', 'uploads/', 0, 'Licensed security guard needed for night shift.', 'San Fernando, Pampanga', 0, 1, '2025-05-06', '2025-06-20'),
+(10, 'Janitor', 111, 'Full-time', 13000, 17000, 'janitor_job.pdf', 'uploads/', 0, 'Clean and maintain office and public spaces.', 'Legazpi City, Albay', 0, 0, '2025-05-06', '2025-06-10'),
+(11, 'Construction', 112, 'Mason', 600, 800, 'upload_681c27f48465d8.61059186.jpg', 'uploads/', 0, 'Kailangan ng mason at ako ang forman', 'Bacoor', 5, 8, '2025-05-08', '2025-05-15');
 
 -- --------------------------------------------------------
 
@@ -284,8 +283,8 @@ INSERT INTO `tbl_company_info` (`company_name`, `company_aboutUs`, `company_Addr
 ('SteelForce Manufacturing', 'Heavy-duty equipment and tool manufacturing for construction and mining.', 'Unit 4, Steelworks Drive, Paliparan, Dasmariñas, Cavite', 8, 8),
 ('Pampanga HVAC Experts', 'Specializing in air conditioning installation and repair services.', 'Shop 6, Appliance Row, Dolores, San Fernando, Pampanga', 9, 9),
 ('Albay Auto Mechanics Inc.', 'We provide automotive repair, diagnostics, and fleet maintenance.', 'Corner Route 5, Rawis Autozone, Legazpi City', 10, 10),
-('CURRENT_TIMESTAMP', '', 'BLK 4 LOT 13 California Drive, Barcelona 3, Buhay na Tubig, Imus Cavite, 4103', 11, 2019),
-('asfw34rsra', '', 'BLK 4 LOT 13 California Drive, Barcelona 3, Buhay na Tubig, Imus Cavite, 4103', 12, 2020);
+('COMPANY Work Name', 'About us ng client 11 ', 'BLK 4 LOT 13 California Drive, Barcelona 3, Buhay na Tubig, Imus Cavite, 4103', 11, 11),
+('asfw34rsra', 'About us ito ni client 12', 'BLK 4 LOT 13 California Drive, Barcelona 3, Buhay na Tubig, Imus Cavite, 4103', 12, 12);
 
 -- --------------------------------------------------------
 
@@ -521,7 +520,7 @@ ALTER TABLE `tbl_client_information`
 -- AUTO_INCREMENT for table `tbl_client_jobpost`
 --
 ALTER TABLE `tbl_client_jobpost`
-  MODIFY `job_post_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `job_post_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `tbl_client_skills_sets`

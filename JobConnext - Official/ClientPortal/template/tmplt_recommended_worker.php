@@ -1,24 +1,18 @@
-
 <?php
-
 include "../db_con/db_connection.php";
 
-$recommended_clientHOMEqry = "SELECT w.* FROM tbl_worker_information w JOIN tbl_worker_skill_sets s ON w.worker_id = s.worker_id WHERE s.skills = 'Welder'";
+$recommended_clientHOMEqry = "SELECT w.* FROM tbl_worker_information w 
+                              JOIN tbl_worker_skill_sets s ON w.worker_id = s.worker_id 
+                              GROUP BY w.worker_id";
 $recommended_clientHOMEexe = mysqli_query($conn, $recommended_clientHOMEqry);
-while ($row = mysqli_fetch_assoc(result: $recommended_clientHOMEexe)) {
+
+
+while ($row = mysqli_fetch_assoc($recommended_clientHOMEexe)) {
     $bluecollFnameHOME = $row['firstname'];
     $bluecollMnameHOME = $row['middlename'];
     $bluecollLnameHOME = $row['lastname'];
     $bluecoll_workerHOME = $row['worker_id'];
 
-
-    $recommended_companynameHOME = "SELECT * FROM tbl_client_information";
-    $recommended_companynameEXE = mysqli_query($conn, $recommended_companynameHOME);
-    $recommended_companynameGET = mysqli_fetch_assoc($recommended_companynameEXE);
-    $bluecoll_companynameHOME = $recommended_companynameGET['firstname'];
-
-    //chip function Recommended Worker(separate file)
-    include '../ClientPortal/template/tmplt_chipCOLLAR_SKILLS.php';
 ?>
 
     <div class="container-fluid recommendation">
@@ -42,9 +36,20 @@ while ($row = mysqli_fetch_assoc(result: $recommended_clientHOMEexe)) {
                         </div>
                         <div class="skills">
                             <p><strong>Skills:</strong></p>
-                            <span class="skill-tag"><?php echo collar_skill(); ?></span>
+                            <?php
+                            // Fetch skills for the current worker
+                            $skill_query = "SELECT skills FROM tbl_worker_skill_sets WHERE worker_id = '$bluecoll_workerHOME'";
+                            $skill_result = mysqli_query($conn, $skill_query);
+                            $colors = ['#D8CBFF', '#FFD8CB', '#CBFFD8', '#CBCDFF', '#FFCBE5', '#E0CBFF']; // Add more if needed
+                            $i = 0;
+                            while ($skill_row = mysqli_fetch_assoc($skill_result)) {
+                                $color = $colors[$i % count($colors)];
+                                echo "<span class='skill-tag1' style='background-color: $color;'>" . htmlspecialchars($skill_row['skills']) . "</span> ";
+                                $i++;
+                            }
+                            ?>
                         </div>
-                    </div>-
+                    </div>
                 </a>
             </div>
         </div>
