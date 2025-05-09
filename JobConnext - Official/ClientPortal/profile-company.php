@@ -105,13 +105,6 @@ if (isset($_SESSION['client_id'])) {
                     <div class="card card-header">
                         <div class="card-body">
                             <span id="card-title">
-                                Employee <span id="card-count">22</span>
-                            </span>
-                        </div>
-                    </div>
-                    <div class="card card-header">
-                        <div class="card-body">
-                            <span id="card-title">
                                 Applicant <span id="card-count">8</span>
                             </span>
                         </div>
@@ -132,7 +125,7 @@ if (isset($_SESSION['client_id'])) {
                         data-bs-toggle="modal"
                         data-bs-target="#postModal">
                 </div>
-                <span>Job Offer</span>
+                <span>Posted History</span>
             </div>
             
 
