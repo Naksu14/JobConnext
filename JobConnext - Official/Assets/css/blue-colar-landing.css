@@ -266,11 +266,9 @@
 .job-card{
     /* border: 1px solid; */
     margin: 0px 0px 10px 0px;
+    
 }
 
-.job-card {
-    margin: 0;
-  }
   
   .job-card #my-offer,
   .other-offer #my-offer {

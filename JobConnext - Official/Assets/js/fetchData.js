@@ -149,7 +149,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     Swal.showValidationMessage(`Request failed: ${error.message || error}`);
                 });
             }
-            
+            }).then((result) => {
+  if (result.isConfirmed && result.value && result.value.success) {
+    Swal.fire({
+      icon: 'success',
+      title: 'Post Successful!',
+      text: result.value.message,
+    });
+  }
+});
             
             
         });
@@ -158,4 +166,5 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-});
+
+

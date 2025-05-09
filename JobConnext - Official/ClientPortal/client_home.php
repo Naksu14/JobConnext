@@ -30,7 +30,6 @@ $user_id = $_SESSION['client_id'];
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- External Css -->
-    <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
     <link rel="stylesheet" href="../Assets/css/Client Css/client_home.css">
     <link rel="stylesheet" href="../Assets/css/style.css">
 
@@ -204,10 +203,22 @@ $user_id = $_SESSION['client_id'];
 
                 <div class="col-9 d-flex justify-content-end">
                     <div class="container-fluid content-filter">
-                        <button>
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="../Assets/image/filter (1) 1.png" alt="">
                             <span>Filter</span>
                         </button>
+                        <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown" style="min-width: 200px;">
+                            <li><a class="dropdown-item" href="#" data-filter="all">All</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Electrician">Electrician</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Tubero">Tubero</a></li>
+                            <li>
+                                <div class="dropdown-item-text">
+                                    <label class="form-label small mb-1">Other:</label>
+                                    <input type="text" id="customFilterInput" class="form-control form-control-sm" placeholder="Enter job type">
+                                    <button class="btn btn-sm btn-primary mt-2 w-100" id="applyCustomFilter">Apply</button>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
@@ -252,10 +263,6 @@ $user_id = $_SESSION['client_id'];
             </div>
         </div>
     </div>
-
-    <?php
-    include "../ClientPortal/ModalFolder/post_job_modal.php";
-    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
@@ -336,7 +343,7 @@ $user_id = $_SESSION['client_id'];
             });
         });
     </script>
-
+    <script src="../Assets/js/dropDown.js"></script>
 
 
 
