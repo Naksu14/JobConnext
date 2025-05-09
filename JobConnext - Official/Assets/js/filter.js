@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Filter by custom input (when 'Other' is typed)
+    // Filter by custom input
     document.getElementById('applyCustomFilter').addEventListener('click', function () {
         const input = document.getElementById('customFilterInput').value.trim().toLowerCase();
         if (input !== '') {
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-function filterBySkill(filter) {
+    function filterBySkill(filter) {
     const cards = document.querySelectorAll('.card');
     let totalVisible = 0;
 
@@ -34,20 +34,16 @@ function filterBySkill(filter) {
             card.style.display = 'none';
         }
     });
-     
 
-    const noResults = document.getElementById('noResultsMessage');
+        const noResults = document.getElementById('noResultsMessage');
         if (noResults) {
-        if (totalVisible === 0) {
-            noResults.style.display = 'block';
-            document.body.style.overflow = 'hidden';
-        } else {
-            noResults.style.display = 'none';
-            document.body.style.overflow = '';
+            if (totalVisible === 0) {
+                noResults.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            } else {
+                noResults.style.display = 'none';
+                document.body.style.overflow = '';
+            }
         }
     }
-
-}
-
 });
-
