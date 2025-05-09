@@ -104,7 +104,7 @@ $sql = "INSERT INTO tbl_client_jobpost (
     job_offer,
     salary_start,
     salary_end,
-    `picture/pdf`,
+    client_file,
     job_status,
     description,
     location,
