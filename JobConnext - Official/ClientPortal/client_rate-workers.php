@@ -294,6 +294,8 @@
         </div>
     </div>
 </div>
+<script src="../Assets/js/function.js"></script>
+
 </body>
 
 </html>

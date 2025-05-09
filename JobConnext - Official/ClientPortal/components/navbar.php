@@ -1,10 +1,3 @@
-<?php
-if (isset($_POST['logout'])) {
-    session_destroy();
-}
-?>
-
-
 <div class="nav_bar container-fluid text-center">
         <div class="header">
             <div class="row">
@@ -30,15 +23,3 @@ if (isset($_POST['logout'])) {
             </div>
         </div>
 </div>
-
-<script>
-document.getElementById('logout_butt').addEventListener('click', function () {
-    fetch('', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: 'logout=1'
-    }).then(() => {
-        window.location.href = '../GuessPortal/LandingPage.php';
-    });
-});
-</script>

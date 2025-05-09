@@ -209,6 +209,8 @@
     <?php
     include "../ClientPortal/ModalFolder/post_job_modal.php";
     ?>
+     <script src="../Assets/js/function.js"></script>
+
 </body>
 
 </html>
