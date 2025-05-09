@@ -224,15 +224,15 @@ $conn->close();
                     <div class="row">
                         <div class="col">First Name
                             <input class="form-control" type="text" name="firstname" placeholder="" aria-label="default input example"
-                                value="<?php echo isset($client_info['firstname']) ? htmlspecialchars($client_info['firstname']) : ''; ?>">
+                                value="<?php echo isset($client_info['firstname']) ? htmlspecialchars($client_info['firstname']) : ''; ?>" disabled>
                         </div>
                         <div class="col">Last Name
                             <input class="form-control" type="text" name="lastname" placeholder="" aria-label="default input example"
-                                value="<?php echo isset($client_info['lastname']) ? htmlspecialchars($client_info['lastname']) : ''; ?>">
+                                value="<?php echo isset($client_info['lastname']) ? htmlspecialchars($client_info['lastname']) : ''; ?>" disabled>
                         </div>
                         <div class="col">Middle Name
                             <input class="form-control" type="text" name="middlename" placeholder="" aria-label="default input example"
-                                value="<?php echo isset($client_info['middlename']) ? htmlspecialchars($client_info['middlename']) : ''; ?>">
+                                value="<?php echo isset($client_info['middlename']) ? htmlspecialchars($client_info['middlename']) : ''; ?>" disabled>
                         </div>
                     </div>
                 </div>
