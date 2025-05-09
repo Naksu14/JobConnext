@@ -1,3 +1,10 @@
+<?php
+session_start();
+include '../../db_con/db_connection.php';
+$user_id = $_SESSION['worker_id'];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
