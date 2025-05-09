@@ -58,6 +58,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             data-companyname="<?php echo htmlspecialchars($company_name) ?>"
             data-location="<?php echo htmlspecialchars($job_loc) ?>"
             data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
+            data-job-status="<?php echo htmlspecialchars($job_status) ?>"
             data-applied="<?php echo htmlspecialchars('5 Applied') ?>"
             data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
             data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"

@@ -131,12 +131,19 @@ $conn->close();
 
             if (title && text) {
                 Swal.fire({
+                    toast: true,
+                    position: "top-end",
                     icon: 'success',
                     title: title,
                     text: text,
                     timer: 2000,
-                    showConfirmButton: false
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    customClass: {
+                        popup: 'custom-toast-size' // Optional: for custom sizing
+                    }
                 });
+
 
                 // Remove the query parameter after the alert
                 setTimeout(() => {

@@ -1,7 +1,7 @@
 <?php
 session_start();
 include '../db_con/db_connection.php';
-
+include '../ClientPortal/recordFolder/recordPost.php';
 
 if (isset($_SESSION['client_id'])) {
     $clientId = $_SESSION['client_id'];
@@ -20,7 +20,6 @@ if (isset($_SESSION['client_id'])) {
         $companyName = "Error fetching company";
     }
 
-    // Phone number from tbl_client_information
     $query = "SELECT COUNT(*) as JobList FROM tbl_client_jobpost WHERE client_id = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $clientId);
@@ -40,11 +39,6 @@ if (isset($_SESSION['client_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job-connext - Profile</title>
-    <script>
-        window.sessionData = {
-            user_id: <?php echo json_encode($user_id); ?>
-        };
-    </script>
     <script src="../Assets/js/fetchData.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -124,21 +118,24 @@ if (isset($_SESSION['client_id'])) {
                     </div>
                 </div>
             </div>
+            
 
             <div class="container job-offer">
+                <div class="add_job">
+                    <img src="scriptsfordb/client_image.php?client_id=<?php echo $clientId; ?>" alt="Client Image">
+                    <input
+                        type="text"
+                        class="custom-input"
+                        placeholder="Post Something..."
+                        id="postJob"
+                        readonly
+                        data-bs-toggle="modal"
+                        data-bs-target="#postModal">
+                </div>
                 <span>Job Offer</span>
             </div>
-            <div class="add_job">
-                <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
-                <input
-                    type="text"
-                    class="custom-input"
-                    placeholder="Post Something..."
-                    id="postJob"
-                    readonly
-                    data-bs-toggle="modal"
-                    data-bs-target="#postModal">
-            </div>
+            
+
 
 
             <!-- JOB OFFERED CARD -->

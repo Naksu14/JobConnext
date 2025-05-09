@@ -2,7 +2,7 @@
 session_start();
 include '../db_con/db_connection.php';
 include '../ClientPortal/recordFolder/recordPost.php';
-// include '../ClientPortal/ModalFolder/post_job_modal.php';
+
 $user_id = $_SESSION['client_id'];
 ?>
 
@@ -83,11 +83,13 @@ $user_id = $_SESSION['client_id'];
                                 <img id="client_image" src="" alt="Client Image">
                                 <span id="clientid"></span>
                             </div>
-                            <div class="details">
+                            <div class="detail-view  position-relative">
+                                <span id="job_Status" class="position-absolute top-0 end-0 me-2 mt-2 badge bg-success">Active</span>
                                 <h3 id="company_name_display">Company Name</h3>
                                 <p id="date_range_display">Date Range</p>
                                 <p id="description_display">Job Description</p>
                             </div>
+
                         </div>
                     </div>
 
@@ -281,6 +283,7 @@ $user_id = $_SESSION['client_id'];
                 const type = this.dataset.type;
                 const clientId = this.dataset.clientid;
 
+
                 // Update some text
                 document.getElementById('clientid').textContent = clientId;
 
@@ -300,6 +303,7 @@ $user_id = $_SESSION['client_id'];
 
                     // Fill worker view data
                     document.getElementById('worker_name_display').textContent = this.dataset.companyname;
+                    document.getElementById('worker_name_display').textContent = this.dataset.companyname;
                     document.getElementById('worker_id_display').textContent = this.dataset.workerid || 'N/A';
                     document.getElementById('worker_location_display').textContent = this.dataset.location;
                     document.getElementById('worker_salary_display').textContent = this.dataset.salary;
@@ -311,13 +315,25 @@ $user_id = $_SESSION['client_id'];
                     document.getElementById('job_detail_view').style.display = 'block';
 
                     if (type === 'job') {
-                        // Show "Job Offer Done" button
                         document.getElementById('job_done_button').style.display = 'block';
                     } else {
                         document.getElementById('job_done_button').style.display = 'none';
                     }
 
                     // Fill job view data
+                    const statusElem = document.getElementById('job_Status');
+                    const jobStatusRaw = this.dataset.jobStatus;
+
+                    if (jobStatusRaw) {
+                        const isActive = jobStatusRaw === 'Active';
+                        statusElem.textContent = jobStatusRaw;
+                        statusElem.className = `status-badge ${isActive ? 'active' : 'inactive'}`;
+                    } else {
+                        console.warn('Missing data-jobStatus on clicked element.');
+                        statusElem.textContent = 'Unknown';
+                        statusElem.className = 'status-badge inactive';
+                    }
+
                     document.getElementById('company_name_display').textContent = this.dataset.companyname;
                     document.getElementById('date_range_display').textContent = this.dataset.dates;
                     document.getElementById('description_display').textContent = this.dataset.description;
@@ -328,6 +344,7 @@ $user_id = $_SESSION['client_id'];
                     document.getElementById('skills_display').innerHTML = this.dataset.skills;
                     document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';
                 }
+
             });
         });
     </script>

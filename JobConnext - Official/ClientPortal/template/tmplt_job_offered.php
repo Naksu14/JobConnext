@@ -43,12 +43,10 @@ if (isset($_SESSION['client_id'])) {
             $skill_tags .= "<span class='skill-tag1' style='background-color: $color;'>{$skill_name}</span> ";
             $i++;
 
-            if ($job_status == null) {
-                $status =  "Inactive";
-                $statuscolor = 'red';
-            } else {
-                $status = "Active";
+            if ($job_status == "Active") {
                 $statuscolor = 'green';
+            } else {
+                $statuscolor = 'red';
             }
 ?>
             <a href="#" class="card-link"
@@ -56,6 +54,7 @@ if (isset($_SESSION['client_id'])) {
                 data-clientid="<?php echo $client_id ?>"
                 data-companyname="<?php echo htmlspecialchars($company_name) ?>"
                 data-location="<?php echo htmlspecialchars($job_loc) ?>"
+                data-job-status="<?php echo htmlspecialchars($job_status) ?>"
                 data-applied="<?php echo htmlspecialchars('5 Applied') ?>"
                 data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
                 data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
@@ -63,6 +62,7 @@ if (isset($_SESSION['client_id'])) {
                 data-description="<?php echo htmlspecialchars($job_description) ?>"
                 data-skills="<?php echo htmlspecialchars($skill_tags) ?>"
                 data-yoe="<?php echo $yr_Exp ?>">
+
 
                 <div class="card" id="my-offer">
                     <div class="job-header">
@@ -72,12 +72,13 @@ if (isset($_SESSION['client_id'])) {
                             </div>
                             <div class="details">
                                 <h3><?php echo $company_name ?></h3>
-                                <p><?php echo " " . "•" . " " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $status ?></span></p>
+                                <p><?php echo " • " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $job_status ?></span></p>
                             </div>
                         </div>
                         <div class="job-dates">
                             <div class="menu">•••</div>
                             <p><?php echo $date_posted . " - " . $date_deadline ?></p>
+
                         </div>
                     </div>
                     <div class="job-body">
@@ -107,9 +108,5 @@ if (isset($_SESSION['client_id'])) {
 
 <?php
         }
-
-
-
-        // include '../ClientPortal/template/tmplt_chipClient_NEEDSarray.php'; //tmplt_chipCOLLAR_SKILLS.php 
     }
 } ?>
