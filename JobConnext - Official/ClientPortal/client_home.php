@@ -30,7 +30,6 @@ $user_id = $_SESSION['client_id'];
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- External Css -->
-    <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
     <link rel="stylesheet" href="../Assets/css/Client Css/client_home.css">
     <link rel="stylesheet" href="../Assets/css/style.css">
 
@@ -79,6 +78,7 @@ $user_id = $_SESSION['client_id'];
                             </div>
 
                         </div>
+                        <button id="view-attach-file"></button>
                     </div>
 
                     <div class="short-info-container">
@@ -95,6 +95,8 @@ $user_id = $_SESSION['client_id'];
                             <p id="email_display">Email</p>
                         </div>
                     </div>
+
+                    <button id="yourTargetButton">Submit</button>
 
                     <div class="skills-worker-details">
                         <p>Qualifications and Skills</p>
@@ -193,10 +195,22 @@ $user_id = $_SESSION['client_id'];
 
                 <div class="col-9 d-flex justify-content-end">
                     <div class="container-fluid content-filter">
-                        <button>
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="../Assets/image/filter (1) 1.png" alt="">
                             <span>Filter</span>
                         </button>
+                        <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown" style="min-width: 200px;">
+                            <li><a class="dropdown-item" href="#" data-filter="all">All</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Electrician">Electrician</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Tubero">Tubero</a></li>
+                            <li>
+                                <div class="dropdown-item-text">
+                                    <label class="form-label small mb-1">Other:</label>
+                                    <input type="text" id="customFilterInput" class="form-control form-control-sm" placeholder="Enter job type">
+                                    <button class="btn btn-sm btn-primary mt-2 w-100" id="applyCustomFilter">Apply</button>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
@@ -218,33 +232,36 @@ $user_id = $_SESSION['client_id'];
                     </div>
                 </div>
 
+                <div class="row job-card">
+                    <div class="col-12">
+                        <!-- Recommended_worker -->
+                        <?php include '../ClientPortal/template/tmplt_recommended_worker.php'; ?>
+                    </div>
+                </div>
 
-                <?php include '../ClientPortal/template/tmplt_recommended_worker.php'; ?>
 
                 <div class="row title-section">
-                    <div class="col other-offers">
+                    <div class="other-offer">
                         <p>
                             Other Job Offers
                         </p>
                     </div>
                 </div>
 
-
-
-
-                <div class="row other-offer">
+                <div class="row job-card">
                     <div class="col-12">
-                        <!-- other JOB OFFERED CARD -->
+                        <!-- Recommended_worker -->
                         <?php include '../ClientPortal/template/tmplt_other_job_offered.php'; ?>
                     </div>
                 </div>
+
+                <div id="noResultsMessage">
+                    No results found.
+                </div>
+
             </div>
         </div>
     </div>
-
-    <?php
-    include "../ClientPortal/ModalFolder/post_job_modal.php";
-    ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
@@ -258,6 +275,14 @@ $user_id = $_SESSION['client_id'];
 
                 const type = this.dataset.type;
                 const clientId = this.dataset.clientid;
+                const jobid = this.dataset.jobid;
+
+                const targetButton = document.querySelector('#yourTargetButton');
+                if (targetButton) {
+                    targetButton.dataset.clientid = clientId;
+                    targetButton.dataset.jobid = jobid; // use a separate attribute
+                }
+
 
 
                 // Update some text
@@ -324,8 +349,38 @@ $user_id = $_SESSION['client_id'];
 
             });
         });
-    </script>
 
+
+        document.querySelector('#yourTargetButton').addEventListener('click', function() {
+            const clientId = this.dataset.clientid;
+            const jobId = this.dataset.jobid;
+
+            console.log('Sending request with:', clientId, jobId);
+
+            fetch(`scriptsfordb/get_file.php?client_id=${clientId}&job_id=${jobId}`)
+                .then(response => {
+                    console.log('HTTP status:', response.status);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Response data:', data);
+
+                    if (data.success && data.filepath) {
+                        window.open(data.filepath, '_blank');
+                    } else {
+                        alert(data.message || 'File not found.');
+                    }
+                })
+                .catch(err => {
+                    console.error('Fetch error:', err);
+                    alert('An error occurred while fetching the file.');
+                });
+        });
+    </script>
+    <script src="../Assets/js/filter.js"></script>
 
 
 

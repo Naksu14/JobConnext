@@ -61,7 +61,7 @@ if (isset($_FILES['fileUpload']) && $_FILES['fileUpload']['error'] === UPLOAD_ER
         'image/png'
     ];
     $allowedExtensions = ['pdf', 'jpg', 'jpeg', 'png'];
-    $maxSize = 5 * 1024 * 1024; // 5MB
+    $maxSize = 15 * 1024 * 1024; // 5MB
 
     $fileTmp = $_FILES['fileUpload']['tmp_name'];
     $originalName = basename($_FILES['fileUpload']['name']);
@@ -161,3 +161,4 @@ echo json_encode([
     ]
 ]);
 exit;
+
