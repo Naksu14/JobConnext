@@ -53,18 +53,7 @@ $user_id = $_SESSION['client_id'];
     <?php include "../ClientPortal/components/navbar.php" ?>
 
     <div class="container-fluid custom-container" id="main_content">
-        <div class="add_job">
-            <img src="scriptsfordb/client_image.php?client_id=<?php echo $user_id; ?>" alt="Client Image">
-            <input
-                type="text"
-                class="custom-input"
-                placeholder="Post Something..."
-                id="postJob"
-                readonly
-                data-bs-toggle="modal"
-                data-bs-target="#postModal">
-        </div>
-
+        <?php include "../ClientPortal/components/postBar.php" ?>
         <div class="worker_details">
             <div class="container">
                 <!-- Default view -->
