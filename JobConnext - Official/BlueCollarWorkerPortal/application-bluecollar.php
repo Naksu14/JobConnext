@@ -30,35 +30,8 @@ $user_id = $_SESSION['worker_id'];
 
 
 <body>
-    <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col">
-                <div class="container-fluid" id="logo">
-                    <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
-                </div>
-            </div>
-            <div class="col">
-                <div class="container-fluid" id="nav_list">
-                    <ul>
-                        <li>
-                            <a href="../BlueCollarWorkerPortal/blue-collar-landing.php">Home</a>
-                            <a href="../BlueCollarWorkerPortal/overview-profile.php">Profile</a>
-                            <a href="">Message</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col">
-                <div class="container-fluid">
-                    <a href="../GuessPortal/LandingPage.php">
-                        <button id="logout_butt">
-                            Logout
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include "../BlueCollarWorkerPortal/components/navbar.php" ?>
+
     <div class="container-fluid main-content">
         <div class="settings-container">
             <a href="../BlueCollarWorkerPortal/profile-settings.php">
@@ -117,7 +90,10 @@ $user_id = $_SESSION['worker_id'];
             </div>
             <div class="all-cert">
                 <p>
-                    I am a skilled and hardworking [job title, e.g., Electrician] with [X years] of experience in [specialization, e.g., residential and commercial wiring]. Known for my strong work ethic, attention to detail, and commitment to safety, I take pride in delivering quality results on time. I thrive in hands-on roles and enjoy working as part of a team to tackle challenging projects.
+                    I am a skilled and hardworking [job title, e.g., Electrician] with [X years] of experience in
+                    [specialization, e.g., residential and commercial wiring]. Known for my strong work ethic, attention
+                    to detail, and commitment to safety, I take pride in delivering quality results on time. I thrive in
+                    hands-on roles and enjoy working as part of a team to tackle challenging projects.
                 </p>
             </div>
             <div class="container my-skills">
@@ -207,8 +183,9 @@ $user_id = $_SESSION['worker_id'];
 
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-            </script>
+                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                crossorigin="anonymous">
+                </script>
 
 </body>
 

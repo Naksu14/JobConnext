@@ -17,7 +17,9 @@ $user_id = $_SESSION['worker_id'];
     <link rel="stylesheet" href="../Assets/css/accepted-bluecolar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Source+Code+Pro:wght@200..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Source+Code+Pro:wght@200..900&family=Montserrat:wght@100..900&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,35 +36,7 @@ $user_id = $_SESSION['worker_id'];
 
 <body>
 
-    <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="container-fluid" id="logo">
-                    <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="container-fluid" id="nav_list">
-                    <ul>
-                        <li>
-                            <a href="../BlueCollarWorkerPortal/blue-collar-landing.php">Home</a>
-                            <a href="../ClientPortal/client_profile.php">Profile</a>
-                            <a href="../ClientPortal/client-message.php">Message</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="container-fluid">
-                    <a href="../GuessPortal/LandingPage.php">
-                        <button id="logout_butt">
-                            Logout
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include "../BlueCollarWorkerPortal/components/navbar.php" ?>
 
     <div class="container-fluid custom-container" id="main_content">
         <div class="header-details">
@@ -73,7 +47,8 @@ $user_id = $_SESSION['worker_id'];
             </div>
             <div class="header-content">
                 <h6>
-                    JOBCONNEXT is a place where you can find a freelance job in a various skill more than 10,000 freelance jobs are available here
+                    JOBCONNEXT is a place where you can find a freelance job in a various skill more than 10,000
+                    freelance jobs are available here
                 </h6>
             </div>
         </div>
@@ -83,8 +58,7 @@ $user_id = $_SESSION['worker_id'];
                 <div class="modal-settings">
                     <div class="report-container">
                         <img src="../Assets/image/bookmark.png" alt="">
-                        <span data-bs-toggle="modal" data-bs-target="#reportModal"
-                            onclick="showAlert()">
+                        <span data-bs-toggle="modal" data-bs-target="#reportModal" onclick="showAlert()">
                             Report
                         </span>
                     </div>
@@ -214,7 +188,8 @@ $user_id = $_SESSION['worker_id'];
                                 <div class="job-header">
                                     <div class="profile-info">
                                         <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                                alt="Avatar">
                                         </div>
                                         <div class="details">
                                             <h3>Supra Oracles</h3>
@@ -222,7 +197,8 @@ $user_id = $_SESSION['worker_id'];
                                         </div>
                                     </div>
                                     <div class="job-dates">
-                                        <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
+                                        <img src="../Assets/image/bookmark-white 1 original.png " alt=""
+                                            style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
                                     </div>
                                 </div>
                                 <div class="job-body">
@@ -252,7 +228,8 @@ $user_id = $_SESSION['worker_id'];
                                 <div class="job-header">
                                     <div class="profile-info">
                                         <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                                alt="Avatar">
                                         </div>
                                         <div class="details">
                                             <h3>Supra Oracles Accepted</h3>
@@ -260,7 +237,8 @@ $user_id = $_SESSION['worker_id'];
                                         </div>
                                     </div>
                                     <div class="job-dates">
-                                        <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
+                                        <img src="../Assets/image/bookmark-white 1 original.png " alt=""
+                                            style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
                                     </div>
                                 </div>
                                 <div class="job-body">
@@ -290,7 +268,8 @@ $user_id = $_SESSION['worker_id'];
                                 <div class="job-header">
                                     <div class="profile-info">
                                         <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                                alt="Avatar">
                                         </div>
                                         <div class="details">
                                             <h3>Supra Oracles Rejected</h3>
@@ -298,7 +277,8 @@ $user_id = $_SESSION['worker_id'];
                                         </div>
                                     </div>
                                     <div class="job-dates">
-                                        <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
+                                        <img src="../Assets/image/bookmark-white 1 original.png " alt=""
+                                            style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
                                     </div>
                                 </div>
                                 <div class="job-body">
@@ -320,14 +300,15 @@ $user_id = $_SESSION['worker_id'];
                             </a>
                         </div>
                         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-                            document.querySelectorAll(".button").forEach(button => {
-                                button.addEventListener("click", function() {
-                                    document.querySelectorAll(".button").forEach(btn => btn.classList.remove("selected"));
-                                    this.classList.add("selected");
+                            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+                            crossorigin="anonymous">
+                                document.querySelectorAll(".button").forEach(button => {
+                                    button.addEventListener("click", function () {
+                                        document.querySelectorAll(".button").forEach(btn => btn.classList.remove("selected"));
+                                        this.classList.add("selected");
+                                    });
                                 });
-                            });
-                        </script>
+                            </script>
                         <script>
                             function showAlert() {
                                 Swal.fire({
@@ -410,7 +391,7 @@ $user_id = $_SESSION['worker_id'];
                             }
 
                             // Trigger report modal on button click
-                            document.addEventListener("DOMContentLoaded", function() {
+                            document.addEventListener("DOMContentLoaded", function () {
                                 document.getElementById("reportButton").addEventListener("click", showReportModal);
                             });
                         </script>

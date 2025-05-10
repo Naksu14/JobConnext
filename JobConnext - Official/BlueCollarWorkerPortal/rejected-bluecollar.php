@@ -17,7 +17,9 @@ $user_id = $_SESSION['worker_id'];
     <link rel="stylesheet" href="../Assets/css/Blue-collar css/rejected-bluecollar.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Source+Code+Pro:wght@200..900&family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Source+Code+Pro:wght@200..900&family=Montserrat:wght@100..900&display=swap"
+        rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,35 +36,7 @@ $user_id = $_SESSION['worker_id'];
 
 <body>
 
-    <div class="container-fluid text-center">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="container-fluid" id="logo">
-                    <img src="../Assets/image/462566530_896228739052589_2655126183685351288_n.png" alt="">
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="container-fluid" id="nav_list">
-                    <ul>
-                        <li>
-                            <a href="../BlueCollarWorkerPortal/blue-collar-landing.php">Home</a>
-                            <a href="../ClientPortal/client_profile.php">Profile</a>
-                            <a href="../ClientPortal/client-message.php">Message</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="container-fluid">
-                    <a href="../GuessPortal/LandingPage.php">
-                        <button id="logout_butt">
-                            Logout
-                        </button>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php include "../BlueCollarWorkerPortal/components/navbar.php" ?>
 
     <div class="container-fluid custom-container" id="main_content">
         <div class="header-details">
@@ -73,7 +47,8 @@ $user_id = $_SESSION['worker_id'];
             </div>
             <div class="header-content">
                 <h6>
-                    JOBCONNEXT is a place where you can find a freelance job in a various skill more than 10,000 freelance jobs are available here
+                    JOBCONNEXT is a place where you can find a freelance job in a various skill more than 10,000
+                    freelance jobs are available here
                 </h6>
             </div>
         </div>
@@ -83,8 +58,7 @@ $user_id = $_SESSION['worker_id'];
                 <div class="modal-settings">
                     <div class="report-container">
                         <img src="../Assets/image/bookmark.png" alt="">
-                        <span data-bs-toggle="modal" data-bs-target="#reportModal"
-                            onclick="showAlert()">
+                        <span data-bs-toggle="modal" data-bs-target="#reportModal" onclick="showAlert()">
                             Report
                         </span>
                     </div>
@@ -163,7 +137,8 @@ $user_id = $_SESSION['worker_id'];
                 <div class="rejected-tab">
                     <span>
                         Sorry to say that you are rejected in this job offer.
-                        <span style="font-weight: bolder; color:#55A64D; margin-top:20px;">You can view the Related Job Section for Suggestions related to your skills</span>
+                        <span style="font-weight: bolder; color:#55A64D; margin-top:20px;">You can view the Related Job
+                            Section for Suggestions related to your skills</span>
                     </span>
                 </div>
             </div>
@@ -231,7 +206,8 @@ $user_id = $_SESSION['worker_id'];
                                         <div class="job-header">
                                             <div class="profile-info">
                                                 <div class="avatar">
-                                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                                        alt="Avatar">
                                                 </div>
                                                 <div class="details">
                                                     <h3>Supra Oracles 1</h3>
@@ -239,7 +215,8 @@ $user_id = $_SESSION['worker_id'];
                                                 </div>
                                             </div>
                                             <div class="job-dates">
-                                                <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
+                                                <img src="../Assets/image/bookmark-white 1 original.png " alt=""
+                                                    style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
                                             </div>
                                         </div>
                                         <div class="job-body">
@@ -272,7 +249,8 @@ $user_id = $_SESSION['worker_id'];
                                         <div class="job-header">
                                             <div class="profile-info">
                                                 <div class="avatar">
-                                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                                        alt="Avatar">
                                                 </div>
                                                 <div class="details">
                                                     <h3>Supra Oracles 2</h3>
@@ -280,7 +258,8 @@ $user_id = $_SESSION['worker_id'];
                                                 </div>
                                             </div>
                                             <div class="job-dates">
-                                                <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
+                                                <img src="../Assets/image/bookmark-white 1 original.png " alt=""
+                                                    style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
                                             </div>
                                         </div>
                                         <div class="job-body">
@@ -313,7 +292,8 @@ $user_id = $_SESSION['worker_id'];
                                         <div class="job-header">
                                             <div class="profile-info">
                                                 <div class="avatar">
-                                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
+                                                        alt="Avatar">
                                                 </div>
                                                 <div class="details">
                                                     <h3>Supra Oracles 3</h3>
@@ -321,7 +301,8 @@ $user_id = $_SESSION['worker_id'];
                                                 </div>
                                             </div>
                                             <div class="job-dates">
-                                                <img src="../Assets/image/bookmark-white 1 original.png " alt="" style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
+                                                <img src="../Assets/image/bookmark-white 1 original.png " alt=""
+                                                    style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
                                             </div>
                                         </div>
                                         <div class="job-body">
@@ -361,80 +342,80 @@ $user_id = $_SESSION['worker_id'];
         <script src="../Assets/js/function.js"></script>
 
 
-    <script>
-        document.querySelectorAll('.card-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
+        <script>
+            document.querySelectorAll('.card-link').forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
 
-                const type = this.dataset.type;
-                const clientId = this.dataset.clientid;
-
-
-                // Update some text
-                document.getElementById('clientid').textContent = clientId;
-
-                // Update image src
-                document.getElementById('client_image').src = `scriptsfordb/client_image.php?client_id=${encodeURIComponent(clientId)}`;
-
-                // Hide all views first
-                document.getElementById('default_view').style.display = 'none';
-                document.getElementById('job_detail_view').style.display = 'none';
-                document.getElementById('worker_view').style.display = 'none';
+                    const type = this.dataset.type;
+                    const clientId = this.dataset.clientid;
 
 
+                    // Update some text
+                    document.getElementById('clientid').textContent = clientId;
 
-                if (type === 'worker') {
-                    // Show worker view only
-                    document.getElementById('worker_view').style.display = 'block';
+                    // Update image src
+                    document.getElementById('client_image').src = `scriptsfordb/client_image.php?client_id=${encodeURIComponent(clientId)}`;
 
-                    // Fill worker view data
-                    document.getElementById('worker_name_display').textContent = this.dataset.companyname;
-                    document.getElementById('worker_name_display').textContent = this.dataset.companyname;
-                    document.getElementById('worker_id_display').textContent = this.dataset.workerid || 'N/A';
-                    document.getElementById('worker_location_display').textContent = this.dataset.location;
-                    document.getElementById('worker_salary_display').textContent = this.dataset.salary;
-                    document.getElementById('worker_email_display').textContent = this.dataset.email;
-                    document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
-                    document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
+                    // Hide all views first
+                    document.getElementById('default_view').style.display = 'none';
+                    document.getElementById('job_detail_view').style.display = 'none';
+                    document.getElementById('worker_view').style.display = 'none';
 
-                } else if (type === 'job' || type === 'other-job') {
-                    // Show job detail view only
-                    document.getElementById('job_detail_view').style.display = 'block';
 
-                    if (type === 'job') {
-                        document.getElementById('job_done_button').style.display = 'block';
-                    } else {
-                        document.getElementById('job_done_button').style.display = 'none';
+
+                    if (type === 'worker') {
+                        // Show worker view only
+                        document.getElementById('worker_view').style.display = 'block';
+
+                        // Fill worker view data
+                        document.getElementById('worker_name_display').textContent = this.dataset.companyname;
+                        document.getElementById('worker_name_display').textContent = this.dataset.companyname;
+                        document.getElementById('worker_id_display').textContent = this.dataset.workerid || 'N/A';
+                        document.getElementById('worker_location_display').textContent = this.dataset.location;
+                        document.getElementById('worker_salary_display').textContent = this.dataset.salary;
+                        document.getElementById('worker_email_display').textContent = this.dataset.email;
+                        document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
+                        document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
+
+                    } else if (type === 'job' || type === 'other-job') {
+                        // Show job detail view only
+                        document.getElementById('job_detail_view').style.display = 'block';
+
+                        if (type === 'job') {
+                            document.getElementById('job_done_button').style.display = 'block';
+                        } else {
+                            document.getElementById('job_done_button').style.display = 'none';
+                        }
+
+                        // Fill job view data
+                        const statusElem = document.getElementById('job_Status');
+                        const jobStatusRaw = this.dataset.jobStatus;
+
+                        if (jobStatusRaw) {
+                            const isActive = jobStatusRaw === 'Active';
+                            statusElem.textContent = jobStatusRaw;
+                            statusElem.className = `status-badge ${isActive ? 'active' : 'inactive'}`;
+                        } else {
+                            console.warn('Missing data-jobStatus on clicked element.');
+                            statusElem.textContent = 'Unknown';
+                            statusElem.className = 'status-badge inactive';
+                        }
+
+                        document.getElementById('company_name_display').textContent = this.dataset.companyname;
+                        document.getElementById('date_range_display').textContent = this.dataset.dates;
+                        document.getElementById('description_display').textContent = this.dataset.description;
+                        document.getElementById('location_display').textContent = this.dataset.location;
+                        document.getElementById('salary_display').textContent = this.dataset.salary;
+                        document.getElementById('applicants_display').textContent = this.dataset.applied;
+                        document.getElementById('email_display').textContent = this.dataset.email;
+                        document.getElementById('skills_display').innerHTML = this.dataset.skills;
+                        document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';
                     }
 
-                    // Fill job view data
-                    const statusElem = document.getElementById('job_Status');
-                    const jobStatusRaw = this.dataset.jobStatus;
-
-                    if (jobStatusRaw) {
-                        const isActive = jobStatusRaw === 'Active';
-                        statusElem.textContent = jobStatusRaw;
-                        statusElem.className = `status-badge ${isActive ? 'active' : 'inactive'}`;
-                    } else {
-                        console.warn('Missing data-jobStatus on clicked element.');
-                        statusElem.textContent = 'Unknown';
-                        statusElem.className = 'status-badge inactive';
-                    }
-
-                    document.getElementById('company_name_display').textContent = this.dataset.companyname;
-                    document.getElementById('date_range_display').textContent = this.dataset.dates;
-                    document.getElementById('description_display').textContent = this.dataset.description;
-                    document.getElementById('location_display').textContent = this.dataset.location;
-                    document.getElementById('salary_display').textContent = this.dataset.salary;
-                    document.getElementById('applicants_display').textContent = this.dataset.applied;
-                    document.getElementById('email_display').textContent = this.dataset.email;
-                    document.getElementById('skills_display').innerHTML = this.dataset.skills;
-                    document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';
-                }
-
+                });
             });
-        });
-    </script>
+        </script>
 
 
 </body>

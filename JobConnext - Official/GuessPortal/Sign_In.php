@@ -20,9 +20,9 @@ if (isset($_POST['g-recaptcha-response'])) {
 
             // Mapping tables to user ID column names and redirect URLs
             $table_map = [
-                "tbl_blue_collar_worker" => ["id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/rejected-bluecollar.php"],
-                "tbl_client"             => ["id" => "client_id", "redirect" => "../ClientPortal/client_home.php"],
-                "tbl_admin"              => ["id" => "Admin_id", "redirect" => "../AdminPortal/AdminLandingPage.php"]
+                "tbl_blue_collar_worker" => ["id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/blue-collar-landing.php"],
+                "tbl_client" => ["id" => "client_id", "redirect" => "../ClientPortal/client_home.php"],
+                "tbl_admin" => ["id" => "Admin_id", "redirect" => "../AdminPortal/AdminLandingPage.php"]
             ];
 
             $found_user = false;
@@ -75,7 +75,8 @@ if (isset($_POST['g-recaptcha-response'])) {
     <title>Sign In</title>
     <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../Assets/css/style.css">
 </head>
@@ -90,7 +91,8 @@ if (isset($_POST['g-recaptcha-response'])) {
                 </a>
             </h6>
         </div>
-        <div class="container-fluid ps-5 pe-5 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center" style="width: auto;">
+        <div class="container-fluid ps-5 pe-5 pt-4 border border-2 rounded shadow bg-body-tertiary d-flex flex-column align-items-center"
+            style="width: auto;">
             <img src="../Assets/image/Logo1.png" width="90px" height="90px" alt="logo">
             <h2 class="poppins-bold m-0">Sign <span style="color: #E46232;">In</span></h2>
 
@@ -110,16 +112,18 @@ if (isset($_POST['g-recaptcha-response'])) {
 
                 <div class="g-recaptcha" data-sitekey="6LemMmUqAAAAAG2OKgk5lSoKL4LLBU8QOO5pKw-K"></div>
 
-                <?php if (isset($error)) : ?>
+                <?php if (isset($error)): ?>
                     <p align="center" style="color: red;"><?php echo $error; ?></p>
                 <?php endif; ?>
 
                 <div class="btn_sub d-flex justify-content-center mt-3 mb-3">
-                    <button type="submit" class="button-midblue" name="signIn_btn" style="width: 200px;">Sign In</button>
+                    <button type="submit" class="button-midblue" name="signIn_btn" style="width: 200px;">Sign
+                        In</button>
                 </div>
             </form>
 
-            <p class="poppins-regular">Create account? <span><a href="Sign_Up.php" style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
+            <p class="poppins-regular">Create account? <span><a href="Sign_Up.php"
+                        style="text-decoration: none; color: #161D6F;">Sign Up</a></span></p>
         </div>
     </div>
 
@@ -131,7 +135,9 @@ if (isset($_POST['g-recaptcha-response'])) {
         </p>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
     <script src="../Assets/js/function.js"></script>
 </body>
 
