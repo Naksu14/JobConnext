@@ -53,6 +53,7 @@ $user_id = $_SESSION['client_id'];
 
     <div class="container-fluid custom-container" id="main_content">
         <?php include "../ClientPortal/components/postBar.php" ?>
+
         <div class="worker_details">
             <div class="container">
                 <!-- Default view -->

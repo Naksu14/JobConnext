@@ -9,7 +9,7 @@
             <div class="links col">
                 <div class="container-fluid" id="nav_list">
                     <ul>
-                        <li><a href="../BlueCollarWorkerPortal/blue-collar-landing.php">Home</a></li>
+                        <li><a href="../BlueCollarWorkerPortal/rejected-bluecollar.php">Home</a></li>
                         <li><a href="../BlueCollarWorkerPortal/blue-collar-profile.php">Profile</a></li>
                         <li><a href="../BlueCollarWorkerPortal/blue-collar-worker-message.php">Message</a></li>
                     </ul>

@@ -25,13 +25,17 @@ body{
     margin: 30px 0px 30px 0px;
     padding: 20px 0px 30px 0px;
     /* border: 1px solid; */
+    
 }
 
-#nav_list ul li{
+
+#nav_list ul{
     display: flex;
     flex-direction:row;
     justify-content: space-evenly;
     margin: 10px;
+    text-decoration: none;
+    list-style: none;
 }
 
 #nav_list ul li a{
@@ -61,6 +65,7 @@ body{
     font-weight: bold;
     font-size: 18px;
 }
+
 
 .custom-container {
     max-width: 1450px; 
@@ -113,73 +118,22 @@ body{
     text-align: center;
     font-weight: 400;
 }
-.worker_details{
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    grid-row: span 3;
-    padding: 0px !important;
-    max-height: 750px;
-    justify-content: center;
-    display: flex;
-    padding: 50px ; 
-    overflow-y: hidden;
+ .page_content {
     overflow-y: scroll;
-
-    
-}
-.worker_details::-webkit-scrollbar {
-    display: none;             /* Chrome, Safari */
-}
-.page_content{
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    grid-row: span 2;
-    max-height: 100%;
-    overflow-y: hidden;
-    overflow-y: scroll;
-    
-}   
+    overflow-x: hidden;
+    height: 750px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    grid-row: span 1;
+  }
+  
 .page_content::-webkit-scrollbar {
     display: none;             /* Chrome, Safari */
 }
-.offer-area{
-    gap: 10;
-}
-.dp_photo img{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-}
-
-.custom-input{
-    width:90%;
-    height: 30px;
-    margin: 10px;
-    border: #6363633f 1px solid;
-    border-radius: 5px;
-}
-
-
     /* border: 1px solid; */
 
 
 .icon1 {
     border: red 1px solid;
-}
-
-.detail_text #text_gd2{
-    text-align: center;
-    font-family: poppins;
-    color: #636363;
-}
-
-#post_something{
-    height: 46px;
-    margin:0px;
-}
-
-.content-header{
-    margin: 23px 0px 0px 0px;
-    /* border: 1px solid; */
 }
 
 
@@ -202,10 +156,6 @@ body{
     
 }
 
-.col-2{
-    /* border: 1px solid; */
-}
-
 .seek-worker{
     display: flex;
 
@@ -223,9 +173,6 @@ body{
     white-space: nowrap;
 }
 
-.col-7{
-    /* border: 1px solid; */
-}
 
 #freelance-search{
     width: 100%;
@@ -246,16 +193,7 @@ body{
     font-size: 24px;
     font-weight: 500;
 }
-.job-dates {
-    text-align: right;
-  }
-  
-  .job-dates p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-  }
-  
+
 
 #content-title{
     /* border: 1px solid; */
@@ -265,11 +203,6 @@ body{
     border: 1px solid;
 }
 
-.job-card{
-    /* border: 1px solid; */
-    margin: 0px 0px 10px 0px;
-    
-}
 
   
   .job-card #my-offer,
@@ -302,6 +235,7 @@ body{
     color: #1f1f1f;
   }
   
+  
  .applied {
     background-color: var(--darkblue);
     color: white;
@@ -323,46 +257,34 @@ body{
     color: #fff !important;
   }
 
-  
-.job-card #my-offer img{
-    border-radius:50%;
-    width: 80px;
-    height: 80px;
-    margin: 25px 15px 15px;
-    
-}
-
-#my-offer {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px 0;
-    font-size: 14px;
-    max-width: 100%;
-
-}
-
-
-.profile-info {
+  .profile-info {
     display: flex;
-    max-width: 100%;
-}
+    align-items: center;
+  }
 
-.avatar {
-    width: 50px;
-    height: 50px;
-    background-color: #e0e0e0;
+.avatar,
+  .avatar-display {
+    background-color: #535353;
     border-radius: 50%;
     overflow: hidden;
-    margin-right: 15px;
-}
-
-.avatar img {
+  }
+  
+    .avatar {
+    width: 50px;
+    height: 50px;
+    margin: 5px;
+  }
+  
+  
+  .avatar img,
+  .avatar-display img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-}
+  }
+  
+ .avatar img{
+    margin: 0px;
+ }
 
 .details h3 {
     margin: 0;
@@ -383,30 +305,6 @@ body{
     font-size: 14px;
     color: #666;
 }
-
-.job-dates {
-    text-align: right;
-  }
-  
-  .job-dates p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-  }
-
-.menu {
-    font-size: 18px;
-    color: var(--darkblue);
-    cursor: pointer;
-  }
-.check-menu {
-    font-size: 16px;
-    color: #FF8787;
-    cursor: pointer;
-    font-weight: 500;
-    font-family: inter;
-}
-
 
 .job-body {
     margin-bottom: 15px;
@@ -429,35 +327,7 @@ body{
     font-weight: bold;
 }
 
-.skills-available {
-    margin-top: 10px;
-    display: flex;
-    white-space: nowrap;
-    gap: 8px; 
-}
 
-
-.skill-tag {
-    display: inline-block;
-    padding: 5px 10px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 5px;
-    color: #fff;
-    white-space: nowrap;
-}
-
-.skill-tag.green {
-    background-color: #D9FFCB;
-    color: #000000;
-}
-
-.skill-tag.purple {
-    background-color: #D8CBFF;
-    color: #000000;
-}
 
 .job-footer {
     display: flex;
@@ -475,156 +345,9 @@ body{
     white-space: nowrap;
 }
 
-.recommended-workers{
-    font-family: mondseratt;
-    font-size: 24px;
-}
-
-.recommended-card{
-    margin: 0px 0px 0px 0px;
-    /* border: 1px solid; */
-}
-.recommended-card #my-offer{
-    height: 100%;
-    max-width: 100%;
-    /* margin-left:30px ; */
-    margin: 0px 30px;
-}
-
-.recommended-card #my-offer img{
-    border-radius:50%;
-}
-
-.skill-tag.yellow{
-    background-color: #F1FFCB;
-    color: #000000;
-}
-
-.recommendation{
-    display: grid;
-    grid-gap: 10px;
-}
-
-.other-offer{
-    margin: 0px 0px 0px 0px;
-}
-
-.other-offer #my-offer{
-    height: 250px;
-    max-width: 100%;
-    /* margin-left:30px ; */
-    margin: 0px 30px 15px;
-}
-
-.job-card #my-offer img{
-    border-radius:50%;
-    width: 80px;
-    height: 80px;
-    margin: 25px 15px 15px;
-    white-space: nowrap;
-}
-
-.recommended-card a{
-    text-decoration: none;
-}
-
-.worker_detail_header{
-    /* border: 1px solid red; */
-    width: 100%;
-    margin: 30px 20px;
-}
 
 .card-link {
     text-decoration: none;
-}
-
-.skills-worker-details{
-    margin: 20px 20px -10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px; 
-}
-
-
-.skills-worker-details p{
-    color: black;
-    font-family: inter;
-    font-size: 17px;
-    /* border: 1px solid red; */
-}
-
-.skills-available-details{
-    margin-left: 20px;
-    /* border: 1px solid red; */
-}
-
-.worker-info{
-    /* border: 1px solid red; */
-    /* margin-left: -5px; */
-    margin-top: 10px;
-}
-
-.worker-info h3{
-    font-family:poppins ;
-    color: #595959;
-    font-weight: bold;
-    font-size: 32;
-}
-
-.full-details{
-    color: #595959;
-    /* border: 1px solid; */
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin:10px 0px 25px;
-}
-
-.full-details p{
-    margin: 0;
-    font-family: inter;
-    font-weight: medium;
-    font-size: 19;
-}
-
-.contacts{
-    color: #595959;
-    /* border: 1px solid; */
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin:10px 0px;
-}
-
-.contacts p{
-    margin: 0;
-    font-family: inter;
-    font-weight: medium;
-    font-size: 19;
-}
-
-#phone_no{
-    margin: 15px;
-}
-
-.email_butt{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    margin-top: 50px;
-    flex-wrap: wrap;
-    padding: 10px;
-}
-
-.email_butt button{
-    height: 50px;
-    width: 200px;
-    background-color: var(--darkblue);
-    color: #fff;
-    border: none;
-    flex-wrap: wrap;
-    margin: 0 auto; 
 }
 
 .short-info-container{
@@ -633,6 +356,7 @@ body{
 .short-info{
     display: flex;
     flex-direction: row;
+    margin-bottom: 0px;
 }
 
 .short-info p{
@@ -644,9 +368,6 @@ body{
     height: 25px;
 }
 
-.no-ex{
-    margin: 10px 20px;
-}
 
 .responsibilities h3{
     font-size: 17px;
@@ -676,225 +397,12 @@ body{
     font-weight: bold;
     padding-bottom: 20px;
 }
-.report-menu {
-    font-size: 16px;
-    color: #FF8787;
-    cursor: pointer;
-    font-weight: 500;
-    font-family: inter;
-    /* border: 1px solid; */
-    margin-left: 30px;
-    display: flex;
-}
 
-.feedback-header{
-    display: flex;
-    flex-direction: row;
-    /* border: 1px solid; */
-    width: 100%;
-}
-
-.feedback-header h3{
-    margin-top: 10px;
-}
-
- .star-rating{
-    margin-left: 10px;
-    display: flex;
-    font-size: 24px; 
-    color: #ccc; 
-    cursor: pointer;
-    max-width: 100%;
-    flex-wrap: nowrap;
-    transition: color 0.2s;
-}
-.star:hover{
-    color: gold;
-}
-
-.star.selected{
-    color: gold;
-}
-
-
-
-.details-client .details-client h3{
-    font-size: 16px;
-}
-
-.details-client{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-
-    /* box-sizing: border-box; */
-    /* border: 1px solid; */
-    /* max-width: 100%; */
-}
-
-.rate{
-    display: flex;
-    justify-content: end;
-}
-
-.rate a{
-    text-decoration: none;
-    color: var(--darkblue);
-    font-family: poppins;
-    font-size: small;
-}
-
-.details-client, .feedback-header {
-    width: 100%;
-    max-width: 100%; 
-    box-sizing: border-box;
-  }
-
-.reportModalLabel{
-    text-align: center;
-    justify-content: center;
-    display: flex;
-}
-
-.reason-buttons{
-    display: flex;
-    justify-content: left;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 30px;
-}
-
-.reason-buttons #reasons{
-    border-radius: 24px;
-    height: 50px;
-    width: 149px;
-    border: #EBEBEB 1px solid;
-    font-weight: bold;
-    background-color: #fff;
-}
-.reason-buttons #reasons-l{
-    border-radius: 24px;
-    border: #EBEBEB 1px solid !important;
-    font-weight: bold;
-    background-color: #fff;
-}
-
-.reason-buttons #reasons:hover{
-    border-radius: 24px;
-    height: 50px;
-    width: 149px;
-    border: #EBEBEB;
-    font-weight: bold;
-    color: #fff;
-    background-color: var(--darkblue);
-}
-.reason-buttons #reasons.selected{
-    border-radius: 24px;
-    height: 50px;
-    width: 149px;
-    border: #EBEBEB;
-    font-weight: bold;
-    color: #fff;
-    background-color: var(--darkblue);
-}
-
-.reason-buttons #reasons-l:hover{
-    height: 50px;
-    width: 314px;
-    border: #EBEBEB;
-    font-weight: bold;
-    border-radius: 24px;
-    color: #fff;
-    background-color: var(--darkblue);
-}
-
-.reason-buttons #reasons-l{
-    height: 50px;
-    width: 314px;
-    border: #EBEBEB;
-    font-weight: bold;
-    border-radius: 24px;
-}
-
-.modal-body h6{
-    color: red;
-    margin: 30px;
-}
-
-.message-report{
-    color: red;
-    font-size: 16px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-#upload-proof{
-    width: 306px;
-    height: 63px;
-    align-items: center;
-    border: none;
-    background-color: #161D6F;
-    color: white;
-}
-.button-proof{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 30px;
-}
-
-#upload-modal{
-    padding: 50px;
-}
-
-.upload-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 40px;
-    /* border: 1px solid; */
-}
-
-.upload-container span{
-    margin-top: 20px;
-}
-
-.upload-border{
-    border:dashed 1px ;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 20px;
-    margin: auto;
-    width: 70%;
-    margin-top: 30px;
-    height: 300px;
-}
-
-.upload-border img{
-    width: 140px;
-    height: 140px;
-}
-
-.req{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    border-bottom: 1px solid;
-   
-}
-
-.upload-inf-head{
-    display: flex;
-    flex-direction: row;
-    margin-top: 30px;
-    /* border: 1px solid; */
-}
-.upload-info{
-    /* background-color: #F4F4F4; */
-    display: flex;
-    flex-direction: row;
+.detail-view {
+  width: 300px; /* Keeps it from getting too wide on large screens */
+  position: relative;
+  padding: 10px;
+  box-sizing: border-box;
 }
 
 .upload-info .upload-inf-head img{
@@ -1016,27 +524,73 @@ body{
     box-shadow: none;
 }
 
-.other-jobs {
-    /* ... your existing styles ... */
-}
-
-  @media only screen and (max-width: 982px){
-    .report-menu{
-        font-size: 14px;
-        margin-left: 10px;
-    }
+  .default-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    padding: 20px;
   }
-
-  @media only screen and (max-width: 912px){
-    .report-menu{
-        font-size: 12px;
-        margin-left: 5px;
-    }
+  .applyJob{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
   }
-  @media only screen and (max-width: 878px){
-    .report-menu{
-        font-size: 10px;
-        margin-left: 5px;
-    }
+    .applyJob button {
+    width: 300px;
+    height: 50px;
+    background-color: var(--darkblue);
+    color: #fff;
+    border: none;
+    margin-bottom: 20px;
   }
   
+   .worker_details::-webkit-scrollbar {
+    display: none;
+  }
+  
+    .worker_details {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    grid-row: span 2;
+    position: sticky;
+    top: 0;
+    height: 750px;
+    overflow-y: scroll;
+    justify-content: center;
+    display: flex;
+    padding: 20px;
+  }
+  
+
+ #client_image {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+
+  
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 0px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: bold;
+    color: white;
+    background-color: gray;
+    margin-left: 10px;
+}
+
+
+.status-badge.active {
+    background-color: #28a745; /* green */
+}
+
+.status-badge.inactive {
+    background-color: #dc3545; /* red */
+}
