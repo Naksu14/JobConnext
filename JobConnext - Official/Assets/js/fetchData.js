@@ -152,9 +152,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }).then((result) => {
   if (result.isConfirmed && result.value && result.value.success) {
     Swal.fire({
-      icon: 'success',
-      title: 'Post Successful!',
-      text: result.value.message,
+        toast: true,
+        position: 'top-end',
+        icon: 'success',
+        title: 'Post Successful!',
+        text: result.value.message,
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
     });
   }
 });

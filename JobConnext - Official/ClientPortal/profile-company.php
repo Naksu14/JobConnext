@@ -29,6 +29,15 @@ if (isset($_SESSION['client_id'])) {
     if ($row = $result->fetch_assoc()) {
         $Count_JobList = $row['JobList'];
     }
+
+    $query = "SELECT COUNT(*) as JobListArchived FROM tbl_client_jobpost_archive WHERE client_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $clientId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $Count_JobListArchived = $row['JobListArchived'];
+    }
 }
 ?>
 
@@ -50,6 +59,7 @@ if (isset($_SESSION['client_id'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="../Assets/css/postCard_and_view.css">
     <link rel="stylesheet" href="../Assets/css/Client Css/profile-company.css">
     <link rel="stylesheet" href="../ClientPortal/ModalFolder/modal_post.css">
 
@@ -115,6 +125,13 @@ if (isset($_SESSION['client_id'])) {
                         <div class="card-body">
                             <span id="card-title">
                                 Applicant <span id="card-count">8</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card card-header">
+                        <div class="card-body">
+                            <span id="card-title">
+                                Archived Post <span id="card-count"><?php echo $Count_JobListArchived; ?></span>
                             </span>
                         </div>
                     </div>
@@ -188,14 +205,12 @@ if (isset($_SESSION['client_id'])) {
                     </div>
                 </div>
             </div>
-            <br><br><br><br><br>
-            <?php
-            include "../ClientPortal/ModalFolder/post_job_modal.php";
-            ?>
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
             </script>
             <script src="../Assets/js/function.js"></script>
+            <script src="../Assets/js/card_editOrdelete.js"></script>
+
 </body>
 
 </html>

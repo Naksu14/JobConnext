@@ -53,7 +53,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
 
 ?>
-        <a href="#" class="card-link"
+        <div class="card-link"
             data-type="other-job"
             data-clientid="<?php echo $other_client_id ?>"
             data-jobid="<?php echo $job_post_id ?>"
@@ -66,7 +66,8 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
             data-description="<?php echo htmlspecialchars($job_description) ?>"
             data-skills="<?php echo htmlspecialchars($skill_tags) ?>"
-            data-yoe="<?php echo $yr_Exp ?>">
+            data-yoe="<?php echo $yr_Exp ?>"
+            onclick="handleCardClick(event)">
 
 
             <div class="card" id="my-offer">
@@ -81,7 +82,12 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                         </div>
                     </div>
                     <div class="job-dates">
-                        <div class="menu">•••</div>
+                        <div class="menu-container" onclick="event.stopPropagation(); toggleDropdown(this)">
+                            <div class="menu">•••</div>
+                            <div class="dropdown">
+                                <a href="#" onclick="reportPost(event)">Report</a>
+                            </div>
+                        </div>
                         <p><?php echo $date_posted . " - " . $date_deadline ?></p>
                     </div>
                 </div>
@@ -106,7 +112,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                     </button>
                 </div>
             </div>
-        </a>
+        </div>
         <br>
 
 <?php

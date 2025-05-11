@@ -54,37 +54,8 @@
     padding: 20px;
   }
   
-  .short-info-container {
-    margin: 10px;
-  }
-  
-  .short-info {
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .short-info p {
-    padding-left: 20px;
-    color: #5A5A5A;
-  }
-  
-  .short-info img {
-    width: 25px;
-    height: 25px;
-  }
-  
-  .job-done {
-    text-align: center;
-  }
-  
-  .job-done button {
-    width: 300px;
-    height: 50px;
-    background-color: var(--darkblue);
-    color: #fff;
-    border: none;
-    margin-bottom: 20px;
-  }
+
+
   
   .add_job {
     display: flex;
@@ -196,186 +167,13 @@
     font-weight: 500;
   }
   
-  .job-card {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-  }
 
-  .job-card #my-offer,
-  .other-offer #my-offer {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin: 20px 0;
-    height: 280px;
-    max-width: 100%;
-    margin-left: 30px;
-    font-size: 14px;
-  }
+  
 
-.other-offer {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    padding-top: 0;
-    margin: 0;  
-}
 
-.other-offer:empty,
-.other-offer[style*="display: none"] {
-    height: 0;
-    margin: 0 !important;
-    padding: 0 !important;
-}
+  
 
-#noResultsMessage{
-  display: none; 
-  text-align: center; 
-  margin-top: 20px; 
-  font-weight: bold;
-  color: red;
-}
 
-  .job-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .applied {
-    background-color: var(--darkblue);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .applied:hover {
-    background-color: #455da0;
-  }
-  
-  .applied p {
-    margin: 0;
-    font-weight: bold;
-  }
-  
-  .profile-info {
-    display: flex;
-    align-items: center;
-  }
-  
-  .avatar,
-  .avatar-display {
-    background-color: #535353;
-    border-radius: 50%;
-    overflow: hidden;
-  }
-  
-  .avatar {
-    width: 50px;
-    height: 50px;
-    margin: 5px;
-  }
-  
-  .avatar img,
-  .avatar-display img {
-    width: 100%;
-    height: 100%;
-  }
-  
-  .avatar-display {
-    width: 80px;
-    height: 80px;
-  }
-.detail-view {
-  width: 300px; /* Keeps it from getting too wide on large screens */
-  position: relative;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-.details {
-  padding: 10px;
-}
-
-  .details h3 {
-    margin: 0;
-    font-size: 18px;
-  }
-  
-  .details p {
-    margin: 5px 0 0;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .job-dates {
-    text-align: right;
-  }
-  
-  .job-dates p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-  }
-  
-  .menu {
-    font-size: 18px;
-    color: var(--darkblue);
-    cursor: pointer;
-  }
-  
-  .job-body {
-    margin-bottom: 15px;
-  }
-  
-  .info p {
-    margin: 5px 0;
-    color: #6E6E6E;
-  }
-  
-  .skills {
-    margin-top: 10px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  
-  .skills p {
-    margin: 0 0 5px;
-    font-weight: bold;
-    color: #6E6E6E;
-  }
-  
-  .skill-tag1 {
-    padding: 5px 10px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    font-size: 12px;
-    font-weight: bold;
-    border-radius: 4px;
-    color: #1f1f1f;
-  }
-  
-  .job-footer {
-    display: flex;
-    justify-content: space-between;
-    border-top: 1px solid #e0e0e0;
-    padding-top: 10px;
-    white-space: nowrap;
-  }
-  
-  .job-footer p {
-    margin: 0;
-    font-size: 14px;
-    color: #666;
-  }
   
   .recommended-workers {
     font-family: Montserrat;
@@ -387,7 +185,6 @@
     margin: 0;
     height: 100%;
     max-width: 100%;
-    padding: 20px;
   }
   .recommended-card #my-offer {
     padding: 5px 20px;
@@ -457,24 +254,3 @@
     justify-content: flex-start;
   }
   
-
-.status-badge {
-    position: absolute;
-    top: 10px;
-    right: 0px;
-    padding: 5px 10px;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: bold;
-    color: white;
-    background-color: gray;
-}
-
-
-.status-badge.active {
-    background-color: #28a745; /* green */
-}
-
-.status-badge.inactive {
-    background-color: #dc3545; /* red */
-}

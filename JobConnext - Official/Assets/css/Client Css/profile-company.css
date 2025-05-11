@@ -518,4 +518,19 @@ body{
     display: flex;
     flex-direction: row;
 }
+.worker_rate{
+    margin-bottom: 100px;
+}
 
+.card-holder {
+  display: flex;
+  justify-content: center;  /* Horizontally center */
+  gap: 20px;                /* Optional: spacing between cards */
+  flex-wrap: wrap;          /* Wrap on small screens */
+  padding: 20px 0;
+}
+
+.card.card-header {
+  width: 200px;             /* Or any fixed width for uniform cards */
+  text-align: center;
+}
