@@ -1,6 +1,6 @@
 <?php
 session_start();
-include '../../db_con/db_connection.php';
+include '../db_con/db_connection.php';
 $user_id = $_SESSION['worker_id'];
 ?>
 
@@ -14,7 +14,8 @@ $user_id = $_SESSION['worker_id'];
     <title>Job-connext - Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Assets/css/overview-profile.css">
+    <link rel="stylesheet" href="../Assets/css/style.css">
+    <link rel="stylesheet" href="../Assets/css/Blue-collar css/blueCollarProfile.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -74,7 +75,7 @@ $user_id = $_SESSION['worker_id'];
 
 
             <div class="container-fluid profile-nav">
-                <a href="../BlueCollarWorkerPortal/application-bluecollar.php">Application</a>
+                <a href="../BlueCollarWorkerPortal/blue-collar-profile.php">Application</a>
                 <a href="../BlueCollarWorkerPortal/overview-profile.php" id="active-nav">Experiences</a>
                 <a href="blue-collar-certificates.php">Certificate and others</a>
             </div>

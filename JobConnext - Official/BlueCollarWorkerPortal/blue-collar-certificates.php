@@ -1,8 +1,57 @@
 <?php
 session_start();
-include '../../db_con/db_connection.php';
-$user_id = $_SESSION['worker_id'];
+include '../db_con/db_connection.php';
+
+// Ensure session has worker_id
+if (isset($_SESSION['worker_id'])) {
+    $user_id = $_SESSION['worker_id'];
+
+    // Fetch worker data from tbl_worker
+    $query = "SELECT firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode 
+              FROM tbl_worker_information WHERE worker_id = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt) {
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            $fullName = $row['firstname'] . " " . $row['middlename'] . " " . $row['lastname'];
+            $phone = $row['phone_no'];
+            $bio = $row['bio'];
+            $address = $row['barangay'] . ', ' . $row['city'] . ', ' . $row['province'] . ', ' . $row['region'] . ', ' . $row['country'] . ' - ' . $row['postalcode'];
+        }
+        $stmt->close();
+    }
+}
+
+// Optional: Existing client info logic (unchanged)
+if (isset($_SESSION['client_id'])) {
+    $clientId = $_SESSION['client_id'];
+
+    // Phone number
+    $query = "SELECT phone_no FROM tbl_client_information WHERE client_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $clientId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $clientPhoneNumber = $row['phone_no'];
+    }
+    $stmt->close();
+
+    // Email
+    $query = "SELECT email FROM tbl_client WHERE client_id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $clientId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $clientEmail = $row['email'];
+    }
+    $stmt->close();
+}
 ?>
+
 
 
 <!DOCTYPE html>
@@ -14,7 +63,9 @@ $user_id = $_SESSION['worker_id'];
     <title>Job-connext - Profile</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="../Assets/css/blue-collar-certificates.css">
+    <link rel="stylesheet" href="../Assets/css/Blue-collar css/blueCollarProfile.css">
+    <link rel="stylesheet" href="../Assets/css/style.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -66,14 +117,14 @@ $user_id = $_SESSION['worker_id'];
                 </div>
                 <div class="client_id">
                     <span>
-                        ID: 000000
+                        <?php echo htmlspecialchars($worker_id)?>
                     </span>
                 </div>
             </div>
 
 
             <div class="container-fluid profile-nav">
-                <a href="../BlueCollarWorkerPortal/application-bluecollar.php" id="a">Application</a>
+                <a href="../BlueCollarWorkerPortal/blue-collar-profile.php" id="a">Application</a>
                 <a href="../BlueCollarWorkerPortal/overview-profile.php">Experiences</a>
                 <a href="blue-collar-certificates.php" id="active-nav">Certificate and others</a>
             </div>
