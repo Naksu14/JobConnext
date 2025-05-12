@@ -100,7 +100,7 @@ $user_id = $_SESSION['worker_id'];
             </div>
         </div>
 
-        <script src="../Assets/js/function.js"></script>
+        <script src="../Assets/js/logout.js"></script>
 
 </body>
 

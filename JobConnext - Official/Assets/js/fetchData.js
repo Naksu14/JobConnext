@@ -30,8 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             html: `
                 <div style="height: 450px; overflow-y: auto;">
                     <div class="d-flex flex-column justify-content-start align-items-center h-150px">
-                        <input type="text" class="form-control-sm w-100 m-1 p-2 swal2-input" placeholder="Company name" id="companyName">
-                        <textarea class="form-control-sm h-150px swal2-input" placeholder="Description" rows="2" id="description"></textarea>
+                        <textarea class="form-control-sm h-150px p-2 swal2-input" placeholder="Description" rows="2" id="description"></textarea>
                     </div>
                     <div class= "d-flex flex-row mt-3">
                         <div class="w-50 me-5">
@@ -71,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <div class="d-flex flex-column justify-content-start align-items-start mb-1">
                                     <h6>Job Status: <span class="active">Active</span></h6>
                                     <label for="location" class="small">Location</label>
-                                    <textarea class="form-control-sm h-50px mt-1 swal2-input" placeholder="Enter Location" id="location" name="location"></textarea>
+                                    <textarea class="form-control-sm h-50px mt-1 p-2 swal2-input" placeholder="Enter Location" id="location" name="location"></textarea>
                                 </div>
                                 <div class="d-flex flex-column justify-content-start align-items-start mb-1">
                                     <label for="numberApplicants" class="small">How many applicants do you need?</label>

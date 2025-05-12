@@ -72,6 +72,7 @@ $user_id = $_SESSION['worker_id'];
             </div>
 
 
+<<<<<<< HEAD
             <div class="container-fluid profile-nav">
                 <a href="../BlueCollarWorkerPortal/application-bluecollar.php" id="active-nav">Application</a>
                 <a href="../BlueCollarWorkerPortal/overview-profile.php">Experiences</a>
@@ -183,6 +184,12 @@ $user_id = $_SESSION['worker_id'];
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
             </script>
             <script src="../Assets/js/function.js"></script>
+=======
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
+    <script src="../Assets/js/logout.js"></script>
+>>>>>>> 018ce007470b1771b14bfc6629859c292eb0713f
 </body>
 
 </html>
