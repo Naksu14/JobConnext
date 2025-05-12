@@ -400,6 +400,7 @@ $user_id = $_SESSION['worker_id'];
                         <script src="client-rate.js">
 
                         </script>
+                        <script src="../Assets/js/logout.js"></script>
 </body>
 
 </html>

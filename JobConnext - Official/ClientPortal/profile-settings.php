@@ -321,7 +321,7 @@ $conn->close();
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="../Assets/js/function.js"></script>
+        <script src="../Assets/js/logout.js"></script>
 </body>
 
 </html>

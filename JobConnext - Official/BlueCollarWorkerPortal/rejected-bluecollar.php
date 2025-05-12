@@ -356,7 +356,7 @@ $user_id = $_SESSION['worker_id'];
                         });
                     </script>
 
-
+        <script src="../Assets/js/logout.js"></script>
 
 
 </body>

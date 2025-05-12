@@ -209,7 +209,7 @@
     <?php
     include "../ClientPortal/ModalFolder/post_job_modal.php";
     ?>
-     <script src="../Assets/js/function.js"></script>
+     <script src="../Assets/js/logout.js"></script>
 
 </body>
 
