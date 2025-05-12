@@ -267,7 +267,7 @@ body{
     font-weight: 500;
 }
 .about{
-    margin-top: 75px;
+    margin-top: 0px;
 }
 
 .about span{
@@ -295,7 +295,7 @@ body{
     color: #646464;
 }
 
-.all-cert{
+.aboutText, .addedSkills{
     color: #646464;
     margin-top: 20px;
     margin-left: 15px;
@@ -751,3 +751,38 @@ body{
     font-weight: bold;
 }
 
+
+.skill-tag {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.skill-tag1 {
+    padding: 5px 10px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 4px;
+    color: #1f1f1f;
+  }
+  
+  #save-btn{
+    height: 40px;
+    width: 120px;
+    margin-top: 10px;
+    background-color: #000432;
+    color: #fff;
+    border: none;
+  }
+
+  #save-btn:hover{
+    background-color: #000432a4;
+  }

@@ -1,7 +1,57 @@
 <?php
 session_start();
 include '../db_con/db_connection.php';
-$user_id = $_SESSION['worker_id'];
+
+
+
+if (isset($_SESSION['worker_id'])) {
+    $user_id = $_SESSION['worker_id'];
+
+    // Fetch worker data from tbl_worker
+    $query = "SELECT worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode 
+              FROM tbl_worker_information WHERE worker_id = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt) {
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            $worker_id = $row['worker_id'];
+            $fullName = $row['firstname'] . " " . $row['middlename'] . " " . $row['lastname'];
+            $phone = $row['phone_no'];
+            $bio = $row['bio'];
+            $address = $row['barangay'] . ', ' . $row['city'] . ', ' . $row['province'] . ', ' . $row['region'] . ', ' . $row['country'] . ' - ' . $row['postalcode'];
+        }
+        $stmt->close();
+    }
+}
+//email address
+$query = "SELECT email FROM tbl_blue_collar_worker WHERE worker_id = ?";
+
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($row = $result->fetch_assoc()) {
+    $workerEmail = $row['email'];
+}
+$stmt->close();
+$query = "SELECT skills FROM tbl_worker_skill_sets WHERE worker_id = ?";
+
+$colors = ['#D8CBFF', '#FFD8CB', '#CBFFD8', '#CBCDFF', '#FFCBE5', '#E0CBFF']; // Add more if needed
+
+
+$skill_qry = "SELECT * FROM tbl_worker_skill_sets WHERE worker_id = $worker_id";
+$skill_exe = mysqli_query($conn, $skill_qry);
+
+$i = 0;
+$skill_tags = '';
+while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
+    $skill_name = $skill_row['skills'];
+    $color = $colors[$i % count($colors)];
+    $skill_tags .= "<span class='skill-tag1' style='background-color: $color;'>{$skill_name}</span> ";
+    $i++;
+}
 ?>
 
 
@@ -45,7 +95,7 @@ $user_id = $_SESSION['worker_id'];
                     <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
                     <div class="name-title">
                         <span>
-                            Block Chain
+                            <?php echo htmlspecialchars($fullName) ?>
                         </span>
                         <h6>
                             <img src="../Assets/image/User.png" alt="">
@@ -53,22 +103,21 @@ $user_id = $_SESSION['worker_id'];
                         </h6>
                         <h6>
                             <img src="../Assets/image/Location.png" alt="">
-                            Address Region City
+                            <?php echo htmlspecialchars($address) ?>
                         </h6>
                         <div class="skills">
                             <p>Skills:</p>
 
                         </div>
                         <div class="skill-card">
-                            <span class="skill-tag green">Welder</span>
-                            <span class="skill-tag purple">Electrician</span>
+                            <span class="skill-tag"><?php echo $skill_tags; ?></span>
                         </div>
 
                     </div>
                 </div>
                 <div class="client_id">
                     <span>
-                        ID: 000000
+                        ID:<?php echo htmlspecialchars($worker_id) ?>
                     </span>
                 </div>
             </div>

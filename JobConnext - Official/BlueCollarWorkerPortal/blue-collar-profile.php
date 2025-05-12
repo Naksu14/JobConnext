@@ -1,8 +1,62 @@
 <?php
 session_start();
 include '../db_con/db_connection.php';
-$user_id = $_SESSION['worker_id'];
+
+
+
+if (isset($_SESSION['worker_id'])) {
+    $user_id = $_SESSION['worker_id'];
+
+    // Fetch worker data from tbl_worker
+    $query = "SELECT worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode, workerAbout, nationality, civilStatus, workerAddress FROM tbl_worker_information WHERE worker_id = ?";
+    $stmt = $conn->prepare($query);
+    if ($stmt) {
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            $worker_id = $row['worker_id'];
+            $fullName = $row['firstname'] . " " . $row['middlename'] . " " . $row['lastname'];
+            $phone = $row['phone_no'];
+            $bio = $row['bio'];
+            $address = $row['barangay'] . ', ' . $row['city'] . ', ' . $row['province'] . ', ' . $row['region'] . ', ' . $row['country'] . ' - ' . $row['postalcode'];
+            $workerAbout = $row['workerAbout'];
+            $nationality = $row['nationality'];
+            $civilStatus = $row['civilStatus'];
+            $workerAddress = $row ['workerAddress'];
+        }
+    }
+    $stmt->close();
+}
+//email address
+$query = "SELECT email FROM tbl_blue_collar_worker WHERE worker_id = ?";
+
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$result = $stmt->get_result();
+if ($row = $result->fetch_assoc()) {
+    $workerEmail = $row['email'];
+}
+$stmt->close();
+$query = "SELECT skills FROM tbl_worker_skill_sets WHERE worker_id = ?";
+
+$colors = ['#D8CBFF', '#FFD8CB', '#CBFFD8', '#CBCDFF', '#FFCBE5', '#E0CBFF']; // Add more if needed
+
+
+$skill_qry = "SELECT * FROM tbl_worker_skill_sets WHERE worker_id = $worker_id";
+$skill_exe = mysqli_query($conn, $skill_qry);
+
+$i = 0;
+$skill_tags = '';
+while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
+    $skill_name = $skill_row['skills'];
+    $color = $colors[$i % count($colors)];
+    $skill_tags .= "<span class='skill-tag1' style='background-color: $color;'>{$skill_name}</span> ";
+    $i++;
+}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +97,7 @@ $user_id = $_SESSION['worker_id'];
                     <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
                     <div class="name-title">
                         <span>
-                            Block Chain
+                            <?php echo htmlspecialchars($fullName) ?>
                         </span>
                         <h6>
                             <img src="../Assets/image/User.png" alt="">
@@ -51,55 +105,49 @@ $user_id = $_SESSION['worker_id'];
                         </h6>
                         <h6>
                             <img src="../Assets/image/Location.png" alt="">
-                            Address Region City
+                            <?php echo htmlspecialchars($address) ?>
                         </h6>
                         <div class="skills">
                             <p>Skills:</p>
 
                         </div>
                         <div class="skill-card">
-                            <span class="skill-tag green">Welder</span>
-                            <span class="skill-tag purple">Electrician</span>
+                            <span class="skill-tag"><?php echo $skill_tags; ?></span>
                         </div>
 
                     </div>
                 </div>
                 <div class="client_id">
                     <span>
-                        ID: 000000
+                        ID:<?php echo htmlspecialchars($worker_id) ?>
                     </span>
                 </div>
             </div>
 
 
-<<<<<<< HEAD
             <div class="container-fluid profile-nav">
-                <a href="../BlueCollarWorkerPortal/application-bluecollar.php" id="active-nav">Application</a>
+                <a href="../BlueCollarWorkerPortal/blue-collar-profile.php" id="active-nav">Application</a>
                 <a href="../BlueCollarWorkerPortal/overview-profile.php">Experiences</a>
                 <a href="blue-collar-certificates.php">Certificate and others</a>
             </div>
 
             <div class="create-header">
                 <div class="create">
-                    <img src="../Assets/image/Create.png" alt="">
+                    <img src="../Assets/image/Create.png" alt="Edit" id="edit-trigger" style="cursor:pointer;">
                 </div>
             </div>
 
             <div class="container about">
-                <span>About</span>
+                <span class="aboutUsHeader">About</span>
             </div>
-            <div class="all-cert">
-                <p>
-                    I am a skilled and hardworking [job title, e.g., Electrician] with [X years] of experience in
-                    [specialization, e.g., residential and commercial wiring]. Known for my strong work ethic, attention
-                    to detail, and commitment to safety, I take pride in delivering quality results on time. I thrive in
-                    hands-on roles and enjoy working as part of a team to tackle challenging projects.
-                </p>
+            <div class="aboutText">
+                <p id="about-text"><?php echo nl2br(htmlspecialchars($workerAbout)); ?></p>
+                <textarea id="about-input" class="form-control d-none"><?php echo htmlspecialchars($workerAbout); ?></textarea>
             </div>
             <div class="container my-skills">
                 <span>Skills</span>
             </div>
-            <div class="all-cert">
+            <div class="addedSkills">
                 <ul>
                     <li>
                         Technical Skills: technical expertise, such as wiring, welding, machinery maintenance
@@ -151,45 +199,164 @@ $user_id = $_SESSION['worker_id'];
                 </span>
                 <ul>
                     <li>
-                        Full Name: [Your Name]
+                        Full Name: <?php echo htmlspecialchars($fullName) ?>
                     </li>
                     <li>
                         Date of Birth: [MM/DD/YYYY]
                     </li>
                     <li>
-                        Age: [Your Age]
+                        <div class="address">
+                            <div class="address-header">Address:</div>
+                            <div class="address-content">
+                                <h6 id="header-address">
+                                    <p id="address-text"><?php echo htmlspecialchars($address); ?></p>
+                                    <input type="text" id="address-input" class="form-control d-none" value="<?php echo htmlspecialchars($address); ?>">
+                                </h6>
+                            </div>
+                            <div class="address-img">
+                                <div class="show-location">
+                                    <iframe
+                                        id="map-frame"
+                                        width="100%" height="250"
+                                        style="border:0; border-radius: 0px;"
+                                        loading="lazy" allowfullscreen
+                                        referrerpolicy="no-referrer-when-downgrade"
+                                        src="https://maps.google.com/maps?q=<?php echo urlencode($address); ?>&output=embed">
+                                    </iframe>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                     <li>
-                        Address: [Street, City, State, Country]
+                        Contact Number:<span id="phone-text"><?php echo htmlspecialchars($phone); ?></span>
+                        <input type="text" id="phone-input" class="form-control d-none" value="<?php echo htmlspecialchars($phone); ?>">
                     </li>
                     <li>
-                        Contact Number: [+Country Code XXXXXXXXXX]
+                        Email Address:
+                        <span id="email-text"><?php echo htmlspecialchars($workerEmail); ?></span>
                     </li>
                     <li>
-                        Email Address: [Your Email Address]
+                        Nationality:
+                        <span id="nationality-text"><?php echo htmlspecialchars($nationality); ?></span>
+                        <input type="text" id="nationality-input" class="form-control d-none" value="<?php echo htmlspecialchars($nationality); ?>">
                     </li>
                     <li>
-                        Nationality: [Your Nationality]
-                    </li>
-                    <li>
-                        Civil Status: [Single/Married/Divorced/Widowed]
-                    </li>
-                    <li>
-                        Languages Spoken: [List languages, e.g., English, Tagalog, etc.]
+                        Civil Status:
+                        <span id="civil-status-text"><?php echo htmlspecialchars($civilStatus); ?></span>
+                        <input type="text" id="civil-status-input" class="form-control d-none" value="<?php echo htmlspecialchars($civilStatus); ?>">
                     </li>
                 </ul>
+                <button id="save-btn" class="d-none">Save Changes</button>
+                <br><br><br><br><br>
+
             </div>
+
+            <script>
+                document.getElementById('edit-trigger').addEventListener('click', () => {
+                    toggleEditMode(true);
+                });
+
+                document.getElementById('save-btn').addEventListener('click', () => {
+                    const about = document.getElementById('about-input').value;
+                    const address = document.getElementById('address-input').value;
+                    const phone = document.getElementById('phone-input').value;
+                    const nationality = document.getElementById('nationality-input').value;
+                    const civilStatus = document.getElementById('civil-status-input').value;
+
+                    fetch('../BlueCollarWorkerPortal/scriptsForDbWorker/updateWorkerProfile.php', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                about,
+                                address,
+                                phone,
+                                nationality,
+                                civilStatus
+                            })
+                        })
+                        .then(response => response.text()) // Read raw text first
+                        .then(text => {
+                            console.log('Raw response:', text); // Debug output
+
+                            let data;
+                            try {
+                                data = JSON.parse(text);
+                            } catch (error) {
+                                console.error('JSON parse error:', error);
+                                alert('Server returned an invalid response. Check the console for details.');
+                                return;
+                            }
+
+                            if (data.success) {
+                                document.getElementById('about-text').innerText = about;
+                                document.getElementById('address-text').innerText = address;
+                                document.getElementById('phone-text').innerText = phone;
+                                document.getElementById('nationality-text').innerText = nationality;
+                                document.getElementById('civil-status-text').innerText = civilStatus;
+
+
+                                document.getElementById('map-frame').src = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+
+                                Swal.fire({
+                                    toast: true,
+                                    position: 'top-end', // or 'top-start', 'bottom-end', etc.
+                                    icon: 'success',
+                                    title: 'Profile Updated',
+                                    text: 'Your profile has been successfully updated!',
+                                    showConfirmButton: false,
+                                    timer: 3000, // Auto close after 3 seconds
+                                    timerProgressBar: true,
+                                    customClass: {
+                                        popup: 'colored-toast'
+                                    }
+                                }).then(() => {
+                                    toggleEditMode(false);
+                                });
+
+                            } else {
+                                alert('Update failed: ' + (data.message || 'Unknown error.'));
+                            }
+                        })
+                        .catch(err => {
+                            console.error('Fetch error:', err);
+                            alert('Request failed. Check your internet connection or server.');
+                        });
+                });
+
+                function toggleEditMode(editMode) {
+                    const toggleClass = (id, show) => {
+                        document.getElementById(id).classList.toggle('d-none', !show);
+                    };
+
+                    toggleClass('about-text', !editMode);
+                    toggleClass('about-input', editMode);
+
+                    toggleClass('address-text', !editMode);
+                    toggleClass('address-input', editMode);
+
+                    toggleClass('phone-text', !editMode);
+                    toggleClass('phone-input', editMode);
+
+
+                    toggleClass('nationality-text', !editMode);
+                    toggleClass('nationality-input', editMode);
+
+                    toggleClass('civil-status-text', !editMode);
+                    toggleClass('civil-status-input', editMode);
+
+
+                    toggleClass('save-btn', editMode);
+                }
+            </script>
+
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
             </script>
-            <script src="../Assets/js/function.js"></script>
-=======
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-        </script>
-    <script src="../Assets/js/logout.js"></script>
->>>>>>> 018ce007470b1771b14bfc6629859c292eb0713f
+            <script src="../Assets/js/logout.js"></script>
+
 </body>
 
 </html>
