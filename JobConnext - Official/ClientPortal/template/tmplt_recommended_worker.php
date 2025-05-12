@@ -53,7 +53,6 @@ while ($row = mysqli_fetch_assoc($recommended_clientHOMEexe)) {
                     data-skills="<?= htmlspecialchars($skill_tags) ?>"
                     data-image="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg">
 
-
                     <div class="card" id="my-offer">
                         <div class="job-header">
                             <div class="profile-info">

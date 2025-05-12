@@ -57,7 +57,7 @@ if (isset($_SESSION['client_id'])) {
                 data-companyname="<?php echo htmlspecialchars($company_name) ?>"
                 data-location="<?php echo htmlspecialchars($job_loc) ?>"
                 data-job-status="<?php echo htmlspecialchars($job_status) ?>"
-                data-applied="<?php echo htmlspecialchars('5 Applied') ?>"
+                data-applied="<?php echo htmlspecialchars(5) ?>"
                 data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
                 data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
                 data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
@@ -83,7 +83,7 @@ if (isset($_SESSION['client_id'])) {
                             <div class="menu-container" onclick="event.stopPropagation(); toggleDropdown(this)">
                                 <div class="menu">•••</div>
                                 <div class="dropdown">
-                                    <a href="#" onclick="editItem(event)">Edit</a>
+                                    <a href="#" onclick="editItem(event,'<?php echo $job_post_id ?>')">Edit</a>
                                     <a href="#" onclick="deleteItem(event, '<?php echo $job_post_id ?>')">Delete</a>
                                 </div>
                             </div>
@@ -115,7 +115,7 @@ if (isset($_SESSION['client_id'])) {
                 </div>
             </div>
             <br>
-
+            <?php include '../ClientPortal/template/editJobpostModal.php'; ?>
 <?php
         }
     }

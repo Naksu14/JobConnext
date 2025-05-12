@@ -4,9 +4,12 @@ include '../db_con/db_connection.php';
 
 
 
-$companyName = "Guest";
-$clientAboutUs = "You are not logged in.";
-$clientAddress = $clientPhoneNumber = $clientEmail = "N/A";
+$companyName = "COMPANY NAME";
+$clientAboutUs = "add About Us Company";
+$clientAddress = "add Location Address";
+$clientPhoneNumber = "add Phone Number";
+$clientEmail = "add Email Address";
+
 
 if (isset($_SESSION['client_id'])) {
     $clientId = $_SESSION['client_id'];
@@ -156,16 +159,16 @@ if (isset($_SESSION['client_id'])) {
 
         </div>
     </div>
-    
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="../Assets/js/logout.js"></script>
 
 
-<script>
-document.getElementById('edit-trigger').addEventListener('click', () => {
-    toggleEditMode(true);
-});
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../Assets/js/logout.js"></script>
+
+
+    <script>
+        document.getElementById('edit-trigger').addEventListener('click', () => {
+            toggleEditMode(true);
+        });
 
         document.getElementById('save-btn').addEventListener('click', () => {
             const about = document.getElementById('about-input').value;
@@ -210,20 +213,20 @@ document.getElementById('edit-trigger').addEventListener('click', () => {
                         document.getElementById('map-frame').src = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 
                         Swal.fire({
-                        toast: true,
-                        position: 'top-end', // or 'top-start', 'bottom-end', etc.
-                        icon: 'success',
-                        title: 'Profile Updated',
-                        text: 'Your profile has been successfully updated!',
-                        showConfirmButton: false,
-                        timer: 3000, // Auto close after 3 seconds
-                        timerProgressBar: true,
-                        customClass: {
-                            popup: 'colored-toast'
-                        }
-                    }).then(() => {
-                        toggleEditMode(false);
-                    });
+                            toast: true,
+                            position: 'top-end', // or 'top-start', 'bottom-end', etc.
+                            icon: 'success',
+                            title: 'Profile Updated',
+                            text: 'Your profile has been successfully updated!',
+                            showConfirmButton: false,
+                            timer: 3000, // Auto close after 3 seconds
+                            timerProgressBar: true,
+                            customClass: {
+                                popup: 'colored-toast'
+                            }
+                        }).then(() => {
+                            toggleEditMode(false);
+                        });
 
                     } else {
                         alert('Update failed: ' + (data.message || 'Unknown error.'));

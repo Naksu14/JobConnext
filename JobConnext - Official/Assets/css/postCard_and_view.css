@@ -248,7 +248,7 @@
     height: 25px;
   }
   
-  #yourTargetButton {
+  #yourTargetButton, #viewAttachmentBtn {
   background-color: var(--darkblue); /* Bootstrap primary blue */
   color: #fff;
   border: none;
@@ -267,6 +267,12 @@
   background-color: #0d6efd;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+#viewAttachmentBtn:hover {
+  background-color: #0d6efd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
 #skills_display{
     margin-bottom: 10px;
 }

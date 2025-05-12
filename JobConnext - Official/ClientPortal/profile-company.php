@@ -3,7 +3,11 @@ session_start();
 include '../db_con/db_connection.php';
 
 $user_id = $_SESSION['client_id'];
-
+$companyName = "COMPANY NAME";
+$Count_Applicant = 0;
+$Count_JobList = 0;
+ $Count_JobListArchived = 0;
+        
 if (isset($_SESSION['client_id'])) {
     $clientId = $_SESSION['client_id'];
     // Combined query for tbl_company_info
@@ -124,7 +128,7 @@ if (isset($_SESSION['client_id'])) {
                     <div class="card card-header">
                         <div class="card-body">
                             <span id="card-title">
-                                Applicant <span id="card-count">8</span>
+                                Applicant <span id="card-count"><?php echo $Count_Applicant; ?></span>
                             </span>
                         </div>
                     </div>
