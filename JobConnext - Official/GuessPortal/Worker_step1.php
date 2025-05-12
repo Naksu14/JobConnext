@@ -233,7 +233,7 @@ include "../db_con/db_connection.php"; // Ensure db_connection.php defines $conn
                     </script>
 
                     <div class="btn_sub d-flex justify-content-between mt-3 mb-3">
-                        <a href="SIgn_Up.php" style="color:#161D6F">Back</a>
+                        <a href="Sign_Up.php" style="color:#161D6F">Back</a>
                         <button type="submit" class="btn btn-primary">Next Step</button>
                     </div>
                 </form>

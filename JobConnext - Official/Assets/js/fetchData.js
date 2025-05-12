@@ -91,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
             showCancelButton: true,
             confirmButtonText: "Post",
             preConfirm: () => {
-                const companyName = document.getElementById('companyName').value.trim();
                 const description = document.getElementById('description').value.trim();
                 const jobSelect = document.getElementById('jobSelect').value.trim();
                 const otherJob = document.getElementById('otherJob').value.trim();
@@ -104,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const date = document.getElementById('date').value.trim();
             
                 if (
-                    !companyName || !description || !jobSelect ||
+                    !description || !jobSelect ||
                     (jobSelect === 'others' && !otherJob) ||
                     !salaryRange_start || !salaryRange_end || !fileUpload ||
                     !location || !applicant_count || !year_experience || !date
@@ -114,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             
                 const formData = new FormData();
-                formData.append('companyName', companyName);
                 formData.append('description', description);
                 formData.append('jobSelect', jobSelect);
                 formData.append('otherJob', otherJob);

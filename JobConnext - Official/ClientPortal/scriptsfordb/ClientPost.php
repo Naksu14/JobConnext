@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 // Include your database connection
 include '../../db_con/db_connection.php';
 
@@ -41,7 +43,6 @@ if (!isset($_SESSION['client_id'])) {
 $user_id = $_SESSION['client_id'];
 
 // ✅ Get POST data
-$companyName    = $_POST['companyName'] ?? '';
 $description    = $_POST['description'] ?? '';
 $jobSelect      = ($_POST['jobSelect'] == 'others') ? $_POST['otherJob'] : $_POST['jobSelect'];
 $salaryStart    = $_POST['salaryRange_start'] ?? '';
@@ -100,7 +101,6 @@ if (isset($_FILES['fileUpload']) && $_FILES['fileUpload']['error'] === UPLOAD_ER
 // ✅ Insert job post into database
 $sql = "INSERT INTO tbl_client_jobpost (
     client_id,
-    job_title,
     job_offer,
     salary_start,
     salary_end,
@@ -112,7 +112,7 @@ $sql = "INSERT INTO tbl_client_jobpost (
     year_exp,
     deadline
 ) 
-VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 if (!$stmt) {
@@ -121,9 +121,8 @@ if (!$stmt) {
 }
 
 $stmt->bind_param(
-    'issddsssssss',
+    'isddsssssss',
     $user_id,
-    $companyName,
     $jobSelect,
     $salaryStart,
     $salaryEnd,
@@ -148,7 +147,6 @@ echo json_encode([
     'success' => true,
     'message' => 'Job post submitted successfully',
     'data' => [
-        'companyName' => $companyName,
         'description' => $description,
         'jobSelect' => $jobSelect,
         'salaryStart' => $salaryStart,
