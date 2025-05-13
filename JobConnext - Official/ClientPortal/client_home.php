@@ -296,6 +296,7 @@ $user_id = $_SESSION['client_id'];
     <script src="../Assets/js/filter.js"></script>
     <script src="../Assets/js/card_editOrdelete.js"></script>
     <script src="../Assets/js/logout.js"></script>
+    <script src="../Assets/js/report.js"></script>
 </body>
 
 </html>

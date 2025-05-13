@@ -293,3 +293,33 @@ p, input, button{
   box-sizing: border-box;
 }
 
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-wrapper label {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: 0.2s;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked + label {
+  background-color: #161D6F;
+  color: #fff;
+  border-color: #000;
+}

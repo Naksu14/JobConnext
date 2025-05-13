@@ -103,11 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const date = document.getElementById('date').value.trim();
             
                 if (
-<<<<<<< HEAD
                     !description || !jobSelect ||
-=======
-                     !description || !jobSelect ||
->>>>>>> 2a02f88a4f88073a90b724ea3b61fe0208e198e8
                     (jobSelect === 'others' && !otherJob) ||
                     !salaryRange_start || !salaryRange_end || !fileUpload ||
                     !location || !applicant_count || !year_experience || !date
@@ -151,25 +147,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
             }).then((result) => {
-  if (result.isConfirmed && result.value && result.value.success) {
-    Swal.fire({
-        toast: true,
-        position: 'top-end',
-        icon: 'success',
-        title: 'Post Successful!',
-        text: result.value.message,
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
+                if (result.isConfirmed && result.value && result.value.success) {
+                    Swal.fire({
+                        toast: true,
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Post Successful!',
+                        text: result.value.message,
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                    });
+                }
+            });
+            
+            
     });
-  }
-});
-            
-            
-        });
         
 
-    })
+    
+
+})
 
 
 

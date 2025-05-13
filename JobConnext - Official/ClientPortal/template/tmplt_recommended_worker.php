@@ -67,7 +67,7 @@ while ($row = mysqli_fetch_assoc($recommended_clientHOMEexe)) {
                             <div class="menu-container" onclick="event.stopPropagation(); toggleDropdown(this)">
                                 <div class="menu">•••</div>
                                 <div class="dropdown">
-                                    <a href="#" onclick="reportPost(event)">Report</a>
+                                    <a href="#" onclick="reportPost(event, <?php echo $Worker_id?>)">Report</a>
                                 </div>
                             </div>
                         </div>

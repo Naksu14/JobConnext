@@ -85,7 +85,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                         <div class="menu-container" onclick="event.stopPropagation(); toggleDropdown(this)">
                             <div class="menu">•••</div>
                             <div class="dropdown">
-                                <a href="#" onclick="reportPost(event)">Report</a>
+                                <a href="#" onclick="reportPost(event, <?php echo $other_client_id ?>)">Report</a>
                             </div>
                         </div>
                         <p><?php echo $date_posted . " - " . $date_deadline ?></p>
