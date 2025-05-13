@@ -1,17 +1,22 @@
 <?php
 include '../../db_con/db_connection.php';
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 $data = json_decode(file_get_contents("php://input"), true);
 
 $id = $data['id'];
-$description = $data['description'];
+$description = $data['updatedescription'];
 $job = $data['job'];
-$salaryStart = $data['salaryStart'];
-$salaryEnd = $data['salaryEnd'];
-$location = $data['location'];
-$applicantCount = $data['applicantCount'];
-$yearExp = $data['yearExp'];
-$deadline = $data['deadline'];
+$salaryStart = $data['updatesalaryStart'];
+$salaryEnd = $data['updatesalaryEnd'];
+$location = $data['updatelocation'];
+$applicantCount = $data['updateapplicantCount'];
+$yearExp = $data['updateyearExp'];
+$deadline = $data['updatedeadline'];
+
 //$client_file = $data['client_file'];
 
 // // ✅ Handle file upload (MIME + extension check)
@@ -67,9 +72,8 @@ $sql = "UPDATE tbl_client_jobpost SET
             applicants = ?,
             year_exp = ?,
             deadline = ?
-
         WHERE job_post_id = ?";
-            //client_file = ?
+
 $stmt = $conn->prepare($sql);
 $success = $stmt->execute([
     $description,
@@ -80,7 +84,6 @@ $success = $stmt->execute([
     $applicantCount,
     $yearExp,
     $deadline,
-    //$client_file,
     $id
 ]);
 
