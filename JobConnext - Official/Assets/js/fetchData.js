@@ -103,11 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const date = document.getElementById('date').value.trim();
             
                 if (
-<<<<<<< HEAD
                     !description || !jobSelect ||
-=======
-                     !description || !jobSelect ||
->>>>>>> 2a02f88a4f88073a90b724ea3b61fe0208e198e8
                     (jobSelect === 'others' && !otherJob) ||
                     !salaryRange_start || !salaryRange_end || !fileUpload ||
                     !location || !applicant_count || !year_experience || !date

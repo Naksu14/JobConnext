@@ -6,6 +6,7 @@
     dropdown.classList.toggle('show');
   }
 
+
   function handleCardClick(event) {
     const card = event.currentTarget;
     const jobId = card.getAttribute('data-jobid');
@@ -25,22 +26,39 @@
         if (data.success) {
             Swal.fire({
                 title: 'Edit Job Post',
-                html: document.getElementById('customJobPostModalContent').innerHTML,
+                html: document.getElementById('customJobPostModalContents').innerHTML,
                 width: '850px',
                 showCancelButton: true,
                 confirmButtonText: 'Save Changes',
                 focusConfirm: false,
                 didOpen: () => {
+                     // Get elements inside modal (use Swal.getPopup())
+                    const select = Swal.getPopup().querySelector("#jobSelects");
+                    const otherInput = Swal.getPopup().querySelector("#otherInputContainers");
+
+                    // Bind change listener
+                    select.addEventListener("change", function () {
+                        if (this.value === "otherss") {
+                            otherInput.style.display = "block";
+                        } else {
+                            otherInput.style.display = "none";
+                        }
+                    });
+
+                    // Trigger once on load in case "Other" is already selected
+                    if (select.value === "otherss") {
+                        otherInput.style.display = "block";
+                    }
                     const popup = Swal.getPopup();
 
-                    popup.querySelector('#description').value = data.job.description;
-                    popup.querySelector('#jobSelect').value = data.job.job_offer;
-                    popup.querySelector('#salaryRange_start').value = data.job.salary_start;
-                    popup.querySelector('#salaryRange_end').value = data.job.salary_end;
-                    popup.querySelector('#location').value = data.job.location;
-                    popup.querySelector('#applicant_count').value = data.job.applicants;
-                    popup.querySelector('#year_experience').value = data.job.year_exp;
-                    popup.querySelector('#date').value = data.job.deadline;
+                    popup.querySelector('#descriptions').value = data.job.description;
+                    popup.querySelector('#jobSelects').value = data.job.job_offer;
+                    popup.querySelector('#salaryRange_starts').value = data.job.salary_start;
+                    popup.querySelector('#salaryRange_ends').value = data.job.salary_end;
+                    popup.querySelector('#locations').value = data.job.location;
+                    popup.querySelector('#applicant_counts').value = data.job.applicants;
+                    popup.querySelector('#year_experiencess').value = data.job.year_exp;
+                    popup.querySelector('#dates').value = data.job.deadline;
 
                     const viewBtn = popup.querySelector('#viewAttachmentBtn');
                     if (viewBtn && data.job.client_file) {
@@ -54,46 +72,50 @@
                 },
                 preConfirm: () => {
                     const popup = Swal.getPopup();
-                    const description = popup.querySelector('#description').value;
-                    const job = popup.querySelector('#jobSelect').value;
-                    const otherJob = popup.querySelector('#otherJob')?.value || '';
-                    const salaryStart = popup.querySelector('#salaryRange_start').value;
-                    const salaryEnd = popup.querySelector('#salaryRange_end').value;
-                    const location = popup.querySelector('#location').value;
-                    const applicantCount = popup.querySelector('#applicant_count').value;
-                    const yearExp = popup.querySelector('#year_experience').value;
-                    const deadline = popup.querySelector('#date').value;
+                    const updatedescription = popup.querySelector('#descriptions').value;
+                    const updatejob = Swal.getPopup().querySelector('#jobSelects').value === 'otherss'
+                                ? Swal.getPopup().querySelector('#otherJobs').value
+                                : Swal.getPopup().querySelector('#jobSelects').value;
+                    const updatesalaryStart = popup.querySelector('#salaryRange_starts').value;
+                    const updatesalaryEnd = popup.querySelector('#salaryRange_ends').value;
+                    const updatelocation = popup.querySelector('#locations').value;
+                    const updateapplicantCount = popup.querySelector('#applicant_counts').value;
+                    const updateyearExp = popup.querySelector('#year_experiencess').value;
+                    const updatedeadline = popup.querySelector('#dates').value;
 
-                    if (!description || !location || !applicantCount || !deadline) {
+                    if (!updatedescription || !updatelocation || !updateapplicantCount || !updatedeadline) {
                         Swal.showValidationMessage('Please fill all required fields');
                         return false;
                     }
 
                     // Perform update here
-                    return fetch('scriptsfordb/update_jobpost.php', {
+                return fetch('scriptsfordb/update_jobpost.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
                             id: jobPostId,
-                            description,
-                            job: job === 'others' ? otherJob : job,
-                            salaryStart,
-                            salaryEnd,
-                            location,
-                            applicantCount,
-                            yearExp,
-                            deadline
+                            updatedescription,
+                            job: updatejob === 'otherss' ? updateotherJob : updatejob,
+                            updatesalaryStart,
+                            updatesalaryEnd,
+                            updatelocation,
+                            updateapplicantCount,
+                            updateyearExp,
+                            updatedeadline
                         })
                     })
-                    .then(response => response.json())
+                    .then(response => response.text()) // 👈 First get raw response
+                    .then(text => {
+                        console.log('Raw Response:', text); // 👈 This will show the HTML or JSON
+                        return JSON.parse(text); // 👈 Try to parse it as JSON
+                    })
                     .then(result => {
                         if (!result.success) {
                             throw new Error(result.message || 'Update failed');
                         }
 
-                        // Show success toast
                         Swal.fire({
                             toast: true,
                             position: "top-end",
@@ -108,7 +130,6 @@
                             }
                         });
 
-                        // Remove the query parameter after the alert
                         setTimeout(() => {
                             const url = new URL(window.location);
                             url.searchParams.delete('success');
@@ -121,6 +142,7 @@
                         Swal.showValidationMessage(`Update failed: ${err.message}`);
                         return false;
                     });
+
 
                 }
 
@@ -137,6 +159,18 @@
     });
 
 }
+
+function updateFileLists() {
+    const inputs = document.getElementById('fileUploads');
+    const fileNamesSpans = document.getElementById('fileNamess');
+    if (inputs.files.length > 0) {
+        const fileNamess = Array.from(inputs.files).map(file => file.name).join(', ');
+        fileNamesSpans.textContent = fileNamess;
+    } else {
+        fileNamesSpans.textContent = "No file selected";
+    }
+}
+
 
 
 
