@@ -8,7 +8,7 @@ if (isset($_SESSION['worker_id'])) {
     $user_id = $_SESSION['worker_id'];
 
     // Fetch worker data from tbl_worker
-    $query = "SELECT worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode, workerAbout, nationality, civilStatus, workerAddress FROM tbl_worker_information WHERE worker_id = ?";
+    $query = "SELECT worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode, workerAbout, nationality, civilStatus, birthDate FROM tbl_worker_information WHERE worker_id = ?";
     $stmt = $conn->prepare($query);
     if ($stmt) {
         $stmt->bind_param("i", $user_id);
@@ -23,9 +23,10 @@ if (isset($_SESSION['worker_id'])) {
             $workerAbout = $row['workerAbout'];
             $nationality = $row['nationality'];
             $civilStatus = $row['civilStatus'];
-            $workerAddress = $row ['workerAddress'];
+            $birthDate = $row['birthDate'];
         }
     }
+    
     $stmt->close();
 }
 //email address
@@ -202,7 +203,13 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                         Full Name: <?php echo htmlspecialchars($fullName) ?>
                     </li>
                     <li>
-                        Date of Birth: [MM/DD/YYYY]
+                        Date of Birth:
+                        <span id="birth-text"><?php echo htmlspecialchars($birthDate); ?></span>
+                        <input
+                            type="date"
+                            id="birth-input"
+                            class="form-control d-none"
+                            value="<?php echo (!empty($birthDate) && strtotime($birthDate)) ? htmlspecialchars(date('Y-m-d', strtotime($birthDate))) : ''; ?>">
                     </li>
                     <li>
                         <div class="address">
@@ -229,7 +236,8 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                     </li>
                     <li>
                         Contact Number:<span id="phone-text"><?php echo htmlspecialchars($phone); ?></span>
-                        <input type="text" id="phone-input" class="form-control d-none" value="<?php echo htmlspecialchars($phone); ?>">
+                        <input type="text" id="phone-input" class="form-control d-none" id="validationCustom01"
+                            pattern="^\+63-\d{3}-\d{3}-\d{4}$" maxlength="16" name="phone_no" required oninput="formatPhoneNumber(this)" value="<?php echo htmlspecialchars($phone); ?>">
                     </li>
                     <li>
                         Email Address:
@@ -243,7 +251,13 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                     <li>
                         Civil Status:
                         <span id="civil-status-text"><?php echo htmlspecialchars($civilStatus); ?></span>
-                        <input type="text" id="civil-status-input" class="form-control d-none" value="<?php echo htmlspecialchars($civilStatus); ?>">
+                        <select id="civil-status-input" class="form-select d-none" value="<?php echo htmlspecialchars($civilStatus); ?>" aria-label="Default select example">
+                            <option selected>Civil Status</option>
+                            <option value="Married">Married</option>
+                            <option value="Single">Single</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
                     </li>
                 </ul>
                 <button id="save-btn" class="d-none">Save Changes</button>
@@ -262,6 +276,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                     const phone = document.getElementById('phone-input').value;
                     const nationality = document.getElementById('nationality-input').value;
                     const civilStatus = document.getElementById('civil-status-input').value;
+                    const birthDate = document.getElementById('birth-input').value;
 
                     fetch('../BlueCollarWorkerPortal/scriptsForDbWorker/updateWorkerProfile.php', {
                             method: 'POST',
@@ -273,7 +288,8 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                                 address,
                                 phone,
                                 nationality,
-                                civilStatus
+                                civilStatus,
+                                birthDate
                             })
                         })
                         .then(response => response.text()) // Read raw text first
@@ -295,6 +311,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                                 document.getElementById('phone-text').innerText = phone;
                                 document.getElementById('nationality-text').innerText = nationality;
                                 document.getElementById('civil-status-text').innerText = civilStatus;
+                                document.getElementById('birth-text').innerText = birthDate;
 
 
                                 document.getElementById('map-frame').src = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
@@ -346,11 +363,45 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                     toggleClass('civil-status-text', !editMode);
                     toggleClass('civil-status-input', editMode);
 
+                    toggleClass('birth-text', !editMode);
+                    toggleClass('birth-input', editMode);
+
 
                     toggleClass('save-btn', editMode);
                 }
             </script>
 
+            <script>
+                function formatPhoneNumber(input) {
+                    // Remove all non-numeric characters
+                    let value = input.value.replace(/[^0-9]/g, '');
+
+                    // Ensure the phone number starts with '63' and starts with '+63-'
+                    if (value.length > 1 && !value.startsWith('63')) {
+                        value = '63' + value.substring(1);
+                    }
+
+                    // Format as +63-xxx-xxx-xxxx
+                    if (value.length > 3 && value.length <= 5) {
+                        value = '+63-' + value.substring(2, 5);
+                    } else if (value.length > 5 && value.length <= 8) {
+                        value = '+63-' + value.substring(2, 5) + '-' + value.substring(5, 8);
+                    } else if (value.length > 8 && value.length <= 12) {
+                        value = '+63-' + value.substring(2, 5) + '-' + value.substring(5, 8) + '-' + value.substring(8, 12);
+                    }
+
+                    // Ensure it doesn't exceed 16 characters (including +63-xxx-xxx-xxxx)
+                    if (value.length > 16) {
+                        value = value.substring(0, 16);
+                    }
+
+                    // Update the input field with the formatted value
+                    input.value = value;
+                }
+            </script>
+            <script>
+                
+            </script>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
