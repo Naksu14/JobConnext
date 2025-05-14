@@ -24,7 +24,18 @@ while ($row = mysqli_fetch_assoc($recommended_clientHOMEexe)) {
     // Fetch skills for the current worker
     $skill_query = "SELECT skills FROM tbl_worker_skill_sets WHERE worker_id = '$Worker_id'";
     $skill_result = mysqli_query($conn, $skill_query);
-    $colors = ['#D8CBFF', '#FFD8CB', '#CBFFD8', '#CBCDFF', '#FFCBE5', '#E0CBFF'];
+    $colors = [
+        '#8B89E9', // soft violet
+        '#46CFA6', // teal green
+        '#FFAEC9', // light pink
+        '#A8E6CF', // mint green
+        '#DCE775', // lime pastel
+        '#FFCCBC', // peach
+        '#B39DDB', // light purple
+        '#80DEEA', // cyan pastel
+        '#F48FB1', // rose pink
+        '#FFECB3', // light yellow
+    ];
     $i = 0;
     $skill_tags = '';
 
@@ -67,7 +78,7 @@ while ($row = mysqli_fetch_assoc($recommended_clientHOMEexe)) {
                             <div class="menu-container" onclick="event.stopPropagation(); toggleDropdown(this)">
                                 <div class="menu">•••</div>
                                 <div class="dropdown">
-                                    <a href="#" onclick="reportPost(event, <?php echo $Worker_id?>)">Report</a>
+                                    <a href="#" onclick="reportPost(event, <?php echo $Worker_id ?>)">Report</a>
                                 </div>
                             </div>
                         </div>

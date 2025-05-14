@@ -29,7 +29,18 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         $company_name = $company_row['company_name'];
     }
 
-    $colors = ['#D8CBFF', '#FFD8CB', '#CBFFD8', '#CBCDFF', '#FFCBE5', '#E0CBFF']; // Add more if needed
+    $colors = [
+        '#8B89E9', // soft violet
+        '#46CFA6', // teal green
+        '#FFAEC9', // light pink
+        '#A8E6CF', // mint green
+        '#DCE775', // lime pastel
+        '#FFCCBC', // peach
+        '#B39DDB', // light purple
+        '#80DEEA', // cyan pastel
+        '#F48FB1', // rose pink
+        '#FFECB3', // light yellow
+    ];
 
     // Fetch skills for current client
     $skill_qry = "SELECT * FROM tbl_client_skills_sets WHERE client_id = $other_client_id";

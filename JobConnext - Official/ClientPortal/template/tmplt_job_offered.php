@@ -1,8 +1,17 @@
 <?php
 include '../db_con/db_connection.php';
 
+
 if (isset($_SESSION['client_id'])) {
     $clientId = $_SESSION['client_id'];
+
+    $query = "SELECT COUNT(*) as Applicants FROM tbl_blue_collar_worker";
+    $stmt = $conn->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $Count_Applicants = $row['Applicants'];
+    }
 
     $job_offeredQRY = "SELECT * FROM tbl_client_jobpost WHERE client_id = $clientId";
     $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
@@ -30,7 +39,18 @@ if (isset($_SESSION['client_id'])) {
             $company_name = $company_row['company_name'];
         }
 
-        $colors = ['#D8CBFF', '#FFD8CB', '#CBFFD8', '#CBCDFF', '#FFCBE5', '#E0CBFF']; // Add more if needed
+        $colors = [
+            '#8B89E9', // soft violet
+            '#46CFA6', // teal green
+            '#FFAEC9', // light pink
+            '#A8E6CF', // mint green
+            '#DCE775', // lime pastel
+            '#FFCCBC', // peach
+            '#B39DDB', // light purple
+            '#80DEEA', // cyan pastel
+            '#F48FB1', // rose pink
+            '#FFECB3', // light yellow
+        ];
 
         // Fetch skills for current client
         $skill_qry = "SELECT * FROM tbl_client_skills_sets WHERE client_id = $client_id";
@@ -106,17 +126,28 @@ if (isset($_SESSION['client_id'])) {
                             <span class="skill-tag"><?php echo $skill_tags; ?></span>
                         </div>
                     </div>
+                    <!-- Trigger Button -->
                     <div class="job-footer">
-                        <button class="applied" onclick="showAlert()">
-                            5 Applied
-                        </button>
+                        <button class="applied" onclick="openModal()">5 Applied</button>
                         <p>0 Accepted</p>
                     </div>
+
                 </div>
             </div>
             <br>
+            <?php include '../ClientPortal/template/ApplicantViewModal.php'; ?>
             <?php include '../ClientPortal/template/editJobpostModal.php'; ?>
 <?php
         }
     }
 } ?>
+<script>
+    function openModal() {
+        document.getElementById('applicantsModal').style.display = 'flex';
+        filterApplicants('pending'); // Show pending by default
+    }
+
+    function closeModal() {
+        document.getElementById('applicantsModal').style.display = 'none';
+    }
+</script>

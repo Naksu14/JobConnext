@@ -9,9 +9,9 @@
                 </li>
             </ul>
             <div class="d-flex">
-                <a class="navbar-brand" href="#">
+                <!-- <a class="navbar-brand" href="#">
                     <img src="./imgforadmin/Notification.png" alt="JobConnext" width="30" height="30">
-                </a>
+                </a> -->
                 <a class="navbar-brand" href="AdminProfile.php">
                     <img src="./imgforadmin/adminProfile.png" alt="JobConnext" width="40" height="40">
                 </a>

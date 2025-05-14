@@ -288,7 +288,7 @@
               to rate and feedback create an account and sign in
             </p>
             <div class="buttons">
-              <a href="Sign_In.php"><button class="button-midblue">Start your journey today</button></a>
+              <a href="Sign_Up.php"><button class="button-midblue">Start your journey today</button></a>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@
 }
 
 body{
-    /* overflow-y: hidden; */
+    overflow-y: hidden;
 }
 
 #logo{
@@ -208,7 +208,13 @@ body{
 
 .full-content{
     max-width: 75%;
-    height: 1152px;
+    height: 850px;
+    overflow-y: hidden;
+    overflow-y: scroll;
+    padding-bottom: 50px;
+}
+.full-content::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari */
 }
 
 .about-us{
@@ -594,6 +600,7 @@ body{
 .button-add-info{
     display: flex;
     justify-content: center;
+    margin-bottom: 150px;
 }
 .button-add-info button{
     width: 200px;
@@ -742,6 +749,7 @@ body{
     display: flex;
     flex-direction: column;
     margin-top: 25px;
+    margin-bottom: 150px;
 }
 .work-history span{
     text-align: left;
