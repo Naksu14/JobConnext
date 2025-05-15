@@ -1,10 +1,27 @@
-// Function to update file names after user selects files
 function report_updateFileList() {
     const fileInput = document.getElementById('report_fileUpload');
     const fileNames = Array.from(fileInput.files).map(file => file.name).join(', ');
     document.getElementById('report_fileNames').textContent = fileNames || 'No file selected';
-}
 
+    const viewBtn = document.getElementById("attachedFile");
+
+    if (fileInput.files.length > 0) {
+        viewBtn.style.display = "inline-block"; // show the button
+
+        // Create a Blob URL for the first file
+        const fileUrl = URL.createObjectURL(fileInput.files[0]);
+
+        // Assign click event to view the file in a new tab
+        viewBtn.onclick = () => {
+            window.open(fileUrl, '_blank');
+
+            // Optional: Revoke object URL after a short delay to free memory
+            setTimeout(() => URL.revokeObjectURL(fileUrl), 1000);
+        };
+    } else {
+        viewBtn.style.display = "none";
+    }
+}
 // Function to show selected reasons for reporting
 function showSelectedReasons() {
     const checked = document.querySelectorAll('input[name="reason"]:checked');
@@ -30,50 +47,49 @@ function showSelectedReasons() {
 
 // Function to handle the report submission
 function submitReport(selectedReasons) {
-    const description = document.getElementById('description').value;
-    const fileInput = document.getElementById('report_fileUpload');
+    const modal = Swal.getPopup(); // get the current SweetAlert2 modal container
+    const description = modal.querySelector('#description').value;
+    const fileInput = modal.querySelector('#report_fileUpload');
     const files = fileInput.files;
 
-    // Prepare form data to send to the server
     const formData = new FormData();
     formData.append('description', description);
     formData.append('reasons', JSON.stringify(selectedReasons));
 
-    // Append files to the form data
     for (let i = 0; i < files.length; i++) {
         formData.append('files[]', files[i]);
     }
 
-    // Send the report data to the server
-    // fetch('../GuessPortal/report.php', {
-    //     method: 'POST',
-    //     body: formData
-    // })
-    // .then(response => response.json())
-    // .then(data => {
-    //     if (data.success) {
-    //         Swal.fire({
-    //             icon: 'success',
-    //             title: 'Report Submitted',
-    //             text: 'Your report has been successfully submitted.'
-    //         });
-    //     } else {
-    //         Swal.fire({
-    //             icon: 'error',
-    //             title: 'Submission Failed',
-    //             text: 'There was an issue submitting your report. Please try again later.'
-    //         });
-    //     }
-    // })
-    // .catch(error => {
-    //     console.error('Error submitting report:', error);
-    //     Swal.fire({
-    //         icon: 'error',
-    //         title: 'Oops!',
-    //         text: 'Failed to submit the report. Please try again later.'
-    //     });
-    // });
+    fetch('../ClientPortal/scriptsfordb/report_record.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Report Submitted',
+                text: 'Your report has been successfully submitted.'
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Submission Failed',
+                text: 'There was an issue submitting your report. Please try again later.'
+            });
+        }
+    })
+    .catch(error => {
+        console.error('Error submitting report:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops!',
+            text: 'Failed to submit the report. Please try again later.'
+        });
+    });
 }
+
 
 // Function to trigger the report modal
 function reportPost(event, user_id) {
