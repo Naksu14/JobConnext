@@ -35,7 +35,7 @@
         </div>
         <div class="d-flex flex-column align-items-start mb-4">
             <h6 style="color:red">Message Report</h6>
-            <textarea class="form-control-sm p-2 swal2-input" placeholder="Report message" rows="2" id="description" style="height: 200px; resize: none;"></textarea>
+            <textarea class="form-control-sm p-2 swal2-input" placeholder="Report message" rows="2" id="report_description" style="height: 200px; resize: none;"></textarea>
         </div>
         <div class="d-flex flex-column justify-content-start align-items-start gap-2 mb-1">
             <h6 style="color:red">Evidence File Attachment</h6>

@@ -22,45 +22,31 @@ function report_updateFileList() {
         viewBtn.style.display = "none";
     }
 }
-// Function to show selected reasons for reporting
-function showSelectedReasons() {
-    const checked = document.querySelectorAll('input[name="reason"]:checked');
-    const values = Array.from(checked).map(cb => cb.value);
 
-    if (values.length === 0) {
-        Swal.fire({
-            icon: 'warning',
-            title: 'No option selected',
-            text: 'Please select at least one reason before submitting.'
-        });
-    } else {
-        Swal.fire({
-            icon: 'info',
-            title: 'Selected Reasons',
-            html: `<ul>${values.map(v => `<li>${v}</li>`).join('')}</ul>`
-        });
-
-        // Call the function to submit the report
-        submitReport(values);
-    }
-}
 
 // Function to handle the report submission
-function submitReport(selectedReasons) {
-    const modal = Swal.getPopup(); // get the current SweetAlert2 modal container
-    const description = modal.querySelector('#description').value;
-    const fileInput = modal.querySelector('#report_fileUpload');
+function submitReport(user_id_report) {
+    const checked = document.querySelectorAll('input[name="reason"]:checked');
+    const values = Array.from(checked).map(cb => cb.value);
+    const description = document.getElementById('report_description').value;
+    const fileInput = document.getElementById('report_fileUpload');
     const files = fileInput.files;
+
+    console.log(description);
+    console.log(files);
+    console.log(values);
+    console.log(user_id_report);
 
     const formData = new FormData();
     formData.append('description', description);
-    formData.append('reasons', JSON.stringify(selectedReasons));
+    formData.append('report_id', user_id_report);
+    formData.append('reasons', JSON.stringify(values));
 
     for (let i = 0; i < files.length; i++) {
         formData.append('files[]', files[i]);
     }
 
-    fetch('../ClientPortal/scriptsfordb/report_record.php', {
+    fetch('../ClientPortal/scriptsfordb/report_recorder.php', {
         method: 'POST',
         body: formData
     })
@@ -117,7 +103,7 @@ function reportPost(event, user_id) {
                 const submitBtn = document.getElementById('submitReportBtn');
                 if (submitBtn) {
                     submitBtn.addEventListener('click', () => {
-                        showSelectedReasons();
+                        submitReport(user_id);
                     });
                 }
             }, 100);
