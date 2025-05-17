@@ -26,7 +26,7 @@ if (isset($_SESSION['worker_id'])) {
             $birthDate = $row['birthDate'];
         }
     }
-    
+
     $stmt->close();
 }
 //email address
@@ -81,6 +81,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
         href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
     <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -120,7 +121,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                 </div>
                 <div class="client_id">
                     <span>
-                        ID:<?php echo htmlspecialchars($worker_id) ?>
+                        ID: <?php echo htmlspecialchars($worker_id) ?>
                     </span>
                 </div>
             </div>
@@ -200,7 +201,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                 </span>
                 <ul>
                     <li>
-                        Full Name: <?php echo htmlspecialchars($fullName) ?>
+                        Full Name: <span><?php echo htmlspecialchars($fullName) ?></span>
                     </li>
                     <li>
                         Date of Birth:
@@ -215,10 +216,10 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                         <div class="address">
                             <div class="address-header">Address:</div>
                             <div class="address-content">
-                                <h6 id="header-address">
+                                <span id="header-address">
                                     <p id="address-text"><?php echo htmlspecialchars($address); ?></p>
                                     <input type="text" id="address-input" class="form-control d-none" value="<?php echo htmlspecialchars($address); ?>">
-                                </h6>
+                                </span>
                             </div>
                             <div class="address-img">
                                 <div class="show-location">
@@ -264,6 +265,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                 <br><br><br><br><br>
 
             </div>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
             <script>
                 document.getElementById('edit-trigger').addEventListener('click', () => {
@@ -292,9 +294,9 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                                 birthDate
                             })
                         })
-                        .then(response => response.text()) // Read raw text first
+                        .then(response => response.text())
                         .then(text => {
-                            console.log('Raw response:', text); // Debug output
+                            console.log('Raw response:', text);
 
                             let data;
                             try {
@@ -306,40 +308,41 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                             }
 
                             if (data.success) {
-                                document.getElementById('about-text').innerText = about;
+                                document.getElementById('about-input').innerText = about;
                                 document.getElementById('address-text').innerText = address;
                                 document.getElementById('phone-text').innerText = phone;
                                 document.getElementById('nationality-text').innerText = nationality;
                                 document.getElementById('civil-status-text').innerText = civilStatus;
                                 document.getElementById('birth-text').innerText = birthDate;
 
-
                                 document.getElementById('map-frame').src = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 
                                 Swal.fire({
                                     toast: true,
-                                    position: 'top-end', // or 'top-start', 'bottom-end', etc.
+                                    position: 'top-end',
                                     icon: 'success',
                                     title: 'Profile Updated',
                                     text: 'Your profile has been successfully updated!',
                                     showConfirmButton: false,
-                                    timer: 3000, // Auto close after 3 seconds
+                                    timer: 3000,
                                     timerProgressBar: true,
                                     customClass: {
                                         popup: 'colored-toast'
                                     }
                                 }).then(() => {
                                     toggleEditMode(false);
+                                    location.reload();
                                 });
-
                             } else {
                                 alert('Update failed: ' + (data.message || 'Unknown error.'));
+
                             }
                         })
                         .catch(err => {
                             console.error('Fetch error:', err);
-                            alert('Request failed. Check your internet connection or server.');
+                            alert('Request failed. ' + err.message);
                         });
+
                 });
 
                 function toggleEditMode(editMode) {
@@ -398,9 +401,6 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                     // Update the input field with the formatted value
                     input.value = value;
                 }
-            </script>
-            <script>
-                
             </script>
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

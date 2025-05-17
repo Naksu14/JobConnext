@@ -393,3 +393,16 @@ body{
     font-size: 14px;
     width: 300px; /* Optional */
 }
+
+  
+ #save-btn{
+    height: 40px;
+    margin-top: 10px;
+    background-color: var(--darkblue);
+    color: #fff;
+    border: none;
+  }
+
+  #save-btn:hover{
+    background-color: #3445ff;
+  }

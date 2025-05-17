@@ -4,11 +4,6 @@ include '../db_con/db_connection.php';
 
 
 
-$companyName = "COMPANY NAME";
-$clientAboutUs = "add About Us Company";
-$clientAddress = "add Location Address";
-$clientPhoneNumber = "add Phone Number";
-$clientEmail = "add Email Address";
 
 
 if (isset($_SESSION['client_id'])) {
@@ -28,7 +23,12 @@ if (isset($_SESSION['client_id'])) {
         }
         $stmt->close();
     } else {
-        $companyName = "Error fetching company";
+        $companyName = "COMPANY NAME";
+        $clientAboutUs = "add About Us Company";
+        $clientAddress = "add Location Address";
+        $clientPhoneNumber = "add Phone Number";
+        $clientEmail = "add Email Address";
+
     }
 
     // Phone number from tbl_client_information
@@ -152,7 +152,7 @@ if (isset($_SESSION['client_id'])) {
                             <input type="text" id="social-input" class="form-control d-none" value="<?php echo htmlspecialchars($clientEmail); ?>">
                         </li>
                     </ul>
-                    <button id="save-btn" class="btn btn-primary btn-md d-none mt-4" style="padding: 5px 20px 5px 20px;"><b>Save</b></button>
+                    <button id="save-btn" class="d-none" style="padding: 5px 20px 5px 20px;"><b>Save</b></button>
                     <br><br><br><br><br>
                 </div>
             </div>

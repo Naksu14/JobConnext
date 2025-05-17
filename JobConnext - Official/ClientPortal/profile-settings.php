@@ -231,7 +231,7 @@ $conn->close();
 
                             <div class="inline-upload">
                                 <input type="file" name="image" accept="image/jpeg, image/png, image/jpg" required>
-                                <button type="submit" name="upload">Upload New Picture</button>
+                                <button type="submit" id="save-btn" name="upload">Upload New Picture</button>
                             </div>
 
                             <div class="statement-down">
@@ -277,7 +277,7 @@ $conn->close();
                             </div>
                             <div class="col">
                                 <div class="button-email">
-                                    <button type="submit" name="save_profile" class="btn btn-primary">Save Changes</button>
+                                    <button type="submit" id="save-btn" name="save_profile" class="btn btn-primary">Save Changes</button>
                                 </div>
                             </div>
                         </div>
@@ -308,7 +308,7 @@ $conn->close();
                 </div>
                 <div class="content-footer">
                     <div class="save-butt">
-                        <button type="submit" name="change_password" class="btn btn-primary">
+                        <button type="submit" name="change_password" id="save-btn" class="btn btn-primary">
                             save
                         </button>
                     </div>

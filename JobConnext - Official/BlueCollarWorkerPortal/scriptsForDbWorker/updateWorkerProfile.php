@@ -1,27 +1,13 @@
 <?php
 session_start();
 
-$servername = "127.0.0.1"; 
-$username = "root";       
-$password = "";             
-$dbname = "job_connext";  
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "job_connext";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 header('Content-Type: application/json');
-
-// Database connection error
-if ($conn->connect_error) {
-    http_response_code(500); // signal server error
-    echo json_encode(['success' => false, 'message' => 'DB connection failed']);
-    exit;
-}
-
-// Not logged in
-if (!isset($_SESSION['worker_id'])) {
-    http_response_code(401); // unauthorized
-    echo json_encode(['success' => false, 'message' => 'Not logged in']);
-    exit;
-}
 
 $worker_id = $_SESSION['worker_id'];
 $data = json_decode(file_get_contents('php://input'), true);

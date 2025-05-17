@@ -117,7 +117,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                 </div>
                 <div class="client_id">
                     <span>
-                        <?php echo htmlspecialchars($worker_id)?>
+                        ID: <?php echo htmlspecialchars($worker_id)?>
                     </span>
                 </div>
             </div>
