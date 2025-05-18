@@ -37,6 +37,36 @@ function submitReport(user_id_report) {
     console.log(values);
     console.log(user_id_report);
 
+    const MAX_FILE_SIZE_MB = 5;
+    const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'application/pdf'];
+
+    // VALIDATION
+    if (values.length === 0) {
+        Swal.showValidationMessage(`Please select at least one reason.`);
+        return;
+    }
+
+    if (description === '') {
+        Swal.showValidationMessage(`Please enter a description.`);
+        return;
+    }
+
+    if (files.length === 0) {
+        Swal.showValidationMessage(`Please attach at least one evidence file.`);
+        return;
+    }
+
+    for (let file of files) {
+        if (!ALLOWED_TYPES.includes(file.type)) {
+            Swal.showValidationMessage(`File "${file.name}" is not an allowed type.`);
+            return;
+        }
+        if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+            Swal.showValidationMessage(`File "${file.name}" exceeds the ${MAX_FILE_SIZE_MB}MB size limit.`);
+            return;
+        }
+    }
+
     const formData = new FormData();
     formData.append('description', description);
     formData.append('report_id', user_id_report);
