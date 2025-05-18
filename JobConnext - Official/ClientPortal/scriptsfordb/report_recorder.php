@@ -23,6 +23,7 @@ if (!isset($_POST['description'], $_POST['reasons'], $_POST['report_id'])) {
 
 $description = trim($_POST['description']);
 $_report_id = $_POST['report_id'];
+$job_post_id = $_POST['job_post_id'];
 $reasons = json_decode($_POST['reasons'], true);
 
 // Validate $reasons
@@ -76,7 +77,8 @@ if (isset($_FILES['files'])) {
 
         if (move_uploaded_file($tmpName, $destination)) {
             $responseFiles[] = $uniqueName;
-            $filename = $uniqueName;;
+            $filename = $uniqueName;
+            ;
         }
     }
 }
@@ -88,10 +90,11 @@ $reasonString = json_encode($reasons);
 $sql = "INSERT INTO tbl_report_records (
     user_id,
     user_reported,
+    job_post_id,
     violation,
     description,
     fileName
-) VALUES (?, ?, ?, ?, ?)";
+) VALUES (?, ?, ?, ?, ?, ?)";
 
 $stmt = $conn->prepare($sql);
 if (!$stmt) {
@@ -100,9 +103,10 @@ if (!$stmt) {
 }
 
 $stmt->bind_param(
-    'sssss',
+    'ssssss',
     $user_id,
     $_report_id,
+    $job_post_id,
     $reasonString,
     $description,
     $filename
@@ -118,11 +122,10 @@ echo json_encode([
     'success' => true,
     'message' => 'Report submitted successfully.',
     'uploaded_files' => $responseFiles,
+    'job_post_id' => $job_post_id,
     'description' => $description,
     'report_id' => $_report_id,
     'reasons' => $reasons
 ]);
 exit;
 ?>
-
-

@@ -25,11 +25,12 @@ function report_updateFileList() {
 
 
 // Function to handle the report submission
-function submitReport(user_id_report) {
+function submitReport(user_id_report, job_post_id) {
     const checked = document.querySelectorAll('input[name="reason"]:checked');
     const values = Array.from(checked).map(cb => cb.value);
     const description = document.getElementById('report_description').value;
     const fileInput = document.getElementById('report_fileUpload');
+    const jobpostId = job_post_id ?? null;
     const files = fileInput.files;
 
     console.log(description);
@@ -70,6 +71,7 @@ function submitReport(user_id_report) {
     const formData = new FormData();
     formData.append('description', description);
     formData.append('report_id', user_id_report);
+    formData.append('job_post_id', jobpostId);
     formData.append('reasons', JSON.stringify(values));
 
     for (let i = 0; i < files.length; i++) {
@@ -108,8 +110,9 @@ function submitReport(user_id_report) {
 
 
 // Function to trigger the report modal
-function reportPost(event, user_id) {
+function reportPost(event, user_id, job_post_id) {
     console.log("Reporting user:", user_id);
+    console.log("Job Post Id: ", job_post_id ?? "NO ID");
 
     fetch('../GuessPortal/report.php')
         .then(response => response.text())
@@ -133,7 +136,7 @@ function reportPost(event, user_id) {
                 const submitBtn = document.getElementById('submitReportBtn');
                 if (submitBtn) {
                     submitBtn.addEventListener('click', () => {
-                        submitReport(user_id);
+                        submitReport(user_id, job_post_id);
                     });
                 }
             }, 100);
