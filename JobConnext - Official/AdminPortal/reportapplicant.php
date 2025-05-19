@@ -74,74 +74,7 @@
             </div>
 
             <div class="post-content">
-                <div class="post-card">
-                    <div class="post-header">
-                        <div class="profile-info">
-                            <img src="./imgforadmin/adminprofile.png" alt="Profile Image" class="profile-img">
-                            <div class="profile-details">
-                                <h4>Rhanel Sy</h4>
-                                <p class="freelance-info">Freelance</p>
-                            </div>
-                        </div>
-                        <div class="post-menu">
-                            <span class="reported-time">Reported 3 days ago</span>
-                            <button class="btn btn-menu">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Reported reason section -->
-                    <div class="reported-reason">
-                        <strong>Reported Reason:</strong>
-                        <span class="reason-text">Inappropriate Content</span>
-                    </div>
-                </div>
-                <div class="post-card">
-                    <div class="post-header">
-                        <div class="profile-info">
-                            <img src="./imgforadmin/adminprofile.png" alt="Profile Image" class="profile-img">
-                            <div class="profile-details">
-                                <h4>Iriss Raven</h4>
-                                <p class="freelance-info">Freelance</p>
-                            </div>
-                        </div>
-                        <div class="post-menu">
-                            <span class="reported-time">Reported 3 days ago</span>
-                            <button class="btn btn-menu">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <!-- Reported reason section -->
-                    <div class="reported-reason">
-                        <strong>Reported Reason:</strong>
-                        <span class="reason-text">Inappropriate Content</span>
-                    </div>
-                </div>
-                <div class="post-card">
-                    <div class="post-header">
-                        <div class="profile-info">
-                            <img src="./imgforadmin/adminprofile.png" alt="Profile Image" class="profile-img">
-                            <div class="profile-details">
-                                <h4>Listana Lance</h4>
-                                <p class="freelance-info">Freelance</p>
-                            </div>
-                        </div>
-                        <div class="post-menu">
-                            <span class="reported-time">Reported 3 days ago</span>
-                            <button class="btn btn-menu">
-                                <i class="bi bi-three-dots-vertical"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Reported reason section -->
-                    <div class="reported-reason">
-                        <strong>Reported Reason:</strong>
-                        <span class="reason-text">Inappropriate Content</span>
-                    </div>
-                </div>
-
+                <?php include "component/reportedWorker.php"; ?>
             </div>
 
         </div>
