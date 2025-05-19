@@ -1,52 +1,34 @@
 <?php
 session_start();
 include '../db_con/db_connection.php';
-header('Content-Type: application/json');
+
 
 $workerId = $_SESSION['worker_id'];
-$data = json_decode(file_get_contents("php://input"), true);
-// $jobPostId = $data['job_post_id'] ?? null; 
 
 if (!$workerId) {
     echo json_encode(['success' => false, 'message' => 'Missing job or worker ID.']);
     exit;
 }
 
-$checkJob = $conn->prepare("SELECT 1 FROM tbl_client_jobpost WHERE job_post_id = ?");
-$checkJob->bind_param("i", $jobPostId);
-$checkJob->execute();
-$jobExists = $checkJob->get_result()->num_rows > 0;
-$checkJob->close();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $worker_id = $_POST['worker_id'];
+    $jobPostId= $_POST['job_post_id'];
 
-if (!$jobExists) {
-    echo json_encode(['success' => false, 'message' => 'Job post not found.']);
-    exit;
+    $sql = "INSERT INTO tbl_applicants (worker_id, job_post_id) VALUES (?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ii", $worker_id, $jobPostId);
+
+    if ($stmt->execute()) {
+        echo "Application submitted successfully!";
+    } else {
+        echo "Error: " . $conn->error;
+    }
+
+    $stmt->close();
+    $conn->close();
 }
 
-$checkApply = $conn->prepare("SELECT 1 FROM tbl_applicants WHERE job_post_id = ? AND worker_id = ?");
-$checkApply->bind_param("ii", $jobPostId, $workerId);
-$checkApply->execute();
-$alreadyApplied = $checkApply->get_result()->num_rows > 0;
-$checkApply->close();
-
-if ($alreadyApplied) {
-    echo json_encode(['success' => false, 'message' => 'You have already applied to this job.']);
-    exit;
-}
-
-$insert = $conn->prepare("INSERT INTO tbl_applicants (job_post_id, worker_id) VALUES (?, ?)");
-$insert->bind_param("ii", $jobPostId, $workerId);
-
-if ($insert->execute()) {
-    echo json_encode(['success' => true, 'message' => 'Application submitted successfully.']);
-} else {
-    echo json_encode(['success' => false, 'message' => 'Failed to submit application.']);
-}
-$insert->close();
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
