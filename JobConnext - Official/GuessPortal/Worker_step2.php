@@ -122,13 +122,14 @@ include "../db_con/db_connection.php";
                             </div>
                         </div>
                         <div class="col-md-4">
-    <label for="validationCustom01" class="form-label">Phone number</label>
-    <input type="text" class="form-control" id="validationCustom01"
-           pattern="^\+63-\d{3}-\d{3}-\d{4}$" maxlength="16" name="phone_no" required oninput="formatPhoneNumber(this)">
-    <div class="valid-feedback">
-        Looks good!
-    </div>
-</div>
+                            <label for="validationCustom01" class="form-label">Phone number</label>
+                            <input type="text" class="form-control" id="validationCustom01"
+                                pattern="^\+63-\d{3}-\d{3}-\d{4}$" maxlength="16" name="phone_no" required oninput="formatPhoneNumber(this)">
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
+                        
 
 <script>
     function formatPhoneNumber(input) {
@@ -163,6 +164,41 @@ include "../db_con/db_connection.php";
                         <div class="col-md-7">
                             <label for="validationCustom01" class="form-label">Bio</label>
                             <input type="text" class="form-control" id="validationCustom01" name="bio" required>
+                            <div class="valid-feedback">
+                            Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom01" class="form-label">Year experience</label>
+                            <input type="number" class="form-control" id="validationCustom01" name="year_exp" required>
+                            <div class="valid-feedback">
+                            Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom01" class="form-label">Nationality</label>
+                            <input type="text" class="form-control" id="validationCustom01" name="nationality" required>
+                            <div class="valid-feedback">
+                            Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom01" class="form-label">Civil status</label>
+                            <input type="text" class="form-control" id="validationCustom01" name="civil_status" required>
+                            <div class="valid-feedback">
+                            Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="validationCustom01" class="form-label">birthdate</label>
+                            <input type="date" class="form-control" id="validationCustom01" name="birthdate" required>
+                            <div class="valid-feedback">
+                            Looks good!
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <label for="validationCustom01" class="form-label">About yourself</label>
+                            <textarea type="text" class="form-control h-150px" id="validationCustom01" name="about" required></textarea>
                             <div class="valid-feedback">
                             Looks good!
                             </div>
@@ -210,6 +246,7 @@ include "../db_con/db_connection.php";
                             Looks good!
                             </div>
                         </div>
+                        
                         <h4>Resume</h4>
                         <p>Attach your resume here</p>
                         <p class="file-note">PDF file only</p>
@@ -271,7 +308,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Required fields validation
-    $required_fields = ['firstname', 'middlename', 'lastname', 'phone_no', 'bio', 'country', 'city', 'region', 'province', 'barangay', 'postal_code'];
+    $required_fields = ['firstname', 'middlename', 'lastname', 'phone_no', 'bio', 'country', 'city', 
+                        'region', 'province', 'barangay', 'postal_code', 'year_exp', 'nationality', 
+                        'civil_status', 'birthdate', 'about'];
     foreach ($required_fields as $field) {
         if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
             die("Error: Missing required field: $field");
@@ -290,18 +329,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $province = $_POST['province'];
     $barangay = $_POST['barangay'];
     $postal_code = $_POST['postal_code'];
+    $year_exp = $_POST['year_exp'];
+    $nationality = $_POST['nationality'];
+    $civil_status = $_POST['civil_status'];
+    $birthdate = $_POST['birthdate'];
+    $about = $_POST['about'];
+
+
+
 
     // Insert user profile data using a prepared statement
     $sql = "INSERT INTO tbl_worker_information 
-        (worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        (worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode, workerAbout, year_experienced, nationality, civilStatus, birthDate) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     $stmt = $conn->prepare($sql);
     if (!$stmt) {
         die("Error preparing SQL statement: " . $conn->error);
     }
 
-    $stmt->bind_param("ssssssssssss", $worker_id, $firstname, $middlename, $lastname, $phone_no, $bio, $country, $city, $region, $province, $barangay, $postal_code);
+    $stmt->bind_param("sssssssssssssssss", $worker_id, $firstname, $middlename, $lastname, $phone_no, $bio, $country, $city, 
+                        $region, $province, $barangay, $postal_code, $about, $year_exp, 
+                        $nationality, $civil_status, $birthdate);
     
     if (!$stmt->execute()) {
         die("Error inserting data into tbl_worker_information: " . $stmt->error);

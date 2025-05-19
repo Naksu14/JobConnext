@@ -232,6 +232,13 @@ include "../db_con/db_connection.php";
                             Looks good!
                         </div>
                     </div>
+                    <div class="col-md-7">
+                        <label for="validationCustom01" class="form-label">About the Company</label>
+                        <textarea class="form-control h-150px" id="validationCustom01" name="company_about" required></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
 
                     <script>
 
@@ -274,7 +281,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Required fields validation
-    $required_fields = ['firstname', 'middlename', 'lastname', 'phone_no', 'bio', 'country', 'city', 'region', 'province', 'barangay', 'postal_code', 'company_name', 'company_Address'];
+    $required_fields = ['firstname', 'middlename', 'lastname', 'phone_no', 'bio', 'country', 'city', 'region', 'province', 'barangay', 'postal_code', 'company_name', 'company_Address', 'company_about'];
     foreach ($required_fields as $field) {
         if (!isset($_POST[$field]) || empty(trim($_POST[$field]))) {
             die("Error: Missing required field: $field");
@@ -295,6 +302,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $postal_code = $_POST['postal_code'];
     $company_name = $_POST['company_name'];
     $company_Address = $_POST['company_Address'];
+    $company_about = $_POST['company_about'];
 
     // Insert user profile data using a prepared statement
     $sql1 = "INSERT INTO tbl_client_information 
@@ -307,9 +315,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error inserting into tbl_client_information: " . $stmt1->error);
     }
 
-    $sql2 = "INSERT INTO tbl_company_info (client_id, company_name, company_address) VALUES (?, ?, ?)";
+    $sql2 = "INSERT INTO tbl_company_info (client_id, company_name, company_aboutUs, company_Address) VALUES (?, ?, ?, ?)";
     $stmt2 = $conn->prepare($sql2);
-    $stmt2->bind_param("sss", $client_id, $company_name, $company_Address);
+    $stmt2->bind_param("ssss", $client_id, $company_name, $company_about, $company_Address);
     
     if (!$stmt2->execute()) {
         die("Error inserting into tbl_company_info: " . $stmt2->error);

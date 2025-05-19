@@ -15,7 +15,7 @@ if (isset($_SESSION['worker_id'])) {
         $stmt->execute();
         $result = $stmt->get_result();
         if ($row = $result->fetch_assoc()) {
-            $worker_id = $row['worker_id'];
+            $worker_id = $row['worker_id']; 
             $fullName = $row['firstname'] . " " . $row['middlename'] . " " . $row['lastname'];
             $phone = $row['phone_no'];
             $bio = $row['bio'];
