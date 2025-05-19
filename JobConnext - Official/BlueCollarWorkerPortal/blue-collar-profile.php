@@ -162,7 +162,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
             </ul>
 
             <div id="soft-skills-input-wrapper" class="d-none">
-                <input type="text" id="new-soft-skill" class="form-control" placeholder="Add Soft a Soft Skill">
+                <input type="text" id="new-soft-skill" class="form-control" placeholder="Add Soft Skill">
                 <button type="button" class="btn btn-sm btn-primary mt-2" onclick="addSoftSkill()">Add Skill</button>
                 <ul id="soft-skills-editable-list" class="mt-2">
                     <?php
