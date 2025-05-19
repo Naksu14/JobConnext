@@ -8,7 +8,7 @@ if (isset($_SESSION['worker_id'])) {
     $user_id = $_SESSION['worker_id'];
 
     // Fetch worker data from tbl_worker
-    $query = "SELECT worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode, workerAbout, nationality, civilStatus, birthDate FROM tbl_worker_information WHERE worker_id = ?";
+    $query = "SELECT worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode, workerAbout, nationality, civilStatus, birthDate, softSkills FROM tbl_worker_information WHERE worker_id = ?";
     $stmt = $conn->prepare($query);
     if ($stmt) {
         $stmt->bind_param("i", $user_id);
@@ -24,6 +24,8 @@ if (isset($_SESSION['worker_id'])) {
             $nationality = $row['nationality'];
             $civilStatus = $row['civilStatus'];
             $birthDate = $row['birthDate'];
+            $softSkills = $row['softSkills'];
+            $skillsArray = array_map('trim', explode(',', $softSkills));
         }
     }
 
@@ -147,21 +149,33 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                 <textarea id="about-input" class="form-control d-none"><?php echo htmlspecialchars($workerAbout); ?></textarea>
             </div>
             <div class="container my-skills">
-                <span>Skills</span>
+
+                <span>Soft Skills:</span>
             </div>
-            <div class="addedSkills">
-                <ul>
-                    <li>
-                        Technical Skills: technical expertise, such as wiring, welding, machinery maintenance
-                    </li>
-                    <li>
-                        Tools & Equipment: Proficient in using power tools, forklifts, lathe machines
-                    </li>
-                    <li>
-                        Soft Skills: teamwork, communication, time management, problem-solving
-                    </li>
+
+            <ul id="soft-skills-text">
+                <?php
+                foreach ($skillsArray as $skill) {
+                    echo "<li>" . htmlspecialchars($skill) . "</li>";
+                }
+                ?>
+            </ul>
+
+            <div id="soft-skills-input-wrapper" class="d-none">
+                <input type="text" id="new-soft-skill" class="form-control" placeholder="Add Soft a Soft Skill">
+                <button type="button" class="btn btn-sm btn-primary mt-2" onclick="addSoftSkill()">Add Skill</button>
+                <ul id="soft-skills-editable-list" class="mt-2">
+                    <?php
+                    foreach ($skillsArray as $skill) {
+                        $skill = trim($skill);
+                        echo "<li data-skill='" . htmlspecialchars($skill) . "'>" . htmlspecialchars($skill) .
+                            " <button type='button' onclick='removeSoftSkill(this)' class='btn btn-sm btn-danger'>Remove</button></li>";
+                    }
+                    ?>
                 </ul>
+                <input type="hidden" id="soft-skills-hidden" name="softSkills" value="<?php echo htmlspecialchars($softSkills); ?>">
             </div>
+
             <div class="resume">
                 <span>
                     Resume
@@ -279,6 +293,8 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                     const nationality = document.getElementById('nationality-input').value;
                     const civilStatus = document.getElementById('civil-status-input').value;
                     const birthDate = document.getElementById('birth-input').value;
+                    const softSkills = document.getElementById('soft-skills-hidden').value;
+
 
                     fetch('../BlueCollarWorkerPortal/scriptsForDbWorker/updateWorkerProfile.php', {
                             method: 'POST',
@@ -291,7 +307,8 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                                 phone,
                                 nationality,
                                 civilStatus,
-                                birthDate
+                                birthDate,
+                                softSkills
                             })
                         })
                         .then(response => response.text())
@@ -314,6 +331,8 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                                 document.getElementById('nationality-text').innerText = nationality;
                                 document.getElementById('civil-status-text').innerText = civilStatus;
                                 document.getElementById('birth-text').innerText = birthDate;
+                                document.getElementById('soft-skills-text').innerHTML = softSkills.split(',').map(skill => `<li>${skill.trim()}</li>`).join('');
+
 
                                 document.getElementById('map-frame').src = `https://maps.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
 
@@ -369,8 +388,50 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                     toggleClass('birth-text', !editMode);
                     toggleClass('birth-input', editMode);
 
+                    toggleClass('soft-skills-input-wrapper', editMode);
+
+
+
 
                     toggleClass('save-btn', editMode);
+                }
+            </script>
+
+            <script>
+                function addSoftSkill() {
+                    const input = document.getElementById('new-soft-skill');
+                    const skill = input.value.trim();
+                    if (skill === '') return;
+
+                    const ul = document.getElementById('soft-skills-editable-list');
+
+                    // Prevent duplicate entries
+                    for (let li of ul.children) {
+                        if (li.dataset.skill.toLowerCase() === skill.toLowerCase()) {
+                            alert('Skill already added.');
+                            return;
+                        }
+                    }
+
+                    const li = document.createElement('li');
+                    li.dataset.skill = skill;
+                    li.innerHTML = `${skill} <button type='button' onclick='removeSoftSkill(this)' class='btn btn-sm btn-danger'>Remove</button>`;
+                    ul.appendChild(li);
+
+                    input.value = '';
+                    updateSoftSkillsHiddenField();
+                }
+
+                function removeSoftSkill(button) {
+                    const li = button.parentNode;
+                    li.remove();
+                    updateSoftSkillsHiddenField();
+                }
+
+                function updateSoftSkillsHiddenField() {
+                    const ul = document.getElementById('soft-skills-editable-list');
+                    const skills = Array.from(ul.children).map(li => li.dataset.skill);
+                    document.getElementById('soft-skills-hidden').value = skills.join(',');
                 }
             </script>
 
@@ -402,6 +463,8 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                     input.value = value;
                 }
             </script>
+
+
 
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
                 integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

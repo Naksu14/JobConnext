@@ -18,10 +18,11 @@ $workerAbout = $data['about'] ?? '';
 $nationality = $data['nationality'] ?? '';
 $civilStatus = $data['civilStatus'] ?? '';
 $birthDate = $data['birthDate'] ?? null;
+$softSkills = $data ['softSkills'] ?? '';
 
 try {
-    $stmt1 = $conn->prepare("UPDATE tbl_worker_information SET phone_no = ?, address = ?, workerAbout = ?, nationality = ?, civilStatus = ?, birthDate = ? WHERE worker_id = ?");
-    $stmt1->bind_param("ssssssi", $phone, $address, $workerAbout, $nationality, $civilStatus, $birthDate, $worker_id);
+    $stmt1 = $conn->prepare("UPDATE tbl_worker_information SET phone_no = ?, address = ?, workerAbout = ?, nationality = ?, civilStatus = ?, birthDate = ?, softSkills = ? WHERE worker_id = ?");
+    $stmt1->bind_param("sssssssi", $phone, $address, $workerAbout, $nationality, $civilStatus, $birthDate, $softSkills, $worker_id);
     $stmt1->execute();
     $stmt1->close();
 
