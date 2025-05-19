@@ -12,7 +12,7 @@ if (!$workerId) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $worker_id = $_POST['worker_id'];
-    $jobPostId= $_POST['job_post_id'];
+    $jobPostId = $_POST['job_post_id'];
 
     $sql = "INSERT INTO tbl_applicants (worker_id, job_post_id) VALUES (?, ?)";
     $stmt = $conn->prepare($sql);
@@ -42,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../Assets/css/Blue-collar css/rejected-bluecollar.css">
+    <link rel="stylesheet" href="../Assets/css/postCard_and_view.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -128,7 +129,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <p id="email_display">Email</p>
                         </div>
                     </div>
-
+                    <p>Other Details</p>
+                    <button id="yourTargetButton">
+                        <i class="bi bi-eye"></i> View Attachment
+                    </button>
 
                     <div class="skills-worker-details">
                         <p>Qualifications and Skills</p>
@@ -168,11 +172,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </li>
                         </ol>
                     </div>
-                    <div class="applyJob" id="job_done_button">
-                        <button onclick="applyJob(window.currentJobPostId)">
+                    <div class="applyJob">
+                        <button id="applyJob">
                             Apply Job
                         </button>
-
                     </div>
 
                 </div>
@@ -284,6 +287,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             const clientId = this.dataset.clientid;
                             const jobid = this.dataset.jobid;
 
+                            const targetButton = document.querySelector('#yourTargetButton');
+                            if (targetButton) {
+                                targetButton.dataset.clientid = clientId;
+                                targetButton.dataset.jobid = jobid; // use a separate attribute
+                            }
+
+                            const targetApplyButton = document.querySelector('#applyJob');
+                            if (targetApplyButton) {
+                                targetApplyButton.dataset.clientid = clientId;
+                                targetApplyButton.dataset.jobid = jobid; // use a separate attribute
+                            }
+
 
 
                             // Update some text
@@ -313,15 +328,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
                                 document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
 
-                            } else if (type === 'job' || type === 'other-job') {
+                            } else if (type === 'job') {
                                 // Show job detail view only
                                 document.getElementById('job_detail_view').style.display = 'block';
-
-                                if (type === 'job') {
-                                    document.getElementById('job_done_button').style.display = 'block';
-                                } else {
-                                    document.getElementById('job_done_button').style.display = 'none';
-                                }
 
                                 // Fill job view data
                                 const statusElem = document.getElementById('job_Status');
@@ -358,7 +367,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                         console.log('Sending request with:', clientId, jobId);
 
-                        fetch(`scriptsfordb/get_file.php?client_id=${clientId}&job_id=${jobId}`)
+                        fetch(`../ClientPortal/scriptsfordb/get_file.php?client_id=${clientId}&job_id=${jobId}`)
                             .then(response => {
                                 console.log('HTTP status:', response.status);
                                 if (!response.ok) {
@@ -382,35 +391,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     });
                 </script>
                 <script>
+                    document.querySelector('#applyJob').addEventListener('click', function() {
+                        const clientId = this.dataset.clientid;
+                        const jobId = this.dataset.jobid;
 
-                    function applyJob(jobPostId) {
-                        if (!jobPostId) {
-                            Swal.fire('Error', 'Job ID is missing. Please try again.', 'error');
-                            return;
-                        }
+                        console.log('Sending request with:', clientId, jobId);
 
-                        fetch('../ClientPortal/scriptsfordb/submit_application.php', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json'
-                                },
-                                body: JSON.stringify({
-                                    job_post_id: jobPostId
-                                })
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.success) {
-                                    Swal.fire('Success', data.message, 'success');
-                                } else {
-                                    Swal.fire('Error', data.message, 'error');
-                                }
-                            })
-                            .catch(error => {
-                                console.error('Application error:', error);
-                                Swal.fire('Error', 'An error occurred while submitting your application.', 'error');
-                            });
-                    }
+                    });
+
+                    // function applyJob(jobId) {
+                    //     if (!jobId) {
+                    //         Swal.fire('Error', 'Job ID is missing. Please try again.', 'error');
+                    //         return;
+                    //     }
+
+                    //     fetch('../ClientPortal/scriptsfordb/submit_application.php', {
+                    //             method: 'POST',
+                    //             headers: {
+                    //                 'Content-Type': 'application/json'
+                    //             },
+                    //             body: JSON.stringify({
+                    //                 job_post_id: jobId
+                    //             })
+                    //         })
+                    //         .then(response => response.json())
+                    //         .then(data => {
+                    //             if (data.success) {
+                    //                 Swal.fire('Success', data.message, 'success');
+                    //             } else {
+                    //                 Swal.fire('Error', data.message, 'error');
+                    //             }
+                    //         })
+                    //         .catch(error => {
+                    //             console.error('Application error:', error);
+                    //             Swal.fire('Error', 'An error occurred while submitting your application.', 'error');
+                    //         });
+                    // }
                 </script>
 
                 <script src="../Assets/js/logout.js"></script>
