@@ -5,29 +5,6 @@ include '../db_con/db_connection.php';
 
 $workerId = $_SESSION['worker_id'];
 
-if (!$workerId) {
-    echo json_encode(['success' => false, 'message' => 'Missing job or worker ID.']);
-    exit;
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $worker_id = $_POST['worker_id'];
-    $jobPostId = $_POST['job_post_id'];
-
-    $sql = "INSERT INTO tbl_applicants (worker_id, job_post_id) VALUES (?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $worker_id, $jobPostId);
-
-    if ($stmt->execute()) {
-        echo "Application submitted successfully!";
-    } else {
-        echo "Error: " . $conn->error;
-    }
-
-    $stmt->close();
-    $conn->close();
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -287,10 +264,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             const clientId = this.dataset.clientid;
                             const jobid = this.dataset.jobid;
 
-                            const targetButton = document.querySelector('#yourTargetButton');
-                            if (targetButton) {
-                                targetButton.dataset.clientid = clientId;
-                                targetButton.dataset.jobid = jobid; // use a separate attribute
+                            const applyButton = document.querySelector('#applyJob');
+                            if (applyButton) {
+                                applyButton.dataset.clientid = clientId;
+                                applyButton.dataset.jobid = jobid; // use a separate attribute
                             }
 
                             const targetApplyButton = document.querySelector('#applyJob');
@@ -361,72 +338,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     });
 
 
-                    document.querySelector('#yourTargetButton').addEventListener('click', function() {
-                        const clientId = this.dataset.clientid;
+                    document.querySelector('#applyJob').addEventListener('click', function() {
+                        const workerId = window.sessionData.workerId;
                         const jobId = this.dataset.jobid;
 
-                        console.log('Sending request with:', clientId, jobId);
-
-                        fetch(`../ClientPortal/scriptsfordb/get_file.php?client_id=${clientId}&job_id=${jobId}`)
-                            .then(response => {
-                                console.log('HTTP status:', response.status);
-                                if (!response.ok) {
-                                    throw new Error(`HTTP error! Status: ${response.status}`);
-                                }
-                                return response.json();
+                        fetch('../BlueCollarWorkerPortal/scriptsForDbWorker/applicant_fetch.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded',
+                                },
+                                body: new URLSearchParams({
+                                    worker_id: workerId,
+                                    job_post_id: jobId,
+                                }),
                             })
-                            .then(data => {
-                                console.log('Response data:', data);
-
-                                if (data.success && data.filepath) {
-                                    window.open(data.filepath, '_blank');
+                            .then(response => response.json())
+                            .then(result => {
+                                if (result.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Applied!',
+                                        text: result.message,
+                                    });
                                 } else {
-                                    alert(data.message || 'File not found.');
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: result.message,
+                                    });
                                 }
                             })
-                            .catch(err => {
-                                console.error('Fetch error:', err);
-                                alert('An error occurred while fetching the file.');
+                            .catch(error => {
+                                console.error('Error:', error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Something went wrong',
+                                    text: 'Please try again later.',
+                                });
                             });
                     });
                 </script>
                 <script>
-                    document.querySelector('#applyJob').addEventListener('click', function() {
+                    document.querySelector('#applyButton').addEventListener('click', function() {
                         const clientId = this.dataset.clientid;
                         const jobId = this.dataset.jobid;
 
                         console.log('Sending request with:', clientId, jobId);
 
                     });
-
-                    // function applyJob(jobId) {
-                    //     if (!jobId) {
-                    //         Swal.fire('Error', 'Job ID is missing. Please try again.', 'error');
-                    //         return;
-                    //     }
-
-                    //     fetch('../ClientPortal/scriptsfordb/submit_application.php', {
-                    //             method: 'POST',
-                    //             headers: {
-                    //                 'Content-Type': 'application/json'
-                    //             },
-                    //             body: JSON.stringify({
-                    //                 job_post_id: jobId
-                    //             })
-                    //         })
-                    //         .then(response => response.json())
-                    //         .then(data => {
-                    //             if (data.success) {
-                    //                 Swal.fire('Success', data.message, 'success');
-                    //             } else {
-                    //                 Swal.fire('Error', data.message, 'error');
-                    //             }
-                    //         })
-                    //         .catch(error => {
-                    //             console.error('Application error:', error);
-                    //             Swal.fire('Error', 'An error occurred while submitting your application.', 'error');
-                    //         });
-                    // }
                 </script>
 
                 <script src="../Assets/js/logout.js"></script>

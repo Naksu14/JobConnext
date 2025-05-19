@@ -1,8 +1,4 @@
-<?php
-include '../db_con/db_connection.php';
 
-
-?>
 
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
     <div style="display: flex; gap: 0.5rem; align-items: center;">
