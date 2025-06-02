@@ -1,3 +1,4 @@
+<?php include $_SERVER['DOCUMENT_ROOT'] . '/JobConnext/JobConnext - Official/db_con/db_connection.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,9 +54,11 @@
             </div>
             <div class="locate-search">
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search username" aria-label="Search username" aria-describedby="basic-addon2">
-                    <span class="input-group-text" id="basic-addon2">Search</span>
+                    <input type="text" id="voiceSearchInput" onclick="startVoiceSearch()" class="form-control" placeholder="Search by name or company">
+                    <button  class="input-group-text" id="basic-addon2" class="btn btn-outline-secondary" type="button" >Search</button>
                 </div>
+
+
             </div>
 
             <div class="locate-user">
@@ -66,30 +69,27 @@
                     <ul class="dropdown-menu" id="userDropdownMenu">
                         <li><a class="dropdown-item" href="#" id="blueCollarOption" data-user="bluecollar">Blue Collar</a></li>
                         <li><a class="dropdown-item" href="#" id="clientOption" data-user="client">Client</a></li>
+                        <li><a class="dropdown-item" href="#" id="archiveduserOption" data-user="archivedUser">Archived User</a></li>
                         <li><a class="dropdown-item" href="#" id="adminOption" data-user="admin">Admin</a></li>
                     </ul>
                 </div>
-
-                <a href="AdminUserManangement.php" class="button-ArchivedUser">
-                    <span>Archived User</span>
-                </a>
-
                 <div class="btn-group" id="filterGroup">
-                    <button type="button" class="btn btn-darkblue" id="filterButton">Filter</button>
+                    <button type="button" class="btn btn-darkblue" id="filterButton" data-bs-toggle="dropdown" aria-expanded="false">Filter</button>
                     <button type="button" class="btn btn-darkblue dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" id="filterDropdownToggle">
                         <span class="visually-hidden">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" id="filterDropdownMenu">
-                        <li><a class="dropdown-item-fiter" href="#" id="sortByName">Sort by Name</a></li>
-                        <li><a class="dropdown-item-fiter" href="#" id="sortByDate">Sort by Date</a></li>
-                        <li><a class="dropdown-item-fiter" href="#" id="filterByStatus">Filter by Status</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" data-sort="name">Sort by Name</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" data-sort="date">Sort by Date</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" data-filter="active">Filter by Active</a></li>
                     </ul>
+
                 </div>
             </div>
         </div>
 
         <div class="table-container" id="tableContainer">
-            <?php include 'usermanagement/archivedUser.php'; ?>
+            <?php include 'usermanagement/admin.php'; ?>
         </div>
 
 

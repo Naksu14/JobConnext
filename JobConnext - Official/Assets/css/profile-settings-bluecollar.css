@@ -3,8 +3,8 @@
     --darkorange : #E46232;
 }
 
-*{
-   
+body{
+    overflow-y: hidden;
 }
 
 #logo{
@@ -66,7 +66,6 @@
     background-color:var(--darkblue);    
     color: #fff;
 }
-
 
 
 #input_post img{
@@ -195,8 +194,13 @@
 .full-content{
     max-width: 75%;
     height: 1152px;
+    overflow-y: hidden;
+    overflow-y: scroll;
+    padding-bottom: 50px;
 }
-
+.full-content::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari */
+}
 .about-us{
     margin-top: 10px;
 }

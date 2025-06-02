@@ -18,6 +18,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     $date_deadline = $row['deadline'];
     $job_offer = $row['job_offer'];
     $job_status = $row['job_status'];
+    $jobPostId = $row ['job_post_id'];
 
     $job_offered_companyname_QRY = "SELECT * FROM tbl_company_info WHERE client_id = $client_id";
     $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
@@ -66,6 +67,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     <a href="#" class="card-link"
         data-type="job"
         data-clientid="<?php echo $client_id ?>"
+        data-jobid = "<?php echo $jobPostId?>"
         data-companyname="<?php echo htmlspecialchars($company_name) ?>"
         data-location="<?php echo htmlspecialchars($job_loc) ?>"
         data-job-status="<?php echo htmlspecialchars($job_status) ?>"

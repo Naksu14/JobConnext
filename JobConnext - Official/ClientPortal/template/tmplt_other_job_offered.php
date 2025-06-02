@@ -55,7 +55,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         $i++;
 
         if ($job_status == null) {
-            $status =  "Inactive";
+            $status = "Inactive";
             $statuscolor = 'red';
         } else {
             $status = "Active";
@@ -63,12 +63,9 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         }
 
 
-?>
-        <div class="card-link"
-            data-type="other-job"
-            data-clientid="<?php echo $other_client_id ?>"
-            data-jobid="<?php echo $job_post_id ?>"
-            data-companyname="<?php echo htmlspecialchars($company_name) ?>"
+        ?>
+        <div class="card-link" data-type="other-job" data-clientid="<?php echo $other_client_id ?>"
+            data-jobid="<?php echo $job_post_id ?>" data-companyname="<?php echo htmlspecialchars($company_name) ?>"
             data-location="<?php echo htmlspecialchars($job_loc) ?>"
             data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
             data-job-status="<?php echo htmlspecialchars($job_status) ?>"
@@ -76,8 +73,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
             data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
             data-description="<?php echo htmlspecialchars($job_description) ?>"
-            data-skills="<?php echo htmlspecialchars($skill_tags) ?>"
-            data-yoe="<?php echo $yr_Exp ?>"
+            data-skills="<?php echo htmlspecialchars($skill_tags) ?>" data-yoe="<?php echo $yr_Exp ?>"
             onclick="handleCardClick(event)">
 
 
@@ -85,18 +81,21 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                 <div class="job-header">
                     <div class="profile-info">
                         <div class="avatar">
-                            <img src="./scriptsfordb/client_image.php?client_id=<?php echo $other_client_id; ?>" alt="Client Image">
+                            <img src="./scriptsfordb/client_image.php?client_id=<?php echo $other_client_id; ?>"
+                                alt="Client Image">
                         </div>
                         <div class="details">
                             <h3><?php echo $company_name ?></h3>
-                            <p><?php echo " " . "•" . " " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $status ?></span></p>
+                            <p><?php echo " " . "•" . " " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" . "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $status ?></span>
+                            </p>
                         </div>
                     </div>
                     <div class="job-dates">
                         <div class="menu-container" onclick="event.stopPropagation(); toggleDropdown(this)">
                             <div class="menu">•••</div>
                             <div class="dropdown">
-                                <a href="#" onclick="reportPost(event, <?php echo $other_client_id ?>)">Report</a>
+                                <a href="#"
+                                    onclick="reportPost(event, <?php echo $other_client_id ?>, <?php echo $job_post_id ?>)">Report</a>
                             </div>
                         </div>
                         <p><?php echo $date_posted . " - " . $date_deadline ?></p>
@@ -126,7 +125,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         </div>
         <br>
 
-<?php
+        <?php
 
     }
 } ?>

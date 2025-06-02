@@ -1,9 +1,11 @@
 <?php
 session_start();
 include '../db_con/db_connection.php';
-$user_id = $_SESSION['worker_id'];
-?>
 
+
+$workerId = $_SESSION['worker_id'];
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,10 +14,12 @@ $user_id = $_SESSION['worker_id'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Job-connext - Profile</title>
+    <link rel="stylesheet" href="../Assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../Assets/css/Blue-collar css/rejected-bluecollar.css">
+    <link rel="stylesheet" href="../Assets/css/postCard_and_view.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -33,6 +37,12 @@ $user_id = $_SESSION['worker_id'];
         rel="stylesheet">
     <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        window.sessionData = {
+            workerId: <?php echo json_encode($workerId); ?>
+        };
+    </script>
 </head>
 
 <body>
@@ -96,8 +106,10 @@ $user_id = $_SESSION['worker_id'];
                             <p id="email_display">Email</p>
                         </div>
                     </div>
-
-                    <!-- <button id="yourTargetButton">Submit</button> -->
+                    <p>Other Details</p>
+                    <button id="yourTargetButton">
+                        <i class="bi bi-eye"></i> View Attachment
+                    </button>
 
                     <div class="skills-worker-details">
                         <p>Qualifications and Skills</p>
@@ -137,8 +149,8 @@ $user_id = $_SESSION['worker_id'];
                             </li>
                         </ol>
                     </div>
-                    <div class="applyJob" id="job_done_button"">
-                        <button>
+                    <div class="applyJob">
+                        <button id="applyJob">
                             Apply Job
                         </button>
                     </div>
@@ -146,217 +158,237 @@ $user_id = $_SESSION['worker_id'];
                 </div>
                 <!-- worker view -->
                 <div class=" worker-view" id="worker_view" style="display: none;">
-                        <div class="job-header">
-                            <div class="profile-info">
-                                <div class="avatar">
-                                    <img id="worker_avatar" src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                </div>
-                                <div class="details">
-                                    <h3 id="worker_name_display">Worker Name</h3>
-                                    <p id="worker_id_display">Worker ID</p>
-                                </div>
+                    <div class="job-header">
+                        <div class="profile-info">
+                            <div class="avatar">
+                                <img id="worker_avatar" src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
                             </div>
-                        </div>
-
-                        <div class="short-info-container">
-                            <div class="short-info"><img src="../Assets/image/Location.png" alt="">
-                                <p id="worker_location_display">Location</p>
+                            <div class="details">
+                                <h3 id="worker_name_display">Worker Name</h3>
+                                <p id="worker_id_display">Worker ID</p>
                             </div>
-                            <div class="short-info"><img src="../Assets/image/Stack of Money.png" alt="">
-                                <p id="worker_salary_display">Expected Salary</p>
-                            </div>
-                            <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt="">
-                                <p id="worker_email_display">Email</p>
-                            </div>
-                        </div>
-
-                        <div class="skills-worker-details">
-                            <p>Skills</p>
-                        </div>
-                        <div class="skills-available-details" id="worker_skills_display"></div>
-
-                        <div class="no-ex">
-                            <p id="worker_yoe_display">Year of experience</p>
                         </div>
                     </div>
 
+                    <div class="short-info-container">
+                        <div class="short-info"><img src="../Assets/image/Location.png" alt="">
+                            <p id="worker_location_display">Location</p>
+                        </div>
+                        <div class="short-info"><img src="../Assets/image/Stack of Money.png" alt="">
+                            <p id="worker_salary_display">Expected Salary</p>
+                        </div>
+                        <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt="">
+                            <p id="worker_email_display">Email</p>
+                        </div>
+                    </div>
 
+                    <div class="skills-worker-details">
+                        <p>Skills</p>
+                    </div>
+                    <div class="skills-available-details" id="worker_skills_display"></div>
+
+                    <div class="no-ex">
+                        <p id="worker_yoe_display">Year of experience</p>
+                    </div>
                 </div>
+
+
             </div>
+        </div>
 
-            <div class="page_content">
-                <div class=" row content-header" style="position: sticky; top: 0; z-index: 1; background-color:white; padding: 20px;">
-                    <div class="row content-header">
-                        <div class="col-sm-3">
-                            <div class="container-fluid content-filter">
-                                <button>
-                                    <img src="../Assets/image/filter (1) 1.png" alt="">
-                                    <span>
-                                        Filter
-                                    </span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-7">
-                            <div class="container-fluid freelance-search">
-                                <input type="text" placeholder="  Search for workers..." id="freelance-search">
-                            </div>
-                        </div>
-                        <div class="col-sm-2">
-                            <div class="seek-worker">
-                                <button>
-                                    <span>
-                                        Seek
-                                    </span>
-                                </button>
-                            </div>
+        <div class="page_content">
+            <div class=" row content-header" style="position: sticky; top: 0; z-index: 1; background-color:white; padding: 20px;">
+                <div class="row content-header">
+                    <div class="col-sm-3">
+                        <div class="container-fluid content-filter">
+                            <button>
+                                <img src="../Assets/image/filter (1) 1.png" alt="">
+                                <span>
+                                    Filter
+                                </span>
+                            </button>
                         </div>
                     </div>
 
-                    <div class="row title-section">
-                        <div class="col content-title">
-                            <p>
-                                Jobs Offered
-                            </p>
+                    <div class="col-sm-7">
+                        <div class="container-fluid freelance-search">
+                            <input type="text" placeholder="  Search for workers..." id="freelance-search">
                         </div>
                     </div>
-                    <div class="offer-area">
-                        <div class="row job-card">
-                            <div class="col-12">
-                                <!-- JOB OFFERED CARD -->
-                                <?php include '../BlueCollarWorkerPortal/Template/offeredJobsTmplt.php'; ?>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                            </div>
+                    <div class="col-sm-2">
+                        <div class="seek-worker">
+                            <button>
+                                <span>
+                                    Seek
+                                </span>
+                            </button>
                         </div>
                     </div>
+                </div>
+
+                <div class="row title-section">
+                    <div class="col content-title">
+                        <p>
+                            Jobs Offered
+                        </p>
+                    </div>
+                </div>
+                <div class="offer-area">
+                    <div class="row job-card">
+                        <div class="col-12">
+                            <!-- JOB OFFERED CARD -->
+                            <?php include '../BlueCollarWorkerPortal/Template/offeredJobsTmplt.php'; ?>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
 
 
 
 
 
-                    <script src="../Assets/js/function.js"></script>
+                <script src="../Assets/js/function.js"></script>
 
 
-                    <script>
-                        document.querySelectorAll('.card-link').forEach(link => {
-                            link.addEventListener('click', function(e) {
-                                e.preventDefault();
+                <script>
+                    document.querySelectorAll('.card-link').forEach(link => {
+                        link.addEventListener('click', function(e) {
+                            e.preventDefault();
 
-                                const type = this.dataset.type;
-                                const clientId = this.dataset.clientid;
-                                const jobid = this.dataset.jobid;
-
-                                const targetButton = document.querySelector('#yourTargetButton');
-                                if (targetButton) {
-                                    targetButton.dataset.clientid = clientId;
-                                    targetButton.dataset.jobid = jobid; // use a separate attribute
-                                }
-
-
-
-                                // Update some text
-                                document.getElementById('clientid').textContent = clientId;
-
-                                // Update image src
-                                document.getElementById('client_image').src = `../ClientPortal/scriptsfordb/client_image.php?client_id=${encodeURIComponent(clientId)}`;
-
-                                // Hide all views first
-                                document.getElementById('default_view').style.display = 'none';
-                                document.getElementById('job_detail_view').style.display = 'none';
-                                document.getElementById('worker_view').style.display = 'none';
-
-
-
-                                if (type === 'worker') {
-                                    // Show worker view only
-                                    document.getElementById('worker_view').style.display = 'block';
-
-                                    // Fill worker view data
-                                    document.getElementById('worker_name_display').textContent = this.dataset.companyname;
-                                    document.getElementById('worker_name_display').textContent = this.dataset.companyname;
-                                    document.getElementById('worker_id_display').textContent = this.dataset.workerid || 'N/A';
-                                    document.getElementById('worker_location_display').textContent = this.dataset.location;
-                                    document.getElementById('worker_salary_display').textContent = this.dataset.salary;
-                                    document.getElementById('worker_email_display').textContent = this.dataset.email;
-                                    document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
-                                    document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
-
-                                } else if (type === 'job' || type === 'other-job') {
-                                    // Show job detail view only
-                                    document.getElementById('job_detail_view').style.display = 'block';
-
-                                    if (type === 'job') {
-                                        document.getElementById('job_done_button').style.display = 'block';
-                                    } else {
-                                        document.getElementById('job_done_button').style.display = 'none';
-                                    }
-
-                                    // Fill job view data
-                                    const statusElem = document.getElementById('job_Status');
-                                    const jobStatusRaw = this.dataset.jobStatus;
-
-                                    if (jobStatusRaw) {
-                                        const isActive = jobStatusRaw === 'Active';
-                                        statusElem.textContent = jobStatusRaw;
-                                        statusElem.className = `status-badge ${isActive ? 'active' : 'inactive'}`;
-                                    } else {
-                                        console.warn('Missing data-jobStatus on clicked element.');
-                                        statusElem.textContent = 'Unknown';
-                                        statusElem.className = 'status-badge inactive';
-                                    }
-
-                                    document.getElementById('company_name_display').textContent = this.dataset.companyname;
-                                    document.getElementById('date_range_display').textContent = this.dataset.dates;
-                                    document.getElementById('description_display').textContent = this.dataset.description;
-                                    document.getElementById('location_display').textContent = this.dataset.location;
-                                    document.getElementById('salary_display').textContent = this.dataset.salary;
-                                    document.getElementById('applicants_display').textContent = this.dataset.applied;
-                                    document.getElementById('email_display').textContent = this.dataset.email;
-                                    document.getElementById('skills_display').innerHTML = this.dataset.skills;
-                                    document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';
-                                }
-
-                            });
-                        });
-
-
-                        document.querySelector('#yourTargetButton').addEventListener('click', function() {
+                            const type = this.dataset.type;
                             const clientId = this.dataset.clientid;
-                            const jobId = this.dataset.jobid;
+                            const jobid = this.dataset.jobid;
 
-                            console.log('Sending request with:', clientId, jobId);
+                            const applyButton = document.querySelector('#applyJob');
+                            if (applyButton) {
+                                applyButton.dataset.clientid = clientId;
+                                applyButton.dataset.jobid = jobid; // use a separate attribute
+                            }
 
-                            fetch(`scriptsfordb/get_file.php?client_id=${clientId}&job_id=${jobId}`)
-                                .then(response => {
-                                    console.log('HTTP status:', response.status);
-                                    if (!response.ok) {
-                                        throw new Error(`HTTP error! Status: ${response.status}`);
-                                    }
-                                    return response.json();
-                                })
-                                .then(data => {
-                                    console.log('Response data:', data);
+                            const targetApplyButton = document.querySelector('#applyJob');
+                            if (targetApplyButton) {
+                                targetApplyButton.dataset.clientid = clientId;
+                                targetApplyButton.dataset.jobid = jobid; // use a separate attribute
+                            }
 
-                                    if (data.success && data.filepath) {
-                                        window.open(data.filepath, '_blank');
-                                    } else {
-                                        alert(data.message || 'File not found.');
-                                    }
-                                })
-                                .catch(err => {
-                                    console.error('Fetch error:', err);
-                                    alert('An error occurred while fetching the file.');
-                                });
+
+
+                            // Update some text
+                            document.getElementById('clientid').textContent = clientId;
+
+                            // Update image src
+                            document.getElementById('client_image').src = `../ClientPortal/scriptsfordb/client_image.php?client_id=${encodeURIComponent(clientId)}`;
+
+                            // Hide all views first
+                            document.getElementById('default_view').style.display = 'none';
+                            document.getElementById('job_detail_view').style.display = 'none';
+                            document.getElementById('worker_view').style.display = 'none';
+
+
+
+                            if (type === 'worker') {
+                                // Show worker view only
+                                document.getElementById('worker_view').style.display = 'block';
+
+                                // Fill worker view data
+                                document.getElementById('worker_name_display').textContent = this.dataset.companyname;
+                                document.getElementById('worker_name_display').textContent = this.dataset.companyname;
+                                document.getElementById('worker_id_display').textContent = this.dataset.workerid || 'N/A';
+                                document.getElementById('worker_location_display').textContent = this.dataset.location;
+                                document.getElementById('worker_salary_display').textContent = this.dataset.salary;
+                                document.getElementById('worker_email_display').textContent = this.dataset.email;
+                                document.getElementById('worker_skills_display').innerHTML = this.dataset.skills;
+                                document.getElementById('worker_yoe_display').textContent = this.dataset.yoe + ' years experience';
+
+                            } else if (type === 'job') {
+                                // Show job detail view only
+                                document.getElementById('job_detail_view').style.display = 'block';
+
+                                // Fill job view data
+                                const statusElem = document.getElementById('job_Status');
+                                const jobStatusRaw = this.dataset.jobStatus;
+
+                                if (jobStatusRaw) {
+                                    const isActive = jobStatusRaw === 'Active';
+                                    statusElem.textContent = jobStatusRaw;
+                                    statusElem.className = `status-badge ${isActive ? 'active' : 'inactive'}`;
+                                } else {
+                                    console.warn('Missing data-jobStatus on clicked element.');
+                                    statusElem.textContent = 'Unknown';
+                                    statusElem.className = 'status-badge inactive';
+                                }
+
+                                document.getElementById('company_name_display').textContent = this.dataset.companyname;
+                                document.getElementById('date_range_display').textContent = this.dataset.dates;
+                                document.getElementById('description_display').textContent = this.dataset.description;
+                                document.getElementById('location_display').textContent = this.dataset.location;
+                                document.getElementById('salary_display').textContent = this.dataset.salary;
+                                document.getElementById('applicants_display').textContent = this.dataset.applied;
+                                document.getElementById('email_display').textContent = this.dataset.email;
+                                document.getElementById('skills_display').innerHTML = this.dataset.skills;
+                                document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';
+                            }
+
                         });
-                    </script>
+                    });
 
-        <script src="../Assets/js/logout.js"></script>
+
+                    document.querySelector('#applyJob').addEventListener('click', function() {
+                        const workerId = window.sessionData.workerId;
+                        const jobId = this.dataset.jobid;
+
+                        fetch('../BlueCollarWorkerPortal/scriptsForDbWorker/applicant_fetch.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/x-www-form-urlencoded',
+                                },
+                                body: new URLSearchParams({
+                                    worker_id: workerId,
+                                    job_post_id: jobId,
+                                }),
+                            })
+                            .then(response => response.json())
+                            .then(result => {
+                                if (result.success) {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: 'Applied!',
+                                        text: result.message,
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Oops...',
+                                        text: result.message,
+                                    });
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Something went wrong',
+                                    text: 'Please try again later.',
+                                });
+                            });
+                    });
+                </script>
+                <script>
+                    document.querySelector('#applyButton').addEventListener('click', function() {
+                        const clientId = this.dataset.clientid;
+                        const jobId = this.dataset.jobid;
+
+                        console.log('Sending request with:', clientId, jobId);
+
+                    });
+                </script>
+
+                <script src="../Assets/js/logout.js"></script>
 
 
 </body>

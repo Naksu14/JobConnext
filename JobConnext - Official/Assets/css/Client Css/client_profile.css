@@ -220,7 +220,7 @@ body{
 
 .contact-content ul{
     list-style: none;
-    font-weight: bold;
+    font-weight: 500;
     font-family: poppins;
     font-size: 16px;
     color: #646464;
@@ -241,3 +241,16 @@ body{
     width: 300px; /* Adjust width if needed */
 }
 
+  
+ #save-btn{
+    height: 40px;
+    width: 120px;
+    margin-top: 10px;
+    background-color: var(--darkblue);
+    color: #fff;
+    border: none;
+  }
+
+  #save-btn:hover{
+    background-color: #3445ff;
+  }
