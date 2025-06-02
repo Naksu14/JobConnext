@@ -20,7 +20,7 @@ if (isset($_POST['g-recaptcha-response'])) {
 
             // Mapping tables to user ID column names and redirect URLs
             $table_map = [
-                "tbl_blue_collar_worker" => ["id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/rejected-bluecollar.php"],
+                "tbl_blue_collar_worker" => ["id" => "worker_id", "redirect" => "../BlueCollarWorkerPortal/blue-collar-landing.php"],
                 "tbl_client" => ["id" => "client_id", "redirect" => "../ClientPortal/client_home.php"],
                 "tbl_admin" => ["id" => "Admin_id", "redirect" => "../AdminPortal/AdminLandingPage.php"]
             ];
