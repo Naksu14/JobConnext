@@ -107,3 +107,243 @@ document.querySelector('#yourTargetButton').addEventListener('click', function()
             alert('An error occurred while fetching the file.');
         });
 });
+
+let countIntervalId = null;
+
+function openModal(event) {
+    const jobId = event.currentTarget.getAttribute('data-jobid');
+
+    // Store jobId in modal
+    document.getElementById('modalJobId').value = jobId;
+    document.querySelector('.custom-modal').setAttribute('data-jobid', jobId);
+
+    // Show modal
+    document.getElementById('applicantsModal').style.display = 'flex';
+
+    // Fetch and update counts once immediately
+    updateApplicantCounts(jobId);
+
+    // Clear previous interval if exists
+    if (countIntervalId) clearInterval(countIntervalId);
+
+    // Start interval to update counts every 10 seconds
+    countIntervalId = setInterval(() => {
+        updateApplicantCounts(jobId);
+    }, 1000);
+
+    // Optional: filter to default view
+    filterApplicants('pending', jobId);
+}
+
+function updateApplicantCounts(jobId) {
+    fetch(`scriptsfordb/get_applicant_counts.php?job_id=${jobId}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('count_pending').textContent = data.pending || 0;
+            document.getElementById('count_accepted').textContent = data.accepted || 0;
+            document.getElementById('count_rejected').textContent = data.rejected || 0;
+        })
+        .catch(err => {
+            console.error('Error fetching counts:', err);
+        });
+}
+
+function closeModal() {
+    document.getElementById('applicantsModal').style.display = 'none';
+
+    // Clear the interval to stop repeated calls when modal is closed
+    if (countIntervalId) {
+        clearInterval(countIntervalId);
+        countIntervalId = null;
+    }
+    
+    // Reset worker detail content
+    const workerImage = document.getElementById('workerDetailImage');
+    const defaultImage = document.getElementById('DefaultImage');
+    const workerContent = document.getElementById('workerDetailContent');
+
+    // Hide worker image
+    if (workerImage) {
+        workerImage.style.display = 'none';
+        workerImage.src = '';
+    }
+
+    // Show default image
+    if (defaultImage) {
+        defaultImage.style.display = 'block';
+    }
+
+    // Reset content
+    if (workerContent) {
+        workerContent.innerHTML = `<p>Click "View" to show the information</p>`;
+    }
+}
+
+
+
+function filterApplicants(status, jobId = null) {
+    if (!jobId) {
+        jobId = document.getElementById('modalJobId').value;
+    }
+
+    fetch(`scriptsfordb/get_applicants_by_status.php?job_id=${jobId}&status=${status}`)
+        .then(res => res.json())
+        .then(data => {
+            const container = document.getElementById('applicantListContainer');
+            container.innerHTML = '';
+
+            if (data.length === 0) {
+                container.innerHTML = `<p>No ${status} applicants found.</p>`;
+                return;
+            }
+
+            data.forEach(applicant => {
+                const html = `
+                    <div class="applicant-card">
+                        <div class="applicant-info">
+                            <img class="applicant-avatar" src="${applicant.profile || '../Assets/image/worker_user.png'}" alt="Worker Profile">
+                            <div class="applicant-detailss">
+                                <div class="applicant-name"><strong>${applicant.name}</strong></div>
+                                <div class="applicant-location">${applicant.location}</div>
+                                <div class="applicant-experience">${applicant.year_experience} years experience</div>
+                            </div>
+                        </div>
+                        <div class="applicant-actions">
+                            <a href="javascript:void(0)" class="view-resume" onclick='showWorkerDetail(${JSON.stringify(applicant)})'>View</a>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        })
+        .catch(err => {
+            console.error('Error:', err);
+        });
+}
+
+function showWorkerDetail(applicant) {
+    // (Insert your code to display applicant detail in the right panel...)
+
+    const allViewLinks = document.querySelectorAll('.view-resume');
+
+    allViewLinks.forEach(link => {
+        // Reset all to default state
+        link.classList.remove('disabled');
+        link.textContent = 'View';
+    });
+
+    // Find and update the clicked link
+    const clickedLink = Array.from(allViewLinks).find(link => {
+        return link.getAttribute('onclick') === `showWorkerDetail(${JSON.stringify(applicant)})`;
+    });
+
+    if (clickedLink) {
+        clickedLink.classList.add('disabled');
+        clickedLink.textContent = 'Viewed';
+    }
+    
+    const defaultImage = document.getElementById('DefaultImage');
+    const profileImage = document.getElementById('workerDetailImage');
+    const content = document.getElementById('workerDetailContent');
+
+    // Hide default image and show profile image
+    defaultImage.style.display = 'none';
+    profileImage.style.display = 'block';
+
+    // Set worker profile image or fallback
+    profileImage.src = applicant.profile || '../Assets/image/worker_user.png';
+
+    const pastelColors = [
+        '#8B89E9', '#46CFA6', '#FFAEC9', '#A8E6CF', '#DCE775',
+        '#FFCCBC', '#B39DDB', '#80DEEA', '#F48FB1', '#FFECB3'
+    ];
+    const getRandomColor = () => pastelColors[Math.floor(Math.random() * pastelColors.length)];
+
+    const skills = applicant.hardSkills
+        ? applicant.hardSkills.split(',').map(skill => {
+            return `<span style="background:${getRandomColor()}; padding:4px 6px; margin:2px; border-radius:4px; display:inline-block;">
+                        ${skill.trim()}
+                    </span>`;
+        }).join(' ')
+        : 'No hard skills listed.';
+
+            // Conditionally hide action buttons if accepted or rejected
+    const actionButtonsHTML = (applicant.status === 'accepted' || applicant.status === 'rejected') ? '' : `
+        <div class="action-buttons">
+            <button class="btn-accept" onclick="handleAcceptReject('${applicant.worker_id}', '${applicant.job_post_id}', 'accepted')">Accept</button>
+            <button class="btn-reject" onclick="handleAcceptReject('${applicant.worker_id}', '${applicant.job_post_id}', 'rejected')">Reject</button>
+        </div>
+    `;
+
+    content.innerHTML = `
+        <div class="applicant-details">
+            <div class="applicant-name">${applicant.name}</div>
+            <div class="applicant-location">${applicant.location}</div>
+            <div class="applicant-experience">Phone No: ${applicant.phone_no} years</div>
+            <div class="applicant-experience">Experience: ${applicant.year_experience}</div>
+            <div class="applicant-skills">Skills: ${skills}</div>
+            <div class="applicant-bio">Bio: ${applicant.bio || 'N/A'}</div>
+            <div class="applicant-resume">
+                <a href="scriptsfordb/get_file.php?client_id=${applicant.worker_id}&job_id=${applicant.job_post_id}" 
+                target="_blank">📄 Download Resume</a>
+            </div>
+             ${actionButtonsHTML}
+        </div>
+
+    `;
+}
+
+function handleAcceptReject(workerId, jobId, action) {
+    const actionText = action === 'accepted' ? 'Accept' : 'Reject';
+
+    Swal.fire({
+        title: `Are you sure you want to ${actionText.toLowerCase()} this applicant?`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: action === 'accepted' ? '#4CAF50' : '#f44336',
+        cancelButtonColor: '#ccc',
+        confirmButtonText: `Yes, ${actionText}`,
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch('scriptsfordb/update_applicant_status.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ workerId, jobId, action })
+            })
+            .then(res => res.json())
+            .then(data => {
+                Swal.fire({
+                    icon: data.success ? 'success' : 'error',
+                    title: data.message || 'Status updated.'
+                });
+
+                if (data.success) {
+                    filterApplicants(action, jobId); // Refresh the applicant list
+                    
+                    // Hide/show details panel after update
+                    const profileImage = document.getElementById('workerDetailImage');
+                    const defaultImage = document.getElementById('DefaultImage');
+                    const detailContent = document.getElementById('workerDetailContent');
+
+                    if (profileImage && defaultImage && detailContent) {
+                        profileImage.style.display = 'none';
+                        defaultImage.style.display = 'block';
+                        detailContent.innerHTML = '<p style="text-align:center;">Select an applicant to view details</p>';
+                    }
+
+                    // Optional: Reset view link states
+                    const allViewLinks = document.querySelectorAll('.view-resume');
+                    allViewLinks.forEach(link => {
+                        link.classList.remove('disabled');
+                        link.textContent = 'View';
+                    });
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                Swal.fire('Error', 'There was a problem updating the status.', 'error');
+            });
+        }
+    });
+}
+

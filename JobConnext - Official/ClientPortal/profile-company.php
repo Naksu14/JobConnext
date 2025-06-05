@@ -214,6 +214,7 @@ if (isset($_SESSION['client_id'])) {
             </script>
             <script src="../Assets/js/card_editOrdelete.js"></script>
             <script src="../Assets/js/logout.js"></script>
+            <script src="../Assets/js/card_viewlink.js"></script>
 
 </body>
 

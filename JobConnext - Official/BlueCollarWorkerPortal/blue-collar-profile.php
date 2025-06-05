@@ -98,7 +98,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
         <div class="container-fluid full-content">
             <div class="container-fluid profile-content">
                 <div class="client-photo">
-                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="">
+                    <img src="../Assets/image/worker_user.png" alt="">
                     <div class="name-title">
                         <span>
                             <?php echo htmlspecialchars($fullName) ?>

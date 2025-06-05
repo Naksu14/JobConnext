@@ -340,7 +340,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insert user profile data using a prepared statement
     $sql = "INSERT INTO tbl_worker_information 
-        (worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode, workerAbout, year_experienced, nationality, civilStatus, birthDate) 
+        (worker_id, firstname, middlename, lastname, phone_no, bio, country, city, region, province, barangay, postalcode, workerAbout, year_experience, nationality, civilStatus, birthDate) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
     $stmt = $conn->prepare($sql);

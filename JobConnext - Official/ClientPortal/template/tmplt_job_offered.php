@@ -5,14 +5,6 @@ include '../db_con/db_connection.php';
 if (isset($_SESSION['client_id'])) {
     $clientId = $_SESSION['client_id'];
 
-    $query = "SELECT COUNT(*) as Applicants FROM tbl_blue_collar_worker";
-    $stmt = $conn->prepare($query);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if ($row = $result->fetch_assoc()) {
-        $Count_Applicants = $row['Applicants'];
-    }
-
     $job_offeredQRY = "SELECT * FROM tbl_client_jobpost WHERE client_id = $clientId";
     $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
     while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
@@ -34,6 +26,26 @@ if (isset($_SESSION['client_id'])) {
         $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
 
         $company_name = ''; // default fallback
+
+        // Total applied and accepted applicants
+        $statuses = [
+            'Applied' => "SELECT COUNT(*) FROM tbl_applicants WHERE job_post_id = ?",
+            'Accepted' => "SELECT COUNT(*) FROM tbl_applicants WHERE job_post_id = ? AND status = 'accepted'",
+        ];
+
+        foreach ($statuses as $key => $query) {
+            $stmt = $conn->prepare($query);
+            $stmt->bind_param("i", $job_post_id);
+            $stmt->execute();
+            $stmt->bind_result($count);
+            $stmt->fetch();
+            $stmt->close();
+
+            ${"Count_Applicants_" . $key} = $count;
+        }
+
+
+
 
         while ($company_row = mysqli_fetch_assoc($job_offered_companyEXE)) {
             $company_name = $company_row['company_name'];
@@ -77,7 +89,7 @@ if (isset($_SESSION['client_id'])) {
                 data-companyname="<?php echo htmlspecialchars($company_name) ?>"
                 data-location="<?php echo htmlspecialchars($job_loc) ?>"
                 data-job-status="<?php echo htmlspecialchars($job_status) ?>"
-                data-applied="<?php echo htmlspecialchars(5) ?>"
+                data-applied="<?php echo htmlspecialchars($Count_Applicants_Applied . ' Applicant') ?>"
                 data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
                 data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
                 data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
@@ -128,26 +140,21 @@ if (isset($_SESSION['client_id'])) {
                     </div>
                     <!-- Trigger Button -->
                     <div class="job-footer">
-                        <button class="applied" onclick="openModal()">5 Applied</button>
-                        <p>0 Accepted</p>
+                        <button class="applied" onclick="openModal(event)" data-jobid="<?php echo $job_post_id ?>">
+                            <?php echo $Count_Applicants_Applied ?> Applied
+                        </button>
+
+
+                        <p><?php echo $Count_Applicants_Accepted ?> Accepted</p>
                     </div>
 
                 </div>
             </div>
             <br>
-            <?php include '../ClientPortal/template/ApplicantViewModal.php'; ?>
-            <?php include '../ClientPortal/template/editJobpostModal.php'; ?>
+
 <?php
         }
     }
 } ?>
-<script>
-    function openModal() {
-        document.getElementById('applicantsModal').style.display = 'flex';
-        filterApplicants('pending'); // Show pending by default
-    }
-
-    function closeModal() {
-        document.getElementById('applicantsModal').style.display = 'none';
-    }
-</script>
+<?php include '../ClientPortal/template/editJobpostModal.php'; ?>
+<?php include '../ClientPortal/template/ApplicantViewModal.php'; ?>

@@ -25,6 +25,16 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
     $company_name = ''; // default fallback
 
+    // Total applied and accepted applicants
+    $queries = "SELECT COUNT(*) as count FROM tbl_applicants WHERE job_post_id = ?";
+
+    $stmt = $conn->prepare($queries);
+    $stmt->bind_param("i", $job_post_id);
+    $stmt->execute();
+    $stmt->bind_result($Count_Applicants_Applied);
+    $stmt->fetch();
+    $stmt->close();
+
     while ($company_row = mysqli_fetch_assoc($job_offered_companyEXE)) {
         $company_name = $company_row['company_name'];
     }
@@ -69,7 +79,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             data-location="<?php echo htmlspecialchars($job_loc) ?>"
             data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
             data-job-status="<?php echo htmlspecialchars($job_status) ?>"
-            data-applied="<?php echo htmlspecialchars('5 Applied') ?>"
+            data-applied="<?php echo htmlspecialchars($Count_Applicants_Applied.' Applicant') ?>"
             data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
             data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
             data-description="<?php echo htmlspecialchars($job_description) ?>"
@@ -118,7 +128,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                 </div>
                 <div class="job-footer">
                     <button class="applied">
-                        5 Applicant
+                        <?php echo $Count_Applicants_Applied ?> Applicant
                     </button>
                 </div>
             </div>

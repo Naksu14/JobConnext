@@ -336,7 +336,7 @@
 /* Modal content */
 .custom-modal {
   background: white;
-  width: 900px;
+  width: 1000px;
   height: 600px; /* Fixed height */
   border-radius: 8px;
   padding: 20px;
@@ -433,4 +433,140 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+}
+
+/* ///////////////////////////////////////////////////////////////// */
+
+.applicant-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding: 10px 15px;
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.2s ease;
+}
+
+.applicant-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.applicant-info {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.applicant-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #ccc;
+}
+
+.applicant-detailss {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+}
+
+.applicant-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.applicant-location,
+.applicant-experience {
+    color: #666;
+    font-size: 13px;
+}
+
+.applicant-actions {
+    text-align: right;
+}
+
+.view-resume {
+    padding: 6px 12px;
+    font-size: 14px;
+    background-color: #f0f0f0;
+    color: #161D6F;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.view-resume:hover {
+    background-color: #007BFF;
+    color: #fff;
+    border-color: #007BFF;
+}
+
+.view-resume.disabled {
+  pointer-events: none;
+  color: gray;
+  cursor: default;
+  text-decoration: none;
+}
+
+
+
+
+.applicant-details {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    padding: 10px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+.applicant-name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 0.25rem;
+}
+
+.applicant-location {
+    color: gray;
+    margin-bottom: 0.25rem;
+}
+
+.applicant-experience,
+.applicant-skills,
+.applicant-bio {
+    margin-bottom: 0.4rem;
+}
+
+.applicant-resume {
+    margin-bottom: 1rem;
+}
+
+.applicant-resume a {
+    color: #007BFF;
+    text-decoration: underline;
+}
+
+.action-buttons button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-accept {
+    background: #4CAF50;
+    color: white;
+    margin-right: 8px;
+}
+
+.btn-reject {
+    background: #f44336;
+    color: white;
 }
