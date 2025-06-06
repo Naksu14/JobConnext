@@ -353,7 +353,7 @@
   justify-content: center;
   align-items: flex-start;
   padding-top: 20px;
-  z-index: 9999;
+  z-index: 10;
 }
 
 /* Modal content */

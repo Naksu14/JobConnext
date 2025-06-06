@@ -14,7 +14,6 @@ if ($job_id > 0 && in_array($status, ['pending', 'accepted', 'rejected'])) {
             a.job_post_id,
             CONCAT(w.firstname, ' ', w.lastname) AS name,
             w.softSkills,
-            w.profile,
             w.phone_no,
             w.bio,
             w.year_experience,
