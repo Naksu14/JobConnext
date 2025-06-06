@@ -159,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         timerProgressBar: true,
                     });
                 }
+                setTimeout(() => location.reload(), 3200);
             });
             
             

@@ -135,6 +135,7 @@
                             url.searchParams.delete('success');
                             window.history.replaceState({}, document.title, url.pathname + url.search);
                         }, 2100);
+                        setTimeout(() => location.reload(), 3200);
 
                         return result;
                     })
@@ -196,6 +197,7 @@ function deleteItem(event, jobPostId) {
             })
             .then(res => res.text())
             .then(response => {
+                console.log('Server response:', response);
                 showToast('success', 'Job post archived successfully!');
                 setTimeout(() => location.reload(), 3200); // Delay reload so user sees the toast
             })
