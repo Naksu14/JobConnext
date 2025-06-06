@@ -305,7 +305,9 @@
 .status-badge.active {
     background-color: #28a745; /* green */
 }
-
+.status-badge.ongoing {
+    background-color: #2774d8; /* red */
+}
 .status-badge.inactive {
     background-color: #dc3545; /* red */
 }

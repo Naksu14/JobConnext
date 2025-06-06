@@ -56,19 +56,20 @@ while ($row = mysqli_fetch_assoc($recommended_clientHOMEexe)) {
                 <div class="card-link "
                     data-type="worker"
                     data-workerid="<?= $Worker_id ?>"
+                    data-jobStatus="<?php echo htmlspecialchars($job_status) ?>"
                     data-name="<?= htmlspecialchars("$Worker_Lname, $Worker_Fname $Worker_Mname") ?>"
                     data-location="<?= htmlspecialchars("$Worker_barangay, $Worker_city, $Worker_province, $Worker_region, $Worker_country, $Worker_postalcode") ?>"
                     data-yoe="<?= htmlspecialchars($exp) ?>"
                     data-bio="<?= htmlspecialchars($Worker_Bio) ?>"
                     data-phone="<?= htmlspecialchars($Worker_Phone) ?>"
                     data-skills="<?= htmlspecialchars($skill_tags) ?>"
-                    data-image="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg">
+                    data-image="../Assets/image/worker_user.png">
 
                     <div class="card" id="my-offer">
                         <div class="job-header">
                             <div class="profile-info">
                                 <div class="avatar">
-                                    <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
+                                    <img src="../Assets/image/worker_user.png" alt="Avatar">
                                 </div>
                                 <div class="details">
                                     <h3><?php echo $Worker_Lname . ", " . $Worker_Fname ?></h3>

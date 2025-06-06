@@ -5,18 +5,27 @@ document.querySelectorAll('.card-link').forEach(link => {
         const card = event.currentTarget;
 
         const type = this.dataset.type;
+        const jobStatus = this.dataset.jobStatus;
         const clientId = this.dataset.clientid;
         const jobid = this.dataset.jobid;
 
         const applied = card.getAttribute('data-applied');
         const AcceptedApplicant = card.getAttribute('data-AcceptedApplicant');
 
-        console.log(applied, AcceptedApplicant);
-
         const targetButton = document.querySelector('#yourTargetButton');
         if (targetButton) {
             targetButton.dataset.clientid = clientId;
             targetButton.dataset.jobid = jobid; // use a separate attribute
+        }
+        const job_Complete = document.querySelector('#job_Complete');
+        if (job_Complete) {
+            job_Complete.dataset.clientid = clientId;
+            job_Complete.dataset.jobid = jobid; // use a separate attribute
+        }
+        const complete_Applicants = document.querySelector('#complete_Applicants');
+        if (complete_Applicants) {
+            complete_Applicants.dataset.clientid = clientId;
+            complete_Applicants.dataset.jobid = jobid; // use a separate attribute
         }
 
 
@@ -51,42 +60,57 @@ document.querySelectorAll('.card-link').forEach(link => {
             // Show job detail view only
             document.getElementById('job_detail_view').style.display = 'block';
 
+            const jobDoneButtonCompleted = document.getElementById('job_done_buttonCompleted');
+            const jobDoneButtonApplicants = document.getElementById('job_done_buttonApplicants');
+            const statusSpan = document.getElementById('job_status');
+
            if (type === 'job') {
-                const jobDoneButton = document.getElementById('job_done_button');
-                const statusSpan = document.getElementById('job_status');
+                if (jobStatus === "Active") {
+                    jobDoneButtonCompleted.style.display = 'none';
+                    jobDoneButtonApplicants.style.display = 'block';
 
-                jobDoneButton.style.display = 'block';
-
-                if (AcceptedApplicant >= applied) {
-                    jobDoneButton.querySelector('button').textContent = 'Job Completed';
+                    if (statusSpan) {
+                        statusSpan.style.display = 'none';
+                    }
+                } else if (jobStatus === "Ongoing") {
                     if (statusSpan) {
                         statusSpan.textContent = 'Ongoing';
                         statusSpan.style.display = 'block';
+
+                        jobDoneButtonCompleted.style.display = 'block';
+                        jobDoneButtonApplicants.style.display = 'none';
                     }
-                } else {
-                    jobDoneButton.querySelector('button').textContent = 'Complete Applicants';
-                    statusSpan.style.display = 'none';
-                    
+                }else {
+                    jobDoneButtonCompleted.style.display = 'none';
+                    jobDoneButtonApplicants.style.display = 'none';
+
+                    if (statusSpan) {
+                        statusSpan.textContent = 'Job is Completed';
+                        statusSpan.style.display = 'block';
+                    }
                 }
             }
 
             else {
-                document.getElementById('job_done_button').style.display = 'none';
+                jobDoneButtonCompleted.style.display = 'none';
+                jobDoneButtonApplicants.style.display = 'none';
             }
 
             // Fill job view data
             const statusElem = document.getElementById('job_Status');
             const jobStatusRaw = this.dataset.jobStatus;
 
-            if (jobStatusRaw) {
-                const isActive = jobStatusRaw === 'Active';
-                statusElem.textContent = jobStatusRaw;
-                statusElem.className = `status-badge ${isActive ? 'active' : 'inactive'}`;
+            if (jobStatusRaw === 'Active') {
+                statusElem.textContent = 'Active';
+                statusElem.className = 'status-badge active';
+            } else if (jobStatusRaw === 'Ongoing') {
+                statusElem.textContent = 'Ongoing';
+                statusElem.className = 'status-badge ongoing';
             } else {
-                console.warn('Missing data-jobStatus on clicked element.');
-                statusElem.textContent = 'Unknown';
+                statusElem.textContent = 'Inactive';
                 statusElem.className = 'status-badge inactive';
             }
+
 
             document.getElementById('company_name_display').textContent = this.dataset.companyname;
             document.getElementById('date_range_display').textContent = this.dataset.dates;
@@ -371,3 +395,47 @@ function handleAcceptReject(workerId, jobId, action) {
     });
 }
 
+    document.querySelector('#job_Complete').addEventListener('click', function() {
+        const clientId = this.dataset.clientid;
+        const jobId = this.dataset.jobid;
+        console.log(clientId,jobId,'Inactive');
+        updateJobStatus(clientId,jobId,'Inactive');
+    });
+
+    document.querySelector('#complete_Applicants').addEventListener('click', function() {
+        const clientId = this.dataset.clientid;
+        const jobId = this.dataset.jobid;
+        updateJobStatus(clientId,jobId,'Ongoing');
+        console.log(clientId,jobId,'Ongoing');
+    });
+
+    function updateJobStatus(clientId,jobId,status) {
+        fetch('scriptsfordb/update_job_status.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ jobId, clientId, status })
+        })
+        .then(res => res.json())
+        .then(data => {
+            Swal.fire({
+                icon: data.success ? 'success' : 'error',
+                title: data.message || 'Status updated'
+            });
+
+            if (data.success && status === 'Inactive') {
+                document.getElementById('job_done_buttonCompleted').style.display = 'none';
+                document.getElementById('job_status').textContent = 'Job is Completed';
+            }
+
+            if (status === 'Ongoing') {
+                document.getElementById('job_status').textContent = 'Ongoing';
+                document.getElementById('job_status').style.display = 'block';
+                document.getElementById('job_done_buttonApplicants').style.display = 'none';
+                document.getElementById('job_done_buttonCompleted').style.display = 'block';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            Swal.fire('Error', 'Failed to update job status.', 'error');
+        });
+    }
