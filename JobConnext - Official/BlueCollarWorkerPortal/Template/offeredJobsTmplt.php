@@ -18,12 +18,21 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     $date_deadline = $row['deadline'];
     $job_offer = $row['job_offer'];
     $job_status = $row['job_status'];
-    $jobPostId = $row ['job_post_id'];
+    $jobPostId = $row['job_post_id'];
 
     $job_offered_companyname_QRY = "SELECT * FROM tbl_company_info WHERE client_id = $client_id";
     $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
 
     $company_name = ''; // default fallback
+
+    $queries = "SELECT COUNT(*) as count FROM tbl_applicants WHERE job_post_id = ?";
+
+    $stmt = $conn->prepare($queries);
+    $stmt->bind_param("i", $job_post_id);
+    $stmt->execute();
+    $stmt->bind_result($Count_Applicants_Applied);
+    $stmt->fetch();
+    $stmt->close();
 
     while ($company_row = mysqli_fetch_assoc($job_offered_companyEXE)) {
         $company_name = $company_row['company_name'];
@@ -64,10 +73,10 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         $statuscolor = 'red';
     }
 ?>
-    <a href="#" class="card-link"
+    <div class="card-link"
         data-type="job"
         data-clientid="<?php echo $client_id ?>"
-        data-jobid = "<?php echo $jobPostId?>"
+        data-jobid="<?php echo $jobPostId ?>"
         data-companyname="<?php echo htmlspecialchars($company_name) ?>"
         data-location="<?php echo htmlspecialchars($job_loc) ?>"
         data-job-status="<?php echo htmlspecialchars($job_status) ?>"
@@ -77,7 +86,9 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
         data-description="<?php echo htmlspecialchars($job_description) ?>"
         data-skills="<?php echo htmlspecialchars($skill_tags) ?>"
-        data-yoe="<?php echo $yr_Exp ?>">
+        data-yoe="<?php echo $yr_Exp ?>"
+        onclick="handleCardClick(event)">
+
 
         <div class="card" id="my-offer">
             <div class="job-header">
@@ -91,7 +102,13 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                     </div>
                 </div>
                 <div class="job-dates">
-                    <div class="menu">•••</div>
+                    <div class="menu-container" onclick="event.stopPropagation(); toggleDropdown(this)">
+                        <div class="menu">•••</div>
+                        <div class="dropdown">
+                            <a href="#"
+                                onclick="reportPost(event, <?php echo $other_client_id ?>, <?php echo $job_post_id ?>)">Report</a>
+                        </div>
+                    </div>
                     <p><?php echo $date_posted . " - " . $date_deadline ?></p>
                 </div>
             </div>
@@ -111,13 +128,13 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                 </div>
             </div>
             <div class="job-footer">
-                <button class="applied" onclick="showAlert()">
-                    <p>5 Applied</p>
+                <button class="applied">
+                    <?php echo $Count_Applicants_Applied ?> Applicant
                 </button>
-                <p>0 Accepted</p>
             </div>
         </div>
-    </a>
-    <br>
+        </div>
 
-<?php } ?>
+        <br>
+
+    <?php } ?>

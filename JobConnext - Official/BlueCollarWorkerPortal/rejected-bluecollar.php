@@ -387,8 +387,9 @@ $workerId = $_SESSION['worker_id'];
 
                     });
                 </script>
-
                 <script src="../Assets/js/logout.js"></script>
+                <script src="../Assets/js/report.js"></script>
+                <script src="../Assets/js/card_editOrdelete.js"></script>
 
 
 </body>
