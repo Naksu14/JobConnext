@@ -1,34 +1,29 @@
 <?php
 include '../../db_con/db_connection.php';
 
-if (isset($_POST['upload'])) {
-    $worker_id = $_POST['worker_id'];
-    $image = $_FILES['image'];
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-    $allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-    $maxSize = 15 * 1024 * 1024; // 15MB
+if (isset($_GET['worker_id'])) {
+    $worker_id= $_GET['worker_id'];
 
-    if (in_array($image['type'], $allowedTypes) && $image['size'] <= $maxSize) {
-        $imgData = file_get_contents($image['tmp_name']);
+    $stmt = $conn->prepare("SELECT image FROM worker_image WHERE worker_id = ? ORDER BY uploaded_at DESC LIMIT 1");
+    $stmt->bind_param("i", $worker_id);
+    $stmt->execute();
+    $stmt->store_result();
 
-        $stmt = $conn->prepare("INSERT INTO worker_image (worker_id, image) VALUES (?, ?) 
-                                ON DUPLICATE KEY UPDATE image = VALUES(image)");
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($image);
+        $stmt->fetch();
 
-        // First bind dummy NULL to the BLOB
-        $stmt->bind_param("ib", $worker_id, $null);
-        $null = NULL; // placeholder
-        $stmt->send_long_data(1, $imgData);
-
-        if ($stmt->execute()) {
-            // Redirect to the profile-settings.php page with success message
-            header("Location: ../profile-settings.php?id=$worker_id&success=upload");
-            exit;
-        } else {
-            echo "Upload failed: " . $stmt->error;
-        }
+        // Send proper header (adjust if you store file type)
+        header("Content-Type: image/jpeg"); // Or dynamically detect type if stored
+        echo $image;
     } else {
-        echo "Invalid file type or file too large (max 15MB).";
+        // Default image if no image found
+        readfile('../../Assets/image/noProfile.jpg');
     }
-}
 
+    $stmt->close();
+}
 $conn->close();

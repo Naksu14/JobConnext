@@ -862,3 +862,15 @@ body {
     padding-top: 10px;
     /* Adjust this value as needed */
 }
+
+.header-left{
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: row;
+}
+
+.header-left img{
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}

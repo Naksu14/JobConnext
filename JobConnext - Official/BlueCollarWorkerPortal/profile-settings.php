@@ -175,9 +175,6 @@ $conn->close();
 <?php endif; ?>
 
 
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -220,14 +217,14 @@ $conn->close();
             </div>
             <div class="container-fluid header-2">
                 <div class="header-left">
-                    <img src="scriptsfordb/worker_image.php?worker_id=<?php echo $worker_id; ?>" alt="Worker Image">
+                    <img src="../BlueCollarWorkerPortal/scriptsForDbWorker/workerImage.php?worker_id=<?php echo $worker_id; ?>" alt="Worker Image">
                     <div class="header-left-title">
                         <span id="uname"><?php echo isset($worker_info['firstname']) ? htmlspecialchars($worker_info['firstname']) : 'N/A'; ?></span>
                         <span id="id-num">ID:<?php echo htmlspecialchars($worker_id); ?></span>
                     </div>
                 </div>
                 <div class="header-right">
-                    <form action="../BlueCollarWorkerPortal/scriptsForDbWorker/workerImage.php" method="POST" enctype="multipart/form-data">
+                    <form action="../BlueCollarWorkerPortal/scriptsForDbWorker/workerUploadImage.php" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="worker_id" value="<?php echo $worker_id ?>">
 
                         <div class="button-upload">
