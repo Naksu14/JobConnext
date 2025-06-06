@@ -81,7 +81,7 @@
                     <ul class="dropdown-menu" id="filterDropdownMenu">
                         <li><a class="dropdown-item-fiter" href="#" data-sort="name">Sort by Name</a></li>
                         <li><a class="dropdown-item-fiter" href="#" data-sort="date">Sort by Date</a></li>
-                        <li><a class="dropdown-item-fiter" href="#" data-filter="active">Filter by Active</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" data-filter="Identity">Sort by ID</a></li>
                     </ul>
 
                 </div>

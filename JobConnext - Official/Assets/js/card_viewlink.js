@@ -1,10 +1,17 @@
 document.querySelectorAll('.card-link').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
+        
+        const card = event.currentTarget;
 
         const type = this.dataset.type;
         const clientId = this.dataset.clientid;
         const jobid = this.dataset.jobid;
+
+        const applied = card.getAttribute('data-applied');
+        const AcceptedApplicant = card.getAttribute('data-AcceptedApplicant');
+
+        console.log(applied, AcceptedApplicant);
 
         const targetButton = document.querySelector('#yourTargetButton');
         if (targetButton) {
@@ -44,9 +51,26 @@ document.querySelectorAll('.card-link').forEach(link => {
             // Show job detail view only
             document.getElementById('job_detail_view').style.display = 'block';
 
-            if (type === 'job') {
-                document.getElementById('job_done_button').style.display = 'block';
-            } else {
+           if (type === 'job') {
+                const jobDoneButton = document.getElementById('job_done_button');
+                const statusSpan = document.getElementById('job_status');
+
+                jobDoneButton.style.display = 'block';
+
+                if (AcceptedApplicant >= applied) {
+                    jobDoneButton.querySelector('button').textContent = 'Job Completed';
+                    if (statusSpan) {
+                        statusSpan.textContent = 'Ongoing';
+                        statusSpan.style.display = 'block';
+                    }
+                } else {
+                    jobDoneButton.querySelector('button').textContent = 'Complete Applicants';
+                    statusSpan.style.display = 'none';
+                    
+                }
+            }
+
+            else {
                 document.getElementById('job_done_button').style.display = 'none';
             }
 
@@ -69,7 +93,7 @@ document.querySelectorAll('.card-link').forEach(link => {
             document.getElementById('description_display').textContent = this.dataset.description;
             document.getElementById('location_display').textContent = this.dataset.location;
             document.getElementById('salary_display').textContent = this.dataset.salary;
-            document.getElementById('applicants_display').textContent = this.dataset.applied;
+            document.getElementById('applicants_display').textContent = this.dataset.applied + ' Applicant Need';
             document.getElementById('email_display').textContent = this.dataset.email;
             document.getElementById('skills_display').innerHTML = this.dataset.skills;
             document.getElementById('yoe_display').textContent = this.dataset.yoe + ' years experience';

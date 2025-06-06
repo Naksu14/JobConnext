@@ -43,9 +43,9 @@ $result = $conn->query($sql);
                     <td>Sub-Admin</td> <!-- Replace with actual role if available -->
                     <td>Active</td> <!-- Replace with actual status if available -->
                     <td>
-                        <button class="btn btn-success btn-sm">Edit</button>
-                        <button class="btn btn-warning btn-sm">Deactivate</button>
-                        <button class="btn btn-danger btn-sm">Remove</button>
+                        <a href="AdminProfile.php"><button class="btn btn-success btn-sm">Edit</button></a>
+                        <!-- <button class="btn btn-warning btn-sm">Deactivate</button>
+                        <button class="btn btn-danger btn-sm">Remove</button> -->
                     </td>
                 </tr>
             <?php endwhile; ?>

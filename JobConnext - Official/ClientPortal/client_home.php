@@ -139,10 +139,12 @@ $user_id = $_SESSION['client_id'];
                             </li>
                         </ol>
                     </div>
+                    <hr>
+                    <div style="text-align: center;">
+                        <span id="job_status" style="color: #55A64D; font-weight: bold; display: none;"></span>
+                    </div><br>
                     <div class="job-done" id="job_done_button" style="display: none;">
-                        <button>
-                            Job Offer Done
-                        </button>
+                        <button></button>
                     </div>
 
                 </div>
@@ -291,7 +293,7 @@ $user_id = $_SESSION['client_id'];
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
-    
+
     <script src="../Assets/js/card_viewlink.js"></script>
     <script src="../Assets/js/filter.js"></script>
     <script src="../Assets/js/card_editOrdelete.js"></script>

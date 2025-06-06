@@ -22,12 +22,22 @@ if (isset($_SESSION['client_id'])) {
         $job_offer = $row['job_offer'];
         $job_status = $row['job_status'];
 
+        $query = "SELECT email FROM tbl_client WHERE client_id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $clientId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            $displayEmail= $row['email'];
+        }
+
         $job_offered_companyname_QRY = "SELECT * FROM tbl_company_info WHERE client_id = $client_id";
         $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
 
         $company_name = ''; // default fallback
 
         // Total applied and accepted applicants
+        
         $statuses = [
             'Applied' => "SELECT COUNT(*) FROM tbl_applicants WHERE job_post_id = ?",
             'Accepted' => "SELECT COUNT(*) FROM tbl_applicants WHERE job_post_id = ? AND status = 'accepted'",
@@ -89,9 +99,10 @@ if (isset($_SESSION['client_id'])) {
                 data-companyname="<?php echo htmlspecialchars($company_name) ?>"
                 data-location="<?php echo htmlspecialchars($job_loc) ?>"
                 data-job-status="<?php echo htmlspecialchars($job_status) ?>"
-                data-applied="<?php echo htmlspecialchars($Count_Applicants_Applied . ' Applicant') ?>"
-                data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
-                data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
+                data-applied="<?php echo htmlspecialchars($num_applicants) ?>"
+                data-AcceptedApplicant="<?php echo $Count_Applicants_Accepted ?>"
+                data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' .'Php ' . $job_salary_end ?>"
+                data-email="<?php echo htmlspecialchars($displayEmail) ?>"
                 data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
                 data-description="<?php echo htmlspecialchars($job_description) ?>"
                 data-skills="<?php echo htmlspecialchars($skill_tags) ?>"

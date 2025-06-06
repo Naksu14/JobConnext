@@ -1,52 +1,5 @@
-const ctxBCChart = document.getElementById('BCChart');
-const ctxCCChart = document.getElementById('CCChart');
 const ctxJCChart = document.getElementById('JCChart');
 const ctxFBChart = document.getElementById('FBChart');
-
-
-
-
-  new Chart(ctxBCChart, {
-    type: 'bar',
-    data: {
-      labels: ['Approved', 'Pending', 'Rejected'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3],
-        backgroundColor: ['#3679FE'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-
-
-  new Chart(ctxCCChart, {
-    type: 'bar',
-    data: {
-      labels: ['Approved', 'Pending', 'Rejected'],
-      datasets: [{
-        label: '# of Votes',
-        data: [5, 2, 3],
-        backgroundColor: ['#E46232'],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
-      }
-    }
-  });
-  
 
 new Chart(ctxJCChart, {
   type: 'line',

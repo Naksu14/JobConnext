@@ -4,10 +4,10 @@ include '../db_con/db_connection.php';
 
 $user_id = $_SESSION['client_id'];
 $companyName = "COMPANY NAME";
-$Count_Applicant = 0;
+$Count_Applicantss = 0;
 $Count_JobList = 0;
- $Count_JobListArchived = 0;
-        
+$Count_JobListArchived = 0;
+
 if (isset($_SESSION['client_id'])) {
     $clientId = $_SESSION['client_id'];
     // Combined query for tbl_company_info
@@ -32,6 +32,25 @@ if (isset($_SESSION['client_id'])) {
     $result = $stmt->get_result();
     if ($row = $result->fetch_assoc()) {
         $Count_JobList = $row['JobList'];
+    }
+
+    $query = "SELECT 
+                    cj.job_post_id,
+                    COUNT(cj.job_post_id) AS Applicant,
+                    a.status
+                FROM 
+                    tbl_client_jobpost cj
+                LEFT JOIN 
+                    tbl_applicants a ON cj.job_post_id = a.job_post_id
+                WHERE 
+                    cj.client_id = ? AND a.status = 'accepted'
+                ";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $clientId);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if ($row = $result->fetch_assoc()) {
+        $Count_Applicantss = $row['Applicant'];
     }
 
     $query = "SELECT COUNT(*) as JobListArchived FROM tbl_client_jobpost_archive WHERE client_id = ?";
@@ -128,7 +147,7 @@ if (isset($_SESSION['client_id'])) {
                     <div class="card card-header">
                         <div class="card-body">
                             <span id="card-title">
-                                Applicant <span id="card-count"><?php echo $Count_Applicant; ?></span>
+                                Applicant <span id="card-count"><?php echo $Count_Applicantss; ?></span>
                             </span>
                         </div>
                     </div>

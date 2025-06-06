@@ -20,6 +20,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     $job_offer = $row['job_offer'];
     $job_status = $row['job_status'];
 
+
     $job_offered_companyname_QRY = "SELECT * FROM tbl_company_info WHERE client_id = $other_client_id";
     $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
 
@@ -37,6 +38,15 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
     while ($company_row = mysqli_fetch_assoc($job_offered_companyEXE)) {
         $company_name = $company_row['company_name'];
+
+        $query = "SELECT email FROM tbl_client WHERE client_id = ?";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("i", $other_client_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        if ($row = $result->fetch_assoc()) {
+            $displayEmail = $row['email'];
+        }
     }
 
     $colors = [
@@ -73,14 +83,14 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         }
 
 
-        ?>
+?>
         <div class="card-link" data-type="other-job" data-clientid="<?php echo $other_client_id ?>"
             data-jobid="<?php echo $job_post_id ?>" data-companyname="<?php echo htmlspecialchars($company_name) ?>"
             data-location="<?php echo htmlspecialchars($job_loc) ?>"
-            data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . $job_salary_end ?>"
+            data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . 'Php ' . $job_salary_end ?>"
             data-job-status="<?php echo htmlspecialchars($job_status) ?>"
-            data-applied="<?php echo htmlspecialchars($Count_Applicants_Applied.' Applicant') ?>"
-            data-email="<?php echo htmlspecialchars('EmailCompany@gmail.com') ?>"
+            data-applied="<?php echo htmlspecialchars($Count_Applicants_Applied) ?>"
+            data-email="<?php echo htmlspecialchars($displayEmail) ?>"
             data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
             data-description="<?php echo htmlspecialchars($job_description) ?>"
             data-skills="<?php echo htmlspecialchars($skill_tags) ?>" data-yoe="<?php echo $yr_Exp ?>"
@@ -135,7 +145,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         </div>
         <br>
 
-        <?php
+<?php
 
     }
 } ?>

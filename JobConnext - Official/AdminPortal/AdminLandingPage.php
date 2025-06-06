@@ -18,7 +18,47 @@ if ($row = $result->fetch_assoc()) {
     $Count_clientUser = $row['clientUser'];
 }
 
+// Fetch applicant status counts
+$approved = $pending = $rejected = 0;
+$applicantQuery = "SELECT status, COUNT(*) as count FROM tbl_applicants GROUP BY status";
+$stmt = $conn->prepare($applicantQuery);
+$stmt->execute();
+$result = $stmt->get_result();
 
+while ($row = $result->fetch_assoc()) {
+    switch (strtolower($row['status'])) {
+        case 'accepted':
+            $accepted = (int)$row['count'];
+            break;
+        case 'pending':
+            $pending = (int)$row['count'];
+            break;
+        case 'rejected':
+            $rejected = (int)$row['count'];
+            break;
+    }
+}
+
+// Count job_status values
+$active = $ongoing = $inactive = 0;
+$statusQuery = "SELECT job_status, COUNT(*) as count FROM tbl_client_jobpost GROUP BY job_status";
+$stmt = $conn->prepare($statusQuery);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    switch (strtolower($row['job_status'])) {
+        case 'active':
+            $active = (int)$row['count'];
+            break;
+        case 'ongoing':
+            $ongoing = (int)$row['count'];
+            break;
+        case 'inactive':
+            $inactive = (int)$row['count'];
+            break;
+    }
+}
 
 // Clients per month
 $clientData = [];
@@ -131,7 +171,7 @@ while ($row = $result->fetch_assoc()) {
                 <canvas id="BCChart"></canvas>
             </div>
             <div class="chart" id="bar-graph">
-                <h3>Client Project</h3>
+                <h3>Client Job Post</h3>
                 <canvas id="CCChart"></canvas>
             </div>
         </div>
@@ -159,57 +199,159 @@ while ($row = $result->fetch_assoc()) {
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="dashboard/charts.js"></script>
-<script>
-    const months = <?php echo json_encode($months); ?>;
-    const clientData = <?php echo json_encode($clientData); ?>;
-    const workerData = <?php echo json_encode($workerData); ?>;
+    <script>
+        const months = <?php echo json_encode($months); ?>;
+        const clientData = <?php echo json_encode($clientData); ?>;
+        const workerData = <?php echo json_encode($workerData); ?>;
 
-    new Chart(newUserChart, {
-        type: 'line',
-        data: {
-            labels: months,
-            datasets: [
-                {
-                    label: 'Clients',
-                    data: clientData,
-                    backgroundColor: 'rgba(228, 98, 50, 0.2)',
-                    borderColor: '#E46232',
-                    borderWidth: 2,
-                    tension: 0.4,
-                    fill: true
+        new Chart(newUserChart, {
+            type: 'line',
+            data: {
+                labels: months,
+                datasets: [{
+                        label: 'Clients',
+                        data: clientData,
+                        backgroundColor: 'rgba(228, 98, 50, 0.2)',
+                        borderColor: '#E46232',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    },
+                    {
+                        label: 'Blue-Collar Workers',
+                        data: workerData,
+                        backgroundColor: 'rgba(32, 138, 174, 0.2)',
+                        borderColor: '#208AAE',
+                        borderWidth: 2,
+                        tension: 0.4,
+                        fill: true
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    title: {
+                        display: true,
+                        text: 'New Registered Users: Clients and Blue-Collar Workers'
+                    }
                 },
-                {
-                    label: 'Blue-Collar Workers',
-                    data: workerData,
-                    backgroundColor: 'rgba(32, 138, 174, 0.2)',
-                    borderColor: '#208AAE',
-                    borderWidth: 2,
-                    tension: 0.4,
-                    fill: true
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Registrations'
+                        }
+                    },
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Months'
+                        }
+                    }
                 }
-            ]
+            }
+        });
+
+
+
+        const applicantStatusData = {
+            accepted: <?php echo $accepted; ?>,
+            pending: <?php echo $pending; ?>,
+            rejected: <?php echo $rejected; ?>
+        };
+
+        const ctxBCChart = document.getElementById('BCChart');
+
+
+
+
+
+        new Chart(ctxBCChart, {
+            type: 'bar',
+            data: {
+                labels: ['Accepted', 'Pending', 'Rejected'],
+                datasets: [{
+                    label: 'Applications',
+                    data: [
+                        applicantStatusData.accepted,
+                        applicantStatusData.pending,
+                        applicantStatusData.rejected
+                    ],
+                    backgroundColor: ['#4CAF50', '#FFC107', '#F44336'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Applicant Status Distribution'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Number of Applicants'
+                        }
+                    }
+                }
+            }
+        });
+
+        const jobPostStatusData = {
+            active: <?php echo $active; ?>,
+            ongoing: <?php echo $ongoing; ?>,
+            inactive: <?php echo $inactive; ?>
+        };
+        
+        const ctxCCChart = document.getElementById('CCChart');
+
+        new Chart(ctxCCChart, {
+        type: 'bar',
+        data: {
+            labels: ['Active', 'Ongoing', 'Done'],
+            datasets: [{
+            label: 'Job Posts',
+            data: [
+                jobPostStatusData.active,
+                jobPostStatusData.ongoing,
+                jobPostStatusData.inactive
+            ],
+            backgroundColor: ['#4CAF50', '#FFC107', '#F44336'],
+            borderWidth: 1
+            }]
         },
         options: {
             responsive: true,
             plugins: {
-                legend: { position: 'top' },
-                title: {
-                    display: true,
-                    text: 'New Registered Users: Clients and Blue-Collar Workers'
-                }
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Client Job Post Status'
+            }
             },
             scales: {
-                y: {
-                    beginAtZero: true,
-                    title: { display: true, text: 'Number of Registrations' }
-                },
-                x: {
-                    title: { display: true, text: 'Months' }
-                }
+            y: {
+                beginAtZero: true,
+                title: { display: true, text: 'Number of Job Posts' }
+            }
             }
         }
-    });
-</script>
+        });
+
+
+    </script>
 
 </body>
 
