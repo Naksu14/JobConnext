@@ -85,8 +85,8 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
 ?>
         <div class="card-link" data-type="other-job" data-clientid="<?php echo $other_client_id ?>"
-            data-jobid="<?php echo $job_post_id ?>" data-companyname="<?php echo htmlspecialchars($company_name) ?>"
-            data-location="<?php echo htmlspecialchars($job_loc) ?>"
+            ata-jobid="<?php echo $job_post_id ?>" data-companyname="<?php echo htmlspecialchars($company_name) ?>"
+            dadta-location="<?php echo htmlspecialchars($job_loc) ?>"
             data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . 'Php ' . $job_salary_end ?>"
             data-job-status="<?php echo htmlspecialchars($job_status) ?>"
             data-applied="<?php echo htmlspecialchars($Count_Applicants_Applied) ?>"

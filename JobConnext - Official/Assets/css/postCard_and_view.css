@@ -85,6 +85,7 @@
   .details h3 {
     margin: 0;
     font-size: 18px;
+    color: #666;
   }
   
   .details p {
@@ -593,3 +594,5 @@
     background: #f44336;
     color: white;
 }
+
+
