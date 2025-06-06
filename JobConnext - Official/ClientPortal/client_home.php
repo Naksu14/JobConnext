@@ -151,6 +151,12 @@ $user_id = $_SESSION['client_id'];
                     <div class="job-done" id="job_done_buttonApplicants" style="display: none;">
                         <button id="complete_Applicants">Complete Applicants</button>
                     </div>
+                    <div class="rating-content" id="rate-content" style="display: none;">
+                        <span id="rate-content-title">Worker's Rate</span>
+                        <div tyle="text-align: center;">Rating Content</div>
+                    </div>
+                    <br>
+
 
 
                 </div>

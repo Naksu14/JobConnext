@@ -5,7 +5,7 @@ include '../db_con/db_connection.php';
 if (isset($_SESSION['client_id'])) {
     $clientId = $_SESSION['client_id'];
 
-    $job_offeredQRY = "SELECT * FROM tbl_client_jobpost WHERE client_id = $clientId";
+    $job_offeredQRY = "SELECT * FROM tbl_client_jobpost WHERE client_id = $clientId ORDER BY start_posted DESC";
     $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
     while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 

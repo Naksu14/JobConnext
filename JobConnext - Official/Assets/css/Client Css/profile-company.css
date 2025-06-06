@@ -36,26 +36,7 @@ body{
     display: flex;
     flex-direction: row;
 }
-.applied {
-    background-color: var(--darkblue);
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .applied:hover {
-    background-color: #455da0;
-  }
-  
-  .applied p {
-    margin: 0;
-    font-weight: bold;
-  }
-  
+
 .client-photo img{
     border-radius: 50%;
     width: 100px;

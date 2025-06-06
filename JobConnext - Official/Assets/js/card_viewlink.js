@@ -63,14 +63,15 @@ document.querySelectorAll('.card-link').forEach(link => {
             const jobDoneButtonCompleted = document.getElementById('job_done_buttonCompleted');
             const jobDoneButtonApplicants = document.getElementById('job_done_buttonApplicants');
             const statusSpan = document.getElementById('job_status');
+            const ratingView = document.getElementById('rate-content')
 
            if (type === 'job') {
-                if (jobStatus === "Active") {
-                    jobDoneButtonCompleted.style.display = 'none';
-                    jobDoneButtonApplicants.style.display = 'block';
-
+                if (jobStatus === "Active") {                    
                     if (statusSpan) {
                         statusSpan.style.display = 'none';
+                        jobDoneButtonCompleted.style.display = 'none';
+                        jobDoneButtonApplicants.style.display = 'block';
+                        ratingView.style.display = 'none';
                     }
                 } else if (jobStatus === "Ongoing") {
                     if (statusSpan) {
@@ -79,14 +80,16 @@ document.querySelectorAll('.card-link').forEach(link => {
 
                         jobDoneButtonCompleted.style.display = 'block';
                         jobDoneButtonApplicants.style.display = 'none';
+                        ratingView.style.display = 'none';
+
                     }
                 }else {
-                    jobDoneButtonCompleted.style.display = 'none';
-                    jobDoneButtonApplicants.style.display = 'none';
-
                     if (statusSpan) {
+                        jobDoneButtonCompleted.style.display = 'none';
+                        jobDoneButtonApplicants.style.display = 'none';
                         statusSpan.textContent = 'Job is Completed';
                         statusSpan.style.display = 'block';
+                        ratingView.style.display = 'block';
                     }
                 }
             }
@@ -332,8 +335,7 @@ function showWorkerDetail(applicant) {
             <div class="applicant-skills">Skills: ${skills}</div>
             <div class="applicant-bio">Bio: ${applicant.bio || 'N/A'}</div>
             <div class="applicant-resume">
-                <a href="scriptsfordb/get_file.php?client_id=${applicant.worker_id}&job_id=${applicant.job_post_id}" 
-                target="_blank">📄 Download Resume</a>
+                <a href="scriptsfordb/get_Worker_file.php?worker_id=${applicant.worker_id}" target="_blank">📄 Download Resume</a>
             </div>
              ${actionButtonsHTML}
         </div>
@@ -409,33 +411,45 @@ function handleAcceptReject(workerId, jobId, action) {
         console.log(clientId,jobId,'Ongoing');
     });
 
-    function updateJobStatus(clientId,jobId,status) {
-        fetch('scriptsfordb/update_job_status.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ jobId, clientId, status })
-        })
-        .then(res => res.json())
-        .then(data => {
-            Swal.fire({
-                icon: data.success ? 'success' : 'error',
-                title: data.message || 'Status updated'
+function updateJobStatus(clientId, jobId, status) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: `You are about to mark this job as "${status}".`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, proceed',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Proceed with the fetch if user confirms
+            fetch('scriptsfordb/update_job_status.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ jobId, clientId, status })
+            })
+            .then(res => res.json())
+            .then(data => {
+                Swal.fire({
+                    icon: data.success ? 'success' : 'error',
+                    title: data.message || 'Status updated'
+                });
+
+                if (data.success && status === 'Inactive') {
+                    document.getElementById('job_done_buttonCompleted').style.display = 'none';
+                    document.getElementById('job_status').textContent = 'Job is Completed';
+                }
+
+                if (status === 'Ongoing') {
+                    document.getElementById('job_status').textContent = 'Ongoing';
+                    document.getElementById('job_status').style.display = 'block';
+                    document.getElementById('job_done_buttonApplicants').style.display = 'none';
+                    document.getElementById('job_done_buttonCompleted').style.display = 'block';
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire('Error', 'Failed to update job status.', 'error');
             });
-
-            if (data.success && status === 'Inactive') {
-                document.getElementById('job_done_buttonCompleted').style.display = 'none';
-                document.getElementById('job_status').textContent = 'Job is Completed';
-            }
-
-            if (status === 'Ongoing') {
-                document.getElementById('job_status').textContent = 'Ongoing';
-                document.getElementById('job_status').style.display = 'block';
-                document.getElementById('job_done_buttonApplicants').style.display = 'none';
-                document.getElementById('job_done_buttonCompleted').style.display = 'block';
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            Swal.fire('Error', 'Failed to update job status.', 'error');
-        });
-    }
+        }
+    });
+}
