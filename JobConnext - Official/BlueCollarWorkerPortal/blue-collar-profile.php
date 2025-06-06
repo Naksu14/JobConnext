@@ -25,7 +25,7 @@ if (isset($_SESSION['worker_id'])) {
             $civilStatus = $row['civilStatus'];
             $birthDate = $row['birthDate'];
             $softSkills = $row['softSkills'];
-            $skillsArray = array_map('trim', explode(',', $softSkills));
+            $skillsArray = array_filter(array_map('trim', explode(',', $softSkills)));
         }
     }
 
@@ -132,7 +132,6 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
             <div class="container-fluid profile-nav">
                 <a href="../BlueCollarWorkerPortal/blue-collar-profile.php" id="active-nav">Application</a>
                 <a href="../BlueCollarWorkerPortal/overview-profile.php">Experiences</a>
-                <a href="blue-collar-certificates.php">Certificate and others</a>
             </div>
 
             <div class="create-header">

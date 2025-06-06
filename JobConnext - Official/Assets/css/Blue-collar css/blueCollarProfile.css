@@ -828,3 +828,37 @@ body {
     padding-top: 10px;
     /* Adjust this value as needed */
 }
+#certificates-input-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 13px;
+}
+
+#certificates-editable-list{
+    padding: 10px;
+    gap: 10px;
+}
+
+#certificates-text li,
+#certificates-editable-list li {
+    padding-top: 10px;
+    /* Adjust this value as needed */
+}
+#accomplishments-input-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 13px;
+}
+
+#accomplishments-editable-list{
+    padding: 10px;
+    gap: 10px;
+}
+
+#accomplishments-text li,
+#accomplishments-editable-list li {
+    padding-top: 10px;
+    /* Adjust this value as needed */
+}
