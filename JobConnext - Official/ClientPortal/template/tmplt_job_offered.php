@@ -88,6 +88,9 @@ if (isset($_SESSION['client_id'])) {
 
             if ($job_status == "Active") {
                 $statuscolor = 'green';
+            }
+            else if ($job_status == "Ongoing") {
+                $statuscolor = 'blue';
             } else {
                 $statuscolor = 'red';
             }
@@ -96,6 +99,7 @@ if (isset($_SESSION['client_id'])) {
                 data-type="job"
                 data-clientid="<?php echo $client_id ?>"
                 data-jobid="<?php echo $job_post_id ?>"
+                data-jobStatus="<?php echo htmlspecialchars($job_status) ?>"
                 data-companyname="<?php echo htmlspecialchars($company_name) ?>"
                 data-location="<?php echo htmlspecialchars($job_loc) ?>"
                 data-job-status="<?php echo htmlspecialchars($job_status) ?>"

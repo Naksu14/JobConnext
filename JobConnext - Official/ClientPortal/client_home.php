@@ -141,11 +141,17 @@ $user_id = $_SESSION['client_id'];
                     </div>
                     <hr>
                     <div style="text-align: center;">
-                        <span id="job_status" style="color: #55A64D; font-weight: bold; display: none;"></span>
+                        <span id="job_status" style="color: #2774d8; font-weight: bold; display: none;"></span>
                     </div><br>
-                    <div class="job-done" id="job_done_button" style="display: none;">
-                        <button></button>
+
+                    <div class="job-done" id="job_done_buttonCompleted" style="display: none;">
+                        <button id="job_Complete">Job Completed</button>
                     </div>
+
+                    <div class="job-done" id="job_done_buttonApplicants" style="display: none;">
+                        <button id="complete_Applicants">Complete Applicants</button>
+                    </div>
+
 
                 </div>
 
@@ -155,7 +161,7 @@ $user_id = $_SESSION['client_id'];
                     <div class="job-header">
                         <div class="profile-info">
                             <div class="avatar">
-                                <img id="worker_avatar" src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Worker Avatar">
+                                <img id="worker_avatar" src="../Assets/image/worker_user.png" alt="Worker Avatar">
                             </div>
                             <div class="details">
                                 <h3 id="worker_name_display">Worker Name </h3>
