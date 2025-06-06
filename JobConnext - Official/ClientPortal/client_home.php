@@ -224,71 +224,107 @@ $user_id = $_SESSION['client_id'];
         </div>
 
         <div class="page_content">
-            <div class=" row content-header" style="position: sticky; top: 0; z-index: 1; background-color:white; padding: 20px;">
-                <div class="col-3  title-section">
-                    <div class="col content-title">
-                        <p>
-                            Jobs Offered
-                        </p>
-                    </div>
-                </div>
+            <div class=" row content-header" style=" padding: 20px;">
+                <div class="row job-card">
+                    <div class="col-12 justify-content-end">
+                        <div class="container-fluid content-filter">
+                            <div class="d-flex justify-content-between align-items-center w-100">
 
-                <div class="col-9 d-flex justify-content-end">
-                    <div class="container-fluid content-filter">
-                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../Assets/image/filter (1) 1.png" alt="">
-                            <span>Filter</span>
-                        </button>
-                        <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown" style="min-width: 200px;">
-                            <li><a class="dropdown-item" href="#" data-filter="all">All</a></li>
-                            <li><a class="dropdown-item" href="#" data-filter="Electrician">Electrician</a></li>
-                            <li><a class="dropdown-item" href="#" data-filter="Tubero">Tubero</a></li>
-                            <li>
-                                <div class="dropdown-item-text">
-                                    <label class="form-label small mb-1">Other:</label>
-                                    <input type="text" id="customFilterInput" class="form-control form-control-sm" placeholder="Enter job type">
-                                    <button class="btn btn-sm btn-primary mt-2 w-100" id="applyCustomFilter">Apply</button>
+                                <!-- Title: Left Side -->
+                                <div class="content-title title-section"">
+                                    <p class=" mb-0">Jobs Offered</p>
                                 </div>
-                            </li>
-                        </ul>
+
+                                <!-- Filter: Right Side -->
+                                <div>
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="../Assets/image/filter (1) 1.png" alt="">
+                                        <span>Filter</span>
+                                    </button>
+                                    <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown" style="min-width: 200px;">
+                                        <li><a class="dropdown-item" href="#" data-filter="date_desc">Newest</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="date_asc">Oldest</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="active">Active</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="ongiong">Ongoing</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="inactive">Inactive</a></li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-
-
-                <div class="row job-card">
                     <div class="col-12">
-                        <!-- JOB OFFERED CARD -->
-                        <?php include '../ClientPortal/template/tmplt_job_offered.php'; ?>
-
-                    </div>
-                </div>
-
-                <div class="row title-section">
-                    <div class="col-sm recommend-workers">
-                        <p>
-                            Recommended workers
-                        </p>
+                        <div id="jobCardsContainer">
+                            <?php include '../ClientPortal/template/tmplt_job_offered.php'; ?>
+                        </div>
                     </div>
                 </div>
 
                 <div class="row job-card">
+                    <div class="col-12 justify-content-end">
+                        <div class="container-fluid content-filter">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+
+                                <!-- Title: Left Side -->
+                                <div class="content-title title-section">
+                                    <p class="mb-0">Recommended Worker's</p>
+                                </div>
+
+                                <!-- Filter: Right Side -->
+                                <div>
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="../Assets/image/filter (1) 1.png" alt="">
+                                        <span>Filter</span>
+                                    </button>
+                                    <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown" style="min-width: 200px;">
+                                        <li><a class="dropdown-item" href="#" data-filter="date_desc">Newest</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="date_asc">Oldest</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="active">Active</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="ongiong">Ongoing</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="inactive">Inactive</a></li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div><br>
                     <div class="col-12">
                         <!-- Recommended_worker -->
                         <?php include '../ClientPortal/template/tmplt_recommended_worker.php'; ?>
                     </div>
                 </div>
 
-
-                <div class="row title-section">
-                    <div class="other-offer">
-                        <p>
-                            Other Job Offers
-                        </p>
-                    </div>
-                </div>
-
                 <div class="row job-card">
+                    <div class="col-12 justify-content-end">
+                        <div class="container-fluid content-filter">
+                            <div class="d-flex justify-content-between align-items-center w-100">
+
+                                <!-- Title: Left Side -->
+                                <div class="content-title title-section"">
+                                    <p class=" mb-0">Other Jobs Offer</p>
+                                </div>
+
+                                <!-- Filter: Right Side -->
+                                <div>
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="../Assets/image/filter (1) 1.png" alt="">
+                                        <span>Filter</span>
+                                    </button>
+                                    <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown" style="min-width: 200px;">
+                                        <li><a class="dropdown-item" href="#" data-filter="date_desc">Newest</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="date_asc">Oldest</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="active">Active</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="ongiong">Ongoing</a></li>
+                                        <li><a class="dropdown-item" href="#" data-filter="inactive">Inactive</a></li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-12">
                         <!-- Recommended_worker -->
                         <?php include '../ClientPortal/template/tmplt_other_job_offered.php'; ?>
@@ -307,10 +343,32 @@ $user_id = $_SESSION['client_id'];
     </script>
 
     <script src="../Assets/js/card_viewlink.js"></script>
-    <script src="../Assets/js/filter.js"></script>
+    <!-- <div class="col-9 d-flex justify-content-end">
+                    <div class="container-fluid content-filter">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="../Assets/image/filter (1) 1.png" alt="">
+                            <span>Filter</span>
+                        </button>
+                        <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown" style="min-width: 200px;">
+                            <li><a class="dropdown-item" href="#" data-filter="all">All</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Electrician">Electrician</a></li>
+                            <li><a class="dropdown-item" href="#" data-filter="Tubero">Tubero</a></li>
+                            <li>
+                                <div class="dropdown-item-text">
+                                    <label class="form-label small mb-1">Other:</label>
+                                    <input type="text" id="customFilterInput" class="form-control form-control-sm" placeholder="Enter job type">
+                                    <button class="btn btn-sm btn-primary mt-2 w-100" id="applyCustomFilter">Apply</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div> -->
+
+    <!-- <script src="../Assets/js/filter.js"></script> -->
     <script src="../Assets/js/card_editOrdelete.js"></script>
     <script src="../Assets/js/logout.js"></script>
     <script src="../Assets/js/report.js"></script>
+
 </body>
 
 </html>

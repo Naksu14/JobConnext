@@ -453,3 +453,26 @@ function updateJobStatus(clientId, jobId, status) {
         }
     });
 }
+
+
+document.querySelectorAll('.dropdown-item[data-filter]').forEach(item => {
+        item.addEventListener('click', function (e) {
+            e.preventDefault();
+            const filter = this.dataset.filter;
+
+            fetch(window.location.href, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'filter=' + encodeURIComponent(filter)
+            })
+            .then(res => res.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newCards = doc.querySelector('#jobCardsContainer');
+                document.querySelector('#jobCardsContainer').innerHTML = newCards.innerHTML;
+            });
+        });
+    });
