@@ -1,9 +1,20 @@
 <?php
 include "../db_con/db_connection.php";
 
+$filter = $_POST['filters'] ?? null;
+
+        switch ($filter) {
+            case 'date_asc':
+                $condition = "ORDER BY worker_id ASC";
+                break;
+            default:
+                $condition = "ORDER BY worker_id DESC";
+                break;
+        }
+
 $recommended_clientHOMEqry = "SELECT w.* FROM tbl_worker_information w 
                               JOIN tbl_worker_skill_sets s ON w.worker_id = s.worker_id 
-                              GROUP BY w.worker_id";
+                              GROUP BY w.worker_id $condition";
 $recommended_clientHOMEexe = mysqli_query($conn, $recommended_clientHOMEqry);
 
 while ($row = mysqli_fetch_assoc($recommended_clientHOMEexe)) {

@@ -54,7 +54,6 @@ document.querySelectorAll('.card-link').forEach(link => {
             document.getElementById('worker_bio_display').textContent = this.dataset.bio || 'No bio provided.';
             document.getElementById('worker_phone_display').textContent = this.dataset.phone || 'No phone';
             document.getElementById('worker_skills_display').innerHTML = this.dataset.skills || 'No skills';
-            document.getElementById('worker_image_display').src = this.dataset.image || 'default.jpg';
 
         } else if (type === 'job' || type === 'other-job') {
             // Show job detail view only
@@ -476,3 +475,48 @@ document.querySelectorAll('.dropdown-item[data-filter]').forEach(item => {
             });
         });
     });
+
+document.querySelectorAll('.dropdown-items[data-filters]').forEach(items => {
+    items.addEventListener('click', function (e) {
+        e.preventDefault();
+        const filters = this.dataset.filters;
+
+        fetch(window.location.href, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'filters=' + encodeURIComponent(filters)
+        })
+        .then(res => res.text())
+        .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newCards = doc.querySelector('#workerCardsContainer');
+                document.querySelector('#workerCardsContainer').innerHTML = newCards.innerHTML;
+            });
+    });
+});
+
+document.querySelectorAll('.dropdown-itemothers[data-filterothers]').forEach(items => {
+    items.addEventListener('click', function (e) {
+        e.preventDefault();
+        const filterothers = this.dataset.filterothers;
+
+        fetch(window.location.href, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'filterothers=' + encodeURIComponent(filterothers)
+        })
+        .then(res => res.text())
+        .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newCards = doc.querySelector('#otherJobCardsContainer');
+                document.querySelector('#otherJobCardsContainer').innerHTML = newCards.innerHTML;
+            });
+    });
+});
+

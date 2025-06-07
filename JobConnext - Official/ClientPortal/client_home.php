@@ -273,16 +273,13 @@ $user_id = $_SESSION['client_id'];
 
                                 <!-- Filter: Right Side -->
                                 <div>
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdowns" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src="../Assets/image/filter (1) 1.png" alt="">
                                         <span>Filter</span>
                                     </button>
-                                    <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown" style="min-width: 200px;">
-                                        <li><a class="dropdown-item" href="#" data-filter="date_desc">Newest</a></li>
-                                        <li><a class="dropdown-item" href="#" data-filter="date_asc">Oldest</a></li>
-                                        <li><a class="dropdown-item" href="#" data-filter="active">Active</a></li>
-                                        <li><a class="dropdown-item" href="#" data-filter="ongiong">Ongoing</a></li>
-                                        <li><a class="dropdown-item" href="#" data-filter="inactive">Inactive</a></li>
+                                    <ul class="dropdown-menu p-2" aria-labelledby="filterDropdowns" style="min-width: 200px;">
+                                        <li><a class="dropdown-items" href="#" data-filters="date_desc">Newest</a></li>
+                                        <li><a class="dropdown-items" href="#" data-filters="date_asc">Oldest</a></li>
                                     </ul>
 
                                 </div>
@@ -291,8 +288,9 @@ $user_id = $_SESSION['client_id'];
                         </div>
                     </div><br>
                     <div class="col-12">
-                        <!-- Recommended_worker -->
-                        <?php include '../ClientPortal/template/tmplt_recommended_worker.php'; ?>
+                        <div id="workerCardsContainer">
+                            <?php include '../ClientPortal/template/tmplt_recommended_worker.php'; ?>
+                        </div>
                     </div>
                 </div>
 
@@ -308,16 +306,15 @@ $user_id = $_SESSION['client_id'];
 
                                 <!-- Filter: Right Side -->
                                 <div>
-                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdownothers" data-bs-toggle="dropdown" aria-expanded="false">
                                         <img src="../Assets/image/filter (1) 1.png" alt="">
                                         <span>Filter</span>
                                     </button>
-                                    <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown" style="min-width: 200px;">
-                                        <li><a class="dropdown-item" href="#" data-filter="date_desc">Newest</a></li>
-                                        <li><a class="dropdown-item" href="#" data-filter="date_asc">Oldest</a></li>
-                                        <li><a class="dropdown-item" href="#" data-filter="active">Active</a></li>
-                                        <li><a class="dropdown-item" href="#" data-filter="ongiong">Ongoing</a></li>
-                                        <li><a class="dropdown-item" href="#" data-filter="inactive">Inactive</a></li>
+                                    <ul class="dropdown-menu p-2" aria-labelledby="filterDropdownothers" style="min-width: 200px;">
+                                        <li><a class="dropdown-itemothers" href="#" data-filterothers="date_desc">Newest</a></li>
+                                        <li><a class="dropdown-itemothers" href="#" data-filterothers="date_asc">Oldest</a></li>
+                                        <li><a class="dropdown-itemothers" href="#" data-filterothers="active">Active</a></li>
+                                        <li><a class="dropdown-itemothers" href="#" data-filterothers="ongiong">Ongoing</a></li>
                                     </ul>
 
                                 </div>
@@ -326,8 +323,10 @@ $user_id = $_SESSION['client_id'];
                         </div>
                     </div>
                     <div class="col-12">
-                        <!-- Recommended_worker -->
-                        <?php include '../ClientPortal/template/tmplt_other_job_offered.php'; ?>
+                        <div id="otherJobCardsContainer">
+                            <?php include '../ClientPortal/template/tmplt_other_job_offered.php'; ?>
+                        </div>
+                        
                     </div>
                 </div>
 

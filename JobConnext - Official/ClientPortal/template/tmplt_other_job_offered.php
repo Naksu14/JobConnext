@@ -2,11 +2,28 @@
 include '../db_con/db_connection.php';
 
 $clientId = $_SESSION['client_id'];
+$filter = $_POST['filterothers'] ?? null;
+$hasResults = false;
 
-$job_offeredQRY = "SELECT * FROM tbl_client_jobpost WHERE client_id != $clientId AND job_status != 'InActive'";
+switch ($filter) {
+    case 'date_asc':
+        $condition = "ORDER BY job_post_id ASC";
+        break;
+    case 'active':
+        $condition = "AND job_status = 'Active' ORDER BY job_post_id DESC";
+        break;
+    case 'ongiong':
+        $condition = "AND job_status = 'Ongoing' ORDER BY job_post_id DESC";
+        break;
+    default:
+        $condition = "ORDER BY job_post_id DESC";
+        break;
+}
+
+$job_offeredQRY = "SELECT * FROM tbl_client_jobpost WHERE client_id != $clientId AND job_status != 'InActive' $condition";
 $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
 while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
-
+    $hasResults = true;
     $other_client_id = $row['client_id'];
     $job_post_id = $row['job_post_id'];
     $job_salary_start = $row['salary_start'];
@@ -94,7 +111,8 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
             data-description="<?php echo htmlspecialchars($job_description) ?>"
             data-skills="<?php echo htmlspecialchars($skill_tags) ?>" data-yoe="<?php echo $yr_Exp ?>"
-            onclick="handleCardClick(event)">
+            onclick="handleCardClick(event)"
+            >
 
 
             <div class="card" id="my-offer">
@@ -148,4 +166,8 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 <?php
 
     }
-} ?>
+    
+} 
+if (!$hasResults) {
+        echo "<div class='no-job-message text-center p-6'><strong>No job post found.</strong></div>";
+    }?>
