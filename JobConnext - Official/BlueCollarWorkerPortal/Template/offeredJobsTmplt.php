@@ -106,7 +106,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                         <div class="menu">•••</div>
                         <div class="dropdown">
                             <a href="#"
-                                onclick="reportPost(event, <?php echo $other_client_id ?>, <?php echo $job_post_id ?>)">Report</a>
+                                onclick="reportPost(event, <?php echo $client_id ?>, <?php echo $job_post_id ?>)">Report</a>
                         </div>
                     </div>
                     <p><?php echo $date_posted . " - " . $date_deadline ?></p>
@@ -136,5 +136,6 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         </div>
 
         <br>
+         <script src="../Assets/js/report.js"></script>
 
     <?php } ?>
