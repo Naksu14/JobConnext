@@ -13,7 +13,8 @@
                     <img src="./imgforadmin/Notification.png" alt="JobConnext" width="30" height="30">
                 </a> -->
                 <a class="navbar-brand" href="AdminProfile.php">
-                    <img src="./imgforadmin/adminProfile.png" alt="JobConnext" width="40" height="40">
+                    <img src="../AdminPortal/display_profile_image.php" alt="Profile" width="40" height="40" style="border-radius: 50%;">
+
                 </a>
             </div>
         </div>
