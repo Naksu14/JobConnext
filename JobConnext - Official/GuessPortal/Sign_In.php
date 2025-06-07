@@ -38,6 +38,7 @@ if (isset($_POST['g-recaptcha-response'])) {
                     $row = $result->fetch_assoc();
                     if (password_verify($password, $row['hash_password'])) {
                         $_SESSION[$info['id']] = $row[$info['id']];
+
                         header("Location: " . $info['redirect']);
                         exit();
                     } else {

@@ -83,20 +83,31 @@ $user_id = $_SESSION['client_id'];
                     </div>
 
                     <div class="short-info-container">
-                        <div class="short-info"><img src="../Assets/image/Location.png" alt="">
-                            <p id="location_display">Location</p>
-                        </div>
-                        <div class="short-info"><img src="../Assets/image/Stack of Money.png" alt="">
-                            <p id="salary_display">Salary</p>
-                        </div>
-                        <div class="short-info"><img src="../Assets/image/Applicant.png" alt="">
-                            <p id="applicants_display" onclick="showAlert()">Applicants</p>
-                        </div>
-                        <div class="short-info"><img src="../Assets/image/ic_outline-email.png" alt="">
-                            <p id="email_display">Email</p>
-                        </div>
+                        <div class="short-info">
+    <i class="bi bi-briefcase-fill"></i> <!-- Job Offer -->
+    <p id="job_offer_display">Job Offer</p>
+</div>
+<div class="short-info">
+    <i class="bi bi-geo-alt-fill"></i> <!-- Location -->
+    <p id="location_display">Location</p>
+</div>
+<div class="short-info">
+    <i class="bi bi-currency-dollar"></i> <!-- Salary -->
+    <p id="salary_display">Salary</p>
+</div>
+<div class="short-info">
+    <i class="bi bi-people-fill"></i> <!-- Applicants -->
+    <p id="applicants_display" onclick="showAlert()">Applicants</p>
+</div>
+<div class="short-info">
+    <i class="bi bi-envelope-fill"></i> <!-- Email -->
+    <p id="email_display">Email</p>
+</div>
+
                     </div>
-                    <p>Other Details</p>
+                    <div class="skills-worker-details">
+                        <p>Other Details</p>
+                    </div>
                     <button id="yourTargetButton">
                         <i class="bi bi-eye"></i> View Attachment
                     </button>
@@ -152,9 +163,13 @@ $user_id = $_SESSION['client_id'];
                         <button id="complete_Applicants">Complete Applicants</button>
                     </div>
                     <div class="rating-content" id="rate-content" style="display: none;">
-                        <span id="rate-content-title">Worker's Rate</span>
-                        <div tyle="text-align: center;">Rating Content</div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span id="rate-content-title">Worker's Rate</span>
+                            <button class="rate-worker-btn" id="rate-worker-btn">Rate Worker</button>
+                        </div>
+                        <div style="text-align: center; margin-top: 20px;">Rating Content</div>
                     </div>
+                    
                     <br>
 
 
@@ -167,7 +182,8 @@ $user_id = $_SESSION['client_id'];
                     <div class="job-header">
                         <div class="profile-info">
                             <div class="avatar">
-                                <img id="worker_avatar" src="../Assets/image/worker_user.png" alt="Worker Avatar">
+                                <img id="worker_image" src="" alt="Worker Image">
+                                <span id="workerid"></span>
                             </div>
                             <div class="details">
                                 <h3 id="worker_name_display">Worker Name </h3>
@@ -259,6 +275,7 @@ $user_id = $_SESSION['client_id'];
                             <?php include '../ClientPortal/template/tmplt_job_offered.php'; ?>
                         </div>
                     </div>
+                    <?php include '../ClientPortal/ModalFolder/rate_WorkerModal.php'; ?>
                 </div>
 
                 <div class="row job-card">
@@ -367,6 +384,7 @@ $user_id = $_SESSION['client_id'];
     <script src="../Assets/js/card_editOrdelete.js"></script>
     <script src="../Assets/js/logout.js"></script>
     <script src="../Assets/js/report.js"></script>
+    
 
 </body>
 

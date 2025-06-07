@@ -151,7 +151,6 @@
   
   .info p {
     margin: 5px 0;
-    color: #6E6E6E;
   }
 
   
@@ -166,7 +165,6 @@
   .skills p {
     margin: 0 0 5px;
     font-weight: bold;
-    color: #6E6E6E;
   }
   
   .skill-tag1 {
@@ -329,16 +327,68 @@
 }
 
 
-.rating-content{
+.rating-content {
   background-color: rgb(250, 250, 250);
   border-radius: 10px;
-  padding: 10px;
+  padding: 15px 20px;
   min-height: 200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
-#rate-content-title{
+
+#rate-content-title {
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 500;
 }
+
+.rate-worker-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.rate-worker-btn:hover {
+  background-color: #0056b3;
+}
+
+.modal-worker {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: none; /* set to flex only when showing */
+  z-index: 9999;
+}
+
+
+
+.modal-content-worker {
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+    transform: translate(-50%, -50%);
+    overflow-y: auto;
+}
+
+.modal-content-worker .close {
+  position: absolute;
+  top: 10px; right: 15px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
 
 /* Applicant View (Accepted, Pending, Rejected) */
 
@@ -594,5 +644,83 @@
     background: #f44336;
     color: white;
 }
+
+/* ////////////////////////////////////////////////////////////////////// */
+
+/* Name and ID */
+.details h3 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.details p {
+    margin: 3px 0 0;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Contact & Personal Info */
+.short-info-container {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.short-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #fdfdfd;
+    padding: 8px 10px;
+    border-radius: 5px;
+    border: 1px solid #f0f0f0;
+}
+
+.short-info i {
+    font-size: 18px;
+    color: var(--darkblue);
+}
+
+/* Bio Section */
+.bio-section {
+    background-color: #fafafa;
+    padding: 12px;
+    border-left: 4px solid #007bff;
+    border-radius: 6px;
+    margin-bottom: 20px;
+}
+
+.bio-section p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Skills */
+.skills-worker-details p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.skills-available-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+/* Experience */
+.no-ex p:first-child {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.no-ex p:last-child {
+    margin: 0;
+    color: #444;
+}
+
 
 

@@ -1,7 +1,7 @@
 <?php
 include '../db_con/db_connection.php';
 
-$clientId = $_SESSION['client_id'];
+$clientId = (int) $_SESSION['client_id'];
 $filter = $_POST['filterothers'] ?? null;
 $hasResults = false;
 
@@ -12,7 +12,7 @@ switch ($filter) {
     case 'active':
         $condition = "AND job_status = 'Active' ORDER BY job_post_id DESC";
         break;
-    case 'ongiong':
+    case 'ongoing':
         $condition = "AND job_status = 'Ongoing' ORDER BY job_post_id DESC";
         break;
     default:
@@ -22,10 +22,11 @@ switch ($filter) {
 
 $job_offeredQRY = "SELECT * FROM tbl_client_jobpost WHERE client_id != $clientId AND job_status != 'InActive' $condition";
 $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
+
 while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     $hasResults = true;
-    $other_client_id = $row['client_id'];
-    $job_post_id = $row['job_post_id'];
+    $other_client_id = (int) $row['client_id'];
+    $job_post_id = (int) $row['job_post_id'];
     $job_salary_start = $row['salary_start'];
     $job_salary_end = $row['salary_end'];
     $num_applicants = $row['applicants'];
@@ -37,137 +38,125 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     $job_offer = $row['job_offer'];
     $job_status = $row['job_status'];
 
-
-    $job_offered_companyname_QRY = "SELECT * FROM tbl_company_info WHERE client_id = $other_client_id";
-    $job_offered_companyEXE = mysqli_query($conn, $job_offered_companyname_QRY);
-
-    $company_name = ''; // default fallback
-
-    // Total applied and accepted applicants
-    $queries = "SELECT COUNT(*) as count FROM tbl_applicants WHERE job_post_id = ?";
-
-    $stmt = $conn->prepare($queries);
+    // Get total applicants
+    $stmt = $conn->prepare("SELECT COUNT(*) as count FROM tbl_applicants WHERE job_post_id = ?");
     $stmt->bind_param("i", $job_post_id);
     $stmt->execute();
     $stmt->bind_result($Count_Applicants_Applied);
     $stmt->fetch();
     $stmt->close();
 
-    while ($company_row = mysqli_fetch_assoc($job_offered_companyEXE)) {
+    // Get company name
+    $company_name = '';
+    $job_offered_companyEXE = mysqli_query($conn, "SELECT * FROM tbl_company_info WHERE client_id = $other_client_id");
+    if ($company_row = mysqli_fetch_assoc($job_offered_companyEXE)) {
         $company_name = $company_row['company_name'];
-
-        $query = "SELECT email FROM tbl_client WHERE client_id = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("i", $other_client_id);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        if ($row = $result->fetch_assoc()) {
-            $displayEmail = $row['email'];
-        }
     }
 
-    $colors = [
-        '#8B89E9', // soft violet
-        '#46CFA6', // teal green
-        '#FFAEC9', // light pink
-        '#A8E6CF', // mint green
-        '#DCE775', // lime pastel
-        '#FFCCBC', // peach
-        '#B39DDB', // light purple
-        '#80DEEA', // cyan pastel
-        '#F48FB1', // rose pink
-        '#FFECB3', // light yellow
-    ];
+    // Get client email
+    $stmt = $conn->prepare("SELECT email FROM tbl_client WHERE client_id = ?");
+    $stmt->bind_param("i", $other_client_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $displayEmail = '';
+    if ($rowEmail = $result->fetch_assoc()) {
+        $displayEmail = $rowEmail['email'];
+    }
+    $stmt->close();
 
-    // Fetch skills for current client
+    // Get client skill sets
+    $colors = ['#8B89E9', '#46CFA6', '#FFAEC9', '#A8E6CF', '#DCE775', '#FFCCBC', '#B39DDB', '#80DEEA', '#F48FB1', '#FFECB3'];
     $skill_qry = "SELECT * FROM tbl_client_skills_sets WHERE client_id = $other_client_id";
     $skill_exe = mysqli_query($conn, $skill_qry);
 
     $i = 0;
-    $skill_tags = '';
+    $skill_tags_html = '';
+    $skill_names = [];
+
     while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
-        $skill_name = $skill_row['skills'];
+        $skill_name = htmlspecialchars($skill_row['skills']);
         $color = $colors[$i % count($colors)];
-        $skill_tags .= "<span class='skill-tag1' style='background-color: $color;'>{$skill_name}</span> ";
+        $skill_tags_html .= "<span class='skill-tag1' style='background-color: $color;'>$skill_name</span> ";
+        $skill_names[] = $skill_name;
         $i++;
+    }
 
-        if ($job_status == null) {
-            $status = "Inactive";
-            $statuscolor = 'red';
-        } else {
-            $status = "Active";
-            $statuscolor = 'green';
-        }
+    // Status color logic
+    $statuscolor = match ($job_status) {
+        'Active' => 'green',
+        'Ongoing' => 'blue',
+        default => 'red',
+    };
 
-
+    $status = htmlspecialchars($job_status);
+    $skill_names_plain = implode(', ', $skill_names);
+    $formattedSalary = 'Php ' . number_format($job_salary_start) . ' - Php ' . number_format($job_salary_end);
 ?>
-        <div class="card-link" data-type="other-job" data-clientid="<?php echo $other_client_id ?>"
-            ata-jobid="<?php echo $job_post_id ?>" data-companyname="<?php echo htmlspecialchars($company_name) ?>"
-            dadta-location="<?php echo htmlspecialchars($job_loc) ?>"
-            data-salary="<?php echo 'Php ' . $job_salary_start . ' - ' . 'Php ' . $job_salary_end ?>"
-            data-job-status="<?php echo htmlspecialchars($job_status) ?>"
-            data-applied="<?php echo htmlspecialchars($Count_Applicants_Applied) ?>"
-            data-email="<?php echo htmlspecialchars($displayEmail) ?>"
-            data-dates="<?php echo $date_posted . ' - ' . $date_deadline ?>"
-            data-description="<?php echo htmlspecialchars($job_description) ?>"
-            data-skills="<?php echo htmlspecialchars($skill_tags) ?>" data-yoe="<?php echo $yr_Exp ?>"
-            onclick="handleCardClick(event)"
-            >
 
-
-            <div class="card" id="my-offer">
-                <div class="job-header">
-                    <div class="profile-info">
-                        <div class="avatar">
-                            <img src="./scriptsfordb/client_image.php?client_id=<?php echo $other_client_id; ?>"
-                                alt="Client Image">
-                        </div>
-                        <div class="details">
-                            <h3><?php echo $company_name ?></h3>
-                            <p><?php echo " " . "•" . " " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" . "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $status ?></span>
-                            </p>
-                        </div>
+    <div class="card-link" 
+        data-type="other-job"
+        data-clientid="<?= $other_client_id ?>"
+        data-jobid="<?= $job_post_id ?>"
+        data-companyname="<?= htmlspecialchars($company_name) ?>"
+        data-location="<?= htmlspecialchars($job_loc) ?>"
+        data-salary="<?= $formattedSalary ?>"
+        data-job-status="<?= $status ?>"
+        data-applied="<?= htmlspecialchars($Count_Applicants_Applied) ?>"
+        data-email="<?= htmlspecialchars($displayEmail) ?>"
+        data-dates="<?= htmlspecialchars($date_posted . ' - ' . $date_deadline) ?>"
+        data-description="<?= htmlspecialchars($job_description) ?>"
+        data-skills="<?= htmlspecialchars($skill_names_plain) ?>"
+        data-yoe="<?= $yr_Exp ?>"
+        onclick="handleCardClick(event)"
+    >
+        <div class="card" id="my-offer">
+            <div class="job-header">
+                <div class="profile-info">
+                    <div class="avatar">
+                        <img src="./scriptsfordb/client_image.php?client_id=<?= $other_client_id ?>" alt="Client Image">
                     </div>
-                    <div class="job-dates">
-                        <div class="menu-container" onclick="event.stopPropagation(); toggleDropdown(this)">
-                            <div class="menu">•••</div>
-                            <div class="dropdown">
-                                <a href="#"
-                                    onclick="reportPost(event, <?php echo $other_client_id ?>, <?php echo $job_post_id ?>)">Report</a>
-                            </div>
-                        </div>
-                        <p><?php echo $date_posted . " - " . $date_deadline ?></p>
-                    </div>
-                </div>
-                <div class="job-body">
-                    <div class="info">
+                    <div class="details">
+                        <h3><?= htmlspecialchars($company_name) ?></h3>
                         <p>
-                            <strong>Location:</strong>
-                            <?php echo $job_loc ?>
-                        </p>
-                        <p>
-                            <strong>Years of experience: </strong> <?php echo $yr_Exp ?>
+                            • <strong>Php:</strong> <?= number_format($job_salary_start) . ' - ' . number_format($job_salary_end) ?>
+                            • <strong>Applicants Needed:</strong> <?= $num_applicants ?>
+                            <span style="color: <?= $statuscolor ?>;">• <?= $status ?></span>
                         </p>
                     </div>
-                    <div class="skills">
-                        <p><strong>Skills needed:</strong></p>
-                        <span class="skill-tag"><?php echo $skill_tags; ?></span>
-                    </div>
                 </div>
-                <div class="job-footer">
-                    <button class="applied">
-                        <?php echo $Count_Applicants_Applied ?> Applicant
-                    </button>
+                <div class="job-dates">
+                    <div class="menu-container" onclick="event.stopPropagation(); toggleDropdown(this)">
+                        <div class="menu">•••</div>
+                        <div class="dropdown">
+                            <a href="#" onclick="reportPost(event, <?= $other_client_id ?>, <?= $job_post_id ?>)">Report</a>
+                        </div>
+                    </div>
+                    <p><?= htmlspecialchars($date_posted . ' - ' . $date_deadline) ?></p>
                 </div>
             </div>
+            <div class="job-body">
+                <div class="info">
+                    <p><strong>Location:</strong> <?= htmlspecialchars($job_loc) ?></p>
+                    <p><strong>Years of experience:</strong> <?= $yr_Exp ?></p>
+                </div>
+                <div class="skills">
+                    <p><strong>Skills needed:</strong></p>
+                    <?= $skill_tags_html ?>
+                </div>
+            </div>
+            <div class="job-footer">
+                <button class="applied">
+                    <?= $Count_Applicants_Applied ?> Applicant
+                </button>
+            </div>
         </div>
-        <br>
+    </div>
+    <br>
 
 <?php
+}
 
-    }
-    
-} 
 if (!$hasResults) {
-        echo "<div class='no-job-message text-center p-6'><strong>No job post found.</strong></div>";
-    }?>
+    echo "<div class='no-job-message text-center p-6'><strong>No job post found.</strong></div>";
+}
+?>

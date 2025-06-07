@@ -4,7 +4,7 @@ function bindCardClickEvents() {
         e.preventDefault();
         
         const card = event.currentTarget;
-
+        const workerid = this.dataset.workerid;
         const type = this.dataset.type;
         const jobStatus = this.dataset.jobStatus;
         const clientId = this.dataset.clientid;
@@ -29,13 +29,15 @@ function bindCardClickEvents() {
             complete_Applicants.dataset.jobid = jobid; // use a separate attribute
         }
 
-
-
         // Update some text
         document.getElementById('clientid').textContent = clientId;
-
         // Update image src
         document.getElementById('client_image').src = `scriptsfordb/client_image.php?client_id=${encodeURIComponent(clientId)}`;
+
+        // Update some text
+        document.getElementById('workerid').textContent = clientId;
+        // Update image src
+        document.getElementById('worker_image').src = `scriptsfordb/workerImage.php?worker_id=${encodeURIComponent(workerid)}`;
 
         // Hide all views first
         document.getElementById('default_view').style.display = 'none';
@@ -113,9 +115,18 @@ function bindCardClickEvents() {
                 statusElem.textContent = 'Inactive';
                 statusElem.className = 'status-badge inactive';
             }
+            const jobOffer = card.dataset.joboffer;
 
+            // Check if element with ID exists before setting text
+            const jobOfferDisplay = document.getElementById('job_offer_display');
+            if (jobOfferDisplay && jobOffer) {
+                jobOfferDisplay.textContent = jobOffer;
+            } else {
+                console.warn('Element or data attribute missing');
+            }
 
             document.getElementById('company_name_display').textContent = this.dataset.companyname;
+            
             document.getElementById('date_range_display').textContent = this.dataset.dates;
             document.getElementById('description_display').textContent = this.dataset.description;
             document.getElementById('location_display').textContent = this.dataset.location;
@@ -533,3 +544,60 @@ document.querySelectorAll('.dropdown-itemothers[data-filterothers]').forEach(ite
         });
     });
 });
+
+
+
+document.querySelectorAll('.rate-worker-btn').forEach(button => {
+    button.addEventListener('click', function () {
+        const workerId = this.dataset.workerid;
+        const jobId = this.dataset.jobid;
+
+        document.getElementById('worker_id').value = workerId;
+        document.getElementById('job_id').value = jobId;
+
+        // Show modal
+        document.getElementById('rateWorkerModal').style.display = 'block';
+    });
+});
+
+// Close modal when clicking the close button
+document.querySelector('#rateWorkerModal .close').addEventListener('click', function () {
+    document.getElementById('rateWorkerModal').style.display = 'none';
+});
+
+// document.querySelector('#rate-worker-btn').addEventListener('click', function() {
+//     const jobId = this.dataset.jobid;
+
+
+// });
+
+// // Submit form
+// document.getElementById('rateWorkerForm').addEventListener('submit', function (e) {
+//     e.preventDefault();
+
+//     const rating = document.getElementById('rating').value;
+//     const feedback = document.getElementById('feedback').value;
+//     const workerId = document.getElementById('worker_id').value;
+//     const jobId = document.getElementById('job_id').value;
+
+//     fetch('rate_worker.php', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/x-www-form-urlencoded',
+//         },
+//         body: new URLSearchParams({
+//             rating,
+//             feedback,
+//             worker_id: workerId,
+//             job_id: jobId
+//         })
+//     })
+//     .then(response => response.text())
+//     .then(result => {
+//         alert("Rating submitted!");
+//         document.getElementById('rateWorkerModal').style.display = 'none';
+//     })
+//     .catch(error => {
+//         console.error('Error submitting rating:', error);
+//     });
+// });

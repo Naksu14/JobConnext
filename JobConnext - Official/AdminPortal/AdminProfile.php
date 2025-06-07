@@ -55,6 +55,10 @@ if ($result->num_rows === 1) {
 <?php include 'navigationbar/Nav.php'; ?>
 <?php include 'sidebar/Sidebar.php'; ?>
 
+
+/* ======================
+   HTML Structure
+   ====================== */
 <main class="main-content">
     <div class="container mt-5">
         <div class="row">
@@ -62,19 +66,20 @@ if ($result->num_rows === 1) {
             <div class="col-md-4">
                 <div class="card ccenter">
                     <?php if (!empty($admin['profile_image'])): ?>
-                        <img src="data:image/jpeg;base64,<?= base64_encode($admin['profile_image']) ?>" class="card-img-top" alt="Admin Profile Picture" height="200" width="200">
+                        <img src="data:image/jpeg;base64,<?= base64_encode($admin['profile_image']) ?>" alt="Admin Profile Picture">
                     <?php else: ?>
-                        <img src="./imgforadmin/adminProfile.png" class="card-img-top" alt="Default Profile Picture" height="200" width="200">
+                        <img src="./imgforadmin/adminProfile.png" alt="Default Profile Picture">
                     <?php endif; ?>
                     <div class="card-body">
                         <h5 class="card-title ccenter"><?= htmlspecialchars($admin['full_name']) ?></h5>
-                        <p class="card-text ccenter"><?= htmlspecialchars($admin['role']) ?></p>
-                        <br><br>
+                        <p class="card-text ccenter">Role: <?= htmlspecialchars($admin['role']) ?></p>
+                        <hr>
                         <p><strong>Email:</strong> <?= htmlspecialchars($admin['email']) ?></p>
                         <p><strong>Role:</strong> <?= htmlspecialchars($admin['role']) ?></p>
                         <p><strong>Status:</strong> <?= htmlspecialchars($admin['status']) ?></p>
-                        <br><br>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+                        <div class="ccenter mt-3">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">Edit Profile</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -98,6 +103,7 @@ if ($result->num_rows === 1) {
         </div>
     </div>
 </main>
+
 
 <!-- Edit Modal -->
 <div class="modal fade" id="editProfileModal" tabindex="-1">

@@ -38,9 +38,32 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <h6>What kind of job do you offer?</h6>
                                     <p><label for="select-job" class="small">Enter Job Title</label></p>
                                     <select class="form-select small swal2-input" aria-label="Default select example" id="jobSelect" onchange="handleSelect(this)">
-                                            <option value="Tubero">Tubero</option>
-                                            <option value="Electrician">Electrician</option>
-                                            <option value="others">Other</option>
+                                        <option value="" disabled selected>Select Job Title</option>
+                                        <option value="Carpenter">Carpenter</option>
+                                        <option value="Electrician">Electrician</option>
+                                        <option value="Plumber">Plumber</option>
+                                        <option value="Mason">Mason</option>
+                                        <option value="Welder">Welder</option>
+                                        <option value="Painter">Painter</option>
+                                        <option value="Driver">Driver</option>
+                                        <option value="Mechanic">Mechanic</option>
+                                        <option value="Janitor">Janitor</option>
+                                        <option value="Gardener">Gardener</option>
+                                        <option value="Security Guard">Security Guard</option>
+                                        <option value="Construction Helper">Construction Helper</option>
+                                        <option value="Warehouse Staff">Warehouse Staff</option>
+                                        <option value="Heavy Equipment Operator">Heavy Equipment Operator</option>
+                                        <option value="Aircon Technician">Aircon Technician</option>
+                                        <option value="CCTV Installer">CCTV Installer</option>
+                                        <option value="Tile Setter">Tile Setter</option>
+                                        <option value="Steelman">Steelman</option>
+                                        <option value="Foreman">Foreman</option>
+                                        <option value="Scaffolder">Scaffolder</option>
+                                        <option value="Roofer">Roofer</option>
+                                        <option value="Furniture Assembler">Furniture Assembler</option>
+                                        <option value="Fabricator">Fabricator</option>
+                                        <option value="Masonry Finisher">Masonry Finisher</option>
+                                        <option value="others">Others</option>
                                     </select>
                                     <div id="otherInputContainer" style="display:none; ">
                                         <label for="otherText" class="small float-start">Please specify</label>
@@ -158,8 +181,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         timer: 3000,
                         timerProgressBar: true,
                     });
+                    setTimeout(() => location.reload(), 4000);
                 }
-                setTimeout(() => location.reload(), 3200);
             });
             
             
