@@ -1,4 +1,5 @@
-document.querySelectorAll('.card-link').forEach(link => {
+function bindCardClickEvents() {
+    document.querySelectorAll('.card-link').forEach(link => {
     link.addEventListener('click', function(e) {
         e.preventDefault();
         
@@ -127,6 +128,8 @@ document.querySelectorAll('.card-link').forEach(link => {
 
     });
 });
+}
+
 
 
 document.querySelector('#yourTargetButton').addEventListener('click', function() {
@@ -454,28 +457,36 @@ function updateJobStatus(clientId, jobId, status) {
 }
 
 
-document.querySelectorAll('.dropdown-item[data-filter]').forEach(item => {
-        item.addEventListener('click', function (e) {
-            e.preventDefault();
-            const filter = this.dataset.filter;
+// Initial binding on DOM load
+document.addEventListener('DOMContentLoaded', function () {
+    bindCardClickEvents();
+});
 
-            fetch(window.location.href, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: 'filter=' + encodeURIComponent(filter)
-            })
-            .then(res => res.text())
-            .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const newCards = doc.querySelector('#jobCardsContainer');
-                document.querySelector('#jobCardsContainer').innerHTML = newCards.innerHTML;
-            });
+// Job filter
+document.querySelectorAll('.dropdown-item[data-filter]').forEach(item => {
+    item.addEventListener('click', function (e) {
+        e.preventDefault();
+        const filter = this.dataset.filter;
+
+        fetch(window.location.href, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'filter=' + encodeURIComponent(filter)
+        })
+        .then(res => res.text())
+        .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newCards = doc.querySelector('#jobCardsContainer');
+            document.querySelector('#jobCardsContainer').innerHTML = newCards.innerHTML;
+            bindCardClickEvents(); // 🔁 rebind after load
         });
     });
+});
 
+// Worker filter
 document.querySelectorAll('.dropdown-items[data-filters]').forEach(items => {
     items.addEventListener('click', function (e) {
         e.preventDefault();
@@ -490,14 +501,16 @@ document.querySelectorAll('.dropdown-items[data-filters]').forEach(items => {
         })
         .then(res => res.text())
         .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const newCards = doc.querySelector('#workerCardsContainer');
-                document.querySelector('#workerCardsContainer').innerHTML = newCards.innerHTML;
-            });
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newCards = doc.querySelector('#workerCardsContainer');
+            document.querySelector('#workerCardsContainer').innerHTML = newCards.innerHTML;
+            bindCardClickEvents(); // 🔁 rebind after load
+        });
     });
 });
 
+// Other job filter
 document.querySelectorAll('.dropdown-itemothers[data-filterothers]').forEach(items => {
     items.addEventListener('click', function (e) {
         e.preventDefault();
@@ -512,11 +525,11 @@ document.querySelectorAll('.dropdown-itemothers[data-filterothers]').forEach(ite
         })
         .then(res => res.text())
         .then(html => {
-                const parser = new DOMParser();
-                const doc = parser.parseFromString(html, 'text/html');
-                const newCards = doc.querySelector('#otherJobCardsContainer');
-                document.querySelector('#otherJobCardsContainer').innerHTML = newCards.innerHTML;
-            });
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const newCards = doc.querySelector('#otherJobCardsContainer');
+            document.querySelector('#otherJobCardsContainer').innerHTML = newCards.innerHTML;
+            bindCardClickEvents(); // 🔁 rebind after load
+        });
     });
 });
-
