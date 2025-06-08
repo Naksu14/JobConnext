@@ -18,6 +18,7 @@ $workerId = $_SESSION['worker_id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+
     <link rel="stylesheet" href="../Assets/css/Blue-collar css/rejected-bluecollar.css">
     <link rel="stylesheet" href="../Assets/css/postCard_and_view.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -211,7 +212,7 @@ $workerId = $_SESSION['worker_id'];
 
                             <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown">
                                 <li><a class="dropdown-item" href="#" data-filter="date_desc">All Jobs</a></li>
-                                <li><a class="dropdown-item" href="#" data-filter="date_asc">Favorites Only</a></li>
+                                <li><a class="dropdown-item" href="#" data-filter="date_asc">Favorites</a></li>
                             </ul>
                         </div>
                     </div>
@@ -395,33 +396,23 @@ $workerId = $_SESSION['worker_id'];
                     });
                 </script>
 
+                <div id="customAlert" style="
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color:rgb(37, 221, 135);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 9999;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    text-align:center;
 
+"></div>
 
-                <script>
-                    // Handle filter dropdown clicks
-                    document.querySelectorAll('.dropdown-item').forEach(item => {
-                        item.addEventListener('click', function(e) {
-                            e.preventDefault();
-
-                            const filterType = this.getAttribute('data-filter');
-                            const cards = document.querySelectorAll('.card-link');
-
-                            cards.forEach(card => {
-                                const isFavorited = card.classList.contains('favorited');
-
-                                if (filterType === 'date_asc') { // Favorites Only
-                                    card.classList.toggle('d-none', !isFavorited);
-                                } else { // All Jobs
-                                    card.classList.remove('d-none');
-                                }
-                            });
-
-                            // Update the button label (optional)
-                            document.querySelector('#filterDropdown span').textContent =
-                                filterType === 'date_asc' ? 'Favorites Only' : 'All Jobs';
-                        });
-                    });
-                </script>
 
 
 
@@ -429,6 +420,7 @@ $workerId = $_SESSION['worker_id'];
                 <script src="../Assets/js/logout.js"></script>
                 <script src="../Assets/js/report.js"></script>
                 <script src="../Assets/js/card_editOrdelete.js"></script>
+                <script src="../Assets/js/favorite.js"></script>
 
 
 </body>

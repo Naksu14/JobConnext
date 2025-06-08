@@ -112,6 +112,9 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                     </div>
                     <div class="details">
                         <h3><?php echo $company_name ?></h3>
+                        <?php if ($is_favorited): ?>
+                            <p style="color: gold; font-weight: bold;">★ Favorited</p>
+                        <?php endif; ?>
                         <p><?php echo " • " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $job_status ?></span></p>
                     </div>
                 </div>
@@ -122,7 +125,12 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                             <a href="#"
                                 onclick="reportPost(event, <?php echo $client_id ?>, <?php echo $job_post_id ?>)">Report
                             </a>
-                            <a href="#" onclick="toggleFavorite(event, <?php echo $jobPostId ?>)">Favorite</a>
+                            <a href="#"
+                                class="favorite-toggle"
+                                data-job-id="<?php echo $jobPostId ?>"
+                                onclick="toggleFavorite(event, <?php echo $jobPostId ?>)">
+                                <?php echo $is_favorited ? 'Unfavorite' : 'Favorite'; ?>
+                            </a>
 
                         </div>
                     </div>
@@ -157,7 +165,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             </div>
             <div class="job-footer">
                 <button class="applied">
-                <?php echo $applicants_count;?> Applied
+                    <?php echo $applicants_count; ?> Applied
                 </button>
             </div>
         </div>
