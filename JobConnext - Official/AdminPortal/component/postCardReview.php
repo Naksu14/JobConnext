@@ -67,7 +67,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 ?>
 
 
-        <div class="post-card">
+        <div class="post-card" data-company="<?php echo strtolower($company_name); ?>" data-job="<?php echo strtolower($job_offer); ?>" data-date="<?php echo $date_posted; ?>" data-salary="<?php echo $job_salary_start; ?>">
             <!-- Upper Section: Profile and Menu -->
             <div class="post-header">
                 <div class="profile-info">
@@ -78,12 +78,13 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                     </div>
                 </div>
                 <div class="post-menu">
-                    <span class="posted-time"><?php echo $days_passed ?>2 days ago</span>
+                    <span class="posted-time" style="color: red;"><?php echo $days_passed ?> days ago</span>
                 </div>
             </div>
 
             <!-- Middle Section: Job Details -->
             <div class="job-details">
+                <p><strong>Job Offer:</strong><br><?php echo $job_offer ?></p>
                 <p><strong>Salary:</strong> <br><?php echo 'Php ' . $job_salary_start . ' - Php ' . $job_salary_end ?></p>
                 <p><strong>Location:</strong> <br><?php echo $job_loc ?></p>
                 <p><strong>Experience:</strong> <br><?php echo $yr_Exp ?>+ years</p>
@@ -92,7 +93,6 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
 
             <!-- Qualification and Skills -->
             <div class="qualifications">
-                <p><strong>Qualifications:</strong>STATIC INFO Bachelor's Degree in Computer Science</p>
                 <p><strong>Skills:</strong><br><span class="skill-color"><?php echo $skill_tags; ?></span></p>
             </div>
 
@@ -160,8 +160,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                             rows="4"
                             placeholder="Add additional comments or details (optional)..."></textarea> -->
                 <div class="admin-action">
-                    <button class="btn btn-approve">Approve Violation</button>
-                    <button class="btn btn-dismiss">Dismiss Report</button>
+                    <button class="btn btn-approve">Report Post</button>
                 </div>
             </div>
 

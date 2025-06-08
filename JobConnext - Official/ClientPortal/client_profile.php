@@ -89,7 +89,7 @@ if (isset($_SESSION['client_id'])) {
                         <span>
                             <?php echo htmlspecialchars($companyName); ?>
                         </span>
-                        <h6>Construction</h6>
+                        <h6>Company</h6>
                     </div>
                 </div>
             </div>

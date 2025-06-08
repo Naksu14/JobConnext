@@ -20,8 +20,7 @@
     grid-row: span 1;
   }
   
-  .page_content::-webkit-scrollbar,
-  .worker_details::-webkit-scrollbar {
+  .page_content::-webkit-scrollbar {
     display: none;
   }
   
@@ -43,18 +42,23 @@
     height: 100%;
   }
   
-  .worker_details {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    grid-row: span 2;
-    position: sticky;
-    top: 0;
-    height: 750px;
-    overflow-y: scroll;
-    justify-content: center;
-    display: flex;
-    padding: 20px;
-  }
-  
+.worker_details {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  grid-row: span 2;
+  position: sticky;
+  top: 0;
+  height: 750px;
+  overflow-y: scroll;
+  justify-content: center;
+  display: flex;
+  padding: 20px;
+
+
+  scrollbar-width: thin;
+  scrollbar-color: var(--darkblue) #f1f1f1;
+}
+
+
 
 
   

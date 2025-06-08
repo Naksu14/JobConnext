@@ -150,3 +150,5 @@ function reportPost(event, user_id, job_post_id) {
             });
         });
 }
+
+

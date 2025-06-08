@@ -549,10 +549,6 @@ body{
     margin-bottom: 20px;
   }
   
-   .worker_details::-webkit-scrollbar {
-    display: none;
-  }
-  
     .worker_details {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     grid-row: span 2;
@@ -563,6 +559,9 @@ body{
     justify-content: center;
     display: flex;
     padding: 20px;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--darkblue) #f1f1f1;
   }
   
 

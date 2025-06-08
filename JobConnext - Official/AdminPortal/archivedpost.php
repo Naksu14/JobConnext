@@ -28,8 +28,8 @@
     <!--SweetAlert2-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
-
-
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -48,8 +48,10 @@
             <div class="review-content-header">
                 <div class="review-search">
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Search username" aria-label="Search username" aria-describedby="basic-addon2">
-                        <span class="input-group-text" id="basic-addon2">Search</span>
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search Company or Job Offer" aria-label="Search">
+                        <button class="voice-search-btn" id="voiceSearchBtn" title="Voice Search">
+                            <i class="bi bi-mic"></i>
+                        </button>
                     </div>
                 </div>
                 <div class="review-filter">
@@ -59,22 +61,127 @@
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu" id="filterDropdownMenu">
-                            <li><a class="dropdown-item" href="#" id="sortByDate">Sort by Date</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="all">All Posts</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="date-desc">Newest First</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="date-asc">Oldest First</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="salary-high">Highest Salary</a></li>
+                            <li><a class="dropdown-item filter-option" href="#" data-filter="salary-low">Lowest Salary</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             
             <div class="post-content">
-                 <?php include 'component/archivePostCardReview.php'; ?>
+                <div class="no-results">No posts found matching your search criteria.</div>
+                <?php include 'component/archivePostCardReview.php'; ?>
             </div>
-
         </div>
-
-
-
-
     </main>
+
+    <script>
+        $(document).ready(function() {
+            // Search functionality
+            $('#searchInput').on('keyup', function() {
+                const searchTerm = $(this).val().toLowerCase();
+                let hasResults = false;
+                
+                $('.post-card').each(function() {
+                    const company = $(this).data('company');
+                    const job = $(this).data('job');
+                    
+                    if (company.includes(searchTerm) || job.includes(searchTerm)) {
+                        $(this).show();
+                        hasResults = true;
+                    } else {
+                        $(this).hide();
+                    }
+                });
+                
+                // Show/hide no results message
+                if (hasResults) {
+                    $('.no-results').hide();
+                } else {
+                    $('.no-results').show();
+                }
+            });
+            
+            // Filter functionality
+            $('.filter-option').on('click', function(e) {
+                e.preventDefault();
+                const filterType = $(this).data('filter');
+                const $postContainer = $('.post-content');
+                const $posts = $('.post-card');
+                
+                // Show all posts first
+                $posts.show();
+                
+                switch(filterType) {
+                    case 'all':
+                        // Already shown all posts
+                        break;
+                        
+                    case 'date-desc':
+                        // Newest first (default)
+                        $posts.sort(function(a, b) {
+                            return new Date($(b).data('date')) - new Date($(a).data('date'));
+                        }).appendTo($postContainer);
+                        break;
+                        
+                    case 'date-asc':
+                        // Oldest first
+                        $posts.sort(function(a, b) {
+                            return new Date($(a).data('date')) - new Date($(b).data('date'));
+                        }).appendTo($postContainer);
+                        break;
+                        
+                    case 'salary-high':
+                        // Highest salary first
+                        $posts.sort(function(a, b) {
+                            return $(b).data('salary') - $(a).data('salary');
+                        }).appendTo($postContainer);
+                        break;
+                        
+                    case 'salary-low':
+                        // Lowest salary first
+                        $posts.sort(function(a, b) {
+                            return $(a).data('salary') - $(b).data('salary');
+                        }).appendTo($postContainer);
+                        break;
+                }
+                
+                // Update filter button text
+                $('#filterButton').text($(this).text());
+                
+                // Check if any posts are visible after filtering
+                if ($posts.filter(':visible').length === 0) {
+                    $('.no-results').show();
+                } else {
+                    $('.no-results').hide();
+                }
+            });
+            
+            // Voice search functionality
+            $('#voiceSearchBtn').on('click', function() {
+                if ('webkitSpeechRecognition' in window) {
+                    const recognition = new webkitSpeechRecognition();
+                    recognition.lang = 'en-US';
+                    recognition.start();
+                    
+                    recognition.onresult = function(event) {
+                        const transcript = event.results[0][0].transcript;
+                        $('#searchInput').val(transcript).trigger('keyup');
+                    };
+                    
+                    recognition.onerror = function(event) {
+                        console.error('Voice recognition error', event.error);
+                    };
+                } else {
+                    alert('Voice search is not supported in your browser.');
+                }
+            });
+        });
+    </script>
 
 </body>
 

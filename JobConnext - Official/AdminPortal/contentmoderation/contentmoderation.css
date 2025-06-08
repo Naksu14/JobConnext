@@ -139,7 +139,7 @@
 }
 .job-details{
     display: flex;
-    gap: 150px;
+    gap: 40px;
 }
 .job-details p,
 .qualifications p,
@@ -183,7 +183,31 @@
     margin-left: 50px;
     color: var(--dwhite);
 }
+.violations {
+    background-color: #fff3f3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border-left: 4px solid #ff6b6b;
+}
 
+.violations ul {
+    padding-left: 20px;
+}
+
+.violations li {
+    color: #d33;
+}
+
+.report-sign {
+    background-color: #ffe8e8;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #d33;
+    margin-top: 15px;
+}
 .violation-section {
     margin-top: 20px;
     padding: 15px;
@@ -266,4 +290,47 @@
 
 .report-sign:hover {
     background-color: #f5c6cb; /* Slightly darker shade when hovered */
+}
+
+/* /////////////////////////////////////////////////////////////////////////////// */
+
+.voice-search-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 8px;
+    color: white;
+    background-color: var(--darkblue);
+}
+.voice-search-btn.listening {
+    color: red;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+.no-results {
+    text-align: left;
+    padding: 40px;
+    font-size: 18px;
+    color: #666;
+    display: none;
+}
+
+/* .voice-status {
+    position: absolute;
+    bottom: -25px;
+    left: 0;
+    font-size: 12px;
+    color: var(--orange);
+    display: none;
+} */
+.loading-spinner {
+    display: none;
+    position: absolute;
+    right: 70px;
+    top: 50%;
+    transform: translateY(-50%);
 }
