@@ -129,7 +129,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             </div>
             <div class="job-footer">
                 <button class="applied">
-                    <?php echo $Count_Applicants_Applied ?> Applicant
+                    <?php echo $num_applicants ?> Applicant
                 </button>
             </div>
         </div>
