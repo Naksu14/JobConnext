@@ -65,13 +65,18 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     }
 
 
-
-
     if ($job_status == "Active") {
         $statuscolor = 'green';
     } else {
         $statuscolor = 'red';
     }
+
+    $applicants_qry = "SELECT COUNT(*) FROM tbl_applicants WHERE job_post_id = $jobPostId";
+    $applicants_exe = mysqli_query($conn, $applicants_qry);
+    $applicants_count = mysqli_fetch_assoc($applicants_exe)['COUNT(*)'];
+
+
+
 ?>
     <div class="card-link"
         data-type="job"
@@ -87,6 +92,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         data-description="<?php echo htmlspecialchars($job_description) ?>"
         data-skills="<?php echo htmlspecialchars($skill_tags) ?>"
         data-yoe="<?php echo $yr_Exp ?>"
+        data-applicant-count="<?php echo $applicants_count ?>"
         onclick="handleCardClick(event)">
 
 
@@ -115,11 +121,22 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             <div class="job-body">
                 <div class="info">
                     <p>
+                        <strong>Job offer:</strong>
+                        <?php echo $job_offer ?>
+                    </p>
+                    <p>
+                        <strong>Job Description:</strong>
+                        <?php echo $job_description ?>
+                    </p>
+                    <p>
                         <strong>Location:</strong>
                         <?php echo $job_loc ?>
                     </p>
                     <p>
                         <strong>Years of experience: </strong> <?php echo $yr_Exp ?>
+                    </p>
+                    <p>
+                        <strong>Applicants needed: </strong><?php echo $num_applicants ?>
                     </p>
                 </div>
                 <div class="skills">
@@ -129,7 +146,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             </div>
             <div class="job-footer">
                 <button class="applied">
-                    <?php echo $num_applicants ?> Applicant
+                <?php echo $applicants_count;?> Applied
                 </button>
             </div>
         </div>
