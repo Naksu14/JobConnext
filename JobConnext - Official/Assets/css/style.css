@@ -3,6 +3,12 @@
 body::-webkit-scrollbar {
   display: none;
 }
+
+:root{
+  --darkblue : #161D6F; 
+  --darkorange : #E46232;
+}
+
 a{
   text-decoration: none;
 }
@@ -322,4 +328,35 @@ p, input, button{
   background-color: #161D6F;
   color: #fff;
   border-color: #000;
+}
+
+.text-center{
+  /* position:fixed; */
+  background-color: #ffffff44;
+  z-index: 100;
+}
+
+.search-input {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input input {
+  width: 100%;
+  padding: 10px 15px 10px 35px; /* Leave space for the icon */
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-input svg {
+  position: absolute;
+  left: 10px; /* Position the icon inside the input */
+  width: 20px;
+  height: 20px;
+  fill: #555;
+  pointer-events: none;
 }

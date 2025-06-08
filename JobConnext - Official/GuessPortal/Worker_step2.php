@@ -406,6 +406,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error inserting data into tbl_worker_resume: " . $stmt->error);
     }
 
+    $stmt->close();
+
     // Redirect to the next step upon success
     ob_end_clean();
     header("Location: Worker_step3.php");
