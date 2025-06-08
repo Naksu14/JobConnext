@@ -593,3 +593,8 @@ body{
 .status-badge.inactive {
     background-color: #dc3545; /* red */
 }
+
+.dropdown-menu {
+    z-index: 1050 !important; /* Make sure it's on top */
+}
+
