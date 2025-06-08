@@ -19,55 +19,63 @@ if (!$sender_id) {
     exit;
 }
 
-// Main query: Get latest message for each conversation partner (sent or received)
+// // Main query: Get latest message for each conversation partner (sent or received)
 $sql = "
     SELECT 
-        m.id,
-        m.sender_id,
-        m.receiver_id,
-        m.message,
-        m.created_at,
-        u.username AS receiver_username,
-        u.user_type AS receiver_type,
-        COALESCE(unread.total_unread, 0) AS unread_count
-    FROM (
-        SELECT 
-            *,
-            CASE 
-                WHEN sender_id = ? THEN receiver_id
-                ELSE sender_id
-            END AS conversation_partner_id
-        FROM tbl_messages
-        WHERE sender_id = ? OR receiver_id = ?
-        ORDER BY created_at DESC
-    ) m
-    INNER JOIN (
-        SELECT 
-            w.worker_id AS user_id,
-            w.username,
-            'worker' AS user_type
-        FROM tbl_blue_collar_worker w
-        UNION
-        SELECT 
-            c.client_id AS user_id,
-            c.username,
-            'client' AS user_type
-        FROM tbl_client c
-    ) u ON u.user_id = m.conversation_partner_id
-    LEFT JOIN (
-        SELECT 
-            sender_id,
-            COUNT(*) AS total_unread
-        FROM tbl_messages
-        WHERE receiver_id = ? AND is_read = 0
-        GROUP BY sender_id
-    ) unread ON unread.sender_id = m.conversation_partner_id
-    GROUP BY m.conversation_partner_id
-    ORDER BY MAX(m.created_at) DESC
+    m.id,
+    m.sender_id,
+    m.receiver_id,
+    m.message,
+    m.created_at,
+    u.username AS receiver_username,
+    u.user_type AS receiver_type,
+    COALESCE(unread.total_unread, 0) AS unread_count
+FROM (
+    SELECT 
+        *,
+        CASE 
+            WHEN sender_id = ? THEN receiver_id
+            ELSE sender_id
+        END AS conversation_partner_id,
+        ROW_NUMBER() OVER (
+            PARTITION BY 
+                CASE 
+                    WHEN sender_id = ? THEN receiver_id
+                    ELSE sender_id
+                END
+            ORDER BY created_at DESC
+        ) AS msg_rank
+    FROM tbl_messages
+    WHERE sender_id = ? OR receiver_id = ?
+) m
+INNER JOIN (
+    SELECT 
+        w.worker_id AS user_id,
+        w.username,
+        'worker' AS user_type
+    FROM tbl_blue_collar_worker w
+    UNION
+    SELECT 
+        c.client_id AS user_id,
+        c.username,
+        'client' AS user_type
+    FROM tbl_client c
+) u ON u.user_id = m.conversation_partner_id
+LEFT JOIN (
+    SELECT 
+        sender_id,
+        COUNT(*) AS total_unread
+    FROM tbl_messages
+    WHERE receiver_id = ? AND is_read = 0
+    GROUP BY sender_id
+) unread ON unread.sender_id = m.conversation_partner_id
+WHERE m.msg_rank = 1
+ORDER BY m.created_at DESC;
+;
 ";
 
 if ($stmt = $conn->prepare($sql)) {
-    $stmt->bind_param('iiii', $sender_id, $sender_id, $sender_id, $sender_id);
+    $stmt->bind_param('iiiii', $sender_id, $sender_id, $sender_id, $sender_id, $sender_id);
     $stmt->execute();
     $result = $stmt->get_result();
     $conversations = [];
