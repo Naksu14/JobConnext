@@ -74,14 +74,14 @@ $stmt->bind_param('iiii', $sender_id, $receiver_id, $receiver_id, $sender_id);
 $stmt->execute();
 $result = $stmt->get_result();
 
-echo '<div class="chat-box d-flex flex-column" style="overflow-y: auto; height: 420px;">';
+echo '<div class="chat-box d-flex flex-column" style="overflow-y: auto; height: 600px;">';
 
 echo '
     <div class="message mb-3 text-center">
         <img src="../message/display_image.php?type=' . $receiver['user_type'] . '&id=' . $receiver['user_id'] . '" alt="User Image" class="rounded-circle" width="=150px" height="150px">
         <h2 class="mt-2">' . $receiver['username'] . '</h2>
         <p class="text-muted">' . $receiver['email'] . '</p>
-        <p class="text-muted">' . $receiver['user_type'] . '</p>
+        <p class="text-muted" style="font-weight:bold;">' . $receiver['user_type'] . '</p>
     </div>';
 
 if ($result->num_rows === 0) {

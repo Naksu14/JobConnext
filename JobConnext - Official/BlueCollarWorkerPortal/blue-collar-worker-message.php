@@ -22,6 +22,7 @@ error_reporting(E_ALL);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="../Assets/css/style.css">
+    <link rel="stylesheet" href="../Assets/css/styleMessage.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
@@ -32,7 +33,26 @@ error_reporting(E_ALL);
         rel="stylesheet">
     <link rel="icon" href="../Assets/image/Logo1.png" sizes="32x32" type="image/png">
 </head>
-
+<style>
+        /* Prevent body scrolling */
+        body {
+            overflow: hidden;
+            height: 100vh;
+        }
+        
+        /* Allow scrolling only in chat container */
+        .chat-container {
+            overflow-y: auto;
+            height: calc(100vh - [navbar-height]); /* Adjust based on your navbar height */
+        }
+        
+        /* Ensure full height for main content */
+        .main-content {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 <body>
     <?php include "../BlueCollarWorkerPortal/components/navbar.php" ?>
 
