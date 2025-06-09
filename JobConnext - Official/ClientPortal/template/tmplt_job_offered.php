@@ -157,7 +157,7 @@ if (isset($_SESSION['client_id'])) {
                     </div>
                 </div>
                 <div class="job-footer">
-                    <button class="applied" onclick="openModal(event)" data-jobid="<?= $job_post_id ?>">
+                    <button class="applied" onclick="AA(event)" data-jobid="<?= $job_post_id ?>">
                         <?= $Count_Applicants_Applied ?> Applied
                     </button>
                     <p><?= $Count_Applicants_Accepted ?> Accepted</p>
