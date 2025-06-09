@@ -178,37 +178,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
             </div>
 
             <div class="resume">
-                <span>
-                    Resume
-                </span>
-                <div class="resume-details">
-                    <div class="resume-left">
-                        <img src="../Assets/image/resume.png" alt="">
-                        <div class="resume-file">
-                            <span id="file-name">
-                                About me resume.pdf
-                            </span>
-                            <span id="file-size">
-                                234kb
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="resume-right">
-                        <div class="download">
-                            <span>
-                                Download
-                            </span>
-                            <img src="../Assets/image/Downloading Updates.png" alt="">
-                        </div>
-                        <div class="update">
-                            <span>
-                                Update
-                            </span>
-                            <img src="../Assets/image/refresh 1.png" alt="">
-                        </div>
-                    </div>
-                </div>
+               
             </div>
             <div class="personal-info">
                 <span>
