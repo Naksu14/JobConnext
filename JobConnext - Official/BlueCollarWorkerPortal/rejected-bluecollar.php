@@ -18,6 +18,7 @@ $workerId = $_SESSION['worker_id'];
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+
     <link rel="stylesheet" href="../Assets/css/Blue-collar css/rejected-bluecollar.css">
     <link rel="stylesheet" href="../Assets/css/postCard_and_view.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,6 +44,8 @@ $workerId = $_SESSION['worker_id'];
             workerId: <?php echo json_encode($workerId); ?>
         };
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 </head>
 
 <body>
@@ -199,20 +202,25 @@ $workerId = $_SESSION['worker_id'];
         <div class="page_content">
             <div class=" row content-header" style="position: sticky; top: 0; z-index: 1; background-color:white; padding: 20px;">
                 <div class="row content-header">
+
                     <div class="col-sm-3">
                         <div class="container-fluid content-filter">
-                            <button>
-                                <img src="../Assets/image/filter (1) 1.png" alt="">
-                                <span>
-                                    Filter
-                                </span>
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="filterDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="width: 120px;">
+                                <img src="../Assets/image/filter (1) 1.png" alt="" style="width: 20px; margin-right: 5px;">
+                                <span>Filter</span>
                             </button>
+
+                            <ul class="dropdown-menu p-2" aria-labelledby="filterDropdown">
+                                <li><a class="dropdown-item" href="#" data-filter="date_desc">All Jobs</a></li>
+                                <li><a class="dropdown-item" href="#" data-filter="date_asc">Favorites</a></li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="col-sm-7">
+
+                    <!-- <div class="col-sm-7">
                         <div class="container-fluid freelance-search">
-                            <input type="text" placeholder="  Search for workers..." id="freelance-search">
+                            <input type="text" placeholder="  Search for a company" id="freelance-search">
                         </div>
                     </div>
                     <div class="col-sm-2">
@@ -223,7 +231,7 @@ $workerId = $_SESSION['worker_id'];
                                 </span>
                             </button>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="row title-section">
@@ -387,9 +395,32 @@ $workerId = $_SESSION['worker_id'];
 
                     });
                 </script>
+
+                <div id="customAlert" style="
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color:rgb(37, 221, 135);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 9999;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    text-align:center;
+
+"></div>
+
+
+
+
+
                 <script src="../Assets/js/logout.js"></script>
                 <script src="../Assets/js/report.js"></script>
                 <script src="../Assets/js/card_editOrdelete.js"></script>
+                <script src="../Assets/js/favorite.js"></script>
 
 
 </body>

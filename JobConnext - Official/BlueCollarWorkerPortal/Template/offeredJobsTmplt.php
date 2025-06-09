@@ -3,6 +3,7 @@ include '../db_con/db_connection.php';
 
 $user_id = $_SESSION['worker_id'];
 
+
 $job_offeredQRY = "SELECT * FROM tbl_client_jobpost";
 $job_offeredEXE = mysqli_query($conn, $job_offeredQRY);
 while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
@@ -51,6 +52,11 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         '#FFECB3', // light yellow
     ];
 
+    $fav_qry = "SELECT 1 FROM tbl_favorite_jobs WHERE worker_id = $user_id AND job_post_id = $jobPostId LIMIT 1";
+    $fav_result = mysqli_query($conn, $fav_qry);
+    $is_favorited = mysqli_num_rows($fav_result) > 0;
+
+
     // Fetch skills for current client
     $skill_qry = "SELECT * FROM tbl_client_skills_sets WHERE client_id = $client_id";
     $skill_exe = mysqli_query($conn, $skill_qry);
@@ -65,15 +71,22 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
     }
 
 
-
-
     if ($job_status == "Active") {
         $statuscolor = 'green';
     } else {
         $statuscolor = 'red';
     }
+
+    $applicants_qry = "SELECT COUNT(*) FROM tbl_applicants WHERE job_post_id = $jobPostId";
+    $applicants_exe = mysqli_query($conn, $applicants_qry);
+    $applicants_count = mysqli_fetch_assoc($applicants_exe)['COUNT(*)'];
+
+
+
 ?>
-    <div class="card-link"
+    <div class="card-link <?php echo $is_favorited ? 'favorited' : ''; ?>"
+        data-type="job"
+        data-favorited="<?php echo $is_favorited ? 'true' : 'false'; ?>"
         data-type="job"
         data-clientid="<?php echo $client_id ?>"
         data-jobid="<?php echo $jobPostId ?>"
@@ -87,6 +100,7 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
         data-description="<?php echo htmlspecialchars($job_description) ?>"
         data-skills="<?php echo htmlspecialchars($skill_tags) ?>"
         data-yoe="<?php echo $yr_Exp ?>"
+        data-applicant-count="<?php echo $applicants_count ?>"
         onclick="handleCardClick(event)">
 
 
@@ -98,6 +112,9 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                     </div>
                     <div class="details">
                         <h3><?php echo $company_name ?></h3>
+                        <?php if ($is_favorited): ?>
+                            <p style="color: gold; font-weight: bold;">★ Favorited</p>
+                        <?php endif; ?>
                         <p><?php echo " • " . "<strong>Php:</strong> " . $job_salary_start . " - " . $job_salary_end . " " . "•" .  "   " . "<strong>Applicants Need: </strong> " . $num_applicants . " " . " • <span style='color:" . $statuscolor . " ;'>" . $job_status ?></span></p>
                     </div>
                 </div>
@@ -106,7 +123,15 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
                         <div class="menu">•••</div>
                         <div class="dropdown">
                             <a href="#"
-                                onclick="reportPost(event, <?php echo $client_id ?>, <?php echo $job_post_id ?>)">Report</a>
+                                onclick="reportPost(event, <?php echo $client_id ?>, <?php echo $job_post_id ?>)">Report
+                            </a>
+                            <a href="#"
+                                class="favorite-toggle"
+                                data-job-id="<?php echo $jobPostId ?>"
+                                onclick="toggleFavorite(event, <?php echo $jobPostId ?>)">
+                                <?php echo $is_favorited ? 'Unfavorite' : 'Favorite'; ?>
+                            </a>
+
                         </div>
                     </div>
                     <p><?php echo $date_posted . " - " . $date_deadline ?></p>
@@ -115,11 +140,22 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             <div class="job-body">
                 <div class="info">
                     <p>
+                        <strong>Job offer:</strong>
+                        <?php echo $job_offer ?>
+                    </p>
+                    <p>
+                        <strong>Job Description:</strong>
+                        <?php echo $job_description ?>
+                    </p>
+                    <p>
                         <strong>Location:</strong>
                         <?php echo $job_loc ?>
                     </p>
                     <p>
                         <strong>Years of experience: </strong> <?php echo $yr_Exp ?>
+                    </p>
+                    <p>
+                        <strong>Applicants needed: </strong><?php echo $num_applicants ?>
                     </p>
                 </div>
                 <div class="skills">
@@ -129,13 +165,14 @@ while ($row = mysqli_fetch_assoc($job_offeredEXE)) {
             </div>
             <div class="job-footer">
                 <button class="applied">
-                    <?php echo $num_applicants ?> Applicant
+                    <?php echo $applicants_count; ?> Applied
                 </button>
             </div>
         </div>
-        </div>
+    </div>
 
-        <br>
-         <script src="../Assets/js/report.js"></script>
+    <br>
+    <script src="../Assets/js/report.js"></script>
+    <script src="../Assets/js/favorite.js"></script>
 
-    <?php } ?>
+<?php } ?>
