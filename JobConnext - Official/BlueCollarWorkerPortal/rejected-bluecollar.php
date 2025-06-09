@@ -122,36 +122,6 @@ $workerId = $_SESSION['worker_id'];
                     <div class="no-ex">
                         <p id="yoe_display">Year of experience</p>
                     </div>
-
-                    <div class="responsibilities">
-                        <h3>Responsibilities</h3>
-                        <ol>
-                            <li>Core Duties
-                                <ul>
-                                    <li>Oversee and manage daily operations, ensuring efficiency and productivity.</li>
-                                    <li>Collaborate with cross-functional teams to align and execute projects.</li>
-                                    <li>Develop strategies to improve workflows and team outcomes.</li>
-                                </ul>
-                            </li>
-                            <li>Project Management
-                                <ul>
-                                    <li>Plan, track, and report on projects, meeting timelines and quality standards.</li>
-                                    <li>Communicate updates effectively with stakeholders.</li>
-                                </ul>
-                            </li>
-                            <li>Team & Client Interaction
-                                <ul>
-                                    <li>Lead and support team members, fostering a positive work environment.</li>
-                                    <li>Build and maintain client relationships, addressing concerns as needed.</li>
-                                </ul>
-                            </li>
-                            <li>Continuous Improvement
-                                <ul>
-                                    <li>Identify improvement areas and propose innovative solutions.</li>
-                                </ul>
-                            </li>
-                        </ol>
-                    </div>
                     <div class="applyJob">
                         <button id="applyJob">
                             Apply Job
