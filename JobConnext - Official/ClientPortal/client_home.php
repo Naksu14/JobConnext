@@ -162,13 +162,13 @@ $user_id = $_SESSION['client_id'];
                     <div class="job-done" id="job_done_buttonApplicants" style="display: none;">
                         <button id="complete_Applicants">Complete Applicants</button>
                     </div>
-                    <div class="rating-content" id="rate-content" style="display: none;">
+                    <!-- <div class="rating-content" id="rate-content" style="display: none;">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             <span id="rate-content-title">Worker's Rate</span>
                             <button class="rate-worker-btn" id="rate-worker-btn">Rate Worker</button>
                         </div>
                         <div style="text-align: center; margin-top: 20px;">Rating Content</div>
-                    </div>
+                    </div> -->
                     
                     <br>
 

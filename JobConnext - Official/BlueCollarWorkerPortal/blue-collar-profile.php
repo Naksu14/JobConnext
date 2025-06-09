@@ -107,7 +107,7 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
                         </span>
                         <h6>
                             <img src="../Assets/image/User.png" alt="">
-                            Freelance
+                            Worker
                         </h6>
                         <h6>
                             <img src="../Assets/image/Location.png" alt="">

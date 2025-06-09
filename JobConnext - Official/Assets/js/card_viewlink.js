@@ -65,7 +65,6 @@ function bindCardClickEvents() {
             const jobDoneButtonCompleted = document.getElementById('job_done_buttonCompleted');
             const jobDoneButtonApplicants = document.getElementById('job_done_buttonApplicants');
             const statusSpan = document.getElementById('job_status');
-            const ratingView = document.getElementById('rate-content')
 
            if (type === 'job') {
                 if (jobStatus === "Active") {                    
@@ -73,7 +72,6 @@ function bindCardClickEvents() {
                         statusSpan.style.display = 'none';
                         jobDoneButtonCompleted.style.display = 'none';
                         jobDoneButtonApplicants.style.display = 'block';
-                        ratingView.style.display = 'none';
                     }
                 } else if (jobStatus === "Ongoing") {
                     if (statusSpan) {
@@ -82,7 +80,6 @@ function bindCardClickEvents() {
 
                         jobDoneButtonCompleted.style.display = 'block';
                         jobDoneButtonApplicants.style.display = 'none';
-                        ratingView.style.display = 'none';
 
                     }
                 }else {
@@ -91,7 +88,6 @@ function bindCardClickEvents() {
                         jobDoneButtonApplicants.style.display = 'none';
                         statusSpan.textContent = 'Job is Completed';
                         statusSpan.style.display = 'block';
-                        ratingView.style.display = 'block';
                     }
                 }
             }
@@ -547,23 +543,23 @@ document.querySelectorAll('.dropdown-itemothers[data-filterothers]').forEach(ite
 
 
 
-document.querySelectorAll('.rate-worker-btn').forEach(button => {
-    button.addEventListener('click', function () {
-        const workerId = this.dataset.workerid;
-        const jobId = this.dataset.jobid;
+// document.querySelectorAll('.rate-worker-btn').forEach(button => {
+//     button.addEventListener('click', function () {
+//         const workerId = this.dataset.workerid;
+//         const jobId = this.dataset.jobid;
 
-        document.getElementById('worker_id').value = workerId;
-        document.getElementById('job_id').value = jobId;
+//         document.getElementById('worker_id').value = workerId;
+//         document.getElementById('job_id').value = jobId;
 
-        // Show modal
-        document.getElementById('rateWorkerModal').style.display = 'block';
-    });
-});
+//         // Show modal
+//         document.getElementById('rateWorkerModal').style.display = 'block';
+//     });
+// });
 
-// Close modal when clicking the close button
-document.querySelector('#rateWorkerModal .close').addEventListener('click', function () {
-    document.getElementById('rateWorkerModal').style.display = 'none';
-});
+// // Close modal when clicking the close button
+// document.querySelector('#rateWorkerModal .close').addEventListener('click', function () {
+//     document.getElementById('rateWorkerModal').style.display = 'none';
+// });
 
 // document.querySelector('#rate-worker-btn').addEventListener('click', function() {
 //     const jobId = this.dataset.jobid;

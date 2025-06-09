@@ -56,9 +56,7 @@ if ($result->num_rows === 1) {
 <?php include 'sidebar/Sidebar.php'; ?>
 
 
-/* ======================
-   HTML Structure
-   ====================== */
+
 <main class="main-content">
     <div class="container mt-5">
         <div class="row">

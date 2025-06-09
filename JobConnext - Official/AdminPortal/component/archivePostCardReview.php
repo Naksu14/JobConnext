@@ -101,52 +101,7 @@ if ($hasResults) {
                     <p><strong>Skills:</strong><br><span class="skill-color"><?php echo $skill_tags; ?></span></p>
                 </div>
 
-                <!-- Responsibilities -->
-                <div class="responsibilities">
-                    <p><strong>Responsibilities:</strong></p>
-                    <ul>
-                        <?php
-                        // Split job description into bullet points
-                        $responsibilities = explode("\n", $job_description);
-                        foreach ($responsibilities as $responsibility) {
-                            if (trim($responsibility) != '') {
-                                echo '<li>' . htmlspecialchars(trim($responsibility)) . '</li>';
-                            }
-                        }
-                        ?>
-                    </ul>
-                </div>
                 <br>
-
-                <!-- Comments and Rating -->
-                <div class="comments-rating">
-                    <p><strong>Comments:</strong></p>
-
-                    <div class="comment-card">
-                        <div class="comment-content">
-                            <div class="profile-info">
-                                <img src="./imgforadmin/adminprofile.png" class="profile-img">
-                                <div class="profile-details">
-                                    <h4>Rhanel Buclares</h4>
-                                    <p class="freelance-info">Freelance</p>
-                                </div>
-                            </div>
-                            <div class="post-menu">
-                                <span class="posted-time">5 mins ago</span>
-                                <button class="btn btn-menu">
-                                    <i class="bi bi-three-dots"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="comments">
-                            <div class="rating">
-                                <span><b>Rate:</b></span>
-                                <button class="btn btn-rate">⭐⭐⭐⭐⭐</button>
-                            </div>
-                            <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        </div>
-                    </div>
-                </div><br>
             </div>
 
 <?php
