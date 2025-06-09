@@ -209,245 +209,244 @@ while ($skill_row = mysqli_fetch_assoc($skill_exe)) {
 
             <div class="work-history">
                 <span>History</span>
-                <div class="col-sm-12">
-                    <div class="card" id="my-offer">
-                        <a href="../BlueCollarWorkerPortal/rejected-bluecollar.php">
-                            <div class="job-header">
-                                <div class="profile-info">
-                                    <div class="avatar">
-                                        <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg" alt="Avatar">
-                                    </div>
-                                    <div class="details">
-                                        <h3>Supra Oracles</h3>
-                                        <p></p>
-                                    </div>
-                                </div>
-                                <div class="job-dates">
-                                    <img src="../Assets/image/bookmark-white 1 original.png " alt=""
-                                        style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
-                                </div>
-                            </div>
-                            <div class="job-body">
-                                <div class="info">
-                                    <p>
-                                        <strong>Location:</strong>
-                                        Makati
-                                    </p>
-                                    <p>
-                                        <strong>Time of Completion:</strong> 3 Months
-                                    </p>
-                                    <p>
-                                        <strong>Total Salary</strong> 15,000
-                                    </p>
-                                </div>
-                                <div class="completed-sign">
-                                    <span>Job Completed</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="card" id="my-offer">
-                            <a href="../BlueCollarWorkerPortal/rejected-bluecollar.php">
-                                <div class="job-header">
-                                    <div class="profile-info">
-                                        <div class="avatar">
-                                            <img src="../Assets/image/18a32bd5b48b9bc6ead9580129a54aaf.jpg"
-                                                alt="Avatar">
-                                        </div>
-                                        <div class="details">
-                                            <h3>Supra Oracles</h3>
-                                            <p></p>
-                                        </div>
-                                    </div>
-                                    <div class="job-dates">
-                                        <img src="../Assets/image/bookmark-white 1 original.png " alt=""
-                                            style="width:17px; height: 17px; background-color:#161D6F; border-radius: 0%; margin:7px;">
-                                    </div>
-                                </div>
-                                <div class="job-body">
-                                    <div class="info">
-                                        <p>
-                                            <strong>Location:</strong>
-                                            Makati
-                                        </p>
-                                        <p>
-                                            <strong>Time of Completion:</strong> 3 Months
-                                        </p>
-                                        <p>
-                                            <strong>Total Salary</strong> 15,000
-                                        </p>
-                                    </div>
-                                    <div class="completed-sign">
-                                        <span>Job Completed</span>
-                                    </div>
-                                </div>
-                            </a>
+                <?php
+
+$query = "SELECT 
+            a.worker_id, 
+            a.job_post_id, 
+            a.comment, 
+            a.status,
+            j.client_id, 
+            j.job_offer, 
+            j.salary_start, 
+            j.salary_end,
+            j.client_file, 
+            j.filePath, 
+            j.job_status, 
+            j.description,
+            j.location, 
+            j.applicants, 
+            j.year_exp, 
+            j.start_posted, 
+            j.deadline,
+            c.company_name,
+            c.company_aboutUs,
+            c.company_Address
+          FROM tbl_applicants AS a
+          JOIN tbl_client_jobpost AS j ON a.job_post_id = j.job_post_id
+          JOIN tbl_company_info AS c ON j.client_id = c.client_id
+          WHERE a.worker_id = '$user_id' AND j.job_status = 'InActive'";
+
+$result = mysqli_query($conn, $query);
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $client_id = $row['client_id'];
+    $jobTitle = $row['job_offer'];
+    $location = $row['location'];
+    $salary_start = $row['salary_start'];
+    $salary_end = $row['salary_end'];
+    $image = $row['filePath'] ?? 'Assets/images/noProfile.jpg';
+    $jobId = $row['job_post_id'];
+    $companyName = $row['company_name'];
+
+    echo '
+    <div class="col-sm-12">
+        <div class="card" id="my-offer">
+            <a href="../BlueCollarWorkerPortal/rejected-bluecollar.php?job_id=' . $jobId . '">
+                <div class="job-header">
+                    <div class="profile-info">
+                        <div class="avatar">
+                            <img src="../ClientPortal/scriptsfordb/client_image.php?client_id=' . $client_id . '" alt="Client Image">
                         </div>
-
+                        <div class="details">
+                            <h3>' . htmlspecialchars($companyName) . '</h3>
+                            <p></p>
+                        </div>
                     </div>
+                    <div class="job-dates">
+                        <img src="../Assets/image/bookmark-white 1 original.png" alt=""
+                             style="width:17px; height:17px; background-color:#161D6F; margin:7px;">
+                    </div>
+                </div>
+                <div class="job-body">
+                    <div class="info">
+                        <p><strong>Job Offer:</strong> ' . htmlspecialchars($jobTitle) . '</p>
+                        <p><strong>Location:</strong> ' . htmlspecialchars($location) . '</p>
+                        <p><strong>Php:</strong> ' . $salary_start . ' - ' . $salary_end . '</p>
+                    </div>
+                    <div class="completed-sign">
+                        <span>Job Completed</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>';
+}
+?>
 
 
 
-                    <script>
-                        document.getElementById('edit-trigger').addEventListener('click', () => {
-                            toggleEditMode(true);
-                        });
 
-                        document.getElementById('save-btn').addEventListener('click', () => {
-                            // Get updated values **at the time of clicking Save**
-                            const certs = document.getElementById('certificates-hidden').value;
-                            const acc = document.getElementById('accomplishments-hidden').value;
 
-                            fetch('../BlueCollarWorkerPortal/scriptsForDbWorker/updateWorkerProfile.php', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json'
-                                    },
-                                    body: JSON.stringify({
-                                        certs,
-                                        acc
-                                    })
+                <script>
+                    document.getElementById('edit-trigger').addEventListener('click', () => {
+                        toggleEditMode(true);
+                    });
+
+                    document.getElementById('save-btn').addEventListener('click', () => {
+                        // Get updated values **at the time of clicking Save**
+                        const certs = document.getElementById('certificates-hidden').value;
+                        const acc = document.getElementById('accomplishments-hidden').value;
+
+                        fetch('../BlueCollarWorkerPortal/scriptsForDbWorker/updateWorkerProfile.php', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    certs,
+                                    acc
                                 })
-                                .then(response => response.text())
-                                .then(text => {
-                                    console.log('Raw response:', text);
+                            })
+                            .then(response => response.text())
+                            .then(text => {
+                                console.log('Raw response:', text);
 
-                                    let data;
-                                    try {
-                                        data = JSON.parse(text);
-                                    } catch (error) {
-                                        console.error('JSON parse error:', error);
-                                        alert('Server returned an invalid response. Check the console for details.');
-                                        return;
-                                    }
-
-                                    if (data.success) {
-                                        document.getElementById('certificates-text').innerHTML = certs.split(',').map(cert => `<li>${cert.trim()}</li>`).join('');
-                                        document.getElementById('accomplishments-text').innerHTML = acc.split(',').map(acc => `<li>${acc.trim()}</li>`).join('');
-
-                                        Swal.fire({
-                                            toast: true,
-                                            position: 'top-end',
-                                            icon: 'success',
-                                            title: 'Profile Updated',
-                                            text: 'Your profile has been successfully updated!',
-                                            showConfirmButton: false,
-                                            timer: 3000,
-                                            timerProgressBar: true,
-                                            customClass: {
-                                                popup: 'colored-toast'
-                                            }
-                                        }).then(() => {
-                                            toggleEditMode(false);
-                                            location.reload();
-                                        });
-                                    } else {
-                                        alert('Update failed: ' + (data.message || 'Unknown error.'));
-                                    }
-                                })
-                                .catch(err => {
-                                    console.error('Fetch error:', err);
-                                    alert('Request failed. ' + err.message);
-                                });
-                        });
-
-                        function toggleEditMode(editMode) {
-                            const toggleClass = (id, show) => {
-                                document.getElementById(id).classList.toggle('d-none', !show);
-                            };
-
-                            toggleClass('certificates-input-wrapper', editMode);
-                            toggleClass('accomplishments-input-wrapper', editMode);
-                            toggleClass('save-btn', editMode);
-                        }
-                    </script>
-
-
-
-                    <script>
-                        function addCertificate() {
-                            const input = document.getElementById('new-certificate');
-                            const cert = input.value.trim();
-                            if (cert === '') return;
-
-                            const ul = document.getElementById('certificates-editable-list');
-
-                            // Prevent duplicates
-                            for (let li of ul.children) {
-                                if (li.dataset.certs.toLowerCase() === cert.toLowerCase()) {
-                                    alert('Certificate already added.');
+                                let data;
+                                try {
+                                    data = JSON.parse(text);
+                                } catch (error) {
+                                    console.error('JSON parse error:', error);
+                                    alert('Server returned an invalid response. Check the console for details.');
                                     return;
                                 }
-                            }
 
-                            const li = document.createElement('li');
-                            li.dataset.certs = cert;
-                            li.innerHTML = `${cert} <button type='button' onclick='removeCertificate(this)' class='btn btn-sm btn-danger'>Remove</button>`;
-                            ul.appendChild(li);
+                                if (data.success) {
+                                    document.getElementById('certificates-text').innerHTML = certs.split(',').map(cert => `<li>${cert.trim()}</li>`).join('');
+                                    document.getElementById('accomplishments-text').innerHTML = acc.split(',').map(acc => `<li>${acc.trim()}</li>`).join('');
 
-                            input.value = '';
-                            updateCertificatesHiddenField();
-                        }
-
-                        function removeCertificate(button) {
-                            const li = button.parentNode;
-                            li.remove();
-                            updateCertificatesHiddenField();
-                        }
-
-                        function updateCertificatesHiddenField() {
-                            const ul = document.getElementById('certificates-editable-list');
-                            const certs = Array.from(ul.children).map(li => li.dataset.certs);
-                            document.getElementById('certificates-hidden').value = certs.join(',');
-                        }
-                    </script>
-
-                    <script>
-                        function addAccomplishment() {
-                            const input = document.getElementById('new-accomplishment');
-                            const acc = input.value.trim();
-                            if (acc === '') return;
-
-                            const ul = document.getElementById('accomplishments-editable-list');
-
-                            for (let li of ul.children) {
-                                if (li.dataset.acc.toLowerCase() === acc.toLowerCase()) {
-                                    alert('Accomplishment already added.');
-                                    return;
+                                    Swal.fire({
+                                        toast: true,
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Profile Updated',
+                                        text: 'Your profile has been successfully updated!',
+                                        showConfirmButton: false,
+                                        timer: 3000,
+                                        timerProgressBar: true,
+                                        customClass: {
+                                            popup: 'colored-toast'
+                                        }
+                                    }).then(() => {
+                                        toggleEditMode(false);
+                                        location.reload();
+                                    });
+                                } else {
+                                    alert('Update failed: ' + (data.message || 'Unknown error.'));
                                 }
+                            })
+                            .catch(err => {
+                                console.error('Fetch error:', err);
+                                alert('Request failed. ' + err.message);
+                            });
+                    });
+
+                    function toggleEditMode(editMode) {
+                        const toggleClass = (id, show) => {
+                            document.getElementById(id).classList.toggle('d-none', !show);
+                        };
+
+                        toggleClass('certificates-input-wrapper', editMode);
+                        toggleClass('accomplishments-input-wrapper', editMode);
+                        toggleClass('save-btn', editMode);
+                    }
+                </script>
+
+
+
+                <script>
+                    function addCertificate() {
+                        const input = document.getElementById('new-certificate');
+                        const cert = input.value.trim();
+                        if (cert === '') return;
+
+                        const ul = document.getElementById('certificates-editable-list');
+
+                        // Prevent duplicates
+                        for (let li of ul.children) {
+                            if (li.dataset.certs.toLowerCase() === cert.toLowerCase()) {
+                                alert('Certificate already added.');
+                                return;
                             }
-
-                            const li = document.createElement('li');
-                            li.dataset.acc = acc;
-                            li.innerHTML = `${acc} <button type='button' onclick='removeAccomplishment(this)' class='btn btn-sm btn-danger'>Remove</button>`;
-                            ul.appendChild(li);
-
-                            input.value = '';
-                            updateAccomplishmentsHiddenField();
                         }
 
-                        function removeAccomplishment(button) {
-                            const li = button.parentNode;
-                            li.remove();
-                            updateAccomplishmentsHiddenField();
+                        const li = document.createElement('li');
+                        li.dataset.certs = cert;
+                        li.innerHTML = `${cert} <button type='button' onclick='removeCertificate(this)' class='btn btn-sm btn-danger'>Remove</button>`;
+                        ul.appendChild(li);
+
+                        input.value = '';
+                        updateCertificatesHiddenField();
+                    }
+
+                    function removeCertificate(button) {
+                        const li = button.parentNode;
+                        li.remove();
+                        updateCertificatesHiddenField();
+                    }
+
+                    function updateCertificatesHiddenField() {
+                        const ul = document.getElementById('certificates-editable-list');
+                        const certs = Array.from(ul.children).map(li => li.dataset.certs);
+                        document.getElementById('certificates-hidden').value = certs.join(',');
+                    }
+                </script>
+
+                <script>
+                    function addAccomplishment() {
+                        const input = document.getElementById('new-accomplishment');
+                        const acc = input.value.trim();
+                        if (acc === '') return;
+
+                        const ul = document.getElementById('accomplishments-editable-list');
+
+                        for (let li of ul.children) {
+                            if (li.dataset.acc.toLowerCase() === acc.toLowerCase()) {
+                                alert('Accomplishment already added.');
+                                return;
+                            }
                         }
 
-                        function updateAccomplishmentsHiddenField() {
-                            const ul = document.getElementById('accomplishments-editable-list');
-                            const acc = Array.from(ul.children).map(li => li.dataset.acc);
-                            document.getElementById('accomplishments-hidden').value = acc.join(',');
-                        }
-                    </script>
+                        const li = document.createElement('li');
+                        li.dataset.acc = acc;
+                        li.innerHTML = `${acc} <button type='button' onclick='removeAccomplishment(this)' class='btn btn-sm btn-danger'>Remove</button>`;
+                        ul.appendChild(li);
+
+                        input.value = '';
+                        updateAccomplishmentsHiddenField();
+                    }
+
+                    function removeAccomplishment(button) {
+                        const li = button.parentNode;
+                        li.remove();
+                        updateAccomplishmentsHiddenField();
+                    }
+
+                    function updateAccomplishmentsHiddenField() {
+                        const ul = document.getElementById('accomplishments-editable-list');
+                        const acc = Array.from(ul.children).map(li => li.dataset.acc);
+                        document.getElementById('accomplishments-hidden').value = acc.join(',');
+                    }
+                </script>
 
 
 
 
 
-                    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-                    </script>
-                    <script src="../Assets/js/logout.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+                    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+                </script>
+                <script src="../Assets/js/logout.js"></script>
 
 </body>
 
