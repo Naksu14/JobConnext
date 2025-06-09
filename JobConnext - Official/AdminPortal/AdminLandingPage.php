@@ -187,14 +187,14 @@ while ($row = $result->fetch_assoc()) {
                 <canvas id="JCChart"></canvas>
             </div>
         </div>
-        <div class=" charts charts3">
+        <!-- <div class=" charts charts3">
             <div class="chart" id="bar-graph">
                 <h3>Feedback</h3>
                 <canvas id="FBChart" height="400"></canvas>
 
             </div>
             <button class="btn">Download Report</button>
-        </div>
+        </div> -->
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

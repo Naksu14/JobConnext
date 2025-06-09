@@ -18,6 +18,15 @@ $sql = "SELECT
 $whereClauses = [];
 $orderBy = " ORDER BY a.Worker_created_at DESC";
 
+// Handle search parameter
+if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
+    $search = $conn->real_escape_string(trim($_GET['search']));
+    $whereClauses[] = "(CONCAT(b.firstname, ' ', b.lastname) LIKE '%$search%' OR 
+                       a.email LIKE '%$search%' OR
+                       b.phone_no LIKE '%$search%' OR
+                       a.worker_id LIKE '%$search%')";
+}
+
 // Handle filter by status
 if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     $filter = $_GET['filter'];
@@ -28,13 +37,46 @@ if (isset($_GET['filter']) && !empty($_GET['filter'])) {
     }
 }
 
+// Handle date filter
+if (isset($_GET['date-filter'])) {
+    $dateFilter = $_GET['date-filter'];
+    $today = date('Y-m-d');
+    
+    switch ($dateFilter) {
+        case 'today':
+            $whereClauses[] = "DATE(a.Worker_created_at) = '$today'";
+            break;
+        case 'week':
+            $whereClauses[] = "YEARWEEK(a.Worker_created_at, 1) = YEARWEEK('$today', 1)";
+            break;
+        case 'month':
+            $whereClauses[] = "YEAR(a.Worker_created_at) = YEAR('$today') AND MONTH(a.Worker_created_at) = MONTH('$today')";
+            break;
+        case 'year':
+            $whereClauses[] = "YEAR(a.Worker_created_at) = YEAR('$today')";
+            break;
+    }
+}
+
 // Handle sorting
 if (isset($_GET['sort'])) {
     $sort = $_GET['sort'];
-    if ($sort === 'name') {
-        $orderBy = " ORDER BY full_name ASC";
-    } elseif ($sort === 'date') {
-        $orderBy = " ORDER BY a.Worker_created_at DESC";
+    switch ($sort) {
+        case 'name':
+            $orderBy = " ORDER BY full_name ASC";
+            break;
+        case 'name_desc':
+            $orderBy = " ORDER BY full_name DESC";
+            break;
+        case 'date':
+            $orderBy = " ORDER BY a.Worker_created_at DESC";
+            break;
+        case 'date_asc':
+            $orderBy = " ORDER BY a.Worker_created_at ASC";
+            break;
+        case 'id':
+            $orderBy = " ORDER BY a.worker_id ASC";
+            break;
     }
 }
 
@@ -42,7 +84,6 @@ if (isset($_GET['sort'])) {
 if (count($whereClauses) > 0) {
     $sql .= " WHERE " . implode(" AND ", $whereClauses);
 }
-
 
 // Append order by clause
 $sql .= $orderBy;
@@ -58,8 +99,6 @@ $result = $conn->query($sql);
             <th scope="col">Blue Collar Name</th>
             <th scope="col">Email Address</th>
             <th scope="col">Contact</th>
-            <th scope="col">Status</th>
-            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -71,11 +110,6 @@ $result = $conn->query($sql);
                     <td><?= htmlspecialchars($row['full_name']) ?></td>
                     <td><?= htmlspecialchars($row['email']) ?></td>
                     <td><?= htmlspecialchars($row['contact']) ?></td>
-                    <td><?= htmlspecialchars($row['status']) ?></td>
-                    <td>
-                        <button class="btn btn-primary btn-sm">View</button>
-                        <button class="btn btn-danger btn-sm">Delete</button>
-                    </td>
                 </tr>
             <?php endwhile; ?>
         <?php else: ?>

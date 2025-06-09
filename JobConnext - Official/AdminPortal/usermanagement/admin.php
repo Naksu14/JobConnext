@@ -1,22 +1,71 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . '/JobConnext/JobConnext - Official/db_con/db_connection.php';
 
-$orderBy = "";
-$where = "";
+// Initialize variables
+$whereClauses = [];
+$orderBy = "ORDER BY Admin_id DESC";
+
+// Handle search parameter
+if (isset($_GET['search']) && !empty(trim($_GET['search']))) {
+    $search = $conn->real_escape_string(trim($_GET['search']));
+    $whereClauses[] = "(username LIKE '%$search%' OR 
+                       email LIKE '%$search%' OR
+                       Admin_id LIKE '%$search%')";
+}
+
+// // Handle status filter (if you add status field later)
+// if (isset($_GET['filter']) && $_GET['filter'] !== 'all') {
+//     $filter = $conn->real_escape_string($_GET['filter']);
+//     $allowedStatuses = ['Active', 'Inactive'];
+//     if (in_array($filter, $allowedStatuses)) {
+//         $whereClauses[] = "status = '$filter'";
+//     }
+// }
 
 // Handle sorting
 if (isset($_GET['sort'])) {
-    if ($_GET['sort'] == 'name') {
-        $orderBy = "ORDER BY username ASC";
-    } elseif ($_GET['sort'] == 'date') {
-        $orderBy = "ORDER BY Admin_id DESC"; // Assuming higher ID = newer
+    switch ($_GET['sort']) {
+        case 'name':
+            $orderBy = "ORDER BY username ASC";
+            break;
+        case 'name_desc':
+            $orderBy = "ORDER BY username DESC";
+            break;
+        case 'date':
+            $orderBy = "ORDER BY Admin_id DESC";
+            break;
+        case 'date_asc':
+            $orderBy = "ORDER BY Admin_id ASC";
+            break;
+        case 'id':
+            $orderBy = "ORDER BY Admin_id ASC";
+            break;
     }
 }
 
-
+// Combine WHERE clauses
+$where = '';
+if (!empty($whereClauses)) {
+    $where = 'WHERE ' . implode(' AND ', $whereClauses);
+}
 
 // Final query
-$sql = "SELECT Admin_id, username, email, hash_password FROM tbl_admin $where $orderBy";
+$sql = "SELECT 
+    a.Admin_id, 
+    a.username, 
+    a.email, 
+    a.hash_password,
+    i.Info_Id, 
+    i.full_name, 
+    i.phone, 
+    i.address, 
+    i.role, 
+    i.status, 
+    i.profile_image
+FROM 
+    tbl_admin a
+JOIN 
+    tbl_admin_information i ON a.Admin_id = i.Admin_Id $where $orderBy";
 $result = $conn->query($sql);
 ?>
 
@@ -33,19 +82,22 @@ $result = $conn->query($sql);
         </tr>
     </thead>
     <tbody>
-        <?php if ($result->num_rows > 0): ?>
+        <?php if ($result && $result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
                 <tr>
                     <th scope="row"><?= htmlspecialchars($row['Admin_id']) ?></th>
                     <td><?= htmlspecialchars($row['username']) ?></td>
                     <td><?= htmlspecialchars($row['email']) ?></td>
-                    <td>+63XXXXXXXXXX</td> <!-- Replace with actual contact if available -->
-                    <td>Sub-Admin</td> <!-- Replace with actual role if available -->
-                    <td>Active</td> <!-- Replace with actual status if available -->
+                    <td><?= htmlspecialchars($row['phone']) ?></td> <!-- Replace with actual contact if available -->
+                    <td>Super Admin</td> <!-- Replace with actual role if available -->
                     <td>
-                        <a href="AdminProfile.php"><button class="btn btn-success btn-sm">Edit</button></a>
-                        <!-- <button class="btn btn-warning btn-sm">Deactivate</button>
-                        <button class="btn btn-danger btn-sm">Remove</button> -->
+                        <span class="badge bg-success">Active</span> <!-- Replace with dynamic status if available -->
+                    </td>
+                    <td>
+                        <a href="AdminProfile.php?id=<?= $row['Admin_id'] ?>" class="btn btn-success btn-sm">Edit</a>
+                        <!-- Uncomment these when functionality is ready -->
+                        <!-- <button class="btn btn-warning btn-sm">Deactivate</button> -->
+                        <!-- <button class="btn btn-danger btn-sm">Remove</button> -->
                     </td>
                 </tr>
             <?php endwhile; ?>

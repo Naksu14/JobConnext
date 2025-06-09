@@ -2,7 +2,7 @@
   .message-information {
     background-color: #fdfeff;
     border-color: #eaf4ff !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -99,7 +99,8 @@
   /* Message Container */
   .message-container {
     background-color: #fdfeff;
-    border-color: #eaf4ff !important;
+    border-color: #fdfeff !important;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     position: relative;

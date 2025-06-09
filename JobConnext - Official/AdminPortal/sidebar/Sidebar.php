@@ -63,12 +63,12 @@ if (isset($_GET['logout'])) {
                 </span>
                 <span class="description" id="reportapplicant">Reported Applicant</span>
             </a>
-            <a href="feedback.php" class="nav-link">
+            <!-- <a href="feedback.php" class="nav-link">
                 <span class="icon">
                     <i class="bi bi-chat-left-text-fill"></i>
                 </span>
                 <span class="description" id="feedback">Feedback</span>
-            </a>
+            </a> -->
         </div>
 
         <a href="?logout=true" class="nav-link Logout-button">

@@ -52,14 +52,14 @@
                     Archived User Account
                 </a>
             </div>
-            <div class="locate-search">
+            <!-- <div class="locate-search">
                 <div class="input-group mb-3">
                     <input type="text" id="voiceSearchInput" onclick="startVoiceSearch()" class="form-control" placeholder="Search by name or company">
                     <button  class="input-group-text" id="basic-addon2" class="btn btn-outline-secondary" type="button" >Search</button>
                 </div>
 
 
-            </div>
+            </div> -->
 
             <div class="locate-user">
                 <div class="dropdown" id="userDropdownContainer">
@@ -79,11 +79,15 @@
                         <span class="visually-hidden">Toggle Dropdown</span>
                     </button>
                     <ul class="dropdown-menu" id="filterDropdownMenu">
-                        <li><a class="dropdown-item-fiter" href="#" data-sort="name">Sort by Name</a></li>
-                        <li><a class="dropdown-item-fiter" href="#" data-sort="date">Sort by Date</a></li>
-                        <li><a class="dropdown-item-fiter" href="#" data-filter="Identity">Sort by ID</a></li>
+                        <!-- Sorting Options -->
+                        <li><h6 class="dropdown-header">Sort By</h6></li>
+                        <li><a class="dropdown-item-fiter" href="#" data-sort="name">Name (A-Z)</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" data-sort="name_desc">Name (Z-A)</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" data-sort="date">Newest First</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" data-sort="date_asc">Oldest First</a></li>
+                        <li><a class="dropdown-item-fiter" href="#" data-sort="Identity">User ID</a></li>
+                        
                     </ul>
-
                 </div>
             </div>
         </div>
